@@ -5,7 +5,7 @@ import numpy as np
 import numpy.testing
 import pytest
 
-from ansys.materials.manager._nonlinear_models import _BaseModel
+from ansys.materials.manager._models import _BaseModel
 from ansys.materials.manager.common import (
     _chunk_data,
     _chunk_lower_triangular_matrix,

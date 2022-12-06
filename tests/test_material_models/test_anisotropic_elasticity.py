@@ -3,7 +3,7 @@ import copy
 import numpy as np
 import pytest
 
-from ansys.materials.manager._nonlinear_models.anisotropic_elasticity import (
+from ansys.materials.manager._models._mapdl.anisotropic_elasticity import (
     AnisotropicElasticity,
     ElasticityMode,
 )
@@ -19,9 +19,7 @@ class TestModelDeserialization:
 
 class TestGeneralProperties:
     def test_valid_settings_creates_model(self):
-        model = AnisotropicElasticity(
-            n_dimensions=2, coefficient_type=ElasticityMode.STIFFNESS
-        )
+        model = AnisotropicElasticity(n_dimensions=2, coefficient_type=ElasticityMode.STIFFNESS)
         assert isinstance(model.coefficients, np.ndarray)
         assert len(model.coefficients) == 0
         assert isinstance(model.temperature, np.ndarray)
@@ -40,9 +38,7 @@ class TestGeneralProperties:
 
     def test_invalid_dimension_throws(self):
         with pytest.raises(ValueError):
-            _ = AnisotropicElasticity(
-                n_dimensions=4, coefficient_type=ElasticityMode.STIFFNESS
-            )
+            _ = AnisotropicElasticity(n_dimensions=4, coefficient_type=ElasticityMode.STIFFNESS)
 
     def test_temperature_as_float_sets_one_element_array(self):
         n_dimensions = 2
@@ -129,10 +125,7 @@ class TestModelValidation:
         assert not valid
         assert len(errors) == 2
         assert any("maximum of 6 temperature values" in error for error in errors)
-        assert any(
-            "Inconsistent number of temperature values (11)" in error
-            for error in errors
-        )
+        assert any("Inconsistent number of temperature values (11)" in error for error in errors)
 
     @pytest.mark.parametrize("coefficients", [[0.0], [[[[0.0]]]]])
     def test_unsupported_dimensionality_is_invalid(self, coefficients):

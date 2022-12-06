@@ -2,9 +2,9 @@ import inspect
 from pathlib import Path
 from typing import Dict, List, Union
 
-import ansys.materials.manager._nonlinear_models as models
+import ansys.materials.manager._models as models
 
-from ._nonlinear_models import _BaseModel
+from ._models import _BaseModel
 from .common import MP_MATERIAL_HEADER_REGEX, _chunk_data, model_type, np
 from .material import Material
 from .mpdata_parser import _MaterialDataParser
@@ -13,8 +13,9 @@ from .property_codes import PropertyCode
 
 class MaterialManager:
     """
-    Class to manage material creation, assignment and other management tasks. Main entry-point for the pythonic material
-    management interface.
+    Manage material creation, assignment and other management tasks.
+
+    This class is the main entry-point for the pythonic material management interface.
     """
 
     model_type_map: Dict[str, models._BaseModel] = {}
@@ -38,7 +39,7 @@ class MaterialManager:
     @staticmethod
     def __is_subclass_predicate(obj: object) -> bool:
         """
-        Predicate to determine if a given object is a strict subclass of :obj:`models._BaseModel`
+        Predicate to determine if a given object is a strict subclass of :obj:`models._BaseModel`.
 
         Parameters
         ----------
@@ -58,7 +59,7 @@ class MaterialManager:
 
     def get_materials(self) -> Dict[int, "Material"]:
         """
-        Returns all currently defined materials in the session
+        Return all currently defined materials in the session.
 
         Returns
         -------
@@ -66,7 +67,7 @@ class MaterialManager:
             Dictionary of all defined materials, indexed by identity.
         """
         materials = []
-        #data = self.mapdl.mplist()
+        # data = self.mapdl.mplist()
         material_ids = list(map(int, MP_MATERIAL_HEADER_REGEX.findall(data)))
         for material_id in material_ids:
             material_properties = _MaterialDataParser.parse_material(data, material_id)
@@ -79,40 +80,44 @@ class MaterialManager:
 
     def get_material(self, id_: int) -> "Material":
         """
-        Gets a material defined in the session with specified identity
+        Get a material defined in the session with specified identity.
 
         Parameters
         ----------
         id_: int
             Material identity
         """
-        #data = self.mapdl.mplist(id_)
+        # data = self.mapdl.mplist(id_)
         material_properties = _MaterialDataParser.parse_material(data, id_)
         return Material(id_, material_properties)
 
     def delete_material(self, id_: int, check_assignments=True) -> None:
         """
-        Deletes a material from the session with specified identity. Optionally verify if the material has associated
-        elements.
+        Delete a material from the session with specified identity.
+
+        Optionally verify if the material has associated elements.
 
         Parameters
         ----------
         id_: int
             Material identity
         check_assignments: bool
-            If True the command will not execute if this material is associated with any elements, it will list the
-            associated entities. If False then ignore all assignments and delete the material anyway.
+            If True the command will not execute if this material is associated with any elements,
+            it will list the associated entities. If False then ignore all assignments and delete
+            the material anyway.
         """
         if check_assignments:
             check_level = "CHECK"
         else:
             check_level = "NOCHECK"
-        #self.mapdl.mpdele("ALL", mat1=id_, lchk=check_level)
+        # self.mapdl.mpdele("ALL", mat1=id_, lchk=check_level)
 
     def write_material(self, material: Material) -> Material:
         """
-        Write a material to MAPDL. If no material identity is specified in the material, then determine the first
-        unoccupied identity.
+        Write a material to MAPDL.
+
+        If no material identity is specified in the material, then determine the first unoccupied
+        identity.
 
         Parameters
         ----------
@@ -135,7 +140,7 @@ class MaterialManager:
                 self._write_property(material.material_id, property_code, value)
             else:
                 assert isinstance(value, _BaseModel)
-                #value.write_model(self.mapdl, material)
+                # value.write_model(self.mapdl, material)
         return self.get_material(material.material_id)
 
     def load_material_card(
@@ -145,19 +150,21 @@ class MaterialManager:
         material_id: int = None,
     ) -> Dict[int, Material]:
         """
-        Read one or more materials from a saved material card. File path should refer to location on the machine hosting
-        the MAPDL process.
+        Read one or more materials from a saved material card.
+
+        File path should refer to location on the machine hosting the MAPDL process.
 
         Parameters
         ----------
         file_path: Union[str, Path]
             Path to the file to be read, either a string path or PathLib.Path
         read_nonlinear: bool
-            If True, read nonlinear properties. The file must have been written with either `write_nonlinear=True` or
-            with the APDL option `lib='LIB'`
+            If True, read nonlinear properties. The file must have been written with either
+            `write_nonlinear=True` or with the APDL option `lib='LIB'`
         material_id: int
-            If read_nonlinear is True then this specifies which material identity should be used when importing the
-            data. Ignored if read_nonlinear is False. Defaults to the first unoccupied material identity in MAPDL.
+            If read_nonlinear is True then this specifies which material identity should be used
+            when importing the data. Ignored if read_nonlinear is False. Defaults to the first
+            unoccupied material identity in MAPDL.
 
         Returns
         -------
@@ -166,7 +173,8 @@ class MaterialManager:
 
         Notes
         -----
-        If read_nonlinear is True, then the MAT pointer in MAPDL will be set to the newly imported material.
+        If read_nonlinear is True, then the MAT pointer in MAPDL will be set to the newly imported
+        material.
         """
         previous_ids = self._get_current_ids()
         if isinstance(file_path, str):
@@ -178,16 +186,12 @@ class MaterialManager:
             if material_id is None:
                 ids = self._get_current_ids()
                 material_id = min(set(range(max(ids) + 2)) - set(ids))
-            #self.mapdl.mat(material_id)
+            # self.mapdl.mat(material_id)
         else:
             lib = ""
-        #self.mapdl.mpread(path, extension, lib=lib)
+        # self.mapdl.mpread(path, extension, lib=lib)
         material_dict = self.get_materials()
-        return {
-            id_: material
-            for id_, material in material_dict.items()
-            if id_ not in previous_ids
-        }
+        return {id_: material for id_, material in material_dict.items() if id_ not in previous_ids}
 
     def save_material(
         self,
@@ -205,8 +209,8 @@ class MaterialManager:
         material: Material
             Material to be written
         write_nonlinear: bool
-            If True, write all nonlinear properties to the file, this also allows the material identity to be specified
-            at import time. Otherwise, only write linear properties.
+            If True, write all nonlinear properties to the file, this also allows the material
+            identity to be specified at import time. Otherwise, only write linear properties.
 
         """
         if isinstance(file_name, str):
@@ -217,11 +221,11 @@ class MaterialManager:
             lib = "LIB"
         else:
             lib = ""
-        #self.mapdl.mpwrite(fname, ext, lib, material.material_id)
+        # self.mapdl.mpwrite(fname, ext, lib, material.material_id)
 
     def _get_current_ids(self) -> List[int]:
         """
-        Returns all identities currently assigned within MAPDL
+        Return all identities currently assigned within MAPDL.
 
         Returns
         -------
@@ -229,7 +233,7 @@ class MaterialManager:
             List of all assigned material identities
         """
         existing_material_ids = set()
-        #resp = self.mapdl.mplist("ALL", lab="DENS")
+        # resp = self.mapdl.mplist("ALL", lab="DENS")
         ids = MP_MATERIAL_HEADER_REGEX.findall(resp)
         for existing_id in ids:
             existing_material_ids.add(int(existing_id))
@@ -239,7 +243,7 @@ class MaterialManager:
         self, material_id: int, property_code: PropertyCode, property_value: model_type
     ) -> None:
         """
-        Write a linear property to MAPDL
+        Write a linear property to MAPDL.
 
         Parameters
         ----------
@@ -248,18 +252,17 @@ class MaterialManager:
         property_code: PropertyCode
             PropertyCode value indicating which property is to be written
         property_value: Union[float, np.ndarray]
-            Either a single float value if the property is isothermal, or a numpy array with columns corresponding to
-            temperature and property value if the property is temperature-dependent. Up to 100 values may be provided
-            for temperature-dependent properties.
+            Either a single float value if the property is isothermal, or a numpy array with
+            columns corresponding to temperature and property value if the property is
+            temperature-dependent. Up to 100 values may be provided for temperature-dependent
+            properties.
         """
         if isinstance(property_value, float):
-            #self.mapdl.mp(property_code.name, material_id, property_value)
+            # self.mapdl.mp(property_code.name, material_id, property_value)
             pass
         elif isinstance(property_value, np.ndarray):
             if property_value.ndim != 2:
-                raise ValueError(
-                    "Invalid dimension for property, must be 2-dimensional"
-                )
+                raise ValueError("Invalid dimension for property, must be 2-dimensional")
             if property_value.shape[1] != 2:
                 if property_value.shape[0] == 2:
                     property_value = np.transpose(property_value)
@@ -267,15 +270,16 @@ class MaterialManager:
                     raise ValueError("Invalid array shape, must be 2-by-N")
             temp_values = property_value[:][0]
             for index, chunk in enumerate(_chunk_data(temp_values)):
-                #self.mapdl.mptemp(6 * index + 1, *chunk)
+                # self.mapdl.mptemp(6 * index + 1, *chunk)
                 pass
             property_values = property_value[:][1]
             for index, chunk in enumerate(_chunk_data(property_values)):
-                #self.mapdl.mpdata(
+                # self.mapdl.mpdata(
                 #    property_code.name, material_id, 6 * index + 1, *chunk
-                #)
+                # )
                 pass
         else:
             raise TypeError(
-                f"Property has invalid type: {type(property_value)}. Must be either float or np.ndarray."
+                f"Property has invalid type: {type(property_value)}. "
+                "Must be either float or np.ndarray."
             )

@@ -1,13 +1,11 @@
 from typing import Dict, List, Optional
 
-from ._nonlinear_models import _BaseModel
+from ._models import _BaseModel
 from .common import TB_MATERIAL_HEADER_REGEX
 
 
 class _TableDataParser:
-    """
-    Parses responses from the `TBLIST` command into individual non-linear models.
-    """
+    """Parses responses from the `TBLIST` command into individual non-linear models."""
 
     models: Dict[str, _BaseModel]
 
@@ -29,7 +27,8 @@ class _TableDataParser:
         Returns
         -------
         Dict[str, List[str]]
-            Dictionary of relevant non-linear model sections, indexed by model name. Each section is split on newlines.
+            Dictionary of relevant non-linear model sections, indexed by model name. Each section
+            is split on newlines.
         """
         tb_chunks: Dict[str, List[str]] = {}
         header_lines = TB_MATERIAL_HEADER_REGEX.findall(data)
@@ -55,9 +54,7 @@ class _TableDataParser:
 
         return tb_chunks
 
-    def get_models_by_id(
-        self, data: str, material_id: int
-    ) -> Optional[Dict[str, _BaseModel]]:
+    def get_models_by_id(self, data: str, material_id: int) -> Optional[Dict[str, _BaseModel]]:
         material_model_data = self._get_tb_sections_with_id(data, material_id)
         model_data_map = {}
         for model_code, model_data in material_model_data.items():
@@ -87,8 +84,6 @@ class _TableDataParser:
 
         """
         if model_code not in self.models.keys():
-            raise NotImplementedError(
-                f"Model with key '{model_code}' is not implemented yet."
-            )
+            raise NotImplementedError(f"Model with key '{model_code}' is not implemented yet.")
         target_model = self.models[model_code]
         return target_model.deserialize_model(model_code, model_data)

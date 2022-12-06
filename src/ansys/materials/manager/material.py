@@ -2,7 +2,7 @@ from typing import Dict, Optional, Set
 
 import numpy as np
 
-from ._nonlinear_models import _BaseModel
+from ._models import _BaseModel
 from .common import model_type
 from .property_codes import PropertyCode
 
