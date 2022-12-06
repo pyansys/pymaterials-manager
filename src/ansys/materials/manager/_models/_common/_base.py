@@ -3,6 +3,7 @@ from typing import List, Tuple
 
 TYPE_CHECKING = False
 if TYPE_CHECKING:
+    from ansys.materials.manager._models._common._packages import SupportedPackage  # noqa: F401
     from ansys.materials.manager.material import Material  # noqa: F401
 
 
@@ -15,6 +16,7 @@ class _BaseModel(metaclass=ABCMeta):
     """
 
     model_codes: Tuple
+    applicable_packages: "SupportedPackage"
 
     @abstractmethod
     def write_model(self, material: "Material") -> None:
