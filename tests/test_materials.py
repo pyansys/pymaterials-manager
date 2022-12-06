@@ -208,39 +208,45 @@ class TestCommonFunctions:
 
 
 def make_material_with_properties() -> Material:
-    id_ = 3
+    id_ = "3"
+    name = "Test_Material"
     properties = {
         PropertyCode.DENS: 3000.0,
         PropertyCode.EX: 6_000_000.0,
         PropertyCode.REFT: 23.0,
     }
-    return Material(material_id=id_, properties=properties)
+    return Material(material_name=name, material_id=id_, properties=properties)
 
 
 class TestMaterial:
     def test_create_empty_material(self):
-        id_ = 3
-        material = Material(material_id=id_)
+        id_ = "3"
+        name = "MaterialName"
+        material = Material(material_name=name, material_id=id_)
+        assert material.name == name
         assert material.material_id == id_
 
     def test_default_reference_temperature(self):
-        id_ = 1
-        material = Material(material_id=id_)
+        id_ = "1"
+        name = "MaterialName"
+        material = Material(material_name=name, material_id=id_)
         assert material.reference_temperature == pytest.approx(0.0)
 
     def test_setting_material_id_works(self):
-        material = Material(material_id=1)
-        material.material_id = 2
-        assert material.material_id == 2
+        name = "MaterialName"
+        material = Material(material_name=name, material_id=1)
+        material.material_id = "2"
+        assert material.material_id == "2"
 
     def test_create_material_with_simple_properties(self):
-        id_ = 3
+        name = "MaterialName"
+        id_ = "3"
         properties = {
             PropertyCode.DENS: 3000.0,
             PropertyCode.EX: 6_000_000.0,
             PropertyCode.REFT: 23.0,
         }
-        material = Material(material_id=id_, properties=properties)
+        material = Material(material_name=name, material_id=id_, properties=properties)
         assert material.material_id == id_
         assigned_properties = material.get_properties()
         assert len(assigned_properties) == 3
@@ -264,56 +270,54 @@ class TestMaterial:
             material.remove_property(PropertyCode.REFT)
 
     def test_create_material_with_functional_properties(self):
-        id_ = 3
+        name = "MaterialName"
+        id_ = "3"
         properties = {
             PropertyCode.DENS: np.asarray(
                 [[0.0, 4000.0], [100.0, 3700.0], [200.0, 3400.0]], dtype=float
             ),
-            PropertyCode.EX: np.asarray(
-                [[0.0, 6e6], [100.0, 5.5e6], [200.0, 5e6]], dtype=float
-            ),
+            PropertyCode.EX: np.asarray([[0.0, 6e6], [100.0, 5.5e6], [200.0, 5e6]], dtype=float),
         }
-        material = Material(material_id=id_, properties=properties)
+        material = Material(material_name=name, material_id=id_, properties=properties)
         assert material.material_id == id_
         for k, v in properties.items():
             np.testing.assert_array_equal(material.get_property(k), properties[k])
 
     def test_create_material_with_reference_temperature(self):
-        id_ = 5
+        name = "MaterialName"
+        id_ = "5"
         ref_temperature = 25.0
-        material = Material(material_id=id_, reference_temperature=ref_temperature)
+        material = Material(
+            material_name=name, material_id=id_, reference_temperature=ref_temperature
+        )
         assert material.material_id == id_
         assert material.reference_temperature == pytest.approx(ref_temperature)
-        assert material.get_property(PropertyCode.REFT) == pytest.approx(
-            ref_temperature
-        )
+        assert material.get_property(PropertyCode.REFT) == pytest.approx(ref_temperature)
 
     def test_assigning_array_reference_temperature_throws(self):
-        material = Material(material_id=10)
-        temperature_array = np.asarray(
-            [[0.0, 0.0], [100.0, 100.0], [200.0, 200.0]], dtype=float
-        )
+        material = Material(material_name="MaterialName", material_id=10)
+        temperature_array = np.asarray([[0.0, 0.0], [100.0, 100.0], [200.0, 200.0]], dtype=float)
         with pytest.raises(AssertionError):
             material.set_property(PropertyCode.REFT, temperature_array)
 
     def test_assigning_reference_temperature(self):
-        material = Material(material_id=10)
+        material = Material(material_name="MaterialName", material_id=10)
         reference_temperature = 23.0
         material.reference_temperature = reference_temperature
-        assert material.get_property(PropertyCode.REFT) == pytest.approx(
-            reference_temperature
-        )
+        assert material.get_property(PropertyCode.REFT) == pytest.approx(reference_temperature)
 
     @pytest.mark.parametrize("invalid_input", ["foo", b"110", 12])
     def test_assigning_invalid_property_type_throws(self, invalid_input):
-        material = Material(material_id=10)
+        material = Material(material_name="MaterialName", material_id=10)
         property_code = PropertyCode.DENS
         with pytest.raises(AssertionError):
             material.set_property(property_code, invalid_input)
 
     def test_create_material_with_nonlinear_model(self):
         material = Material(
-            material_id=1, nonlinear_models={"TEST": TestNonlinearModel()}
+            material_name="MaterialName",
+            material_id="1",
+            nonlinear_models={"TEST": TestNonlinearModel()},
         )
         assert "TEST" in material.get_models()
         model = material.get_model("TEST")
@@ -321,7 +325,9 @@ class TestMaterial:
 
     def test_removing_nonlinear_model_removes_model(self):
         material = Material(
-            material_id=1, nonlinear_models={"TEST": TestNonlinearModel()}
+            material_name="MaterialName",
+            material_id="1",
+            nonlinear_models={"TEST": TestNonlinearModel()},
         )
         assert len(material.get_models()) == 1
         material.remove_model("TEST")
@@ -329,7 +335,9 @@ class TestMaterial:
 
     def test_removing_nonexistent_model_throws(self):
         material = Material(
-            material_id=1, nonlinear_models={"TEST": TestNonlinearModel()}
+            material_name="MaterialName",
+            material_id="1",
+            nonlinear_models={"TEST": TestNonlinearModel()},
         )
         assert len(material.get_models()) == 1
         with pytest.raises(KeyError):

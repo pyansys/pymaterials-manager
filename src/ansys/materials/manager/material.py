@@ -66,6 +66,15 @@ class Material:
                 self.set_model(k, v)
 
     @property
+    def name(self) -> str:
+        """Return the name of the material."""
+        return self._name
+
+    @name.setter
+    def name(self, value: str) -> None:
+        self._name = value
+
+    @property
     def material_id(self) -> Optional[str]:
         """Return the material ID."""
         return self._id
