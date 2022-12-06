@@ -21,6 +21,14 @@ optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
 
 [[package]]
+name = "coolprop"
+version = "6.4.1"
+description = "Open-source thermodynamic and transport properties database"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "exceptiongroup"
 version = "1.0.4"
 description = "Backport of PEP 654 (exception groups)"
@@ -112,7 +120,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10,<4.0"
-content-hash = "39638c05199daa002580d6332c7212d406dd52b2399fecf028df75c3dc3942bf"
+content-hash = "db9532afc381d8e7b4659d8248b420e64993102cbf005c98b9d4dd60943dd1fb"
 
 [metadata.files]
 attrs = [
@@ -122,6 +130,47 @@ attrs = [
 colorama = [
     {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
+]
+coolprop = [
+    {file = "CoolProp-6.4.1-cp27-cp27m-macosx_10_7_x86_64.whl", hash = "sha256:1c28cf5f462c0c2019dbab7409a7b328eba4b88ce54729a8a9c6332341826edc"},
+    {file = "CoolProp-6.4.1-cp27-cp27m-manylinux1_x86_64.whl", hash = "sha256:9096206786436eb5d50f9255e3a1ac8f0ef04c20aa8eed7fcf155ed65f4a3c08"},
+    {file = "CoolProp-6.4.1-cp27-cp27m-win32.whl", hash = "sha256:3333760785526e63f5109cdd483fa8b8c6b46f9044df1f436f8a3ecfe7cf0286"},
+    {file = "CoolProp-6.4.1-cp27-cp27m-win_amd64.whl", hash = "sha256:dfab363a6c0df64e9f5173ac49661f3e2a84848c8f17b31f43a2363011fb2343"},
+    {file = "CoolProp-6.4.1-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:04cd2ff34208248820802a0a41c6c36841663e85307272a491ad8ef40e2d72d0"},
+    {file = "CoolProp-6.4.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:2a2a4af5d5981cecaea719d991d9c469cc33f3e81d908072060c315596c61f2d"},
+    {file = "CoolProp-6.4.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:7f0a84368f304235f61a6167c572b094bea4485271aa79adeea01a2a25aa4d26"},
+    {file = "CoolProp-6.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:998cd0b4e692a5846bfe5b77ddd0f754d4eb40839ba9d237245b5ecf13174ba0"},
+    {file = "CoolProp-6.4.1-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:e1d2251b54f2f06b044576bedcd97c442aa0d75b854b579e98971e61d43b29e9"},
+    {file = "CoolProp-6.4.1-cp310-cp310-win32.whl", hash = "sha256:1531028fd3c1d666bdcece70fd559550966d338191e8b89fd6746135c5cfdd19"},
+    {file = "CoolProp-6.4.1-cp310-cp310-win_amd64.whl", hash = "sha256:863112f264050d6abbbeed536e3f0750e8afddb798ff3ce5e7a1df4be4a5434e"},
+    {file = "CoolProp-6.4.1-cp36-cp36m-macosx_10_7_x86_64.whl", hash = "sha256:38e45d0d9cf84da824015a90e178eb2ee990460e8fe8c5e2cf899c235877b79e"},
+    {file = "CoolProp-6.4.1-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:b9a9377b09e33f60388c285ba02a0dd4f83d509c9073540e3063fa7140c6edab"},
+    {file = "CoolProp-6.4.1-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:3c6f821e1bd83c6496f92c9f48d20aac16cae8acc6b342546470261fd3a3e436"},
+    {file = "CoolProp-6.4.1-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:13a55c9c4c7fd5e22d6c1514d2ff56b38b3175ad569cc034e0350696aac84a16"},
+    {file = "CoolProp-6.4.1-cp36-cp36m-musllinux_1_1_x86_64.whl", hash = "sha256:f3a0a9b35fde5c0ff0cf946788dfa2b51d0fd3ee6999b46e3d6c60e116b288d0"},
+    {file = "CoolProp-6.4.1-cp36-cp36m-win32.whl", hash = "sha256:54b4245a3f7d9e7bde2c32bed4dec215dcdad1c961407a81d3fa2853ea2446c8"},
+    {file = "CoolProp-6.4.1-cp36-cp36m-win_amd64.whl", hash = "sha256:b298fafecce01bfaa9086d9c7c4dc3e691fe33a636fcce5abe40b471c781f543"},
+    {file = "CoolProp-6.4.1-cp37-cp37m-macosx_10_7_x86_64.whl", hash = "sha256:3a6943bc940ce3940de0e28c5f82e075376bc4a9ec0da61e8134941974314c3b"},
+    {file = "CoolProp-6.4.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:3c2300fe1c09c1fcb460902d387858ac025b2d323a3223aecd7049610447c645"},
+    {file = "CoolProp-6.4.1-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:cedb84d739159d2b8eebd9c13d6046a7a630b21553550574b6d5fe43a62bbdcf"},
+    {file = "CoolProp-6.4.1-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5dcb7c2bf215288f812f1ab5e26a606c87c0c1d2352d1e95c29ffd35f66679a5"},
+    {file = "CoolProp-6.4.1-cp37-cp37m-musllinux_1_1_x86_64.whl", hash = "sha256:15abf85ef31b5d4d89bb80efc89f5a3b62e864624e62ac714c13e35b6e125c38"},
+    {file = "CoolProp-6.4.1-cp37-cp37m-win32.whl", hash = "sha256:052f90e5f8cbde20af9bab84a2162c685f0eecee56eb0934fbcabfe36d20fd46"},
+    {file = "CoolProp-6.4.1-cp37-cp37m-win_amd64.whl", hash = "sha256:225fc10666a5f27ec6d1f4a26ad336166633b88d6f56b83f456c54e2bf3d4627"},
+    {file = "CoolProp-6.4.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:627d7a8b88adc45e4cace6db0f1dc34bb701b370904396ccd6cfbec366f51df5"},
+    {file = "CoolProp-6.4.1-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:4336824eee3a2fc638c97d2fce1cb29191088ad0941d4ffb3232bd97ae37baea"},
+    {file = "CoolProp-6.4.1-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:82c3f2440329c079b45890a88458a30e541d60775b45344bd09fa86b03d6491c"},
+    {file = "CoolProp-6.4.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d624f26a9985ef95c1ae0c44901cc80322b94394752e9a23bd6e3ff5edc32bda"},
+    {file = "CoolProp-6.4.1-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:8b145b88f7f55fb4004415a9f7b31752cd3f8663cd82c0910e049bbd408150b2"},
+    {file = "CoolProp-6.4.1-cp38-cp38-win32.whl", hash = "sha256:074276e87fc851c19e79d04be7846ac807f91b57d0be141a4cce845f1936f67d"},
+    {file = "CoolProp-6.4.1-cp38-cp38-win_amd64.whl", hash = "sha256:fa011b93ea46454c13e9249de2a9fd4d4edf369652675a67c5d8a56e887aad76"},
+    {file = "CoolProp-6.4.1-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:4860baa2dd1c6586e03848cc5f4c69424f787d8f81e5814b1733c7e43cfceadc"},
+    {file = "CoolProp-6.4.1-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:d4e7221c3354f877c634adb843060fa8aae20f41ecf9e3c22c0434cf1fa19c13"},
+    {file = "CoolProp-6.4.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c3759c8b8bb9eb892c7f704218226ae566d5d70c441c9f82dd1038ee6303dd90"},
+    {file = "CoolProp-6.4.1-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:c5125982f741c6b6426580aab39046042e8f46622272da1bbd0647b6532071cc"},
+    {file = "CoolProp-6.4.1-cp39-cp39-win32.whl", hash = "sha256:0f131726a280ebe1ca31383de3aff5f5990f80175c9c4b805440590e22ad8e32"},
+    {file = "CoolProp-6.4.1-cp39-cp39-win_amd64.whl", hash = "sha256:c1713eea92b831d8f615e9a1af7dc371688ac18a31153503e97c1e1d92c5ea1a"},
+    {file = "CoolProp-6.4.1.tar.gz", hash = "sha256:79cb300858d561fb87ab4963bd78339ed1f6f7825c295bf6892e2c4f3faafb0b"},
 ]
 exceptiongroup = [
     {file = "exceptiongroup-1.0.4-py3-none-any.whl", hash = "sha256:542adf9dea4055530d6e1279602fa5cb11dab2395fa650b8674eaec35fc4a828"},
