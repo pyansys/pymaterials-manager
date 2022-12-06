@@ -119,7 +119,7 @@ celerybeat.pid
 .env
 .venv
 env/
-venv/
+venv*/
 ENV/
 env.bak/
 venv.bak/
@@ -130,6 +130,9 @@ venv.bak/
 
 # Rope project settings
 .ropeproject
+
+# VS Code settings
+.vscode
 
 # mkdocs documentation
 /site
