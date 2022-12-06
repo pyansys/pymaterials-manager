@@ -5,6 +5,7 @@ import numpy as np
 
 from ansys.materials.manager._models._common._base import _BaseModel
 from ansys.materials.manager._models._common._exceptions import ModelValidationException
+from ansys.materials.manager._models._common._packages import SupportedPackage
 from ansys.materials.manager.common import (
     FLOAT_VALUE_REGEX,
     MATRIX_LABEL_REGEX,
@@ -62,6 +63,7 @@ class AnisotropicElasticity(_BaseModel):
     _temperature: np.ndarray
 
     model_codes = ("ELAS", "ANEL")
+    applicable_packages = {SupportedPackage.MAPDL}
 
     def __init__(
         self,
