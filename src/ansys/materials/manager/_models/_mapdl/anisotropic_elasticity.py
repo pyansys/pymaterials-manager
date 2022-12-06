@@ -63,7 +63,7 @@ class AnisotropicElasticity(_BaseModel):
     _temperature: np.ndarray
 
     model_codes = ("ELAS", "ANEL")
-    applicable_packages = {SupportedPackage.MAPDL}
+    applicable_packages = SupportedPackage.MAPDL
 
     def __init__(
         self,

@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-from typing import List, Set, Tuple
+from typing import List, Tuple
 
 TYPE_CHECKING = False
 if TYPE_CHECKING:
@@ -16,7 +16,7 @@ class _BaseModel(metaclass=ABCMeta):
     """
 
     model_codes: Tuple
-    applicable_packages: "Set[SupportedPackage]"
+    applicable_packages: "SupportedPackage"
 
     @abstractmethod
     def write_model(self, material: "Material") -> None:
