@@ -36,7 +36,7 @@ class Material:
 
         Parameters
         ----------
-        material_name: str
+        material_name: s:wtr
             The name of the material
         material_id: str
             The ID to be associated with this material.
