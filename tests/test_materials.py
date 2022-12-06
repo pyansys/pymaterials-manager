@@ -5,14 +5,13 @@ import numpy as np
 import numpy.testing
 import pytest
 
-from ansys.materials.manager._models import _BaseModel
+from ansys.materials.manager._models import Constant, _BaseModel
 from ansys.materials.manager.common import (
     _chunk_data,
     _chunk_lower_triangular_matrix,
     fill_upper_triangular_matrix,
 )
 from ansys.materials.manager.material import Material
-from ansys.materials.manager.property_codes import PropertyCode
 from ansys.materials.manager.tbdata_parser import _TableDataParser
 
 HEADER_LINES = [
@@ -211,8 +210,8 @@ def make_material_with_properties() -> Material:
     id_ = "3"
     name = "Test_Material"
     properties = {
-        PropertyCode.DENS: 3000.0,
-        PropertyCode.EX: 6_000_000.0,
+        "Density": 3000.0,
+        "Elastic Modulus": 6_000_000.0,
         PropertyCode.REFT: 23.0,
     }
     return Material(material_name=name, material_id=id_, properties=properties)
@@ -241,34 +240,24 @@ class TestMaterial:
     def test_create_material_with_simple_properties(self):
         name = "MaterialName"
         id_ = "3"
-        properties = {
-            PropertyCode.DENS: 3000.0,
-            PropertyCode.EX: 6_000_000.0,
-            PropertyCode.REFT: 23.0,
-        }
-        material = Material(material_name=name, material_id=id_, properties=properties)
+        models = [
+            Constant("Density", 3000.0),
+            Constant("Elastic Modulus (11-axis)", 6_000_000.0),
+            Constant("Reference Temperature", 23.0),
+        ]
+        material = Material(material_name=name, material_id=id_, models=models)
         assert material.material_id == id_
-        assigned_properties = material.get_properties()
-        assert len(assigned_properties) == 3
-        for k, v in properties.items():
-            assert assigned_properties[k] == pytest.approx(properties[k])
+        assigned_models = material.models
+        assert len(assigned_models) == 4
+        for model in models:
+            matching_model = next(
+                assigned_model
+                for assigned_model in assigned_models
+                if assigned_model.name == model.name
+            )
+            assert matching_model.value == pytest.approx(model.value)
 
-    def test_removing_property_removes_property(self):
-        material = make_material_with_properties()
-        assert len(material.get_properties()) == 3
-        material.remove_property(PropertyCode.DENS)
-        assert len(material.get_properties()) == 2
-
-    def test_removing_invalid_property_throws(self):
-        material = make_material_with_properties()
-        with pytest.raises(KeyError):
-            material.remove_property("TEST")
-
-    def test_removing_reference_temperature_throws(self):
-        material = make_material_with_properties()
-        with pytest.raises(KeyError):
-            material.remove_property(PropertyCode.REFT)
-
+    @pytest.mark.skip(reason="Linear piecewise models are not implemented")
     def test_create_material_with_functional_properties(self):
         name = "MaterialName"
         id_ = "3"
@@ -292,60 +281,35 @@ class TestMaterial:
         )
         assert material.material_id == id_
         assert material.reference_temperature == pytest.approx(ref_temperature)
-        assert material.get_property(PropertyCode.REFT) == pytest.approx(ref_temperature)
-
-    def test_assigning_array_reference_temperature_throws(self):
-        material = Material(material_name="MaterialName", material_id=10)
-        temperature_array = np.asarray([[0.0, 0.0], [100.0, 100.0], [200.0, 200.0]], dtype=float)
-        with pytest.raises(AssertionError):
-            material.set_property(PropertyCode.REFT, temperature_array)
+        assert material.get_model_by_name("Reference Temperature")[0].value == pytest.approx(
+            ref_temperature
+        )
 
     def test_assigning_reference_temperature(self):
-        material = Material(material_name="MaterialName", material_id=10)
+        material = Material(material_name="MaterialName", material_id="10")
         reference_temperature = 23.0
         material.reference_temperature = reference_temperature
-        assert material.get_property(PropertyCode.REFT) == pytest.approx(reference_temperature)
-
-    @pytest.mark.parametrize("invalid_input", ["foo", b"110", 12])
-    def test_assigning_invalid_property_type_throws(self, invalid_input):
-        material = Material(material_name="MaterialName", material_id=10)
-        property_code = PropertyCode.DENS
-        with pytest.raises(AssertionError):
-            material.set_property(property_code, invalid_input)
+        assert material.get_model_by_name("Reference Temperature")[0].value == pytest.approx(
+            reference_temperature
+        )
 
     def test_create_material_with_nonlinear_model(self):
         material = Material(
             material_name="MaterialName",
             material_id="1",
-            nonlinear_models={"TEST": TestNonlinearModel()},
+            models=[TestNonlinearModel()],
         )
-        assert "TEST" in material.get_models()
-        model = material.get_model("TEST")
-        assert isinstance(model, TestNonlinearModel)
-
-    def test_removing_nonlinear_model_removes_model(self):
-        material = Material(
-            material_name="MaterialName",
-            material_id="1",
-            nonlinear_models={"TEST": TestNonlinearModel()},
-        )
-        assert len(material.get_models()) == 1
-        material.remove_model("TEST")
-        assert len(material.get_models()) == 0
-
-    def test_removing_nonexistent_model_throws(self):
-        material = Material(
-            material_name="MaterialName",
-            material_id="1",
-            nonlinear_models={"TEST": TestNonlinearModel()},
-        )
-        assert len(material.get_models()) == 1
-        with pytest.raises(KeyError):
-            material.remove_model("OTHER")
+        model = material.get_model_by_name("TestModel")
+        assert len(model) == 1
+        assert isinstance(model[0], TestNonlinearModel)
 
 
 class TestNonlinearModel(_BaseModel):
     model_codes = ("TEST",)
+
+    @property
+    def name(self) -> str:
+        return "TestModel"
 
     def write_model(self, material: "Material") -> None:
         return None

@@ -1,5 +1,15 @@
 from abc import ABCMeta, abstractmethod
-from typing import List, Tuple
+from typing import Any, List, Tuple
+
+try:
+    from ansys.mapdl.core import _MapdlCore
+except ImportError:
+    _MapdlCore = None
+
+try:
+    from ansys.fluent.core import Session as _FluentCore
+except ImportError:
+    _FluentCore = None
 
 TYPE_CHECKING = False
 if TYPE_CHECKING:
@@ -15,11 +25,20 @@ class _BaseModel(metaclass=ABCMeta):
     deserialization calls to the appropriate model class.
     """
 
-    model_codes: Tuple
     applicable_packages: "SupportedPackage"
 
+    @property
     @abstractmethod
-    def write_model(self, material: "Material") -> None:
+    def name(self) -> str:
+        """Get the name of the model.
+
+        For complex nonlinear models this will be the name of the model, for simple models this
+        can be set and should reflect the property being modelled.
+        """
+        ...
+
+    @abstractmethod
+    def write_model(self, material: "Material", pyansys_session: Any) -> None:
         """
         Write this model to MAPDL.
 
@@ -29,6 +48,9 @@ class _BaseModel(metaclass=ABCMeta):
         ----------
         material: Material
             Material object with which this model will be associated.
+        pyansys_session: Any
+            Supported PyAnsys product session, currently only pyMAPDL and pyFluent
+            are supported.
         """
         ...
 
@@ -44,27 +66,5 @@ class _BaseModel(metaclass=ABCMeta):
         Tuple
             First element is boolean, true if validation is successful. If false then the second
             element will contain a list of strings with more information.
-        """
-        ...
-
-    @classmethod
-    @abstractmethod
-    def deserialize_model(cls, model_code: str, model_data: List[str]) -> "_BaseModel":
-        """
-        Convert output from a solver command into a model object representing that model.
-
-        The input should be a section of output referring to one model from one material.
-
-        Parameters
-        ----------
-        model_code: str
-            String model code.
-        model_data: List[str]
-            Lines from solver output corresponding to this model for one material.
-
-        Returns
-        -------
-        _BaseModel
-            Wrapper for the underlying MAPDL material model
         """
         ...

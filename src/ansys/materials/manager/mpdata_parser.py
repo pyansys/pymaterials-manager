@@ -1,7 +1,8 @@
 from typing import Dict, List, Optional
 
+from ansys.materials.manager._models._mapdl.simple_properties import PropertyCode
+
 from .common import FLOAT_VALUE_REGEX, MP_MATERIAL_HEADER_REGEX, model_type, np
-from .property_codes import PropertyCode
 
 
 class _MaterialDataParser:
