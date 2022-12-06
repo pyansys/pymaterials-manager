@@ -8,7 +8,9 @@ class _MaterialDataParser:
     @staticmethod
     def parse_material(data: str, id_: int) -> Dict[PropertyCode, model_type]:
         """
-        Parse the response from an `MPLIST` command into a set of material properties and nonlinear material models.
+        Parse the response from an `MPLIST` command.
+
+        Creates a set of material properties and nonlinear material models indexed by name.
 
         Parameters
         ----------
@@ -37,7 +39,6 @@ class _MaterialDataParser:
         List[str]
             Relevant section of the data input, split on newlines
         """
-
         material_ids = map(int, MP_MATERIAL_HEADER_REGEX.findall(data))
         if id_ not in material_ids:
             raise IndexError(f"Material with ID {id_} not found in data")
@@ -62,7 +63,7 @@ class _MaterialDataParser:
     @staticmethod
     def _process_material(material_data: List[str]) -> Dict[PropertyCode, model_type]:
         """
-        Deserialize a material into a property dictionary
+        Deserialize a material into a property dictionary.
 
         Parameters
         ----------
@@ -81,9 +82,7 @@ class _MaterialDataParser:
         lines = [line.strip() for line in material_data if line.strip()]
         for line in lines:
             if line.startswith("TEMP"):
-                current_property_code = _MaterialDataParser._process_property_header(
-                    line
-                )
+                current_property_code = _MaterialDataParser._process_property_header(line)
                 property_lines[current_property_code] = []
             elif line.startswith("REFT"):
                 temp_string = line.split("=")[1]
@@ -102,7 +101,7 @@ class _MaterialDataParser:
     @staticmethod
     def _process_property_header(header_line: str) -> PropertyCode:
         """
-        Deserialize a property header line into the relevant property code
+        Deserialize a property header line into the relevant property code.
 
         Parameters
         ----------
@@ -134,9 +133,11 @@ class _MaterialDataParser:
     @staticmethod
     def _process_property(property_data: List[str]) -> model_type:
         """
-        Deserialize the property data into a python object. Single values are deserialized into floats, arrays are
-        deserialized into NumPy arrays, where the first column contains temperature values and the second contains
-        property values at those temperatures.
+        Deserialize the property data into a python object.
+
+        Single values are deserialized into floats, arrays are deserialized into NumPy arrays,
+        where the first column contains temperature values and the second contains property
+        values at those temperatures.
 
         Parameters
         ----------
@@ -146,9 +147,9 @@ class _MaterialDataParser:
         Returns
         -------
         Union[float, np.ndarray]
-            Deserialized model, either a single float, or a NumPy array if the property is temperature-dependent.
+            Deserialized model, either a single float, or a NumPy array if the property is
+            temperature-dependent.
         """
-
         property_value: Optional[model_type] = None
         if len(property_data) == 2:
             match = FLOAT_VALUE_REGEX.search(property_data[1])

@@ -5,9 +5,7 @@ from typing import Generator, Iterable, List, Union
 import numpy as np
 
 MP_MATERIAL_HEADER_REGEX = re.compile(r"MATERIAL NUMBER\s+([\d]+)")
-TB_MATERIAL_HEADER_REGEX = re.compile(
-    r"\(([A-Z]+)\) Table For Material\s+([\d]+)[^\n]*"
-)
+TB_MATERIAL_HEADER_REGEX = re.compile(r"\(([A-Z]+)\) Table For Material\s+([\d]+)[^\n]*")
 FLOAT_VALUE_REGEX = re.compile(r"(-?\d+\.\d*([Ee][+-]\d+)?)")
 MATRIX_LABEL_REGEX = re.compile(r"(\w\s?\d{1,2})")
 
@@ -16,7 +14,7 @@ model_type = Union[float, np.ndarray]
 
 def _chunk_data(data: Iterable) -> Generator[List, None, None]:
     """
-    Splits an iterable into chunks of size six lazily.
+    Split an iterable into chunks of size six lazily.
 
     Parameters
     ----------
@@ -39,8 +37,9 @@ def _chunk_lower_triangular_matrix(
     matrix: np.ndarray,
 ) -> Generator[Iterable[float], None, None]:
     """
-    Helper function to convert a lower-triangular square matrix into a chunked vector. This is intended for use with
-    symmetric matrices, where the upper half can be ignored.
+    Convert a lower-triangular square matrix into a chunked vector.
+
+    This is intended for use with symmetric matrices, where the upper half can be ignored.
 
     Parameters
     ----------
@@ -70,7 +69,9 @@ def _chunk_lower_triangular_matrix(
 
 def fill_upper_triangular_matrix(vector: List[float]) -> np.ndarray:
     """
-    Helper function to convert a vector of coefficients into a full matrix. Generates a symmetric, square matrix.
+    Convert a vector of coefficients into a full matrix.
+
+    Generates a symmetric, square matrix.
 
     Parameters
     ----------
@@ -90,7 +91,8 @@ def fill_upper_triangular_matrix(vector: List[float]) -> np.ndarray:
     size_x = (np.sqrt(8 * len(vector) + 1) - 1) / 2
     if not np.isclose(int(size_x), size_x):
         raise ValueError(
-            f"vector does not appear to be a valid lower-triangular matrix in flat form (size {len(vector)}) is not a triangular number"
+            f"vector does not appear to be a valid lower-triangular matrix in flat form "
+            f"(size {len(vector)}) is not a triangular number"
         )
     size_x = int(size_x)
     output = np.zeros((size_x, size_x))
