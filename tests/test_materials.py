@@ -248,10 +248,15 @@ class TestMaterial:
         ]
         material = Material(material_name=name, material_id=id_, models=models)
         assert material.material_id == id_
-        assigned_properties = material.get_properties()
-        assert len(assigned_properties) == 3
-        for k, v in properties.items():
-            assert assigned_properties[k] == pytest.approx(properties[k])
+        assigned_models = material.models
+        assert len(assigned_models) == 4
+        for model in models:
+            matching_model = next(
+                assigned_model
+                for assigned_model in assigned_models
+                if assigned_model.name == model.name
+            )
+            assert matching_model.value == pytest.approx(model.value)
 
     def test_create_material_with_coolprop(self):
         name = "Air"
@@ -259,29 +264,29 @@ class TestMaterial:
         coolp_fluid = 'Air'
         ref_pressure = 101325.0
         ref_temperature = 298.15
-        properties = {
-            PropertyCode.REFT: ref_temperature,
-            PropertyCode.REFP: ref_pressure,
-            PropertyCode.DENS: coolp.PropsSI('D', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid),
-            PropertyCode.VISC: coolp.PropsSI('V', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid),
-            PropertyCode.C: coolp.PropsSI('C', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid),
-            PropertyCode.KXX: coolp.PropsSI('L', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid),
-            PropertyCode.ALPX: coolp.PropsSI('ISOBARIC_EXPANSION_COEFFICIENT', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid),
-            PropertyCode.MOLM: coolp.PropsSI('M', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)*1000.0
-        }
+        properties = [
+            Constant("Reference Temperature", ref_temperature),
+            Constant("Reference Pressre", ref_pressure),
+            Constant("Density", coolp.PropsSI('D', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)),
+            Constant("Viscosity", coolp.PropsSI('V', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)),
+            Constant("Specific Heat Capacity", coolp.PropsSI('C', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)),
+            Constant("Thermal Conductivity (11-axis)", coolp.PropsSI('L', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)),
+            Constant("Isobaric Thermal Expansion Coefficient", PropertyCode.ALPX: coolp.PropsSI('ISOBARIC_EXPANSION_COEFFICIENT', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)),
+            Constant("Molar Mass", coolp.PropsSI('M', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)*1000.0)
+        ]
         material = Material(material_name=name, material_id=id_, properties=properties)
-        assigned_properties = material.get_properties()
-        assert len(assigned_properties) == 8
-        for k, v in properties.items():
-            assert assigned_properties[k] == pytest.approx(properties[k])
+        assigned_models = material.models
+        assert len(assigned_models) == 8
+        for property in properties:
+            matching_model = next(
+                assigned_model
+                for assigned_model in assigned_models
+                if assigned_model.name == model.name
+            )
+            assert matching_model.value == pytest.approx(model.value)
 
-    def test_removing_property_removes_property(self):
-        material = make_material_with_properties()
-        assert len(material.get_properties()) == 3
-        material.remove_property(PropertyCode.DENS)
-        assert len(material.get_properties()) == 2
 
-    @pytest.mark.skip(reason="Linear piecewise models are not implemented")
+@pytest.mark.skip(reason="Linear piecewise models are not implemented")
     def test_create_material_with_functional_properties(self):
         name = "MaterialName"
         id_ = "3"
