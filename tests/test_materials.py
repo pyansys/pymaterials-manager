@@ -6,7 +6,7 @@ import numpy as np
 import numpy.testing
 import pytest
 
-from ansys.materials.manager._models import Constant, _BaseModel
+from ansys.materials.manager._models import Constant, PiecewiseLinear, _BaseModel
 from ansys.materials.manager.common import (
     _chunk_data,
     _chunk_lower_triangular_matrix,
@@ -309,20 +309,29 @@ class TestMaterial:
             )
             assert matching_model.value == pytest.approx(model.value)
 
-    @pytest.mark.skip(reason="Linear piecewise models are not implemented")
     def test_create_material_with_functional_properties(self):
         name = "MaterialName"
         id_ = "3"
-        properties = {
-            PropertyCode.DENS: np.asarray(
-                [[0.0, 4000.0], [100.0, 3700.0], [200.0, 3400.0]], dtype=float
+        temperature_values = np.asarray([0.0, 100.0, 200.0])
+        models = [
+            PiecewiseLinear(
+                "Density", x=temperature_values, y=np.asarray([4000.0, 3700.0, 3400.0])
             ),
-            PropertyCode.EX: np.asarray([[0.0, 6e6], [100.0, 5.5e6], [200.0, 5e6]], dtype=float),
-        }
-        material = Material(material_name=name, material_id=id_, properties=properties)
+            PiecewiseLinear(
+                "Elastic Modulus (11-axis)", x=temperature_values, y=np.asarray([6e6, 5.5e6, 5e6])
+            ),
+        ]
+        material = Material(material_name=name, material_id=id_, models=models)
         assert material.material_id == id_
-        for k, v in properties.items():
-            np.testing.assert_array_equal(material.get_property(k), properties[k])
+        assigned_models = material.models
+        for model in models:
+            matching_model = next(
+                assigned_model
+                for assigned_model in assigned_models
+                if assigned_model.name == model.name
+            )
+            np.testing.assert_array_equal(model.x, matching_model.x)
+            np.testing.assert_array_equal(model.y, matching_model.y)
 
     def test_create_material_with_reference_temperature(self):
         name = "MaterialName"
