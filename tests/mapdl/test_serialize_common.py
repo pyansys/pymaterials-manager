@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock, call
 
-from ansys.mapdl.core.mapdl import _MapdlCore
+from ansys.mapdl.core import Mapdl as _MapdlCore
 import numpy as np
 import pytest
 
