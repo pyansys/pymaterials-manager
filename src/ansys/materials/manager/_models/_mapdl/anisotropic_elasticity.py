@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List, Optional, Tuple, Union
+from typing import Any, List, Optional, Tuple, Union
 
 import numpy as np
 
@@ -62,7 +62,8 @@ class AnisotropicElasticity(_BaseModel):
     _coefficients: np.ndarray
     _temperature: np.ndarray
 
-    model_codes = ("ELAS", "ANEL")
+    model_codes = ("ANEL", "ELAS")
+    name = "Anisotropic Elasticity"
     applicable_packages = SupportedPackage.MAPDL
 
     def __init__(
@@ -113,6 +114,11 @@ class AnisotropicElasticity(_BaseModel):
             f"temperature_count={len(self._temperature)}, "
             f"mode={self._coefficient_type.name}>"
         )
+
+    @property
+    def name(self) -> str:
+        """Return the name of the model."""
+        return self.name
 
     @property
     def coefficients(self) -> np.ndarray:
@@ -268,7 +274,7 @@ class AnisotropicElasticity(_BaseModel):
                 values.append((label.groups()[0], *(float(value[0]) for value in current_values)))
         return values
 
-    def write_model(self, mapdl: "_MapdlCore", material: "Material") -> None:
+    def write_model(self, pyansys_session: Any, material: "Material") -> None:
         """
         Write the model to MAPDL.
 
@@ -280,11 +286,17 @@ class AnisotropicElasticity(_BaseModel):
 
         Parameters
         ----------
-        mapdl: _MapdlCore
+        pyansys_session: _MapdlCore
             Configured instance of PyMapdl.
         material: Material
             Material object with which this model will be associated.
         """
+        if not isinstance(pyansys_session, _MapdlCore):
+            raise TypeError(
+                "This model is only supported by MAPDL, ensure you have the correct"
+                "type of `pyansys_session`."
+            )
+
         is_ok, issues = self.validate_model()
         if not is_ok:
             raise ModelValidationException("\n".join(issues))
@@ -316,14 +328,14 @@ class AnisotropicElasticity(_BaseModel):
             self._coefficients = self._coefficients[sort_order, :, :]
 
         # Write table specification
-        mapdl.tb(lab, material.material_id, ntemp, tbopt=tbopt)
+        pyansys_session.tb(lab, material.material_id, ntemp, tbopt=tbopt)
 
         for temp_index, temp_val in enumerate(self._temperature):
-            mapdl.tbtemp(temp_val)
+            pyansys_session.tbtemp(temp_val)
             for chunk_index, data_chunk in enumerate(
                 _chunk_lower_triangular_matrix(self._coefficients[temp_index])
             ):
-                mapdl.tbdata(6 * chunk_index + 1, *data_chunk)
+                pyansys_session.tbdata(6 * chunk_index + 1, *data_chunk)
 
     def validate_model(self) -> Tuple[bool, List[str]]:
         """
