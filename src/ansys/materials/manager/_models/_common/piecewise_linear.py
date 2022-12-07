@@ -78,7 +78,7 @@ class PiecewiseLinear(_BaseModel):
     def y(self, value: np.ndarray) -> None:
         self._independent_variable = value
 
-    def write_model(self, pyansys_session: Any, material: "Material") -> None:
+    def write_model(self, material: "Material", pyansys_session: Any) -> None:
         """
         Write this model to MAPDL.
 
@@ -86,11 +86,10 @@ class PiecewiseLinear(_BaseModel):
 
         Parameters
         ----------
-        pyansys_session: Any
-            Configured instance of PyAnsys session.
-
         material: Material
             Material object with which this model will be associated.
+        pyansys_session: Any
+            Configured instance of PyAnsys session.
         """
         is_ok, issues = self.validate_model()
         if not is_ok:
