@@ -257,18 +257,36 @@ class TestMaterial:
     def test_create_material_with_coolprop(self):
         name = "Air"
         id_ = "4"
-        coolp_fluid = 'Air'
+        coolp_fluid = "Air"
         ref_pressure = 101325.0
         ref_temperature = 298.15
         properties = {
             PropertyCode.REFT: ref_temperature,
             PropertyCode.REFP: ref_pressure,
-            PropertyCode.DENS: coolp.PropsSI('D', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid),
-            PropertyCode.VISC: coolp.PropsSI('V', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid),
-            PropertyCode.C: coolp.PropsSI('C', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid),
-            PropertyCode.KXX: coolp.PropsSI('L', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid),
-            PropertyCode.ALPX: coolp.PropsSI('ISOBARIC_EXPANSION_COEFFICIENT', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid),
-            PropertyCode.MOLM: coolp.PropsSI('M', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)*1000.0
+            PropertyCode.DENS: coolp.PropsSI(
+                "D", "P", ref_pressure, "T", ref_temperature, coolp_fluid
+            ),
+            PropertyCode.VISC: coolp.PropsSI(
+                "V", "P", ref_pressure, "T", ref_temperature, coolp_fluid
+            ),
+            PropertyCode.C: coolp.PropsSI(
+                "C", "P", ref_pressure, "T", ref_temperature, coolp_fluid
+            ),
+            PropertyCode.KXX: coolp.PropsSI(
+                "L", "P", ref_pressure, "T", ref_temperature, coolp_fluid
+            ),
+            PropertyCode.ALPX: coolp.PropsSI(
+                "ISOBARIC_EXPANSION_COEFFICIENT",
+                "P",
+                ref_pressure,
+                "T",
+                ref_temperature,
+                coolp_fluid,
+            ),
+            PropertyCode.MOLM: coolp.PropsSI(
+                "M", "P", ref_pressure, "T", ref_temperature, coolp_fluid
+            )
+            * 1000.0,
         }
         material = Material(material_name=name, material_id=id_, properties=properties)
         assigned_properties = material.get_properties()

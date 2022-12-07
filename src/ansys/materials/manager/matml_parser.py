@@ -1,7 +1,7 @@
-import xml.etree.ElementTree as ET
-import os
-from typing import Dict, Union, Any
 from dataclasses import dataclass
+import os
+from typing import Any, Dict, Union
+import xml.etree.ElementTree as ET
 
 _PATH_TYPE = Union[str, os.PathLike]
 
@@ -18,16 +18,20 @@ BEHAVIOR_KEY = "Behavior"
 #   version handling
 #   full support of units (exponents)
 
+
 @dataclass
 class Parameter:
     """Define a parameter such as density or Young's Modulus"""
+
     name: str
     data: Any
     qualifiers: Dict
 
+
 @dataclass
 class PropertySet:
     """Define a PropertySet which contains one or several parameters"""
+
     name: str
     parameters: Dict
     qualifiers: Dict
@@ -88,7 +92,7 @@ class MatmlReader:
             if item.find(UNITLESS_KEY) is not None:
                 unit = item.find(UNITLESS_KEY).tag
             elif item.find("Units") is not None:
-                unit = item.find("Units").attrib['name']
+                unit = item.find("Units").attrib["name"]
             else:
                 raise RuntimeError(f"unhandled case {id}")
 
@@ -110,7 +114,6 @@ class MatmlReader:
             qualifiers[item.attrib["name"]] = item.text
         return qualifiers
 
-
     def _read_property_sets_and_parameters(self, bulkdata: Any, metadata_dict: Dict) -> Dict:
         prop_dict = {}
 
@@ -130,13 +133,13 @@ class MatmlReader:
                 param_qualifiers = self._read_qualifiers(parameter)
                 data = self._convert(parameter.find("Data").text, parameter_format)
 
-                parameters[parameter_name] = Parameter(name=parameter_name,
-                                                       data=data,
-                                                       qualifiers=param_qualifiers)
+                parameters[parameter_name] = Parameter(
+                    name=parameter_name, data=data, qualifiers=param_qualifiers
+                )
 
-            prop_dict[property_name] = PropertySet(name=property_name,
-                                       qualifiers=prop_set_qualifiers,
-                                       parameters=parameters)
+            prop_dict[property_name] = PropertySet(
+                name=property_name, qualifiers=prop_set_qualifiers, parameters=parameters
+            )
 
         return prop_dict
 
@@ -165,7 +168,9 @@ class MatmlReader:
         root = tree.getroot()
         materials_node = root.find(MATERIALS_NODE_KEY)
         if not materials_node:
-            raise RuntimeError("Materials node not found. Please check if this is a valid MATML file.")
+            raise RuntimeError(
+                "Materials node not found. Please check if this is a valid MATML file."
+            )
 
         matml_doc_node = materials_node.find(MATML_DOC_KEY)
         if not matml_doc_node:
@@ -173,7 +178,9 @@ class MatmlReader:
 
         metadata_node = matml_doc_node.find(METADATA_KEY)
         if not metadata_node:
-            raise RuntimeError("Metadata node not found. Please check if this is a valid MATML file.")
+            raise RuntimeError(
+                "Metadata node not found. Please check if this is a valid MATML file."
+            )
         metadata_dict = self._read_metadata(metadata_node)
 
         self.materials = self._read_materials(matml_doc_node, metadata_dict)
@@ -183,6 +190,8 @@ class MatmlReader:
         """Return a certain material"""
         if not name in self.materials.keys():
             available_keys = ", ".join(self.materials.keys())
-            raise RuntimeError(f"Material {name} does not exist. Available materials are {available_keys}")
+            raise RuntimeError(
+                f"Material {name} does not exist. Available materials are {available_keys}"
+            )
 
         return self.materials[name]
