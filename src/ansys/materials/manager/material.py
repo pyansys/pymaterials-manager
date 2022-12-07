@@ -46,8 +46,8 @@ class Material:
         self._id = material_id
         if models is not None:
             self.models.extend(models)
-        if "reference temperature" not in self._models:
-            self._models.append(Constant("Reference Temperature", reference_temperature))
+        if len(self.get_model_by_name("reference temperature")) == 0:
+            self.models.append(Constant("Reference Temperature", reference_temperature))
 
     @property
     def name(self) -> str:

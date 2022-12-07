@@ -1,5 +1,5 @@
 import os
-from typing import Callable, Iterable, List, Tuple
+from typing import Any, Callable, Iterable, List, Tuple
 
 import CoolProp.CoolProp as coolp
 import numpy as np
@@ -249,7 +249,7 @@ class TestMaterial:
         material = Material(material_name=name, material_id=id_, models=models)
         assert material.material_id == id_
         assigned_models = material.models
-        assert len(assigned_models) == 4
+        assert len(assigned_models) == 3
         for model in models:
             matching_model = next(
                 assigned_model
