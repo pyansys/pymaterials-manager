@@ -3,6 +3,8 @@ import numpy as np
 from numpy.testing import assert_array_equal
 import pytest
 
+pytestmark = pytest.mark.mapdl_integration
+
 from ansys.materials.manager._models import Constant, PiecewiseLinear
 from ansys.materials.manager.material import Material
 from ansys.materials.manager.material_manager import MaterialManager
