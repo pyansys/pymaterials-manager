@@ -3,7 +3,7 @@ from types import NoneType
 from typing import Any, List, Tuple
 
 try:
-    from ansys.mapdl.core import Mapdl as _MapdlCore
+    from ansys.mapdl.core.mapdl import _MapdlCore
 except ImportError:
     _MapdlCore = NoneType
 

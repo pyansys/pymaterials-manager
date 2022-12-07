@@ -13,7 +13,7 @@ from ansys.materials.manager.common import (
     fill_upper_triangular_matrix,
 )
 from ansys.materials.manager.material import Material
-from ansys.materials.manager.tbdata_parser import _TableDataParser
+from ansys.materials.manager.util.mapdl.tbdata_parser import _TableDataParser
 
 HEADER_LINES = [
     "LIST DATA TABLE  HILL  FOR ALL MATERIALS",
