@@ -2,12 +2,12 @@ from abc import ABCMeta, abstractmethod
 from typing import Any, List, Tuple
 
 try:
-    from ansys.mapdl.core import _MapdlCore
+    from ansys.mapdl.core import Mapdl as _MapdlCore
 except ImportError:
     _MapdlCore = None
 
 try:
-    from ansys.fluent.core import Session as _FluentCore
+    from ansys.fluent.core import Fluent as _FluentCore
 except ImportError:
     _FluentCore = None
 
