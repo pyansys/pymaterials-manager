@@ -1,10 +1,12 @@
 import inspect
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 import ansys.materials.manager._models as models
+from ansys.materials.manager._models._common._base import _FluentCore, _MapdlCore
 
 from ._models import _BaseModel
 from .material import Material
+from .util.mapdl.mapdl_reader import read_mapdl
 
 
 class MaterialManager:
@@ -28,12 +30,12 @@ class MaterialManager:
             supported.
         """
         self._client = pyansys_client
-        response = inspect.getmembers(models, self.__is_subclass_predicate)
-        model_classes: List[models._BaseModel] = [tple[1] for tple in response]
-        for class_ in model_classes:
-            supported_model_codes = class_.model_codes
-            for model_code in supported_model_codes:
-                self.model_type_map[model_code] = class_
+        # response = inspect.getmembers(models, self.__is_subclass_predicate)
+        # model_classes: List[models._BaseModel] = [tple[1] for tple in response]
+        # for class_ in model_classes:
+        #     supported_model_codes = class_.model_codes
+        #     for model_code in supported_model_codes:
+        #         self.model_type_map[model_code] = class_
 
     @staticmethod
     def __is_subclass_predicate(obj: object) -> bool:
@@ -65,6 +67,29 @@ class MaterialManager:
         material: Material
             Material object to be written to MAPDL
         """
-        for model in material.get_models():
+        for model in material.models:
             assert isinstance(model, _BaseModel)
-            model.write_model(self._client, material)
+            model.write_model(material, self._client)
+
+    def read_materials_from_session(self) -> Dict[str, Material]:
+        """
+        Given a pyAnsys session, return the materials present.
+
+        Currently supports only pyMAPDL.
+
+        Returns
+        -------
+        Dict[str, Material]
+            Materials in current session, indexed by an identifier. For MAPDL this is the material
+            ID, for Fluent it is the material name.
+        """
+        if isinstance(self._client, _MapdlCore):
+            return self._read_mapdl()
+        elif isinstance(self._client, _FluentCore):
+            return self._read_fluent()
+
+    def _read_mapdl(self) -> Dict[str, Material]:
+        return read_mapdl(self._client)
+
+    def _read_fluent(self) -> Dict[str, Material]:
+        return []

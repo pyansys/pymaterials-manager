@@ -72,11 +72,11 @@ class PiecewiseLinear(_BaseModel):
     @property
     def y(self) -> np.ndarray:
         """Get the values of the x array."""
-        return self._independent_variable
+        return self._dependent_variable
 
     @y.setter
     def y(self, value: np.ndarray) -> None:
-        self._independent_variable = value
+        self._dependent_variable = value
 
     def write_model(self, material: "Material", pyansys_session: Any) -> None:
         """
