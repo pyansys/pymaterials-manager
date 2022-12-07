@@ -264,10 +264,10 @@ class TestMaterial:
         ref_pressure = 101325.0
         ref_temperature = 298.15
         models = [
-            Constant("Reference Temperature", ref_temperature),
             Constant("Reference Pressure", ref_pressure),
             Constant(
-                "Density", "ideal-gas",
+                "Density",
+                "ideal-gas",
             ),
             Constant(
                 "Viscosity",
@@ -297,7 +297,9 @@ class TestMaterial:
                 coolp.PropsSI("M", "P", ref_pressure, "T", ref_temperature, coolp_fluid) * 1000.0,
             ),
         ]
-        material = Material(material_name=name, models=models)
+        material = Material(
+            material_name=name, models=models, reference_temperature=ref_temperature
+        )
         assigned_models = material.models
         assert len(assigned_models) == 8
         for model in models:
