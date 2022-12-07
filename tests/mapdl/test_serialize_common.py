@@ -14,26 +14,26 @@ class TestSerializeConstant:
     def test_valid_constant_succeeds(self):
         model = Constant("Density", 5.0)
         mock_mapdl = MagicMock(spec=_MapdlCore)
-        model.write_model(mock_mapdl, TEST_MATERIAL)
+        model.write_model(TEST_MATERIAL, mock_mapdl)
         mock_mapdl.mp.assert_called_once_with("DENS", "1", 5.0)
 
     def test_no_name_fails(self):
         model = Constant(None, 5.0)
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(ModelValidationException, match="Invalid property name"):
-            model.write_model(mock_mapdl, TEST_MATERIAL)
+            model.write_model(TEST_MATERIAL, mock_mapdl)
 
     def test_no_value_fails(self):
         model = Constant("Density", None)
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(ModelValidationException, match="Value cannot be None"):
-            model.write_model(mock_mapdl, TEST_MATERIAL)
+            model.write_model(TEST_MATERIAL, mock_mapdl)
 
     def test_invalid_name_fails(self):
         model = Constant("Nonsense Quantity", 5.0)
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(KeyError):
-            model.write_model(mock_mapdl, TEST_MATERIAL)
+            model.write_model(TEST_MATERIAL, mock_mapdl)
 
 
 class TestSerializePiecewiseLinear:
@@ -43,7 +43,7 @@ class TestSerializePiecewiseLinear:
     def test_valid_data_succeeds(self):
         model = PiecewiseLinear("Density", x=self.x_data, y=self.y_data)
         mock_mapdl = MagicMock(spec=_MapdlCore)
-        model.write_model(mock_mapdl, TEST_MATERIAL)
+        model.write_model(TEST_MATERIAL, mock_mapdl)
         mock_mapdl.mptemp.assert_has_calls([call(1, *self.x_data[0:6]), call(7, self.x_data[6])])
         mock_mapdl.mpdata.assert_has_calls(
             [
@@ -56,31 +56,31 @@ class TestSerializePiecewiseLinear:
         model = PiecewiseLinear(None, x=self.x_data, y=self.y_data)
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(ModelValidationException, match="Invalid property name"):
-            model.write_model(mock_mapdl, TEST_MATERIAL)
+            model.write_model(TEST_MATERIAL, mock_mapdl)
 
     def test_no_value_fails(self):
         model = PiecewiseLinear("Density", x=None, y=None)
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(ModelValidationException, match="x_values is empty"):
-            model.write_model(mock_mapdl, TEST_MATERIAL)
+            model.write_model(TEST_MATERIAL, mock_mapdl)
 
     def test_invalid_name_fails(self):
         model = PiecewiseLinear("Nonsense Quantity", x=self.x_data, y=self.y_data)
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(KeyError):
-            model.write_model(mock_mapdl, TEST_MATERIAL)
+            model.write_model(TEST_MATERIAL, mock_mapdl)
 
     def test_mismatched_lengths_fails(self):
         model = PiecewiseLinear("Density", x=self.x_data, y=self.y_data[0:6])
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(ModelValidationException, match="Length mismatch"):
-            model.write_model(mock_mapdl, TEST_MATERIAL)
+            model.write_model(TEST_MATERIAL, mock_mapdl)
 
     def test_array_too_long_fails(self):
         model = PiecewiseLinear("Density", x=np.arange(0, 200, 1), y=np.arange(0, 200, 1))
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(ValueError, match="MAPDL Supports up to 100 points"):
-            model.write_model(mock_mapdl, TEST_MATERIAL)
+            model.write_model(TEST_MATERIAL, mock_mapdl)
 
     def test_invalid_dimension_fails(self):
         model = PiecewiseLinear("Density", x=np.array([[1, 2], [3, 4]]), y=np.arange(0, 4, 1))
@@ -88,4 +88,4 @@ class TestSerializePiecewiseLinear:
         with pytest.raises(
             ModelValidationException, match="x_values must have one dimension, not 2"
         ):
-            model.write_model(mock_mapdl, TEST_MATERIAL)
+            model.write_model(TEST_MATERIAL, mock_mapdl)
