@@ -53,7 +53,7 @@ class Constant(_BaseModel):
     def value(self, value: float) -> None:
         self._value = value
 
-    def write_model(self, pyansys_session: Any, material: "Material") -> None:
+    def write_model(self, material: "Material", pyansys_session: Any) -> None:
         """
         Write this model to MAPDL.
 
@@ -75,18 +75,22 @@ class Constant(_BaseModel):
             self._write_mapdl(pyansys_session, material)
         if isinstance(pyansys_session, _FluentCore):
             self._write_fluent(pyansys_session, material)
-        raise TypeError(
-            "This model is only supported by MAPDL and Fluent, ensure you have the correct"
-            "type of `pyansys_session`."
-        )
+        else:
+            raise TypeError(
+                "This model is only supported by MAPDL and Fluent, ensure you have the correct"
+                "type of `pyansys_session`."
+            )
 
     def _write_mapdl(self, mapdl: "_MapdlCore", material: "Material") -> None:
         mapdl_property_code = mapdl_property_codes[self._name]
         mapdl.mp(mapdl_property_code, material.material_id, self._value)
 
     def _write_fluent(self, fluent: "_FluentCore", material: "Material") -> None:
-        fluent_property_code = fluent_property_codes[self._name]
-        pass
+        fluent_property_code = fluent_property_codes[self._name.lower()]
+        if len(fluent_property_code) > 0:
+            fluent.setup.materials.fluid[material.name] = {
+                fluent_property_code: {"option": "constant", "value": self._value}
+            }
 
     def validate_model(self) -> "Tuple[bool, List[str]]":
         """
