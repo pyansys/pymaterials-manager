@@ -86,11 +86,15 @@ class Constant(_BaseModel):
         mapdl.mp(mapdl_property_code, material.material_id, self._value)
 
     def _write_fluent(self, fluent: "_FluentCore", material: "Material") -> None:
-        fluent_property_code = fluent_property_codes[self._name.lower()]
-        if len(fluent_property_code) > 0:
-            fluent.setup.materials.fluid[material.name] = {
-                fluent_property_code: {"option": "constant", "value": self._value}
-            }
+        try:
+            fluent_property_code = fluent_property_codes[self._name.lower()]
+            if isinstance(self._value, str):
+                propState = {fluent_property_code: {"option": self._value}}
+            else:
+                propState = {fluent_property_code: {"option": "constant", "value": self._value}}
+            fluent.setup.materials.fluid[material.name] = propState
+        except (RuntimeError, KeyError):
+            pass
 
     def validate_model(self) -> "Tuple[bool, List[str]]":
         """
