@@ -260,7 +260,6 @@ class TestMaterial:
 
     def test_create_material_with_coolprop(self):
         name = "Air"
-        id_ = "4"
         coolp_fluid = "Air"
         ref_pressure = 101325.0
         ref_temperature = 298.15
@@ -268,7 +267,7 @@ class TestMaterial:
             Constant("Reference Temperature", ref_temperature),
             Constant("Reference Pressure", ref_pressure),
             Constant(
-                "Density", coolp.PropsSI("D", "P", ref_pressure, "T", ref_temperature, coolp_fluid)
+                "Density", "ideal-gas",
             ),
             Constant(
                 "Viscosity",
@@ -298,7 +297,7 @@ class TestMaterial:
                 coolp.PropsSI("M", "P", ref_pressure, "T", ref_temperature, coolp_fluid) * 1000.0,
             ),
         ]
-        material = Material(material_name=name, material_id=id_, models=models)
+        material = Material(material_name=name, models=models)
         assigned_models = material.models
         assert len(assigned_models) == 8
         for model in models:
@@ -307,7 +306,10 @@ class TestMaterial:
                 for assigned_model in assigned_models
                 if assigned_model.name == model.name
             )
-            assert matching_model.value == pytest.approx(model.value)
+            if isinstance(matching_model.value, float):
+                assert matching_model.value == pytest.approx(model.value)
+            else:
+                assert matching_model.value == model.value
 
     def test_create_material_with_functional_properties(self):
         name = "MaterialName"
