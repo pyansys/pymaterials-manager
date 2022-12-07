@@ -283,7 +283,7 @@ class TestMaterial:
                 coolp.PropsSI("L", "P", ref_pressure, "T", ref_temperature, coolp_fluid),
             ),
             Constant(
-                "Isobaric Thermal Expansion Coefficient",
+                "Thermal Expansion Coefficient (11-axis)",
                 coolp.PropsSI(
                     "ISOBARIC_EXPANSION_COEFFICIENT",
                     "P",

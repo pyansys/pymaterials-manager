@@ -53,7 +53,7 @@ class Constant(_BaseModel):
     def value(self, value: float) -> None:
         self._value = value
 
-    def write_model(self, pyansys_session: Any, material: "Material") -> None:
+    def write_model(self, material: "Material", pyansys_session: Any) -> None:
         """
         Write this model to MAPDL.
 
@@ -87,7 +87,10 @@ class Constant(_BaseModel):
 
     def _write_fluent(self, fluent: "_FluentCore", material: "Material") -> None:
         fluent_property_code = fluent_property_codes[self._name.lower()]
-        pass
+        if len(fluent_property_code) > 0:
+            fluent.setup.materials.fluid[material.name] = {
+                fluent_property_code: {"option": "constant", "value": self._value}
+            }
 
     def validate_model(self) -> "Tuple[bool, List[str]]":
         """
