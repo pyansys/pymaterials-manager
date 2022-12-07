@@ -19,15 +19,15 @@ BEHAVIOR_KEY = "Behavior"
 #   full support of units (exponents)
 
 @dataclass
-class Parameters:
-    """Defines a single object node of the Matml file """
+class Parameter:
+    """Define a parameter such as density or Young's Modulus"""
     name: str
-    data: Dict
+    data: Any
     qualifiers: Dict
 
 @dataclass
 class PropertySet:
-    """Defines PropertySet """
+    """Define a PropertySet which contains one or several parameters"""
     name: str
     parameters: Dict
     qualifiers: Dict
@@ -118,7 +118,8 @@ class MatmlReader:
         for prop_data in bulkdata.findall("PropertyData"):
             property_key = prop_data.attrib["property"]
             property_name = metadata_dict[property_key]["Name"]
-            qualifiers = self._read_qualifiers(prop_data)
+            prop_set_qualifiers = self._read_qualifiers(prop_data)
+
             parameters = {}
 
             # iterate over each single property (E1, E2, E3)
@@ -126,9 +127,16 @@ class MatmlReader:
                 parameter_key = parameter.attrib["parameter"]
                 parameter_name = metadata_dict[parameter_key]["Name"]
                 parameter_format = parameter.attrib["format"]
+                param_qualifiers = self._read_qualifiers(parameter)
                 data = self._convert(parameter.find("Data").text, parameter_format)
-                parameters[parameter_name] = data
-            prop_dict[property_name] = parameters
+
+                parameters[parameter_name] = Parameter(name=parameter_name,
+                                                       data=data,
+                                                       qualifiers=param_qualifiers)
+
+            prop_dict[property_name] = PropertySet(name=property_name,
+                                       qualifiers=prop_set_qualifiers,
+                                       parameters=parameters)
 
         return prop_dict
 
