@@ -73,7 +73,7 @@ class Constant(_BaseModel):
 
         if isinstance(pyansys_session, _MapdlCore):
             self._write_mapdl(pyansys_session, material)
-        if isinstance(pyansys_session, _FluentCore):
+        elif isinstance(pyansys_session, _FluentCore):
             self._write_fluent(pyansys_session, material)
         else:
             raise TypeError(
@@ -82,7 +82,7 @@ class Constant(_BaseModel):
             )
 
     def _write_mapdl(self, mapdl: "_MapdlCore", material: "Material") -> None:
-        mapdl_property_code = mapdl_property_codes[self._name]
+        mapdl_property_code = mapdl_property_codes[self._name.lower()]
         mapdl.mp(mapdl_property_code, material.material_id, self._value)
 
     def _write_fluent(self, fluent: "_FluentCore", material: "Material") -> None:
