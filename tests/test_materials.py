@@ -210,12 +210,12 @@ class TestCommonFunctions:
 def make_material_with_properties() -> Material:
     id_ = "3"
     name = "Test_Material"
-    properties = {
-        "Density": 3000.0,
-        "Elastic Modulus": 6_000_000.0,
-        PropertyCode.REFT: 23.0,
-    }
-    return Material(material_name=name, material_id=id_, properties=properties)
+    models = [
+        Constant("Density", 3000.0),
+        Constant("Elastic Modulus", 6_000_000.0),
+        Constant("Reference Temperature", 23.0),
+    ]
+    return Material(material_name=name, material_id=id_, models=models)
 
 
 class TestMaterial:
@@ -261,23 +261,47 @@ class TestMaterial:
     def test_create_material_with_coolprop(self):
         name = "Air"
         id_ = "4"
-        coolp_fluid = 'Air'
+        coolp_fluid = "Air"
         ref_pressure = 101325.0
         ref_temperature = 298.15
-        properties = [
+        models = [
             Constant("Reference Temperature", ref_temperature),
-            Constant("Reference Pressre", ref_pressure),
-            Constant("Density", coolp.PropsSI('D', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)),
-            Constant("Viscosity", coolp.PropsSI('V', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)),
-            Constant("Specific Heat Capacity", coolp.PropsSI('C', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)),
-            Constant("Thermal Conductivity (11-axis)", coolp.PropsSI('L', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)),
-            Constant("Isobaric Thermal Expansion Coefficient", PropertyCode.ALPX: coolp.PropsSI('ISOBARIC_EXPANSION_COEFFICIENT', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)),
-            Constant("Molar Mass", coolp.PropsSI('M', 'P', ref_pressure, 'T', ref_temperature, coolp_fluid)*1000.0)
+            Constant("Reference Pressure", ref_pressure),
+            Constant(
+                "Density", coolp.PropsSI("D", "P", ref_pressure, "T", ref_temperature, coolp_fluid)
+            ),
+            Constant(
+                "Viscosity",
+                coolp.PropsSI("V", "P", ref_pressure, "T", ref_temperature, coolp_fluid),
+            ),
+            Constant(
+                "Specific Heat Capacity",
+                coolp.PropsSI("C", "P", ref_pressure, "T", ref_temperature, coolp_fluid),
+            ),
+            Constant(
+                "Thermal Conductivity (11-axis)",
+                coolp.PropsSI("L", "P", ref_pressure, "T", ref_temperature, coolp_fluid),
+            ),
+            Constant(
+                "Isobaric Thermal Expansion Coefficient",
+                coolp.PropsSI(
+                    "ISOBARIC_EXPANSION_COEFFICIENT",
+                    "P",
+                    ref_pressure,
+                    "T",
+                    ref_temperature,
+                    coolp_fluid,
+                ),
+            ),
+            Constant(
+                "Molar Mass",
+                coolp.PropsSI("M", "P", ref_pressure, "T", ref_temperature, coolp_fluid) * 1000.0,
+            ),
         ]
-        material = Material(material_name=name, material_id=id_, properties=properties)
+        material = Material(material_name=name, material_id=id_, models=models)
         assigned_models = material.models
         assert len(assigned_models) == 8
-        for property in properties:
+        for model in models:
             matching_model = next(
                 assigned_model
                 for assigned_model in assigned_models
@@ -285,8 +309,7 @@ class TestMaterial:
             )
             assert matching_model.value == pytest.approx(model.value)
 
-
-@pytest.mark.skip(reason="Linear piecewise models are not implemented")
+    @pytest.mark.skip(reason="Linear piecewise models are not implemented")
     def test_create_material_with_functional_properties(self):
         name = "MaterialName"
         id_ = "3"
@@ -340,7 +363,7 @@ class TestNonlinearModel(_BaseModel):
     def name(self) -> str:
         return "TestModel"
 
-    def write_model(self, material: "Material") -> None:
+    def write_model(self, material: "Material", pyansys_session: Any) -> None:
         return None
 
     def validate_model(self) -> "Tuple[bool, List[str]]":
