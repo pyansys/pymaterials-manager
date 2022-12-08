@@ -61,11 +61,10 @@ class Constant(_BaseModel):
 
         Parameters
         ----------
-        pyansys_session: Any
-            Configured instance of PyAnsys session.
-
         material: Material
             Material object with which this model will be associated.
+        pyansys_session: Any
+            Configured instance of PyAnsys session.
         """
         is_ok, issues = self.validate_model()
         if not is_ok:
@@ -88,11 +87,8 @@ class Constant(_BaseModel):
     def _write_fluent(self, fluent: "_FluentCore", material: "Material") -> None:
         try:
             fluent_property_code = fluent_property_codes[self._name.lower()]
-            if isinstance(self._value, str):
-                propState = {fluent_property_code: {"option": self._value}}
-            else:
-                propState = {fluent_property_code: {"option": "constant", "value": self._value}}
-            fluent.setup.materials.fluid[material.name] = propState
+            property_state = {fluent_property_code: {"option": "constant", "value": self._value}}
+            fluent.setup.materials.fluid[material.name] = property_state
         except (RuntimeError, KeyError):
             pass
 
