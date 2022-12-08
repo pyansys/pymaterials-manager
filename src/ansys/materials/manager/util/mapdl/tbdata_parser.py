@@ -1,7 +1,7 @@
 from typing import Dict, List, Optional
 
 from ansys.materials.manager._models import _BaseModel
-from ansys.materials.manager.common import TB_MATERIAL_HEADER_REGEX
+from ansys.materials.manager.util.common import TB_MATERIAL_HEADER_REGEX
 
 
 class _TableDataParser:

@@ -11,7 +11,7 @@ from ansys.materials.manager._models._fluent.simple_properties import (
 from ansys.materials.manager._models._mapdl.simple_properties import (
     property_codes as mapdl_property_codes,
 )
-from ansys.materials.manager.common import _chunk_data
+from ansys.materials.manager.util.common import _chunk_data
 
 TYPE_CHECKING = False
 if TYPE_CHECKING:

@@ -2,6 +2,7 @@ import json
 import pathlib
 from typing import Dict, Union
 
+from ansys.materials.manager._models import Constant
 from ansys.materials.manager.material import Material
 
 
@@ -10,10 +11,10 @@ def _material_as_dict(material: Material) -> Dict:
     if material.material_id is not None:
         d.update({"id": material.material_id})
     for model in material.models:
-        if isinstance(model.value, str):
-            propData = {"option": model.value}
-        else:
+        if isinstance(model, Constant):
             propData = {"option": "constant", "value": model.value}
+        else:
+            propData = {"option": "ideal_gas"}
         d.update({model.name: propData})
     return d
 

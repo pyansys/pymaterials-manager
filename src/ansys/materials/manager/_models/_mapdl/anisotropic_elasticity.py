@@ -6,7 +6,7 @@ import numpy as np
 from ansys.materials.manager._models._common._base import _BaseModel
 from ansys.materials.manager._models._common._exceptions import ModelValidationException
 from ansys.materials.manager._models._common._packages import SupportedPackage
-from ansys.materials.manager.common import (
+from ansys.materials.manager.util.common import (
     FLOAT_VALUE_REGEX,
     MATRIX_LABEL_REGEX,
     _chunk_lower_triangular_matrix,

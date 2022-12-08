@@ -8,12 +8,12 @@ import pytest
 
 from ansys.materials.manager._models import Constant, PiecewiseLinear, _BaseModel
 from ansys.materials.manager._models._fluent.ideal_gas import IdealGas
-from ansys.materials.manager.common import (
+from ansys.materials.manager.material import Material
+from ansys.materials.manager.util.common import (
     _chunk_data,
     _chunk_lower_triangular_matrix,
     fill_upper_triangular_matrix,
 )
-from ansys.materials.manager.material import Material
 from ansys.materials.manager.util.mapdl.tbdata_parser import _TableDataParser
 
 HEADER_LINES = [
