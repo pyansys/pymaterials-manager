@@ -24,7 +24,7 @@ class TestMatmlToMaterial:
         assert len(assigned_models) == 11
 
         expected_results = {
-            "reference temperature": 0.0,
+            "strain reference temperature": 0.0,
             "density": 7850.0,
             "young's modulus x direction": 200000000000.0,
             "young's modulus y direction": 200000000000.0,
@@ -47,7 +47,7 @@ class TestMatmlToMaterial:
         assert len(assigned_models) == 11
 
         expected_results = {
-            "reference temperature": 0.0,
+            "strain reference temperature": 0.0,
             "density": 2000.0,
             "young's modulus x direction": 45000000000.0,
             "young's modulus y direction": 10000000000.0,
