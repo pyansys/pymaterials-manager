@@ -1,18 +1,15 @@
-from collections.abc import Iterable
-from typing import Dict, Sequence, Union, Tuple
+from typing import Dict, Sequence, Union
 import os
 
-from .material import Material
-from .property_codes import PropertyCode
+from ansys.materials.manager.material import Material
 from .matml_property_map import MATML_PROPERTY_MAP
-from .matml_parser import (Parameter,
-                           PropertySet,
-                           MATERIALS_ELEMENT_KEY,
+from .matml_parser import (MATERIALS_ELEMENT_KEY,
                            MATML_DOC_KEY,
                            METADATA_KEY,
                            BULKDATA_KEY,
                            UNITLESS_KEY
                            )
+
 import xml.etree.ElementTree as ET
 
 _PATH_TYPE = Union[str, os.PathLike]
@@ -30,52 +27,49 @@ def _inverse_property_map(properties_map: Dict) -> Dict:
             inverse_map[prop] = key
 
     return inverse_map
+
+
 def _add_parameters(property_element: ET.Element,
                     material: Material,
-                    parameters: Sequence[PropertyCode],
-                    properties_map: Dict,
+                    parameters: Sequence[str],
                     metadata_parameters: Dict):
     # add the parameters of a property set to the tree
 
-    prop_to_matml_map = _inverse_property_map(properties_map)
-
-    for prop_code in parameters:
-        matml_key = prop_to_matml_map[prop_code]
-        if matml_key in metadata_parameters.keys():
-            para_key = metadata_parameters[matml_key]
+    for key in parameters:
+        if key in metadata_parameters.keys():
+            para_key = metadata_parameters[key]
         else:
             index = len(metadata_parameters) + 1
             para_key = f"pa{index}"
-            metadata_parameters[matml_key] = para_key
+            metadata_parameters[key] = para_key
 
         param_element = ET.SubElement(property_element,
                                       "ParameterValue",
                                       {"parameter": para_key, "format": "float"}
                                       )
         data_element = ET.SubElement(param_element, "Data")
-        data_element.text = str(material.get_property(prop_code))
+        data_element.text = str(material.get_model_by_name(key)[0].value)
         qualifier_element = ET.SubElement(param_element, "Qualifier",  {"name": "Variable Type"})
         qualifier_element.text = "Dependent"
 
 
 def _add_property_set(bulkdata_element: ET.Element,
                       material: Material,
-                      property_map: Tuple,
+                      property_set_name: str,
+                      parameter_map: Dict,
                       behavior: str,
                       metadata_properties: Dict,
                       metadata_parameters: Dict):
     """Add the property set to the XML tree"""
 
     # check if at least one parameter is specified
-    available_mat_properties = material.get_properties()
-    available_prop_codes = available_mat_properties.keys()
-    parameters_map = property_map[1]
-    property_set_parameters = [v[0] for k, v in parameters_map.items()]
+    available_mat_properties = [model.name for model in material.models]
+    property_set_parameters = parameter_map["properties"]
+    property_set_parameters.extend(mapped_properties for matml_key, mapped_properties in parameter_map["mappings"].items())
 
-    # check if at least one parameter is specified
-    parameters = list(set(property_set_parameters) & set(available_prop_codes))
+    parameters = list(set(property_set_parameters) & set(available_mat_properties))
+
     if len(parameters) > 0:
-        property_set_name = property_map[0].split("::")[0]
         # get property id from metadata or add it if it does not exist yet
         if property_set_name in metadata_properties.keys():
             property_id = metadata_properties[property_set_name]
@@ -91,7 +85,8 @@ def _add_property_set(bulkdata_element: ET.Element,
             behavior_element = ET.SubElement(property_data_element, "Qualifier", {"name": "Behavior"})
             behavior_element.text = behavior
 
-        _add_parameters(property_data_element, material, parameters, parameters_map, metadata_parameters)
+        _add_parameters(property_data_element, material, parameters, metadata_parameters)
+
 
 def _add_materials(materials: Sequence[Material],
                    materials_element: ET.Element,
@@ -105,16 +100,17 @@ def _add_materials(materials: Sequence[Material],
         name_element = ET.SubElement(bulkdata_element, "Name")
         name_element.text = material.name
 
-        for property in MATML_PROPERTY_MAP.items():
+        for property_set_name, parameters in MATML_PROPERTY_MAP.items():
             # property sets are exported as orthotropic if it can have an isotropic or orthotropic representation,
-            if len(property[0].split("::")) == 2:
-                behavior = property[0].split("::")[1]
+            if len(property_set_name.split("::")) == 2:
+                behavior = property_set_name.split("::")[1]
             else:
                 behavior = ""
             if behavior != "Isotropic":
                 _add_property_set(bulkdata_element,
                                   material,
-                                  property,
+                                  property_set_name.split("::")[0],
+                                  parameters,
                                   behavior,
                                   metadata_properties, metadata_parameters)
 

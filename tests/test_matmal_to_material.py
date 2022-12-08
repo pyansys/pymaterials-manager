@@ -1,8 +1,8 @@
 import os
 
-from ansys.materials.manager.matml_parser import MatmlReader
-from ansys.materials.manager.matml_to_material import convert_matml_materials
-from ansys.materials.manager.property_codes import PropertyCode
+import pytest
+
+from ansys.materials.manager.util.matml import MatmlReader, convert_matml_materials
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -20,32 +20,46 @@ class TestMatmlToMaterial:
         steel = materials[0]
 
         assert steel.material_id == 4
-        assigned_properties = steel.get_properties()
-        assert len(assigned_properties) == 11
-        assert assigned_properties[PropertyCode.REFT] == 0.0
-        assert assigned_properties[PropertyCode.DENS] == 7850.0
-        assert assigned_properties[PropertyCode.EX] == 200000000000.0
-        assert assigned_properties[PropertyCode.EY] == 200000000000.0
-        assert assigned_properties[PropertyCode.EZ] == 200000000000.0
-        assert assigned_properties[PropertyCode.GXY] == 76923076923.0769
-        assert assigned_properties[PropertyCode.GXZ] == 76923076923.0769
-        assert assigned_properties[PropertyCode.GYZ] == 76923076923.0769
-        assert assigned_properties[PropertyCode.PRXY] == 0.3
-        assert assigned_properties[PropertyCode.PRXZ] == 0.3
-        assert assigned_properties[PropertyCode.PRYZ] == 0.3
+        assigned_models = steel.models
+        assert len(assigned_models) == 11
+
+        expected_results = {
+            "reference temperature": 0.0,
+            "density": 7850.0,
+            "young's modulus x direction": 200000000000.0,
+            "young's modulus y direction": 200000000000.0,
+            "young's modulus z direction": 200000000000.0,
+            "shear modulus xy": 76923076923.0769,
+            "shear modulus yz": 76923076923.0769,
+            "shear modulus xz": 76923076923.0769,
+            "poisson's ratio xy": 0.3,
+            "poisson's ratio yz": 0.3,
+            "poisson's ratio xz": 0.3,
+        }
+        for name, expected_value in expected_results.items():
+            assigned_model = steel.get_model_by_name(name)
+            assert len(assigned_model) == 1
+            assert assigned_model[0].value == pytest.approx(expected_value)
 
         eglass = materials[1]
         assert eglass.material_id == 5
-        assigned_properties = eglass.get_properties()
-        assert len(assigned_properties) == 11
-        assert assigned_properties[PropertyCode.REFT] == 0.0
-        assert assigned_properties[PropertyCode.DENS] == 2000.0
-        assert assigned_properties[PropertyCode.EX] == 45000000000.0
-        assert assigned_properties[PropertyCode.EY] == 10000000000.0
-        assert assigned_properties[PropertyCode.EZ] == 10000000000.0
-        assert assigned_properties[PropertyCode.GXY] == 5000000000.0
-        assert assigned_properties[PropertyCode.GXZ] == 5000000000.0
-        assert assigned_properties[PropertyCode.GYZ] == 3846150000.0
-        assert assigned_properties[PropertyCode.PRXY] == 0.3
-        assert assigned_properties[PropertyCode.PRXZ] == 0.3
-        assert assigned_properties[PropertyCode.PRYZ] == 0.4
+        assigned_models = eglass.models
+        assert len(assigned_models) == 11
+
+        expected_results = {
+            "reference temperature": 0.0,
+            "density": 2000.0,
+            "young's modulus x direction": 45000000000.0,
+            "young's modulus y direction": 10000000000.0,
+            "young's modulus z direction": 10000000000.0,
+            "shear modulus xy": 5000000000.0,
+            "shear modulus yz": 3846150000.0,
+            "shear modulus xz": 5000000000.0,
+            "poisson's ratio xy": 0.3,
+            "poisson's ratio yz": 0.4,
+            "poisson's ratio xz": 0.3,
+        }
+        for name, expected_value in expected_results.items():
+            assigned_model = eglass.get_model_by_name(name)
+            assert len(assigned_model) == 1
+            assert assigned_model[0].value == pytest.approx(expected_value)

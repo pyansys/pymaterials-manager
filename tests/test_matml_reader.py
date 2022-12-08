@@ -1,6 +1,6 @@
 import os
 
-from ansys.materials.manager.matml_parser import MatmlReader
+from ansys.materials.manager.util.matml import MatmlReader
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 

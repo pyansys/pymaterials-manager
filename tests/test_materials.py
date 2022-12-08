@@ -1,20 +1,19 @@
 import os
-from typing import Callable, Iterable, List, Tuple
+from typing import Any, Callable, Iterable, List, Tuple
 
 import CoolProp.CoolProp as coolp
 import numpy as np
 import numpy.testing
 import pytest
 
-from ansys.materials.manager._models import _BaseModel
+from ansys.materials.manager._models import Constant, PiecewiseLinear, _BaseModel
 from ansys.materials.manager.common import (
     _chunk_data,
     _chunk_lower_triangular_matrix,
     fill_upper_triangular_matrix,
 )
 from ansys.materials.manager.material import Material
-from ansys.materials.manager.property_codes import PropertyCode
-from ansys.materials.manager.tbdata_parser import _TableDataParser
+from ansys.materials.manager.util.mapdl.tbdata_parser import _TableDataParser
 
 HEADER_LINES = [
     "LIST DATA TABLE  HILL  FOR ALL MATERIALS",
@@ -211,12 +210,12 @@ class TestCommonFunctions:
 def make_material_with_properties() -> Material:
     id_ = "3"
     name = "Test_Material"
-    properties = {
-        PropertyCode.DENS: 3000.0,
-        PropertyCode.EX: 6_000_000.0,
-        PropertyCode.REFT: 23.0,
-    }
-    return Material(material_name=name, material_id=id_, properties=properties)
+    models = [
+        Constant("Density", 3000.0),
+        Constant("Elastic Modulus", 6_000_000.0),
+        Constant("Reference Temperature", 23.0),
+    ]
+    return Material(material_name=name, material_id=id_, models=models)
 
 
 class TestMaterial:
@@ -242,87 +241,101 @@ class TestMaterial:
     def test_create_material_with_simple_properties(self):
         name = "MaterialName"
         id_ = "3"
-        properties = {
-            PropertyCode.DENS: 3000.0,
-            PropertyCode.EX: 6_000_000.0,
-            PropertyCode.REFT: 23.0,
-        }
-        material = Material(material_name=name, material_id=id_, properties=properties)
+        models = [
+            Constant("Density", 3000.0),
+            Constant("Elastic Modulus (11-axis)", 6_000_000.0),
+            Constant("Reference Temperature", 23.0),
+        ]
+        material = Material(material_name=name, material_id=id_, models=models)
         assert material.material_id == id_
-        assigned_properties = material.get_properties()
-        assert len(assigned_properties) == 3
-        for k, v in properties.items():
-            assert assigned_properties[k] == pytest.approx(properties[k])
+        assigned_models = material.models
+        assert len(assigned_models) == 3
+        for model in models:
+            matching_model = next(
+                assigned_model
+                for assigned_model in assigned_models
+                if assigned_model.name == model.name
+            )
+            assert matching_model.value == pytest.approx(model.value)
 
     def test_create_material_with_coolprop(self):
         name = "Air"
-        id_ = "4"
         coolp_fluid = "Air"
         ref_pressure = 101325.0
         ref_temperature = 298.15
-        properties = {
-            PropertyCode.REFT: ref_temperature,
-            PropertyCode.REFP: ref_pressure,
-            PropertyCode.DENS: coolp.PropsSI(
-                "D", "P", ref_pressure, "T", ref_temperature, coolp_fluid
+        models = [
+            Constant("Reference Pressure", ref_pressure),
+            Constant(
+                "Density",
+                "ideal-gas",
             ),
-            PropertyCode.VISC: coolp.PropsSI(
-                "V", "P", ref_pressure, "T", ref_temperature, coolp_fluid
+            Constant(
+                "Viscosity",
+                coolp.PropsSI("V", "P", ref_pressure, "T", ref_temperature, coolp_fluid),
             ),
-            PropertyCode.C: coolp.PropsSI(
-                "C", "P", ref_pressure, "T", ref_temperature, coolp_fluid
+            Constant(
+                "Specific Heat Capacity",
+                coolp.PropsSI("C", "P", ref_pressure, "T", ref_temperature, coolp_fluid),
             ),
-            PropertyCode.KXX: coolp.PropsSI(
-                "L", "P", ref_pressure, "T", ref_temperature, coolp_fluid
+            Constant(
+                "Thermal Conductivity (11-axis)",
+                coolp.PropsSI("L", "P", ref_pressure, "T", ref_temperature, coolp_fluid),
             ),
-            PropertyCode.ALPX: coolp.PropsSI(
-                "ISOBARIC_EXPANSION_COEFFICIENT",
-                "P",
-                ref_pressure,
-                "T",
-                ref_temperature,
-                coolp_fluid,
+            Constant(
+                "Thermal Expansion Coefficient (11-axis)",
+                coolp.PropsSI(
+                    "ISOBARIC_EXPANSION_COEFFICIENT",
+                    "P",
+                    ref_pressure,
+                    "T",
+                    ref_temperature,
+                    coolp_fluid,
+                ),
             ),
-            PropertyCode.MOLM: coolp.PropsSI(
-                "M", "P", ref_pressure, "T", ref_temperature, coolp_fluid
+            Constant(
+                "Molar Mass",
+                coolp.PropsSI("M", "P", ref_pressure, "T", ref_temperature, coolp_fluid) * 1000.0,
+            ),
+        ]
+        material = Material(
+            material_name=name, models=models, reference_temperature=ref_temperature
+        )
+        assigned_models = material.models
+        assert len(assigned_models) == 8
+        for model in models:
+            matching_model = next(
+                assigned_model
+                for assigned_model in assigned_models
+                if assigned_model.name == model.name
             )
-            * 1000.0,
-        }
-        material = Material(material_name=name, material_id=id_, properties=properties)
-        assigned_properties = material.get_properties()
-        assert len(assigned_properties) == 8
-        for k, v in properties.items():
-            assert assigned_properties[k] == pytest.approx(properties[k])
-
-    def test_removing_property_removes_property(self):
-        material = make_material_with_properties()
-        assert len(material.get_properties()) == 3
-        material.remove_property(PropertyCode.DENS)
-        assert len(material.get_properties()) == 2
-
-    def test_removing_invalid_property_throws(self):
-        material = make_material_with_properties()
-        with pytest.raises(KeyError):
-            material.remove_property("TEST")
-
-    def test_removing_reference_temperature_throws(self):
-        material = make_material_with_properties()
-        with pytest.raises(KeyError):
-            material.remove_property(PropertyCode.REFT)
+            if isinstance(matching_model.value, float):
+                assert matching_model.value == pytest.approx(model.value)
+            else:
+                assert matching_model.value == model.value
 
     def test_create_material_with_functional_properties(self):
         name = "MaterialName"
         id_ = "3"
-        properties = {
-            PropertyCode.DENS: np.asarray(
-                [[0.0, 4000.0], [100.0, 3700.0], [200.0, 3400.0]], dtype=float
+        temperature_values = np.asarray([0.0, 100.0, 200.0])
+        models = [
+            PiecewiseLinear(
+                "Density", x=temperature_values, y=np.asarray([4000.0, 3700.0, 3400.0])
             ),
-            PropertyCode.EX: np.asarray([[0.0, 6e6], [100.0, 5.5e6], [200.0, 5e6]], dtype=float),
-        }
-        material = Material(material_name=name, material_id=id_, properties=properties)
+            PiecewiseLinear(
+                "Elastic Modulus (11-axis)", x=temperature_values, y=np.asarray([6e6, 5.5e6, 5e6])
+            ),
+        ]
+        material = Material(material_name=name, material_id=id_, models=models)
         assert material.material_id == id_
-        for k, v in properties.items():
-            np.testing.assert_array_equal(material.get_property(k), properties[k])
+        assigned_models = material.models
+        for model in models:
+            matching_model = next(
+                assigned_model
+                for assigned_model in assigned_models
+                if assigned_model.name == model.name
+            )
+            np.testing.assert_array_equal(model.x, matching_model.x)
+            np.testing.assert_array_equal(model.y, matching_model.y)
 
     def test_create_material_with_reference_temperature(self):
         name = "MaterialName"
@@ -333,62 +346,37 @@ class TestMaterial:
         )
         assert material.material_id == id_
         assert material.reference_temperature == pytest.approx(ref_temperature)
-        assert material.get_property(PropertyCode.REFT) == pytest.approx(ref_temperature)
-
-    def test_assigning_array_reference_temperature_throws(self):
-        material = Material(material_name="MaterialName", material_id=10)
-        temperature_array = np.asarray([[0.0, 0.0], [100.0, 100.0], [200.0, 200.0]], dtype=float)
-        with pytest.raises(AssertionError):
-            material.set_property(PropertyCode.REFT, temperature_array)
+        assert material.get_model_by_name("Reference Temperature")[0].value == pytest.approx(
+            ref_temperature
+        )
 
     def test_assigning_reference_temperature(self):
-        material = Material(material_name="MaterialName", material_id=10)
+        material = Material(material_name="MaterialName", material_id="10")
         reference_temperature = 23.0
         material.reference_temperature = reference_temperature
-        assert material.get_property(PropertyCode.REFT) == pytest.approx(reference_temperature)
-
-    @pytest.mark.parametrize("invalid_input", ["foo", b"110", 12])
-    def test_assigning_invalid_property_type_throws(self, invalid_input):
-        material = Material(material_name="MaterialName", material_id=10)
-        property_code = PropertyCode.DENS
-        with pytest.raises(AssertionError):
-            material.set_property(property_code, invalid_input)
+        assert material.get_model_by_name("Reference Temperature")[0].value == pytest.approx(
+            reference_temperature
+        )
 
     def test_create_material_with_nonlinear_model(self):
         material = Material(
             material_name="MaterialName",
             material_id="1",
-            nonlinear_models={"TEST": TestNonlinearModel()},
+            models=[TestNonlinearModel()],
         )
-        assert "TEST" in material.get_models()
-        model = material.get_model("TEST")
-        assert isinstance(model, TestNonlinearModel)
-
-    def test_removing_nonlinear_model_removes_model(self):
-        material = Material(
-            material_name="MaterialName",
-            material_id="1",
-            nonlinear_models={"TEST": TestNonlinearModel()},
-        )
-        assert len(material.get_models()) == 1
-        material.remove_model("TEST")
-        assert len(material.get_models()) == 0
-
-    def test_removing_nonexistent_model_throws(self):
-        material = Material(
-            material_name="MaterialName",
-            material_id="1",
-            nonlinear_models={"TEST": TestNonlinearModel()},
-        )
-        assert len(material.get_models()) == 1
-        with pytest.raises(KeyError):
-            material.remove_model("OTHER")
+        model = material.get_model_by_name("TestModel")
+        assert len(model) == 1
+        assert isinstance(model[0], TestNonlinearModel)
 
 
 class TestNonlinearModel(_BaseModel):
     model_codes = ("TEST",)
 
-    def write_model(self, material: "Material") -> None:
+    @property
+    def name(self) -> str:
+        return "TestModel"
+
+    def write_model(self, material: "Material", pyansys_session: Any) -> None:
         return None
 
     def validate_model(self) -> "Tuple[bool, List[str]]":
