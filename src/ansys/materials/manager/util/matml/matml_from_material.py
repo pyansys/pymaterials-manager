@@ -10,7 +10,7 @@ from .matml_parser import (
     MATML_DOC_KEY,
     METADATA_KEY,
     UNITLESS_KEY,
-    WBTRANSFER_KEY
+    WBTRANSFER_KEY,
 )
 from .matml_property_map import MATML_PROPERTY_MAP
 
@@ -157,6 +157,7 @@ def _add_transfer_ids(root: ET.Element, materials: Sequence[Material]) -> None:
         name_element.text = mat.name
         transfer_element = ET.SubElement(mat_element, "DataTransferID")
         transfer_element.text = mat.uuid
+
 
 def write_matml(path: _PATH_TYPE, materials: Sequence[Material]):
     """

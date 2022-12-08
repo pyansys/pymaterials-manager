@@ -175,7 +175,6 @@ class MatmlReader:
 
         return len(self.transfer_ids)
 
-
     def parse_matml(self) -> bool:
         """Read MATML (engineering data XML) file.
 

@@ -16,7 +16,6 @@ class TestMatmlReader:
 
         steel = reader.get_material("Structural Steel")
 
-
         cte = "Coefficient of Thermal Expansion"
         assert steel[cte].name == cte
         assert steel[cte].parameters[cte].name == cte
