@@ -29,4 +29,4 @@ repos:
     additional_dependencies: [toml]
     exclude: "tests/"
     args:
-      - --add-ignore=D100,D203
+      - --add-ignore=D100,D203,D104

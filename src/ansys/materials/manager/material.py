@@ -16,11 +16,7 @@ class Material:
     _name: str
 
     def __init__(
-        self,
-        material_name: str,
-        material_id: str = None,
-        models: List[_BaseModel] = None,
-        reference_temperature: float = 0.0,
+        self, material_name: str, material_id: str = None, models: List[_BaseModel] = None
     ):
         """
         Create a new instance of a Material.
@@ -36,18 +32,14 @@ class Material:
         models: Dict[str, _BaseModel]
             Dictionary of nonlinear material models. Specified with their model code (from the
             TB command), and the model object.
-        reference_temperature: float
-            Reference temperature for this material, affects thermal expansion and some non-linear
-            models. Default 0.0
-
         """
         self._models = []
         self._name = material_name
         self._id = material_id
         if models is not None:
             self.models.extend(models)
-        if len(self.get_model_by_name("reference temperature")) == 0:
-            self.models.append(Constant("Reference Temperature", reference_temperature))
+        if len(self.get_model_by_name("Strain Reference Temperature")) == 0:
+            self.models.append(Constant("Strain Reference Temperature", 0))
 
     @property
     def name(self) -> str:
@@ -78,13 +70,13 @@ class Material:
 
     @property
     def reference_temperature(self) -> float:
-        """Return the current reference temperature for the model."""
-        reference_temperature = self.get_model_by_name("reference temperature")[0]
+        """Return the strain reference temperature for the model."""
+        reference_temperature = self.get_model_by_name("Strain Reference Temperature")[0]
         assert isinstance(reference_temperature, Constant)
         return reference_temperature.value
 
     @reference_temperature.setter
     def reference_temperature(self, value: float) -> None:
-        reference_temperature = self.get_model_by_name("reference temperature")[0]
+        reference_temperature = self.get_model_by_name("Strain Reference Temperature")[0]
         assert isinstance(reference_temperature, Constant)
         reference_temperature.value = value

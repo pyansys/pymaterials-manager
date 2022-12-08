@@ -47,3 +47,9 @@ source = ["ansys.materials"]
 
 [tool.coverage.report]
 show_missing = true
+
+[tool.pytest.ini_options]
+markers = [
+    "mapdl_integration: tests requiring a running instance of MAPDL",
+]
+addopts = "-m 'not mapdl_integration'"

@@ -31,7 +31,7 @@ Pymaterials manager
    :alt: Black
 
 
-Python package to unify material management accross the Ansys portfolio
+Python package to unify material management across the Ansys portfolio
 
 
 How to install
