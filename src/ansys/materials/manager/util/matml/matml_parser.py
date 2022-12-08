@@ -21,7 +21,7 @@ BEHAVIOR_KEY = "Behavior"
 
 @dataclass
 class Parameter:
-    """Define a parameter such as density or Young's Modulus"""
+    """Define a parameter such as density or Young's Modulus."""
 
     name: str
     data: Any
@@ -30,7 +30,7 @@ class Parameter:
 
 @dataclass
 class PropertySet:
-    """Define a PropertySet which contains one or several parameters"""
+    """Define a PropertySet which contains one or several parameters."""
 
     name: str
     parameters: Dict
@@ -163,7 +163,6 @@ class MatmlReader:
 
         Returns the number of imported materials.
         """
-
         tree = ET.parse(self.matml_file_path)
         root = tree.getroot()
         materials_node = root.find(MATERIALS_NODE_KEY)
@@ -187,7 +186,7 @@ class MatmlReader:
         return len(self.materials)
 
     def get_material(self, name: str) -> Dict:
-        """Return a certain material"""
+        """Return a certain material."""
         if not name in self.materials.keys():
             available_keys = ", ".join(self.materials.keys())
             raise RuntimeError(
