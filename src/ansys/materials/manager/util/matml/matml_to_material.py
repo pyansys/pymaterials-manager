@@ -5,7 +5,9 @@ from ansys.materials.manager.material import Material
 from ansys.materials.manager.util.matml.matml_property_map import MATML_PROPERTY_MAP
 
 
-def convert_matml_materials(materials_dict: Dict, index_offset: int) -> Sequence[Material]:
+def convert_matml_materials(
+    materials_dict: Dict, transfer_ids: Dict, index_offset: int
+) -> Sequence[Material]:
     """
     Convert a list of materials into Material objects.
 
@@ -58,13 +60,14 @@ def convert_matml_materials(materials_dict: Dict, index_offset: int) -> Sequence
                     for mapped_property in mapped_properties:
                         models.append(Constant(mapped_property, value))
 
-        materials.append(
-            Material(
-                material_name=mat_id,
-                material_id=global_material_index,
-                models=models,
-            )
+        mapdl_material = Material(
+            material_name=mat_id, material_id=global_material_index, models=models
         )
+
+        if mat_id in transfer_ids.keys():
+            mapdl_material.uuid = transfer_ids[mat_id]
+
+        materials.append(mapdl_material)
 
         global_material_index += 1
 

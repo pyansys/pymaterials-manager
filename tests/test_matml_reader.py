@@ -12,6 +12,7 @@ class TestMatmlReader:
         reader = MatmlReader(xml_file_path)
         num_materials = reader.parse_matml()
         assert num_materials == 2
+        assert len(reader.transfer_ids) == 2
 
         steel = reader.get_material("Structural Steel")
 

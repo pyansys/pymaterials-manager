@@ -1052,4 +1052,20 @@
       </Metadata>
     </MatML_Doc>
   </Materials>
+  <ANSYSWBTransferData>
+    <Materials>
+      <Material>
+        <Name>Structural Steel</Name>
+        <DataTransferID>636a7e55-fe81-4d04-9d98-a2cdd31e962a</DataTransferID>
+        <PreviousTransferIDs>
+        </PreviousTransferIDs>
+      </Material>
+      <Material>
+        <Name>Epoxy E-Glass UD</Name>
+        <DataTransferID>a1f2e775-77fe-4ad6-a822-54d353e0ea0e</DataTransferID>
+        <PreviousTransferIDs>
+        </PreviousTransferIDs>
+      </Material>
+    </Materials>
+  </ANSYSWBTransferData>
 </EngineeringData>
