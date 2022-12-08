@@ -39,19 +39,32 @@ class _BaseModel(metaclass=ABCMeta):
         ...
 
     @abstractmethod
-    def write_model(self, material: "Material", pyansys_session: Any) -> None:
+    def write_for_solver(self, material: "Material", writer: Any) -> None:
         """
-        Write this model to MAPDL.
+        Write this material.
 
         Should make some effort to validate the model state before writing.
 
         Parameters
         ----------
-        material: Material
-            Material object with which this model will be associated.
-        pyansys_session: Any
-            Supported PyAnsys product session, currently only pyMAPDL and pyFluent
-            are supported.
+        material:
+            Material
+        writer: Any
+            writer that is specific for a given solver
+        """
+        ...
+
+    @abstractmethod
+    def write(self, writer: Any) -> None:
+        """
+
+        Should make some effort to validate the model state before writing.
+
+        Parameters
+        ----------
+        writer:
+            writer class that can write the model
+
         """
         ...
 

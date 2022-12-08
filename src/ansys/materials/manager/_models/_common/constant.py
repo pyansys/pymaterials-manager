@@ -4,9 +4,6 @@ from ansys.materials.manager._models._common._base import _BaseModel, _FluentCor
 from ansys.materials.manager._models._common._exceptions import ModelValidationException
 from ansys.materials.manager._models._common._packages import SupportedPackage
 
-
-
-
 TYPE_CHECKING = False
 if TYPE_CHECKING:
     from ansys.materials.manager.material import Material  # noqa: F401
@@ -15,8 +12,12 @@ class ConstantModel(Protocol):
     name: str
     value: float
 
-class ConstantWriter(Protocol):
+class ConstantSolverWriter(Protocol):
     def constant(self, material: "Material", constant_model: ConstantModel) -> None:
+        pass
+
+class ConstantWriter(Protocol):
+    def constant(self, constant_model: ConstantModel) -> None:
         pass
 
 class Constant(_BaseModel):
@@ -57,17 +58,14 @@ class Constant(_BaseModel):
     def value(self, value: float) -> None:
         self._value = value
 
-    def write(self, writer, material):
-        writer.constant(material, self)
-
-    def write_model(self, material: "Material", writer: ConstantWriter) -> None:
+    def write_for_solver(self, material: "Material", writer: ConstantSolverWriter) -> None:
         """
         Should make some effort to validate the model state before writing.
 
         Parameters
         ----------
         writer: ConstantWriter
-            Writer that supports the ConstantWriter Protocol
+            Writer that supports the ConstantSolverWriter Protocol
 
         material: Material
             Material object with which this model will be associated.
@@ -76,14 +74,11 @@ class Constant(_BaseModel):
         if not is_ok:
             raise ModelValidationException("\n".join(issues))
 
-        if not hasattr(writer, "constant"):
-            raise TypeError(
-                "This model is only supported by MAPDL and Fluent, ensure you have the correct"
-                "type of `pyansys_session`."
-            )
         writer.constant(material, self)
 
 
+    def write(self, writer: ConstantWriter) -> None:
+        writer.constant(self)
 
     def validate_model(self) -> "Tuple[bool, List[str]]":
         """
