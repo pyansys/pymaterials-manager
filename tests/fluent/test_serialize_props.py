@@ -43,7 +43,6 @@ class TestSerializeConstant:
         model = Constant("Density", 5.0)
         mock_fluent = MockFluent()
         model.write_model(TEST_MATERIAL, mock_fluent)
-        print(str(mock_fluent.setup.materials.fluid["Fluid"]))
         assert mock_fluent.setup.materials.fluid["Fluid"] == {
             "density": {"option": "constant", "value": 5.0}
         }
