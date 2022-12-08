@@ -2,29 +2,7 @@ from collections.abc import Iterable
 from typing import Dict, Sequence
 
 from .material import Material
-from .property_codes import PropertyCode
-
-# todo: add more property sets and parameters to the map
-PROPERTY_MAP = {
-    "Density": {"Density": [PropertyCode.DENS]},
-    "Elasticity::Isotropic": {
-        "Young's Modulus": [PropertyCode.EX, PropertyCode.EY, PropertyCode.EZ],
-        "Shear Modulus": [PropertyCode.GXY, PropertyCode.GXZ, PropertyCode.GYZ],
-        "Poisson's Ratio": [PropertyCode.PRXY, PropertyCode.PRXZ, PropertyCode.PRYZ],
-    },
-    "Elasticity::Orthotropic": {
-        "Young's Modulus X direction": [PropertyCode.EX],
-        "Young's Modulus Y direction": [PropertyCode.EY],
-        "Young's Modulus Z direction": [PropertyCode.EZ],
-        "Shear Modulus XY": [PropertyCode.GXY],
-        "Shear Modulus XZ": [PropertyCode.GXZ],
-        "Shear Modulus YZ": [PropertyCode.GYZ],
-        "Poisson's Ratio XY": [PropertyCode.PRXY],
-        "Poisson's Ratio XZ": [PropertyCode.PRXZ],
-        "Poisson's Ratio YZ": [PropertyCode.PRYZ],
-    },
-}
-
+from .matml_property_map import MATML_PROPERTY_MAP
 
 def convert_matml_materials(materials_dict: Dict, index_offset: int) -> Sequence[Material]:
     """Convert a list of materials into Material objects.
@@ -53,8 +31,8 @@ def convert_matml_materials(materials_dict: Dict, index_offset: int) -> Sequence
                 propset_name += "::" + property_set.qualifiers["Behavior"]
 
             # check if the Material object supports this property set
-            if propset_name in PROPERTY_MAP.keys():
-                parameter_map = PROPERTY_MAP[propset_name]
+            if propset_name in MATML_PROPERTY_MAP.keys():
+                parameter_map = MATML_PROPERTY_MAP[propset_name]
 
                 for matml_key, prop_codes in parameter_map.items():
                     param = property_set.parameters[matml_key]
