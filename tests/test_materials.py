@@ -7,6 +7,7 @@ import numpy.testing
 import pytest
 
 from ansys.materials.manager._models import Constant, PiecewiseLinear, _BaseModel
+from ansys.materials.manager._models._fluent.ideal_gas import IdealGas
 from ansys.materials.manager.common import (
     _chunk_data,
     _chunk_lower_triangular_matrix,
@@ -265,10 +266,7 @@ class TestMaterial:
         ref_temperature = 298.15
         models = [
             Constant("Reference Pressure", ref_pressure),
-            Constant(
-                "Density",
-                "ideal-gas",
-            ),
+            IdealGas("Density"),
             Constant(
                 "Viscosity",
                 coolp.PropsSI("V", "P", ref_pressure, "T", ref_temperature, coolp_fluid),
@@ -308,10 +306,10 @@ class TestMaterial:
                 for assigned_model in assigned_models
                 if assigned_model.name == model.name
             )
-            if isinstance(matching_model.value, float):
+            if isinstance(matching_model, Constant):
                 assert matching_model.value == pytest.approx(model.value)
             else:
-                assert matching_model.value == model.value
+                assert isinstance(matching_model, IdealGas)
 
     def test_create_material_with_functional_properties(self):
         name = "MaterialName"
