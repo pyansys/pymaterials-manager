@@ -36,8 +36,7 @@ class MatmlWriter:
     _metadata_parameters: Dict
 
     def __init__(self, materials: Sequence[Material]):
-        """Constructor with a list of materials to export."""
-
+        """Construct a Matml writer."""
         self._materials = materials
         self._metadata_property_sets = {}
         self._metadata_parameters = {}
