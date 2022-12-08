@@ -1,7 +1,7 @@
 import os
 import tempfile
 
-from ansys.materials.manager.util.matml.matml_from_material import write_matml
+from ansys.materials.manager.util.matml.matml_from_material import MatmlWriter
 from ansys.materials.manager.util.matml.matml_parser import MatmlReader
 from ansys.materials.manager.util.matml.matml_to_material import convert_matml_materials
 
@@ -23,7 +23,8 @@ class TestMatmlFromMaterial:
 
         with tempfile.TemporaryDirectory() as tmpdirname:
             export_path = os.path.join(tmpdirname, "engd.xml")
-            write_matml(export_path, mapdl_materials)
+            matml_writer = MatmlWriter(mapdl_materials)
+            matml_writer.export(export_path)
 
             reader_materials_manager = MatmlReader(export_path)
             num_materials = reader_materials_manager.parse_matml()

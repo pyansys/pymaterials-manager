@@ -15,6 +15,8 @@ def convert_matml_materials(
     ----------
     materials_dict:
         dict of raw material data from a matml import
+    transfer_ids:
+        dict of material names and unique transfer ids
     index_offset:
         int to offset the material id (number) to avoid conflicts with already existing materials
     Returns a list of Material objects
