@@ -5,7 +5,7 @@ import pytest
 
 pytestmark = pytest.mark.mapdl_integration
 
-from ansys.materials.manager._models import Constant, PiecewiseLinear
+from ansys.materials.manager._models import Constant, PiecewiseLinear, Polynomial
 from ansys.materials.manager.material import Material
 from ansys.materials.manager.material_manager import MaterialManager
 
@@ -80,3 +80,29 @@ def test_can_write_and_return_interpolated_property(manager):
     assert isinstance(density_model, PiecewiseLinear)
     assert_array_equal(density_model.x, x_data)
     assert_array_equal(density_model.y, y_data)
+
+
+def test_can_write_and_return_polynomial_property(manager):
+    id_ = "4"
+    mat = Material("TestMaterial", id_, reference_temperature=23.0)
+    x_data = np.arange(273, 473, 10)
+    coefficients = np.array([1.0, 2.0, 3.0])
+    model = Polynomial("Density", coefficients=coefficients, sample_points=x_data)
+    mat.models.append(model)
+    manager.write_material(mat)
+
+    results = manager.read_materials_from_session()
+    assert len(results) == 1
+    assert id_ in results
+    material_result = results[id_]
+    assert material_result.material_id == id_
+    assert len(material_result.models) == 2
+    density_model = next(
+        model_ for model_ in material_result.models if model_.name.lower() == "density"
+    )
+    assert isinstance(density_model, PiecewiseLinear)
+    assert_array_equal(density_model.x, x_data)
+
+    expected_output = np.polyval(np.flip(coefficients), x_data)
+
+    assert_array_equal(density_model.y, expected_output)
