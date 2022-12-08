@@ -1,5 +1,3 @@
-from unittest.mock import Mock
-
 from ansys.fluent.core import Fluent as _FluentCore
 
 from ansys.materials.manager._models import Constant
