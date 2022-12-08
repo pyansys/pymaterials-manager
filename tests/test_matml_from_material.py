@@ -1,4 +1,5 @@
 import os
+import tempfile
 
 from ansys.materials.manager.util.matml.matml_from_material import write_matml
 from ansys.materials.manager.util.matml.matml_parser import MatmlReader
@@ -18,9 +19,10 @@ class TestMatmlFromMaterial:
 
         mapdl_materials = convert_matml_materials(reader_engd.materials, 0)
 
-        export_path = os.path.join(dir_path, "engd.xml")
-        write_matml(export_path, mapdl_materials)
+        with tempfile.TemporaryDirectory() as tmpdirname:
+            export_path = os.path.join(tmpdirname, "engd.xml")
+            write_matml(export_path, mapdl_materials)
 
-        reader_materials_manager = MatmlReader(export_path)
-        num_materials = reader_materials_manager.parse_matml()
-        assert num_materials == 2
+            reader_materials_manager = MatmlReader(export_path)
+            num_materials = reader_materials_manager.parse_matml()
+            assert num_materials == 2
