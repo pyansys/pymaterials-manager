@@ -19,7 +19,7 @@ class TestMatmlToMaterial:
 
         steel = materials[0]
 
-        assert steel.material_id == "4"
+        assert steel.material_id == 4
         assigned_models = steel.models
         assert len(assigned_models) == 11
 
@@ -42,7 +42,7 @@ class TestMatmlToMaterial:
             assert assigned_model[0].value == pytest.approx(expected_value)
 
         eglass = materials[1]
-        assert eglass.material_id == "5"
+        assert eglass.material_id == 5
         assigned_models = eglass.models
         assert len(assigned_models) == 11
 

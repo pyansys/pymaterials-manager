@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 
 _PATH_TYPE = Union[str, os.PathLike]
 
-MATERIALS_NODE_KEY = "Materials"
+MATERIALS_ELEMENT_KEY = "Materials"
 MATML_DOC_KEY = "MatML_Doc"
 METADATA_KEY = "Metadata"
 BULKDATA_KEY = "BulkDetails"
@@ -165,7 +165,7 @@ class MatmlReader:
         """
         tree = ET.parse(self.matml_file_path)
         root = tree.getroot()
-        materials_node = root.find(MATERIALS_NODE_KEY)
+        materials_node = root.find(MATERIALS_ELEMENT_KEY)
         if not materials_node:
             raise RuntimeError(
                 "Materials node not found. Please check if this is a valid MATML file."
