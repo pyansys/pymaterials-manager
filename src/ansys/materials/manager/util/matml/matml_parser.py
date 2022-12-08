@@ -1,8 +1,7 @@
 from dataclasses import dataclass
+import os
 from typing import Any, Dict, Union
 import xml.etree.ElementTree as ET
-import os
-
 
 _PATH_TYPE = Union[str, os.PathLike]
 

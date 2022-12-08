@@ -4,8 +4,11 @@ from ansys.materials.manager._models import Constant
 from ansys.materials.manager.material import Material
 from ansys.materials.manager.util.matml.matml_property_map import MATML_PROPERTY_MAP
 
+
 def convert_matml_materials(materials_dict: Dict, index_offset: int) -> Sequence[Material]:
-    """Convert a list of materials into Material objects.
+    """
+    Convert a list of materials into Material objects.
+
     Parameters
     ----------
     materials_dict:

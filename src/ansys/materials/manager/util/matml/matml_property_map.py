@@ -1,9 +1,8 @@
-
-"""Define a map between MAPDL and MATLM material properties"""
+"""Define a map between MAPDL and MATLM material properties."""
 
 # todo: add more property sets and parameters to the map
 
-#either define properties or mappings, but not both
+# either define properties or mappings, but not both
 MATML_PROPERTY_MAP = {
     "Density": {"properties": ["Density"], "mappings": {}},
     "Elasticity::Isotropic": {

@@ -1,12 +1,13 @@
 import os
+
+from ansys.materials.manager.util.matml.matml_from_material import write_matml
 from ansys.materials.manager.util.matml.matml_parser import MatmlReader
 from ansys.materials.manager.util.matml.matml_to_material import convert_matml_materials
-from ansys.materials.manager.util.matml.matml_from_material import write_matml
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-class TestMatmlFromMaterial:
 
+class TestMatmlFromMaterial:
     def test_matml_from_material(self):
         """Verify that materials can be exported as XML"""
 
