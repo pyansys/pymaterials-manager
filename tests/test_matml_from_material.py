@@ -17,7 +17,7 @@ class TestMatmlFromMaterial:
         num_materials = reader_engd.parse_matml()
         assert num_materials == 2
 
-        mapdl_materials = convert_matml_materials(reader_engd.materials, 0)
+        mapdl_materials = convert_matml_materials(reader_engd.materials, reader_engd.transfer_ids, 0)
 
         with tempfile.TemporaryDirectory() as tmpdirname:
             export_path = os.path.join(tmpdirname, "engd.xml")

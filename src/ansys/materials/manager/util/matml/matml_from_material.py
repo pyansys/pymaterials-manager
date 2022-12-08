@@ -10,6 +10,7 @@ from .matml_parser import (
     MATML_DOC_KEY,
     METADATA_KEY,
     UNITLESS_KEY,
+    WBTRANSFER_KEY
 )
 from .matml_property_map import MATML_PROPERTY_MAP
 
@@ -18,6 +19,7 @@ _PATH_TYPE = Union[str, os.PathLike]
 ROOT_ELEMENT = "EngineeringData"
 VERSION = "18.0.0.60"
 VERSION_DATE = "29.08.2016 15:02:00"
+
 
 # todo: convert into class
 
@@ -145,6 +147,17 @@ def _add_metadata(metadata_element: ET.Element, property_set_dict: Dict, paramet
         name_element.text = key
 
 
+def _add_transfer_ids(root: ET.Element, materials: Sequence[Material]) -> None:
+    # add the WB transfer IDs to the XML tree
+    wb_transfer_element = ET.SubElement(root, WBTRANSFER_KEY)
+    materials_element = ET.SubElement(wb_transfer_element, MATERIALS_ELEMENT_KEY)
+    for mat in materials:
+        mat_element = ET.SubElement(materials_element, "Material")
+        name_element = ET.SubElement(mat_element, "Name")
+        name_element.text = mat.name
+        transfer_element = ET.SubElement(mat_element, "DataTransferID")
+        transfer_element.text = mat.uuid
+
 def write_matml(path: _PATH_TYPE, materials: Sequence[Material]):
     """
     Write a Matml (engineering data xml file from scratch).
@@ -172,8 +185,12 @@ def write_matml(path: _PATH_TYPE, materials: Sequence[Material]):
 
     _add_materials(materials, matml_doc_element, metadata_property_set, metadata_parameters)
 
+    # add metadata to the XML tree
     metadata_element = ET.SubElement(matml_doc_element, METADATA_KEY)
     _add_metadata(metadata_element, metadata_property_set, metadata_parameters)
+
+    # add transfer id to the XML tree
+    _add_transfer_ids(root, materials)
 
     print(f"write xml to {path}")
     tree.write(path)

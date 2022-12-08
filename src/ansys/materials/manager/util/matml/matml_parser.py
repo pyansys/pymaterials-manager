@@ -11,6 +11,8 @@ METADATA_KEY = "Metadata"
 BULKDATA_KEY = "BulkDetails"
 UNITLESS_KEY = "Unitless"
 BEHAVIOR_KEY = "Behavior"
+WBTRANSFER_KEY = "ANSYSWBTransferData"
+MAT_TRANSFER_ID = "DataTransferID"
 
 # Todos:
 #   variable material properties with interpolation settings
@@ -49,6 +51,7 @@ class MatmlReader:
     """
 
     materials: Dict
+    transfer_ids = Dict
     matml_file_path: _PATH_TYPE
 
     def __init__(self, file_path: _PATH_TYPE):
@@ -155,6 +158,24 @@ class MatmlReader:
 
         return materials
 
+    def _read_transfer_ids(self, root: ET.Element) -> int:
+        # reads the material transfer IDs
+        self.transfer_ids = {}
+        wb_transfer_element = root.find(WBTRANSFER_KEY)
+        if wb_transfer_element:
+            materials_element = wb_transfer_element.find(MATERIALS_ELEMENT_KEY)
+            for mat in materials_element.findall("Material"):
+                mat_name = mat.find("Name").text
+                transfer_id_element = mat.find(MAT_TRANSFER_ID)
+
+                if not mat_name in self.materials.keys():
+                    raise RuntimeError(f"Transfer ID could not be set for material {mat_name}")
+
+                self.transfer_ids[mat_name] = transfer_id_element.text
+
+        return len(self.transfer_ids)
+
+
     def parse_matml(self) -> bool:
         """Read MATML (engineering data XML) file.
 
@@ -183,6 +204,8 @@ class MatmlReader:
         metadata_dict = self._read_metadata(metadata_node)
 
         self.materials = self._read_materials(matml_doc_node, metadata_dict)
+
+        self._read_transfer_ids(root)
         return len(self.materials)
 
     def get_material(self, name: str) -> Dict:

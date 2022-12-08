@@ -15,13 +15,14 @@ class TestMatmlToMaterial:
         num_materials = reader.parse_matml()
         assert num_materials == 2
 
-        materials = convert_matml_materials(reader.materials, 3)
+        materials = convert_matml_materials(reader.materials, reader.transfer_ids, 3)
 
         steel = materials[0]
 
         assert steel.material_id == 4
         assigned_models = steel.models
         assert len(assigned_models) == 11
+        assert steel.uuid == "636a7e55-fe81-4d04-9d98-a2cdd31e962a"
 
         expected_results = {
             "strain reference temperature": 0.0,
@@ -45,6 +46,7 @@ class TestMatmlToMaterial:
         assert eglass.material_id == 5
         assigned_models = eglass.models
         assert len(assigned_models) == 11
+        assert eglass.uuid == "a1f2e775-77fe-4ad6-a822-54d353e0ea0e"
 
         expected_results = {
             "strain reference temperature": 0.0,

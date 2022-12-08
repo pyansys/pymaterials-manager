@@ -14,6 +14,7 @@ class Material:
     _models: List[_BaseModel]
     _id: str
     _name: str
+    _uuid: str
 
     def __init__(
         self, material_name: str, material_id: str = None, models: List[_BaseModel] = None
@@ -36,6 +37,7 @@ class Material:
         self._models = []
         self._name = material_name
         self._id = material_id
+        self._uuid = ""
         if models is not None:
             self.models.extend(models)
         if len(self.get_model_by_name("Strain Reference Temperature")) == 0:
@@ -58,6 +60,15 @@ class Material:
     @material_id.setter
     def material_id(self, value: str):
         self._id = value
+
+    @property
+    def uuid(self) -> str:
+        """Return the UUID (transfer ID) which is unique."""
+        return self._uuid
+
+    @uuid.setter
+    def uuid(self, value: str) -> None:
+        self._uuid = value
 
     @property
     def models(self) -> "List[_BaseModel]":
