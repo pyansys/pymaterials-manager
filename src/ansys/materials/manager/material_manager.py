@@ -15,9 +15,8 @@ class MaterialManager:
     """
 
     model_type_map: Dict[str, models._BaseModel] = {}
-    _client: Any
 
-    def __init__(self, pyansys_client: Any):
+    def __init__(self, writer: Any):
         """
         Create a new MaterialManager object ready for use.
 
@@ -27,7 +26,7 @@ class MaterialManager:
             Valid instance of a PyAnsys Client. Only pyMAPDL and pyFluent are currently
             supported.
         """
-        self._client = pyansys_client
+        self._writer = writer
         response = inspect.getmembers(models, self.__is_subclass_predicate)
         model_classes: List[models._BaseModel] = [tple[1] for tple in response]
         for class_ in model_classes:
@@ -67,4 +66,4 @@ class MaterialManager:
         """
         for model in material.get_models():
             assert isinstance(model, _BaseModel)
-            model.write_model(self._client, material)
+            model.write_model(material, self._writer)

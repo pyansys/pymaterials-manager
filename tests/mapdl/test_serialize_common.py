@@ -5,6 +5,7 @@ import numpy as np
 import pytest
 
 from ansys.materials.manager._models import Constant, ModelValidationException, PiecewiseLinear
+from ansys.materials.manager._models._mapdl.mapdl_writer import MapdlWriter
 from ansys.materials.manager.material import Material
 
 TEST_MATERIAL = Material("Test Material", material_id="1", reference_temperature=25.0)
@@ -14,7 +15,8 @@ class TestSerializeConstant:
     def test_valid_constant_succeeds(self):
         model = Constant("Density", 5.0)
         mock_mapdl = MagicMock(spec=_MapdlCore)
-        model.write_model(TEST_MATERIAL, mock_mapdl)
+        writer = MapdlWriter(mock_mapdl)
+        model.write_model(TEST_MATERIAL, writer)
         mock_mapdl.mp.assert_called_once_with("DENS", "1", 5.0)
 
     def test_no_name_fails(self):

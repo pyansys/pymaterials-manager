@@ -1,19 +1,23 @@
-from typing import Any, List, Tuple
+from typing import Any, List, Tuple, Protocol
 
 from ansys.materials.manager._models._common._base import _BaseModel, _FluentCore, _MapdlCore
 from ansys.materials.manager._models._common._exceptions import ModelValidationException
 from ansys.materials.manager._models._common._packages import SupportedPackage
-from ansys.materials.manager._models._fluent.simple_properties import (
-    property_codes as fluent_property_codes,
-)
-from ansys.materials.manager._models._mapdl.simple_properties import (
-    property_codes as mapdl_property_codes,
-)
+
+
+
 
 TYPE_CHECKING = False
 if TYPE_CHECKING:
     from ansys.materials.manager.material import Material  # noqa: F401
 
+class ConstantModel(Protocol):
+    name: str
+    value: float
+
+class ConstantWriter(Protocol):
+    def constant(self, material: "Material", constant_model: ConstantModel) -> None:
+        pass
 
 class Constant(_BaseModel):
     """Represents a constant property value in a solver."""
@@ -53,16 +57,17 @@ class Constant(_BaseModel):
     def value(self, value: float) -> None:
         self._value = value
 
-    def write_model(self, material: "Material", pyansys_session: Any) -> None:
-        """
-        Write this model to MAPDL.
+    def write(self, writer, material):
+        writer.constant(material, self)
 
+    def write_model(self, material: "Material", writer: ConstantWriter) -> None:
+        """
         Should make some effort to validate the model state before writing.
 
         Parameters
         ----------
-        pyansys_session: Any
-            Configured instance of PyAnsys session.
+        writer: ConstantWriter
+            Writer that supports the ConstantWriter Protocol
 
         material: Material
             Material object with which this model will be associated.
@@ -71,30 +76,14 @@ class Constant(_BaseModel):
         if not is_ok:
             raise ModelValidationException("\n".join(issues))
 
-        if isinstance(pyansys_session, _MapdlCore):
-            self._write_mapdl(pyansys_session, material)
-        elif isinstance(pyansys_session, _FluentCore):
-            self._write_fluent(pyansys_session, material)
-        else:
+        if not hasattr(writer, "constant"):
             raise TypeError(
                 "This model is only supported by MAPDL and Fluent, ensure you have the correct"
                 "type of `pyansys_session`."
             )
+        writer.constant(material, self)
 
-    def _write_mapdl(self, mapdl: "_MapdlCore", material: "Material") -> None:
-        mapdl_property_code = mapdl_property_codes[self._name.lower()]
-        mapdl.mp(mapdl_property_code, material.material_id, self._value)
 
-    def _write_fluent(self, fluent: "_FluentCore", material: "Material") -> None:
-        try:
-            fluent_property_code = fluent_property_codes[self._name.lower()]
-            if isinstance(self._value, str):
-                propState = {fluent_property_code: {"option": self._value}}
-            else:
-                propState = {fluent_property_code: {"option": "constant", "value": self._value}}
-            fluent.setup.materials.fluid[material.name] = propState
-        except (RuntimeError, KeyError):
-            pass
 
     def validate_model(self) -> "Tuple[bool, List[str]]":
         """
