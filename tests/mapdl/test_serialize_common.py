@@ -7,7 +7,9 @@ import pytest
 from ansys.materials.manager._models import Constant, ModelValidationException, PiecewiseLinear
 from ansys.materials.manager.material import Material
 
-TEST_MATERIAL = Material("Test Material", material_id="1", reference_temperature=25.0)
+TEST_MATERIAL = Material(
+    "Test Material", material_id="1", models=[Constant("Strain Reference Temperature", 25.0)]
+)
 
 
 class TestSerializeConstant:

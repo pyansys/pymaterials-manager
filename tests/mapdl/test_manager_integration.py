@@ -24,7 +24,7 @@ def manager(mapdl):
 
 
 def test_can_write_and_return_reference_temperature(manager):
-    mat = Material("TestMaterial", "1", reference_temperature=23.0)
+    mat = Material("TestMaterial", "1", models=[Constant("Strain Reference Temperature", 23.0)])
     manager.write_material(mat)
 
     results = manager.read_materials_from_session()
@@ -41,7 +41,7 @@ def test_can_write_and_return_reference_temperature(manager):
 
 def test_can_write_and_return_constant_property(manager):
     id_ = "2"
-    mat = Material("TestMaterial", id_, reference_temperature=23.0)
+    mat = Material("TestMaterial", id_, models=[Constant("Strain Reference Temperature", 23.0)])
     model = Constant("Density", 3200.0)
     mat.models.append(model)
     manager.write_material(mat)
@@ -61,7 +61,7 @@ def test_can_write_and_return_constant_property(manager):
 
 def test_can_write_and_return_interpolated_property(manager):
     id_ = "3"
-    mat = Material("TestMaterial", id_, reference_temperature=23.0)
+    mat = Material("TestMaterial", id_, models=[Constant("Strain Reference Temperature", 23.0)])
     x_data = np.arange(273, 473, 10)
     y_data = np.arange(1.2e6, 1e6, -1e4)
     model = PiecewiseLinear("Density", x_data, y_data)
