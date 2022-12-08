@@ -227,7 +227,7 @@ class TestMaterial:
         assert material.name == name
         assert material.material_id == id_
 
-    def test_default_reference_temperature(self):
+    def test_default_strain_reference_temperature(self):
         id_ = "1"
         name = "MaterialName"
         material = Material(material_name=name, material_id=id_)
@@ -245,7 +245,7 @@ class TestMaterial:
         models = [
             Constant("Density", 3000.0),
             Constant("Elastic Modulus (11-axis)", 6_000_000.0),
-            Constant("Reference Temperature", 23.0),
+            Constant("Strain Reference Temperature", 23.0),
         ]
         material = Material(material_name=name, material_id=id_, models=models)
         assert material.material_id == id_
@@ -263,21 +263,23 @@ class TestMaterial:
         name = "Air"
         coolp_fluid = "Air"
         ref_pressure = 101325.0
-        ref_temperature = 298.15
+        ref_temperature = 25.0
+        ref_tempSI = 273.15 + ref_temperature
         models = [
-            Constant("Reference Pressure", ref_pressure),
+            Constant("Thermodynamic Reference Temperature", ref_temperature),
+            Constant("Thermodynamic Reference Pressure", ref_pressure),
             IdealGas("Density"),
             Constant(
                 "Viscosity",
-                coolp.PropsSI("V", "P", ref_pressure, "T", ref_temperature, coolp_fluid),
+                coolp.PropsSI("V", "P", ref_pressure, "T", ref_tempSI, coolp_fluid),
             ),
             Constant(
                 "Specific Heat Capacity",
-                coolp.PropsSI("C", "P", ref_pressure, "T", ref_temperature, coolp_fluid),
+                coolp.PropsSI("C", "P", ref_pressure, "T", ref_tempSI, coolp_fluid),
             ),
             Constant(
                 "Thermal Conductivity (11-axis)",
-                coolp.PropsSI("L", "P", ref_pressure, "T", ref_temperature, coolp_fluid),
+                coolp.PropsSI("L", "P", ref_pressure, "T", ref_tempSI, coolp_fluid),
             ),
             Constant(
                 "Thermal Expansion Coefficient (11-axis)",
@@ -286,20 +288,21 @@ class TestMaterial:
                     "P",
                     ref_pressure,
                     "T",
-                    ref_temperature,
+                    ref_tempSI,
                     coolp_fluid,
                 ),
             ),
             Constant(
                 "Molar Mass",
-                coolp.PropsSI("M", "P", ref_pressure, "T", ref_temperature, coolp_fluid) * 1000.0,
+                coolp.PropsSI("M", "P", ref_pressure, "T", ref_tempSI, coolp_fluid) * 1000.0,
             ),
         ]
         material = Material(
-            material_name=name, models=models, reference_temperature=ref_temperature
+            material_name=name,
+            models=models,
         )
         assigned_models = material.models
-        assert len(assigned_models) == 8
+        assert len(assigned_models) == 9
         for model in models:
             matching_model = next(
                 assigned_model
@@ -335,16 +338,15 @@ class TestMaterial:
             np.testing.assert_array_equal(model.x, matching_model.x)
             np.testing.assert_array_equal(model.y, matching_model.y)
 
-    def test_create_material_with_reference_temperature(self):
+    def test_create_material_with_strain_reference_temperature(self):
         name = "MaterialName"
         id_ = "5"
         ref_temperature = 25.0
-        material = Material(
-            material_name=name, material_id=id_, reference_temperature=ref_temperature
-        )
+        models = [Constant("Strain Reference Temperature", ref_temperature)]
+        material = Material(material_name=name, material_id=id_, models=models)
         assert material.material_id == id_
         assert material.reference_temperature == pytest.approx(ref_temperature)
-        assert material.get_model_by_name("Reference Temperature")[0].value == pytest.approx(
+        assert material.get_model_by_name("Strain Reference Temperature")[0].value == pytest.approx(
             ref_temperature
         )
 
@@ -352,7 +354,7 @@ class TestMaterial:
         material = Material(material_name="MaterialName", material_id="10")
         reference_temperature = 23.0
         material.reference_temperature = reference_temperature
-        assert material.get_model_by_name("Reference Temperature")[0].value == pytest.approx(
+        assert material.get_model_by_name("Strain Reference Temperature")[0].value == pytest.approx(
             reference_temperature
         )
 

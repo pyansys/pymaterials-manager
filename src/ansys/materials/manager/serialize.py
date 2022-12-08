@@ -7,7 +7,7 @@ from ansys.materials.manager.material import Material
 
 
 def _material_as_dict(material: Material) -> Dict:
-    d = {"name": material.name, "reference_temperature": material.reference_temperature}
+    d = {"name": material.name}
     if material.material_id is not None:
         d.update({"id": material.material_id})
     for model in material.models:
