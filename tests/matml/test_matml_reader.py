@@ -1,14 +1,13 @@
 import os
-
 from ansys.materials.manager.util.matml import MatmlReader
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
+DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
 
 class TestMatmlReader:
     def test_reader(self):
         """read a xml file with steel and e-glass UD"""
-        xml_file_path = os.path.join(dir_path, "..", "data", "steel_eglass_air.xml")
+        xml_file_path = os.path.join(DIR_PATH, "..", "data", "steel_eglass_air.xml")
         reader = MatmlReader(xml_file_path)
         num_materials = reader.parse_matml()
         assert num_materials == 3

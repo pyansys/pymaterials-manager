@@ -69,12 +69,13 @@ class MatmlWriter:
     ):
         """Add the property set to the XML tree."""
         # check if at least one parameter is specified (case-insensitive)
-        # and build a map from material to matml properites
+        # and build a map from material to Matml properties
         available_mat_properties = [model.name.lower() for model in material.models]
         property_set_parameters = {item: item for item in parameter_map["properties"]}
         for key, mapped_properties in parameter_map["mappings"].items():
             property_set_parameters.update({item: key for item in mapped_properties})
 
+        # build final map with property name in MaterialManager to Matml
         parameters = {
             param: key
             for param, key in property_set_parameters.items()
