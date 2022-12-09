@@ -81,7 +81,7 @@ class TestMatmlToMaterial:
         assert air.material_id == 4
         assigned_models = air.models
         assert len(assigned_models) == 8
-        assert air.uuid == "a1f2e333-45fe-4ge6-a532-57f796g3zg3m"
+        assert air.uuid == "370e7536-77c0-11ed-8eeb-6c6a77744180"
         expected_results = {
             "strain reference temperature": 0.0,
             "density": 1.225,
