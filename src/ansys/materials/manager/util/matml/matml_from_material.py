@@ -74,7 +74,7 @@ class MatmlWriter:
         # check if at least one parameter is specified (case-insensitive)
         available_mat_properties = [model.name.lower() for model in material.models]
         property_set_parameters = [item for item in parameter_map["properties"]]
-        for _, mapped_properties in parameter_map["mappings"].items():
+        for mapped_properties in parameter_map["mappings"].values():
             property_set_parameters.extend(mapped_properties)
 
         parameters = [
