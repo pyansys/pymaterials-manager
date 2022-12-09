@@ -52,9 +52,15 @@ MATML_PROPERTY_MAP = {
     "Coefficient of Thermal Expansion::Orthotropic": {
         "properties": [],
         "mappings": {
-            "Coefficient of Thermal Expansion X direction": ["thermal expansion coefficient x direction"],
-            "Coefficient of Thermal Expansion Y direction": ["thermal expansion coefficient y direction"],
-            "Coefficient of Thermal Expansion Z direction": ["thermal expansion coefficient z direction"],
+            "Coefficient of Thermal Expansion X direction": [
+                "thermal expansion coefficient x direction"
+            ],
+            "Coefficient of Thermal Expansion Y direction": [
+                "thermal expansion coefficient y direction"
+            ],
+            "Coefficient of Thermal Expansion Z direction": [
+                "thermal expansion coefficient z direction"
+            ],
         },
     },
     "Specific Heat": {"properties": [], "mappings": {"Specific Heat": ["Specific Heat Capacity"]}},

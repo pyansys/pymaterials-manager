@@ -41,9 +41,7 @@ class MatmlWriter:
         self._metadata_property_sets = {}
         self._metadata_parameters = {}
 
-    def _add_parameters(
-        self, property_element: ET.Element, material: Material, parameters: Dict
-    ):
+    def _add_parameters(self, property_element: ET.Element, material: Material, parameters: Dict):
         # add the parameters of a property set to the tree
         for mat_key, matml_key in parameters.items():
             if matml_key in self._metadata_parameters.keys():
@@ -78,7 +76,9 @@ class MatmlWriter:
             property_set_parameters.update({item: key for item in mapped_properties})
 
         parameters = {
-            param: key for param, key in property_set_parameters.items() if param.lower() in available_mat_properties
+            param: key
+            for param, key in property_set_parameters.items()
+            if param.lower() in available_mat_properties
         }
 
         if len(parameters) > 0:
