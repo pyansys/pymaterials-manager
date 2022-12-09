@@ -131,7 +131,7 @@ class MatmlReader:
 
             parameters = {}
 
-            # iterate over each parameters
+            # iterate over each parameter
             for parameter in prop_data.findall("ParameterValue"):
                 parameter_key = parameter.attrib["parameter"]
                 parameter_name = metadata_dict[parameter_key]["Name"]
