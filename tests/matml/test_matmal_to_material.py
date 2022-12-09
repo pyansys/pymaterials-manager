@@ -1,9 +1,11 @@
 import os
+
 import pytest
 
 from ansys.materials.manager.util.matml import MatmlReader, convert_matml_materials
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
+
 
 class TestMatmlToMaterial:
     def test_conversion_to_material_object(self):

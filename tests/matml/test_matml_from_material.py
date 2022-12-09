@@ -1,7 +1,8 @@
 import os
 import tempfile
-import pytest
 import xml.etree.ElementTree as ET
+
+import pytest
 
 from ansys.materials.manager._models import Constant
 from ansys.materials.manager.material import Material
@@ -10,6 +11,7 @@ from ansys.materials.manager.util.matml.matml_parser import MatmlReader
 from ansys.materials.manager.util.matml.matml_to_material import convert_matml_materials
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
+
 
 class TestMatmlFromMaterial:
     def test_roundtrip_from_to(self):
@@ -41,8 +43,6 @@ class TestMatmlFromMaterial:
             tree = ET.parse(export_path)
             ref_tree = ET.parse(os.path.join(DIR_PATH, "..", "data", "ref_steel_eglass_air.xml"))
             assert ET.tostring(tree.getroot()) == ET.tostring(ref_tree.getroot())
-
-
 
     def test_matml_from_material(self):
         """
