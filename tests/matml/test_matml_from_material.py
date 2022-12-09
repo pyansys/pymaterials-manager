@@ -30,11 +30,6 @@ class TestMatmlFromMaterial:
             export_path = os.path.join(tmpdirname, "engd.xml")
             matml_writer = MatmlWriter(mapdl_materials)
             matml_writer.export(export_path)
-            matml_writer2 = MatmlWriter(mapdl_materials[1:3])
-            matml_writer2.export(r"D:\tmp\test2.xml")
-
-            matml_writer2 = MatmlWriter(mapdl_materials)
-            matml_writer2.export(r"D:\tmp\test3.xml")
 
             reader_materials_manager = MatmlReader(export_path)
             num_materials = reader_materials_manager.parse_matml()
