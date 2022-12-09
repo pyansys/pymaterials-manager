@@ -35,18 +35,36 @@ class TestMatmlFromMaterial:
             assert num_materials == 3
 
     def test_matml_from_material(self):
-        """Verify that manually constructed materials can be exported"""
+        """
+        Verify that manually constructed materials can be exported to matml.
+        The matml is imported back and the data is compared with the initial values.
+        """
         material = Material("Steel", material_id="1")
-        material.models.append(Constant("Density", 25.0))
-        material.models.append(Constant("Young's Modulus X Direction", 210e9))
-        material.models.append(Constant("Young's Modulus Y Direction", 210e9))
-        material.models.append(Constant("Young's Modulus Z Direction", 210e9))
-        material.models.append(Constant("Poisson's Ratio XY", 0.3))
-        material.models.append(Constant("Poisson's Ratio XZ", 0.3))
-        material.models.append(Constant("Poisson's Ratio YZ", 0.3))
-        material.models.append(Constant("Shear Modulus XY", 80769230769.23077))
-        material.models.append(Constant("Shear Modulus XZ", 80769230769.23077))
-        material.models.append(Constant("Shear Modulus YZ", 80769230769.23077))
+
+        parameters = {
+            "density": 25.0,
+            "young's modulus x direction": 210e9,
+            "young's modulus y direction": 210e9,
+            "young's modulus z direction": 210e9,
+            "shear modulus xy": 80769230769.23077,
+            "shear modulus yz": 80769230769.23077,
+            "shear modulus xz": 80769230769.23077,
+            "poisson's ratio xy": 0.3,
+            "poisson's ratio yz": 0.3,
+            "poisson's ratio xz": 0.3,
+            "thermal expansion coefficient x direction": -1e-6,
+            "thermal expansion coefficient y direction": 1e-4,
+            "thermal expansion coefficient z direction": 2.3e-4,
+            "specific heat capacity": 435.0,
+            "thermal conductivity x direction": 30.0,
+            "thermal conductivity y direction": 56.0,
+            "thermal conductivity z direction": 35.0,
+            "viscosity": 2333.0,
+            "speed of sound": 1100.0,
+        }
+
+        for key, value in parameters.items():
+            material.models.append(Constant(key, value))
 
         with tempfile.TemporaryDirectory() as tmpdirname:
             export_path = os.path.join(tmpdirname, "engd.xml")
@@ -59,19 +77,7 @@ class TestMatmlFromMaterial:
             assert len(imported_materials) == 1
             steel = imported_materials[0]
 
-            expected_results = {
-                "density": 25.0,
-                "young's modulus x direction": 210e9,
-                "young's modulus y direction": 210e9,
-                "young's modulus z direction": 210e9,
-                "shear modulus xy": 80769230769.23077,
-                "shear modulus yz": 80769230769.23077,
-                "shear modulus xz": 80769230769.23077,
-                "poisson's ratio xy": 0.3,
-                "poisson's ratio yz": 0.3,
-                "poisson's ratio xz": 0.3,
-            }
-            for name, expected_value in expected_results.items():
+            for name, expected_value in parameters.items():
                 assigned_model = steel.get_model_by_name(name)
                 assert len(assigned_model) == 1
                 assert assigned_model[0].value == pytest.approx(expected_value)

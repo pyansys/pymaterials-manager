@@ -70,9 +70,9 @@ class TestMatmlToMaterial:
             "thermal conductivity x direction": 30.0,
             "thermal conductivity y direction": 5.0,
             "thermal conductivity z direction": 5.0,
-            "coefficient of thermal expansion x direction": -1e-6,
-            "coefficient of thermal expansion y direction": 1e-5,
-            "coefficient of thermal expansion z direction": 1e-5,
+            "thermal expansion coefficient x direction": -1e-6,
+            "thermal expansion coefficient y direction": 1e-5,
+            "thermal expansion coefficient z direction": 1e-5,
         }
         for name, expected_value in expected_results.items():
             assigned_model = eglass.get_model_by_name(name)
