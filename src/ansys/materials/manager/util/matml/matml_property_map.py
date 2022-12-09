@@ -39,4 +39,43 @@ MATML_PROPERTY_MAP = {
         ],
         "mappings": {},
     },
+    "Coefficient of Thermal Expansion::Isotropic": {
+        "properties": [],
+        "mappings": {
+            "Coefficient of Thermal Expansion": [
+                "thermal expansion coefficient x direction",
+                "thermal expansion coefficient y direction",
+                "thermal expansion coefficient z direction",
+            ]
+        },
+    },
+    "Coefficient of Thermal Expansion::Orthotropic": {
+        "properties": [
+            "Coefficient of Thermal Expansion X direction",
+            "Coefficient of Thermal Expansion Y direction",
+            "Coefficient of Thermal Expansion Z direction",
+        ],
+        "mappings": {},
+    },
+    "Specific Heat": {"properties": [], "mappings": {"Specific Heat": ["Specific Heat Capacity"]}},
+    "Thermal Conductivity::Isotropic": {
+        "properties": [],
+        "mappings": {
+            "Thermal Conductivity": [
+                "Thermal Conductivity X direction",
+                "Thermal Conductivity Y direction",
+                "Thermal Conductivity Z direction",
+            ]
+        },
+    },
+    "Thermal Conductivity::Orthotropic": {
+        "properties": [
+            "Thermal Conductivity X direction",
+            "Thermal Conductivity Y direction",
+            "Thermal Conductivity Z direction",
+        ],
+        "mappings": {},
+    },
+    "Viscosity": {"properties": ["Viscosity"], "mappings": {}},
+    "Speed of Sound": {"properties": ["Speed of Sound"], "mappings": {}},
 }

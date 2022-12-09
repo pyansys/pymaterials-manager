@@ -71,14 +71,15 @@ class MatmlWriter:
         behavior: str,
     ):
         """Add the property set to the XML tree."""
-        # check if at least one parameter is specified
-        available_mat_properties = [model.name for model in material.models]
-        property_set_parameters = parameter_map["properties"]
-        property_set_parameters.extend(
-            mapped_properties for matml_key, mapped_properties in parameter_map["mappings"].items()
-        )
+        # check if at least one parameter is specified (case-insensitive)
+        available_mat_properties = [model.name.lower() for model in material.models]
+        property_set_parameters = [item for item in parameter_map["properties"]]
+        for _, mapped_properties in parameter_map["mappings"].items():
+            property_set_parameters.extend(mapped_properties)
 
-        parameters = list(set(property_set_parameters) & set(available_mat_properties))
+        parameters = [
+            param for param in property_set_parameters if param.lower() in available_mat_properties
+        ]
 
         if len(parameters) > 0:
             # get property id from metadata or add it if it does not exist yet
@@ -172,8 +173,6 @@ class MatmlWriter:
 
         materials_element = ET.SubElement(root, MATERIALS_ELEMENT_KEY)
         matml_doc_element = ET.SubElement(materials_element, MATML_DOC_KEY)
-
-        metadata_property_set = {}
 
         self._add_materials(matml_doc_element)
 

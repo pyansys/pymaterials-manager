@@ -8,14 +8,16 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 class TestMatmlReader:
     def test_reader(self):
         """read a xml file with steel and e-glass UD"""
-        xml_file_path = os.path.join(dir_path, "data", "steel_eglass_ud.xml")
+        xml_file_path = os.path.join(dir_path, "..", "data", "steel_eglass_air.xml")
         reader = MatmlReader(xml_file_path)
         num_materials = reader.parse_matml()
-        assert num_materials == 2
-        assert len(reader.transfer_ids) == 2
+        assert num_materials == 3
+        assert len(reader.transfer_ids) == 3
 
         steel = reader.get_material("Structural Steel")
 
+        # number of imported property sets
+        assert len(steel) == 16
         cte = "Coefficient of Thermal Expansion"
         assert steel[cte].name == cte
         assert steel[cte].parameters[cte].name == cte
@@ -37,8 +39,10 @@ class TestMatmlReader:
             steel[rho].parameters["Temperature"].qualifiers["Lower Limit"] == "Program Controlled"
         )
 
-        elast = "Elasticity"
         e_glass_ud = reader.get_material("Epoxy E-Glass UD")
+        # number of imported property sets
+        assert len(e_glass_ud) == 13
+        elast = "Elasticity"
         assert e_glass_ud[elast].name == elast
         assert e_glass_ud[elast].parameters["Poisson's Ratio XY"].name == "Poisson's Ratio XY"
         assert e_glass_ud[elast].parameters["Poisson's Ratio XY"].data == 0.3
@@ -54,3 +58,8 @@ class TestMatmlReader:
         )
         assert e_glass_ud[elast].qualifiers["Behavior"] == "Orthotropic"
         assert e_glass_ud[elast].qualifiers["Field Variable Compatible"] == "Temperature"
+
+        air = reader.get_material("Air")
+        # number of imported property sets
+        assert len(air) == 20
+        assert air["Viscosity"].parameters["Viscosity"].data == 1.7894e-05
