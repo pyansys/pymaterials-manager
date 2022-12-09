@@ -14,16 +14,18 @@ BEHAVIOR_KEY = "Behavior"
 WBTRANSFER_KEY = "ANSYSWBTransferData"
 MAT_TRANSFER_ID = "DataTransferID"
 
+
 # Todos:
 #   variable material properties with interpolation settings
-#   transfer id, uuid and versioned id
 #   version handling
-#   full support of units (exponents)
+#   support of units (exponents)
 
 
 @dataclass
 class Parameter:
     """Define a parameter such as density or Young's Modulus."""
+
+    # todo: units
 
     name: str
     data: Any
@@ -67,17 +69,17 @@ class MatmlReader:
         if not os.path.exists(file_path):
             raise RuntimeError(f"Cannot initialize MatmlReader {file_path}. File does not exist!")
 
-    def _convert(self, data: str, target: str):
+    def _convert(self, data: str, target: str) -> Union[str, float]:
         # convert a string into a certain format (e.g. float)
-
-        if not data:
-            return ""
 
         if target == "string":
             return data
 
         if target != "float":
             raise RuntimeError(f"unsupported format {target}. Skipped formatting {data}")
+
+        if not data or not data.strip():
+            return 0.0
 
         if data.count(",") > 0:
             data = data.split(",")
@@ -128,7 +130,7 @@ class MatmlReader:
 
             parameters = {}
 
-            # iterate over each single property (E1, E2, E3)
+            # iterate over each parameter
             for parameter in prop_data.findall("ParameterValue"):
                 parameter_key = parameter.attrib["parameter"]
                 parameter_name = metadata_dict[parameter_key]["Name"]
