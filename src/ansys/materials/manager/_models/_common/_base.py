@@ -1,5 +1,4 @@
 from abc import ABCMeta, abstractmethod
-
 from typing import Any, List, Tuple
 
 try:

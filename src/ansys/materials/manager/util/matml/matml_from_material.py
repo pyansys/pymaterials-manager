@@ -193,7 +193,7 @@ class MatmlWriter:
         self._add_transfer_ids(root)
 
         print(f"write xml to {path}")
-        if (kwargs.get("indent", False)):
+        if kwargs.get("indent", False):
             if hasattr(ET, "indent"):
                 ET.indent(tree)
             else:
