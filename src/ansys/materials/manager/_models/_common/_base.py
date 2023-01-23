@@ -1,16 +1,15 @@
 from abc import ABCMeta, abstractmethod
-from types import NoneType
 from typing import Any, List, Tuple
 
 try:
     from ansys.mapdl.core.mapdl import _MapdlCore
 except ImportError:
-    _MapdlCore = NoneType
+    _MapdlCore = type(None)
 
 try:
     from ansys.fluent.core import Fluent as _FluentCore
 except ImportError:
-    _FluentCore = NoneType
+    _FluentCore = type(None)
 
 TYPE_CHECKING = False
 if TYPE_CHECKING:

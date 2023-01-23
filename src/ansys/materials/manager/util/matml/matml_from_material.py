@@ -158,7 +158,7 @@ class MatmlWriter:
             transfer_element = ET.SubElement(mat_element, "DataTransferID")
             transfer_element.text = mat.uuid
 
-    def export(self, path: _PATH_TYPE):
+    def export(self, path: _PATH_TYPE, **kwargs):
         """
         Write a Matml (engineering data xml file from scratch).
 
@@ -168,6 +168,9 @@ class MatmlWriter:
             File path
         materials:
             list of materials
+        Keyword arguments
+        -----------------
+        indent - add an indent to format the XML output (python 3.9+). Defaults to false.
         """
         root = ET.Element(ROOT_ELEMENT)
         tree = ET.ElementTree(root)
@@ -190,4 +193,9 @@ class MatmlWriter:
         self._add_transfer_ids(root)
 
         print(f"write xml to {path}")
+        if kwargs.get("indent", False):
+            if hasattr(ET, "indent"):
+                ET.indent(tree)
+            else:
+                print(f"ElementTree does not have `indent`. Python 3.9+ required!")
         tree.write(path)
