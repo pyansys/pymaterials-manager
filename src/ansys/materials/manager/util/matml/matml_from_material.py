@@ -41,24 +41,21 @@ class MatmlWriter:
         self._metadata_property_sets = {}
         self._metadata_parameters = {}
 
-    def _add_parameters(
-        self, property_element: ET.Element, material: Material, parameters: Sequence[str]
-    ):
+    def _add_parameters(self, property_element: ET.Element, material: Material, parameters: Dict):
         # add the parameters of a property set to the tree
-
-        for key in parameters:
-            if key in self._metadata_parameters.keys():
-                para_key = self._metadata_parameters[key]
+        for mat_key, matml_key in parameters.items():
+            if matml_key in self._metadata_parameters.keys():
+                para_key = self._metadata_parameters[matml_key]
             else:
                 index = len(self._metadata_parameters) + 1
                 para_key = f"pa{index}"
-                self._metadata_parameters[key] = para_key
+                self._metadata_parameters[matml_key] = para_key
 
             param_element = ET.SubElement(
                 property_element, "ParameterValue", {"parameter": para_key, "format": "float"}
             )
             data_element = ET.SubElement(param_element, "Data")
-            data_element.text = str(material.get_model_by_name(key)[0].value)
+            data_element.text = str(material.get_model_by_name(mat_key)[0].value)
             qualifier_element = ET.SubElement(param_element, "Qualifier", {"name": "Variable Type"})
             qualifier_element.text = "Dependent"
 
@@ -71,14 +68,19 @@ class MatmlWriter:
         behavior: str,
     ):
         """Add the property set to the XML tree."""
-        # check if at least one parameter is specified
-        available_mat_properties = [model.name for model in material.models]
-        property_set_parameters = parameter_map["properties"]
-        property_set_parameters.extend(
-            mapped_properties for matml_key, mapped_properties in parameter_map["mappings"].items()
-        )
+        # check if at least one parameter is specified (case-insensitive)
+        # and build a map from material to Matml properties
+        available_mat_properties = [model.name.lower() for model in material.models]
+        property_set_parameters = {item: item for item in parameter_map["properties"]}
+        for key, mapped_properties in parameter_map["mappings"].items():
+            property_set_parameters.update({item: key for item in mapped_properties})
 
-        parameters = list(set(property_set_parameters) & set(available_mat_properties))
+        # build final map with property name in MaterialManager to Matml
+        parameters = {
+            param: key
+            for param, key in property_set_parameters.items()
+            if param.lower() in available_mat_properties
+        }
 
         if len(parameters) > 0:
             # get property id from metadata or add it if it does not exist yet
@@ -100,6 +102,11 @@ class MatmlWriter:
                 )
                 behavior_element.text = behavior
 
+            if property_set_name == "Coefficient of Thermal Expansion":
+                qualifier_element = ET.SubElement(
+                    property_data_element, "Qualifier", {"name": "Definition"}
+                )
+                qualifier_element.text = "Secant"
             self._add_parameters(property_data_element, material, parameters)
 
     def _add_materials(self, materials_element: ET.Element):
@@ -151,7 +158,7 @@ class MatmlWriter:
             transfer_element = ET.SubElement(mat_element, "DataTransferID")
             transfer_element.text = mat.uuid
 
-    def export(self, path: _PATH_TYPE):
+    def export(self, path: _PATH_TYPE, **kwargs):
         """
         Write a Matml (engineering data xml file from scratch).
 
@@ -161,6 +168,9 @@ class MatmlWriter:
             File path
         materials:
             list of materials
+        Keyword arguments
+        -----------------
+        indent - add an indent to format the XML output (python 3.9+). Defaults to false.
         """
         root = ET.Element(ROOT_ELEMENT)
         tree = ET.ElementTree(root)
@@ -173,8 +183,6 @@ class MatmlWriter:
         materials_element = ET.SubElement(root, MATERIALS_ELEMENT_KEY)
         matml_doc_element = ET.SubElement(materials_element, MATML_DOC_KEY)
 
-        metadata_property_set = {}
-
         self._add_materials(matml_doc_element)
 
         # add metadata to the XML tree
@@ -185,4 +193,9 @@ class MatmlWriter:
         self._add_transfer_ids(root)
 
         print(f"write xml to {path}")
+        if kwargs.get("indent", False):
+            if hasattr(ET, "indent"):
+                ET.indent(tree)
+            else:
+                print(f"ElementTree does not have `indent`. Python 3.9+ required!")
         tree.write(path)
