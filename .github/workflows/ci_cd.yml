@@ -71,7 +71,6 @@ jobs:
         # Only the tox environment specified in the tox.ini gh-actions is run
         run: tox
 
-
   docs:
     name: Documentation
     runs-on: ubuntu-latest
@@ -88,6 +87,31 @@ jobs:
       - name: Generate the documentation with tox
         run: tox -e doc
 
+      - name: Upload HTML Documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: Documentation-html
+          path: doc/_build/html/
+          retention-days: 7
+
+  upload_docs:
+    name: Upload documentation
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: [docs]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: Documentation-html
+          path: docs
+      - name: Deploy documentation to gh pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          BRANCH: gh-pages
+          FOLDER: Documentation-html
+          CLEAN: true
+          SINGLE_COMMIT: true
 
   build:
     name: Build library
