@@ -8,6 +8,7 @@ import numpy as np
 MP_MATERIAL_HEADER_REGEX = re.compile(r"MATERIAL NUMBER\s+([\d]+)")
 TB_MATERIAL_HEADER_REGEX = re.compile(r"\(([A-Z]+)\) Table For Material\s+([\d]+)[^\n]*")
 FLOAT_VALUE_REGEX = re.compile(r"(-?\d+\.\d*([Ee][+-]\d+)?)")
+INTEGER_VALUE_REGEX = re.compile(r"(-?\d+)")
 MATRIX_LABEL_REGEX = re.compile(r"(\w\s?\d{1,2})")
 
 model_type = Union[float, np.ndarray]

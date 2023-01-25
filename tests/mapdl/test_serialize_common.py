@@ -4,7 +4,12 @@ from ansys.mapdl.core import Mapdl as _MapdlCore
 import numpy as np
 import pytest
 
-from ansys.materials.manager._models import Constant, ModelValidationException, PiecewiseLinear
+from ansys.materials.manager._models import (
+    Constant,
+    ModelValidationException,
+    PiecewiseLinear,
+    Polynomial,
+)
 from ansys.materials.manager.material import Material
 
 TEST_MATERIAL = Material(
@@ -89,5 +94,81 @@ class TestSerializePiecewiseLinear:
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(
             ModelValidationException, match="x_values must have one dimension, not 2"
+        ):
+            model.write_model(TEST_MATERIAL, mock_mapdl)
+
+
+class TestSerializePolynomial:
+    coefficients = np.array([0.0, 1.0, 2.0, 3.0, 4.0])
+    x_data = np.array([0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+
+    def test_valid_data_succeeds(self):
+        model = Polynomial("Density", coefficients=self.coefficients)
+        mock_mapdl = MagicMock(spec=_MapdlCore)
+        model.write_model(TEST_MATERIAL, mock_mapdl)
+        mock_mapdl.mp.assert_has_calls(
+            [
+                call("DENS", TEST_MATERIAL.material_id, *self.coefficients),
+            ]
+        )
+
+    def test_valid_data_with_sample_points_succeeds(self):
+        model = Polynomial("Density", coefficients=self.coefficients, sample_points=self.x_data)
+        mock_mapdl = MagicMock(spec=_MapdlCore)
+        model.write_model(TEST_MATERIAL, mock_mapdl)
+        mock_mapdl.mptemp.assert_has_calls([call(1, *self.x_data[0:6]), call(7, self.x_data[6])])
+        mock_mapdl.mp.assert_has_calls(
+            [
+                call("DENS", TEST_MATERIAL.material_id, *self.coefficients),
+            ]
+        )
+
+    def test_no_name_fails(self):
+        model = Polynomial(None, coefficients=self.coefficients)
+        mock_mapdl = MagicMock(spec=_MapdlCore)
+        with pytest.raises(ModelValidationException, match="Invalid property name"):
+            model.write_model(TEST_MATERIAL, mock_mapdl)
+
+    def test_no_value_fails(self):
+        model = Polynomial("Density", coefficients=None)
+        mock_mapdl = MagicMock(spec=_MapdlCore)
+        with pytest.raises(ModelValidationException, match="coefficients is empty"):
+            model.write_model(TEST_MATERIAL, mock_mapdl)
+
+    def test_invalid_name_fails(self):
+        model = Polynomial("Nonsense Quantity", coefficients=self.coefficients)
+        mock_mapdl = MagicMock(spec=_MapdlCore)
+        with pytest.raises(KeyError):
+            model.write_model(TEST_MATERIAL, mock_mapdl)
+
+    def test_sample_points_too_long_fails(self):
+        model = Polynomial(
+            "Density", coefficients=self.coefficients, sample_points=np.arange(0, 200, 1)
+        )
+        mock_mapdl = MagicMock(spec=_MapdlCore)
+        with pytest.raises(ValueError, match="MAPDL Supports up to 100 sample points"):
+            model.write_model(TEST_MATERIAL, mock_mapdl)
+
+    def test_coefficients_too_long_fails(self):
+        model = Polynomial("Density", coefficients=np.arange(0, 200, 1))
+        mock_mapdl = MagicMock(spec=_MapdlCore)
+        with pytest.raises(ValueError, match="MAPDL Supports up to 5 coefficients"):
+            model.write_model(TEST_MATERIAL, mock_mapdl)
+
+    def test_invalid_coefficients_dimension_fails(self):
+        model = Polynomial("Density", coefficients=np.array([[1, 2], [3, 4]]))
+        mock_mapdl = MagicMock(spec=_MapdlCore)
+        with pytest.raises(
+            ModelValidationException, match="coefficients must have one dimension, not 2"
+        ):
+            model.write_model(TEST_MATERIAL, mock_mapdl)
+
+    def test_invalid_sample_points_dimension_fails(self):
+        model = Polynomial(
+            "Density", coefficients=self.coefficients, sample_points=np.array([[1, 2], [3, 4]])
+        )
+        mock_mapdl = MagicMock(spec=_MapdlCore)
+        with pytest.raises(
+            ModelValidationException, match="sample_points must have one dimension, not 2"
         ):
             model.write_model(TEST_MATERIAL, mock_mapdl)
