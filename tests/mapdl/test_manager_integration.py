@@ -1,3 +1,5 @@
+from math import floor, log10
+
 from ansys.mapdl.core import Mapdl
 import numpy as np
 from numpy.testing import assert_array_equal
@@ -8,6 +10,11 @@ pytestmark = pytest.mark.mapdl_integration
 from ansys.materials.manager._models import Constant, PiecewiseLinear, Polynomial
 from ansys.materials.manager.material import Material
 from ansys.materials.manager.material_manager import MaterialManager
+
+
+# This is necessary because MAPDL only returns 5 significant figures when we execute TBLIST...
+def round_sig(x, sig_figs=4):
+    return round(x, sig_figs - int(floor(log10(abs(x)))))
 
 
 @pytest.fixture
@@ -84,7 +91,7 @@ def test_can_write_and_return_interpolated_property(manager):
 
 def test_can_write_and_return_polynomial_property(manager):
     id_ = "4"
-    mat = Material("TestMaterial", id_, reference_temperature=23.0)
+    mat = Material("TestMaterial", id_)
     x_data = np.arange(273, 473, 10)
     coefficients = np.array([1.0, 2.0, 3.0])
     model = Polynomial("Density", coefficients=coefficients, sample_points=x_data)
@@ -96,7 +103,7 @@ def test_can_write_and_return_polynomial_property(manager):
     assert id_ in results
     material_result = results[id_]
     assert material_result.material_id == id_
-    assert len(material_result.models) == 2
+    assert len(material_result.models) == 3
     density_model = next(
         model_ for model_ in material_result.models if model_.name.lower() == "density"
     )
@@ -104,5 +111,6 @@ def test_can_write_and_return_polynomial_property(manager):
     assert_array_equal(density_model.x, x_data)
 
     expected_output = np.polyval(np.flip(coefficients), x_data)
+    rounded_output = [round_sig(val) for val in expected_output]
 
-    assert_array_equal(density_model.y, expected_output)
+    assert_array_equal(density_model.y, rounded_output)
