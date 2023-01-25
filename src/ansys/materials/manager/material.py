@@ -1,3 +1,4 @@
+"""Provides the ``Material`` class."""
 from typing import List, Optional
 
 from ._models import _BaseModel
@@ -26,11 +27,11 @@ class Material:
 
         Parameters
         ----------
-        material_name: s:wtr
-            The name of the material
-        material_id: str
+        material_name : str
+            The name of the material.
+        material_id : str
             The ID to be associated with this material.
-        models: Dict[str, _BaseModel]
+        models : Dict[str, _BaseModel]
             Dictionary of nonlinear material models. Specified with their model code (from the
             TB command), and the model object.
         """

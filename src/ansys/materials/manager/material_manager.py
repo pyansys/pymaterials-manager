@@ -1,3 +1,4 @@
+"""Provides the ``MaterialManager`` class."""
 import inspect
 from typing import Any, Dict
 
@@ -25,7 +26,7 @@ class MaterialManager:
 
         Parameters
         ----------
-        pyansys_client: Any
+        pyansys_client : Any
             Valid instance of a PyAnsys Client. Only pyMAPDL and pyFluent are currently
             supported.
         """
@@ -44,13 +45,13 @@ class MaterialManager:
 
         Parameters
         ----------
-        obj: object
-            Any python object
+        obj : object
+            Any python object.
 
         Returns
         -------
         bool
-            True if object is strictly a subclass of :obj:`models._BaseModel`, otherwise False
+            True if object is strictly a subclass of :obj:`models._BaseModel`, otherwise False.
         """
         return (
             isinstance(obj, type)
@@ -64,8 +65,8 @@ class MaterialManager:
 
         Parameters
         ----------
-        material: Material
-            Material object to be written to MAPDL
+        material : Material
+            Material object to be written to MAPDL.
         """
         for model in material.models:
             assert isinstance(model, _BaseModel)

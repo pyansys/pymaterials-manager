@@ -1,3 +1,4 @@
+"""Provides the ``MaterialDataParse`` class."""
 from typing import Dict, List, Optional
 
 from ansys.materials.manager._models import Constant, PiecewiseLinear, _BaseModel
@@ -15,10 +16,10 @@ class _MaterialDataParser:
 
         Parameters
         ----------
-        data: str
+        data : str
             String response from the `MPLIST` command.
-        id_: int
-            Material identity to be parsed
+        id_ : int
+            Material identity to be parsed.
 
         Returns
         -------
@@ -35,15 +36,15 @@ class _MaterialDataParser:
 
         Parameters
         ----------
-        data: str
-            String response from the `MPLIST` command
-        id_: int
-            Material identity to be extracted
+        data : str
+            String response from the `MPLIST` command.
+        id_ : int
+            Material identity to be extracted.
 
         Returns
         -------
         List[str]
-            Relevant section of the data input, split on newlines
+            Relevant section of the data input, split on newlines.
         """
         material_ids = map(int, MP_MATERIAL_HEADER_REGEX.findall(data))
         if id_ not in material_ids:
@@ -73,8 +74,8 @@ class _MaterialDataParser:
 
         Parameters
         ----------
-        material_data: List[str]
-            List of lines containing property data for one material
+        material_data : List[str]
+            List of lines containing property data for one material.
 
         Returns
         -------
@@ -111,20 +112,20 @@ class _MaterialDataParser:
 
         Parameters
         ----------
-        header_line: str
-            Material property header line
+        header_line : str
+            Material property header line.
 
         Returns
         -------
         str
-            Corresponding standard name for the property
+            Corresponding standard name for the property.
 
         Raises
         ------
         KeyError
-            If the header line specifies an unknown property
+            If the header line specifies an unknown property.
         IndexError
-            If the header line does not match the expected format
+            If the header line does not match the expected format.
         """
         stripped_header_line = header_line.strip()
         try:
@@ -146,10 +147,10 @@ class _MaterialDataParser:
 
         Parameters
         ----------
-        property_name: str
-            Name of the property to be deserialized
-        property_data: List[str]
-            Property data section to be deserialized
+        property_name : str
+            Name of the property to be deserialized.
+        property_data : List[str]
+            Property data section to be deserialized.
 
         Returns
         -------

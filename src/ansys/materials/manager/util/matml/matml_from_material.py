@@ -1,3 +1,4 @@
+"""Provides the ``MatmlWriter`` class."""
 import os
 from typing import Dict, Sequence, Union
 import xml.etree.ElementTree as ET
@@ -25,8 +26,8 @@ class MatmlWriter:
     """
     Exports a list of MAPDL materials to an engineering data XML file.
 
-    Example
-    -------
+    Examples
+    --------
     > writer = MatmlWriter(materials)
     > writer.export('engineering_data.xml')
     """
@@ -164,10 +165,11 @@ class MatmlWriter:
 
         Parameters
         ----------
-        path:
-            File path
-        materials:
-            list of materials
+        path :
+            File path.
+        materials :
+            list of materials.
+
         Keyword arguments
         -----------------
         indent - add an indent to format the XML output (python 3.9+). Defaults to false.

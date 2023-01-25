@@ -1,3 +1,4 @@
+"""Provides the ``Mapdl reader`` module."""
 from typing import Dict
 
 from ansys.mapdl.core.mapdl import _MapdlCore
@@ -15,8 +16,8 @@ def read_mapdl(mapdl: _MapdlCore) -> Dict[str, Material]:
 
     Parameters
     ----------
-    mapdl: _MapdlCore
-        Active pyMAPDL session
+    mapdl : _MapdlCore
+        Active pyMAPDL session.
 
     Returns
     -------

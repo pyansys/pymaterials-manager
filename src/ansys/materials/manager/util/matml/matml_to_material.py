@@ -1,3 +1,4 @@
+"""Provides the list of materials into Material objects module."""
 from typing import Dict, Sequence
 
 from ansys.materials.manager._models import Constant

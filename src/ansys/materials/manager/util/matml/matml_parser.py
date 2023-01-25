@@ -1,3 +1,4 @@
+"""Provides the ``Matml_parser`` module."""
 from dataclasses import dataclass
 import os
 from typing import Any, Dict, Union
@@ -62,7 +63,7 @@ class MatmlReader:
 
         Parameters
         ----------
-        file_path:
+        file_path :
             Matml (engineering data xml) file path
         """
         self.matml_file_path = file_path
