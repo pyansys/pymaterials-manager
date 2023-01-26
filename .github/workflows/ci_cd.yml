@@ -70,7 +70,7 @@ jobs:
           python -m pip install --upgrade pip poetry tox tox-gh-actions
       - name: Test with tox
         # Only the tox environment specified in the tox.ini gh-actions is run
-        run: tox -e py-coverage 
+        run: tox -e py310-coverage 
 
   docs:
     name: Documentation
