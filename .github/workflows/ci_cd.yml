@@ -115,7 +115,7 @@ jobs:
   upload_docs:
     name: Upload documentation
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    #if: github.ref == 'refs/heads/main'
     needs: [build]
     steps:
       - uses: actions/checkout@v3
@@ -129,4 +129,38 @@ jobs:
           BRANCH: gh-pages
           FOLDER: Documentation-html
           CLEAN: true
-          SINGLE_COMMIT: true
+          single_commit: true
+
+  Release:
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    needs: [style, build, docs, tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
+
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+      
+      - name: List directory structure
+        run: ls -R
+
+      # note how we use the PyPI tokens
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          python -m pip install --upgrade pip twine
+          python -m twine upload --skip-existing ./**/*.whl
+          python -m twine upload --skip-existing ./**/*.tar.gz
+      
+      - name: Release to GitHub
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ./**/*.whl
+            ./**/*.zip
+            ./**/*.tar.gz
