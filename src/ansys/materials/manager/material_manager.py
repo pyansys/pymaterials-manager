@@ -51,7 +51,8 @@ class MaterialManager:
         Returns
         -------
         bool
-            ``True`` if object is strictly a subclass of :obj:`models._BaseModel`, otherwise ``False``.
+            ``True`` if object is strictly a subclass of :obj:`models._BaseModel`,
+            otherwise ``False``.
         """
         return (
             isinstance(obj, type)
