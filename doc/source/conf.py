@@ -101,9 +101,9 @@ autoapi_options = [
     "undoc-members",
     "show-inheritance",
     "show-module-summary",
-    "special-members",
 ]
 autoapi_template_dir = "_autoapi_templates"
-suppress_warnings = ["autoapi.python_import_resolution"]
+suppress_warnings = ["autoapi"]
 exclude_patterns = ["_autoapi_templates/index.rst"]
 autoapi_python_use_implicit_namespaces = True
+autoapi_python_class_content = "both"
