@@ -6,6 +6,7 @@ if sys.version_info >= (3, 8):
     from importlib import metadata as metadata
 
     __version__ = metadata.version("ansys-materials-manager")
+
 else:
     from importlib_metadata import metadata as metadata_backport
 

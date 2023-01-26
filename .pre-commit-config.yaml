@@ -22,6 +22,19 @@ repos:
   hooks:
   - id: codespell
 
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: check-merge-conflict
+  - id: debug-statements
+  - id: requirements-txt-fixer
+
+# this validates our github workflow files
+- repo: https://github.com/python-jsonschema/check-jsonschema
+  rev: 0.20.0
+  hooks:
+  - id: check-github-workflows
+
 - repo: https://github.com/pycqa/pydocstyle
   rev: 6.1.1
   hooks:

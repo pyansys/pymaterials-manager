@@ -1,7 +1,7 @@
 """Sphinx documentation configuration file."""
 from datetime import datetime
 
-from ansys_sphinx_theme import pyansys_logo_black as logo
+from ansys_sphinx_theme import ansys_favicon, pyansys_logo_black
 
 # Project information
 project = "ansys-materials-manager"
@@ -10,7 +10,8 @@ author = "ANSYS, Inc."
 release = version = "0.1.dev0"
 
 # Select desired logo, theme, and declare the html title
-html_logo = logo
+html_logo = pyansys_logo_black
+html_favicon = ansys_favicon
 html_theme = "ansys_sphinx_theme"
 html_short_title = html_title = "pymaterials-manager"
 
@@ -27,6 +28,7 @@ html_theme_options = {
 # Sphinx extensions
 extensions = [
     "sphinx.ext.autodoc",
+    "autoapi.extension",
     "sphinx.ext.autosummary",
     "numpydoc",
     "sphinx.ext.intersphinx",
@@ -79,3 +81,29 @@ source_suffix = ".rst"
 
 # The master toctree document.
 master_doc = "index"
+
+
+# The suffix(es) of source filenames.
+source_suffix = {
+    ".rst": "restructuredtext",
+    ".mystnb": "jupyter_notebook",
+    ".md": "markdown",
+}
+
+# The master toctree document.
+master_doc = "index"
+
+# Configuration for Sphinx autoapi
+autoapi_type = "python"
+autoapi_dirs = ["../../src/ansys"]
+autoapi_options = [
+    "members",
+    "undoc-members",
+    "show-inheritance",
+    "show-module-summary",
+]
+autoapi_template_dir = "_autoapi_templates"
+suppress_warnings = ["autoapi"]
+exclude_patterns = ["_autoapi_templates/index.rst"]
+autoapi_python_use_implicit_namespaces = True
+autoapi_python_class_content = "both"

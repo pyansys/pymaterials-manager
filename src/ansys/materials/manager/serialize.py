@@ -1,3 +1,4 @@
+"""Provides functions to serialize materials."""
 import json
 import pathlib
 from typing import Dict, Union
@@ -25,8 +26,8 @@ def serialize_material(material: Material) -> str:
 
     Parameters
     ----------
-    material: Material
-        Material to be serialized
+    material : Material
+        Material to be serialized.
 
     Returns
     -------
@@ -43,10 +44,10 @@ def serialize_material_to_file(material: Material, file_name: Union[str, pathlib
 
     Parameters
     ----------
-    material: Material
-        Material to be serialized
-    file_name: Union[str, pathlib.Path]
-        Name of file to be created
+    material : Material
+        Material to be serialized.
+    file_name : Union[str, pathlib.Path]
+        Name of file to be created.
     """
     sm = serialize_material(material)
     with open(file_name, "w", encoding="utf8") as f:

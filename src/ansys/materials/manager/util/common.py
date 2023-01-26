@@ -1,3 +1,4 @@
+"""Provides the ``common`` module."""
 from itertools import islice
 import re
 from typing import Generator, Iterable, List, Union
@@ -19,8 +20,8 @@ def _chunk_data(data: Iterable) -> Generator[List, None, None]:
 
     Parameters
     ----------
-    data: Iterable
-        Input data
+    data : Iterable
+        Input data.
 
     Returns
     -------
@@ -44,8 +45,8 @@ def _chunk_lower_triangular_matrix(
 
     Parameters
     ----------
-    matrix: np.ndarray
-        Input square matrix
+    matrix : np.ndarray
+        Input square matrix.
 
     Returns
     -------
@@ -76,18 +77,18 @@ def fill_upper_triangular_matrix(vector: List[float]) -> np.ndarray:
 
     Parameters
     ----------
-    vector: List[float]
+    vector : List[float]
         Coefficients of the lower half-matrix. E.g. D11, D12, D22, etc.
 
     Returns
     -------
     np.ndarray
-        Square symmetric matrix
+        Square symmetric matrix.
 
     Raises
     ------
     ValueError
-        If the length of the input vector is not a triangular number
+        If the length of the input vector is not a triangular number.
     """
     size_x = (np.sqrt(8 * len(vector) + 1) - 1) / 2
     if not np.isclose(int(size_x), size_x):

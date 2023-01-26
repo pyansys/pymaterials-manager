@@ -31,7 +31,7 @@ Pymaterials manager
    :alt: Black
 
 
-Python package to unify material management across the Ansys portfolio
+Python package to unify material management across the Ansys portfolio.
 
 
 How to install
@@ -102,7 +102,7 @@ need to follow these steps:
     
         poetry run python -m pip install ansys-materials-manager
         
-    #. Finally, verify your development installation by running:
+#. Finally, verify your development installation by running:
 
     .. code:: bash
         

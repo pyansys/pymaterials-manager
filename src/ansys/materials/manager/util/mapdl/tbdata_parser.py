@@ -1,3 +1,4 @@
+"""Provides the ``TableDataParser`` class."""
 from typing import Dict, List, Optional
 
 from ansys.materials.manager._models import _BaseModel
@@ -19,10 +20,10 @@ class _TableDataParser:
 
         Parameters
         ----------
-        data: str
-            String response from the `TBLIST` command
-        id_: int
-            Material identity to be extracted
+        data : str
+            String response from the `TBLIST` command.
+        id_ : int
+            Material identity to be extracted.
 
         Returns
         -------
@@ -67,15 +68,15 @@ class _TableDataParser:
 
         Parameters
         ----------
-        model_code: str
-            String model code. See :meth:`ansys.mapdl.core._commands._preproc.materials.tb`
-        model_data: List[str]
-            List of lines containing model data for one material and one model
+        model_code : str
+            String model code. See :meth:`ansys.mapdl.core._commands._preproc.materials.tb`.
+        model_data : List[str]
+            List of lines containing model data for one material and one model.
 
         Returns
         -------
         _BaseModel
-            A model object
+            A model object.
 
         Raises
         ------

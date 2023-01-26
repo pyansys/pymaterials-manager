@@ -52,6 +52,7 @@ jobs:
   tests:
     name: Tests and coverage
     runs-on: ${{ matrix.os }}
+    needs: [docs , style]
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest]
@@ -69,8 +70,7 @@ jobs:
           python -m pip install --upgrade pip poetry tox tox-gh-actions
       - name: Test with tox
         # Only the tox environment specified in the tox.ini gh-actions is run
-        run: tox
-
+        run: tox -e py310-coverage 
 
   docs:
     name: Documentation
@@ -88,10 +88,17 @@ jobs:
       - name: Generate the documentation with tox
         run: tox -e doc
 
+      - name: Upload HTML Documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: Documentation-html
+          path: .tox/doc_out/
+          retention-days: 7
 
   build:
     name: Build library
     runs-on: ubuntu-latest
+    needs: [docs, tests]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
@@ -104,3 +111,22 @@ jobs:
           python -m pip install -r requirements/requirements_build.txt
           poetry build
           python -m twine check dist/*
+
+  upload_docs:
+    name: Upload documentation
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: Documentation-html
+          path: docs
+      - name: Deploy documentation to gh pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          BRANCH: gh-pages
+          FOLDER: Documentation-html
+          CLEAN: true
+          SINGLE_COMMIT: true
