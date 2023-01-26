@@ -1,6 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: "pip" # See documentation for possible values
+    directory: "/"
     schedule:
       interval: "daily"
     labels:
