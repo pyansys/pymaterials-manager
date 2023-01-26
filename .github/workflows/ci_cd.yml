@@ -121,7 +121,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: Documentation-html
-          path: ~/html
+          path: ~/doc_out
 
       # list current directory
       - name: List directory structure
@@ -131,7 +131,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           BRANCH: gh-pages
-          FOLDER: ~/html
+          FOLDER: ~/doc_out
           CLEAN: true
 
   Release:
