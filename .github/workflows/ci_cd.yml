@@ -95,25 +95,6 @@ jobs:
           path: doc/_build/html/
           retention-days: 7
 
-  upload_docs:
-    name: Upload documentation
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    needs: [docs]
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
-        with:
-          name: Documentation-html
-          path: docs
-      - name: Deploy documentation to gh pages
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
-        with:
-          BRANCH: gh-pages
-          FOLDER: Documentation-html
-          CLEAN: true
-          SINGLE_COMMIT: true
-
   build:
     name: Build library
     runs-on: ubuntu-latest
@@ -130,3 +111,22 @@ jobs:
           python -m pip install -r requirements/requirements_build.txt
           poetry build
           python -m twine check dist/*
+
+  upload_docs:
+    name: Upload documentation
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: Documentation-html
+          path: docs
+      - name: Deploy documentation to gh pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          BRANCH: gh-pages
+          FOLDER: Documentation-html
+          CLEAN: true
+          SINGLE_COMMIT: true
