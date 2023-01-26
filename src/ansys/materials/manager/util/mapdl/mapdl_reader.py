@@ -1,4 +1,4 @@
-"""Provides the ``Mapdl reader`` module."""
+"""Provides the ``mapdl_reader`` module."""
 from typing import Dict
 
 from ansys.mapdl.core.mapdl import _MapdlCore

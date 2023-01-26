@@ -1,4 +1,4 @@
-"""Provides the ``TableDataParse`` class."""
+"""Provides the ``TableDataParser`` class."""
 from typing import Dict, List, Optional
 
 from ansys.materials.manager._models import _BaseModel

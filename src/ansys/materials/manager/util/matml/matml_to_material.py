@@ -1,4 +1,4 @@
-"""Provides the list of materials into Material objects module."""
+"""Provides a function to convert MatML entries into Material objects."""
 from typing import Dict, Sequence
 
 from ansys.materials.manager._models import Constant
