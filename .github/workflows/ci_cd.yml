@@ -118,17 +118,21 @@ jobs:
     #if: github.ref == 'refs/heads/main'
     needs: [build]
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
         with:
           name: Documentation-html
-      - name: Deploy documentation to gh pages
+          path: ~/html
+
+      # list current directory
+      - name: List directory structure
+        run: ls -R
+
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           BRANCH: gh-pages
-          FOLDER: Documentation-html
+          FOLDER: ~/html
           CLEAN: true
-          single-commit: true
 
   Release:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
