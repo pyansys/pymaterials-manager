@@ -128,12 +128,12 @@ jobs:
         run: ls -R
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: ~/doc_out
-          CLEAN: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: ~/doc_out
+          clean: true
 
   Release:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
