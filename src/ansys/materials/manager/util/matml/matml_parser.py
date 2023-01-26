@@ -1,4 +1,4 @@
-"""Provides the ``Matml_parser`` module."""
+"""Provides the ``matml_parser`` module."""
 from dataclasses import dataclass
 import os
 from typing import Any, Dict, Union
