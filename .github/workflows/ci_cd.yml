@@ -108,9 +108,9 @@ jobs:
       - name: Install dependencies and build the library
         run: |
           python -m pip install --upgrade pip poetry
-          python -m pip install -r requirements/requirements_build.txt
+          poetry install
           poetry build
-          python -m twine check dist/*
+          poetry run twine check dist/*
 
   upload_docs:
     name: Upload documentation
