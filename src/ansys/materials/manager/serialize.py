@@ -1,4 +1,4 @@
-"""Provides the serialize functions."""
+"""Provides functions to serialize materials."""
 import json
 import pathlib
 from typing import Dict, Union

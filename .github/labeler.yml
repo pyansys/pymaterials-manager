@@ -8,6 +8,6 @@ maintenance:
 dependencies:
 - requirements/*
 enhancement:
-- ansys/**
+- src/**
 testing:
 - tests/**
