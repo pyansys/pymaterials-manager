@@ -140,6 +140,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          folder: ~/doc_out
           branch: gh-pages
           clean: true
 
