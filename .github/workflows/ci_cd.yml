@@ -111,6 +111,11 @@ jobs:
           poetry install
           poetry build
           poetry run twine check dist/*
+      - name: Upload wheel
+        uses: actions/upload-artifact@v3
+        with:
+          path: dist/
+          retention-days: 7
 
   upload_docs:
     name: Upload documentation
@@ -119,14 +124,56 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
       - uses: actions/download-artifact@v3
         with:
           name: Documentation-html
-          path: docs
-      - name: Deploy documentation to gh pages
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+          path: ~/html
+  
+      # list the content of the current directory
+      - name: List directory structure
+        run: ls -R
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          BRANCH: gh-pages
-          FOLDER: Documentation-html
-          CLEAN: true
-          SINGLE_COMMIT: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          folder: ~/html
+          branch: gh-pages
+          clean: true
+
+  Release:
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    needs: [style, build, docs, tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
+
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+      
+      - name: List directory structure
+        run: ls -R
+
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          python -m pip install --upgrade pip twine
+          python -m twine upload --skip-existing ./**/*.whl
+          python -m twine upload --skip-existing ./**/*.tar.gz
+      
+      - name: Release to GitHub
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ./**/*.whl
+            ./**/*.zip
+            ./**/*.tar.gz
