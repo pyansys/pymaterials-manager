@@ -121,7 +121,7 @@ jobs:
     name: Upload documentation
     runs-on: ubuntu-latest
     #if: github.ref == 'refs/heads/main'
-    needs: [docs]
+    needs: [build]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
@@ -131,7 +131,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: Documentation-html
-
+  
       # list current directory
       - name: List directory structure
         run: ls -R
