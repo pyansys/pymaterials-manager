@@ -117,32 +117,6 @@ jobs:
           path: dist/
           retention-days: 7
 
-  upload_docs:
-    name: Upload documentation
-    runs-on: ubuntu-latest
-    #if: github.ref == 'refs/heads/main'
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.MAIN_PYTHON_VERSION }}
-      - uses: actions/download-artifact@v3
-        with:
-          name: Documentation-html
-  
-      # list current directory
-      - name: List directory structure
-        run: ls -R
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          clean: true
-
   Release:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     needs: [style, build, docs, tests]
@@ -168,6 +142,13 @@ jobs:
           python -m pip install --upgrade pip twine
           python -m twine upload --skip-existing ./**/*.whl
           python -m twine upload --skip-existing ./**/*.tar.gz
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          clean: true
       
       - name: Release to GitHub
         uses: softprops/action-gh-release@v1
