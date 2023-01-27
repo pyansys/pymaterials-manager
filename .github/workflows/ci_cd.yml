@@ -133,7 +133,7 @@ jobs:
           name: Documentation-html
           path: ~/html
   
-      # list current directory
+      # list the content of the current directory
       - name: List directory structure
         run: ls -R
 
@@ -161,7 +161,6 @@ jobs:
       - name: List directory structure
         run: ls -R
 
-      # note how we use the PyPI tokens
       - name: Publish to PyPI
         env:
           TWINE_USERNAME: __token__
