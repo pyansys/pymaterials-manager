@@ -111,6 +111,11 @@ jobs:
           poetry install
           poetry build
           poetry run twine check dist/*
+      - name: Upload wheel
+        uses: actions/upload-artifact@v3
+        with:
+          path: dist/
+          retention-days: 7
 
   upload_docs:
     name: Upload documentation
@@ -118,10 +123,14 @@ jobs:
     #if: github.ref == 'refs/heads/main'
     needs: [docs]
     steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
       - uses: actions/download-artifact@v3
         with:
           name: Documentation-html
-          path: ~/doc_out
 
       # list current directory
       - name: List directory structure
@@ -132,7 +141,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          folder: ~/doc_out
           clean: true
 
   Release:
