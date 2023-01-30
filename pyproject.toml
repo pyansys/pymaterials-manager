@@ -67,7 +67,7 @@ omit = [
     # omit commands for integration test
     "src/ansys/materials/manager/_models/_mapdl/anisotropic_elasticity.py",
     "src/ansys/materials/manager/util/mapdl/mpdata_parser.py ",
-    "ansys/materials/manager/util/mapdl/mapdl_reader.py ",
+    "src/ansys/materials/manager/util/mapdl/mapdl_reader.py ",
 ]
 
 [tool.coverage.report]
