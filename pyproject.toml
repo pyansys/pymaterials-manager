@@ -35,14 +35,12 @@ Sphinx = {version = "==5.1.1", optional = true}
 sphinx-autoapi = {version = "==2.0.1", optional = true}
 sphinx-copybutton = {version = "==0.5.1", optional = true}
 
-# Test dependencies
-pytest = "^7.2.0"
-pytest-cov = "^4.0.0"
-
 [tool.poetry.group.dev.dependencies]
-coolprop = "^6.4.1"
 ansys-mapdl-core = "^0.63.3"
 ansys-fluent-core = "^0.12.3"
+coolprop = "^6.4.1"
+pytest = "^7.2.0"
+pytest-cov = "^4.0.0"
 twine = "^4.0.2"
 
 [tool.poetry.extras]
@@ -52,10 +50,6 @@ doc = [
     "Sphinx",
     "sphinx-autoapi",
     "sphinx-copybutton",
-]
-tests = [
-    "pytest",
-    "pytest-cov"
 ]
 
 [tool.black]
