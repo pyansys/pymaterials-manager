@@ -13,7 +13,7 @@ contribute to Pymaterials-manager.
 The following contribution information is specific to Pymaterials-manager.
 
 
-Cloning the Pymaterials-manager repository
+Cloning the pymaterials-manager repository
 ==========================================
 
 Run this code to clone and install the latest version of Pymaterials-manager in development mode:
@@ -40,7 +40,7 @@ If your issue does not fit into one of these categories, create your own issue.
 
 To reach the project support team, email `pyansys.support@ansys.com <pyansys_support_>`_.
 
-Viewing Pymaterials-manager documentation
+Viewing pymaterials-manager documentation
 ==========================================
 
 Documentation for the latest stable release of Pymaterials-manager is hosted at
