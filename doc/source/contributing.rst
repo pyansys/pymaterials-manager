@@ -84,4 +84,4 @@ This way, it's not possible for you to push code that fails the style checks. Fo
 .. _dev_guide_contributing: https://dev.docs.pyansys.com/dev/how-to/contributing.html
 .. _dev_guide_coding_style: https://dev.docs.pyansys.com/dev/coding-style/index.html
 .. _PyMaterials-manager_issues: https://github.com/pyansys/pymaterials-manager/issues
-.. _PyMaterials-manager_docs:
+.. _PyMaterials-manager_docs: https://pymaterials.docs.pyansys.com

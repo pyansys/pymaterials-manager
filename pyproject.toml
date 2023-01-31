@@ -12,6 +12,7 @@ authors = ["ANSYS, Inc. <ansys.support@ansys.com>"]
 maintainers = ["PyAnsys developers <pyansys.maintainers@ansys.com>"]
 readme = "README.rst"
 repository = "https://github.com/pyansys/pymaterials-manager"
+documentation = "https://pymaterials.docs.pyansys.com"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3",
@@ -34,13 +35,15 @@ Sphinx = {version = "==5.1.1", optional = true}
 sphinx-autoapi = {version = "==2.0.1", optional = true}
 sphinx-copybutton = {version = "==0.5.1", optional = true}
 
-[tool.poetry.group.dev.dependencies]
+# Test dependencies
 pytest = "^7.2.0"
+pytest-cov = "^4.0.0"
+
+[tool.poetry.group.dev.dependencies]
 coolprop = "^6.4.1"
 ansys-mapdl-core = "^0.63.3"
 ansys-fluent-core = "^0.12.3"
 twine = "^4.0.2"
-pytest-cov = "^4.0.0"
 
 [tool.poetry.extras]
 doc = [
@@ -49,6 +52,10 @@ doc = [
     "Sphinx",
     "sphinx-autoapi",
     "sphinx-copybutton",
+]
+tests = [
+    "pytest",
+    "pytest-cov"
 ]
 
 [tool.black]
