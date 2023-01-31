@@ -102,7 +102,7 @@ class _MaterialDataParser:
         for name, value in property_lines.items():
             property_data.append(_MaterialDataParser._process_property(name, value))
         if reference_temperature is not None:
-            property_data.append(Constant("reference temperature", reference_temperature))
+            property_data.append(Constant("Strain Reference Temperature", reference_temperature))
         return property_data
 
     @staticmethod

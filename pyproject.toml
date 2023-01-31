@@ -12,7 +12,7 @@ authors = ["ANSYS, Inc. <ansys.support@ansys.com>"]
 maintainers = ["PyAnsys developers <pyansys.maintainers@ansys.com>"]
 readme = "README.rst"
 repository = "https://github.com/pyansys/pymaterials-manager"
-documentation = "https://pymaterials.docs.pyansys.com"
+documentation = "https://manager.materials.docs.pyansys.com"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3",
@@ -42,6 +42,7 @@ coolprop = "^6.4.1"
 pytest = "^7.2.0"
 pytest-cov = "^4.0.0"
 twine = "^4.0.2"
+pre-commit = "^3.0.2"
 
 [tool.poetry.extras]
 doc = [
