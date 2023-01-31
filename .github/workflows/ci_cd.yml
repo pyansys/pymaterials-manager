@@ -106,7 +106,7 @@ jobs:
 
       - name: "Start MAPDL"
         run: |
-          $MAPDL_IMAGE="${{ env.MAPDL_DOCKER_PACKAGE }}:${{ env.MAPDL_DOCKER_VERSION }}"
+          MAPDL_IMAGE="${{ env.MAPDL_DOCKER_PACKAGE }}:${{ env.MAPDL_DOCKER_VERSION }}"
           docker pull $MAPDL_IMAGE
           docker run \
               --name mapdl \
