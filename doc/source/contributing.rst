@@ -55,26 +55,32 @@ Pymaterials-manager follows PEP8 standard as outlined in the `PyAnsys Developmen
 
 To ensure your code meets minimum code styling standards, run::
 
-  pip install pre-commit
-  pre-commit run --all-files
+.. code:: console
+
+    pip install pre-commit
+    pre-commit run --all-files
 
 You can also install this as a pre-commit hook by running::
 
-  pre-commit install
+.. code:: console
+
+    pre-commit install
 
 This way, it's not possible for you to push code that fails the style checks. For example::
 
-  $ pre-commit install
-  $ git commit -am "added my cool feature"
-  black....................................................................Passed
-  isort....................................................................Passed
-  flake8...................................................................Passed
-  codespell................................................................Passed
-  check for merge conflicts................................................Passed
-  debug statements (python)................................................Passed
-  fix requirements.txt.....................................................Passed
-  Validate GitHub Workflows................................................Passed
-  pydocstyle...............................................................Passed
+.. code:: console
+
+    $ pre-commit install
+    $ git commit -am "added my cool feature"
+    black....................................................................Passed
+    isort....................................................................Passed
+    flake8...................................................................Passed
+    codespell................................................................Passed
+    check for merge conflicts................................................Passed
+    debug statements (python)................................................Passed
+    fix requirements.txt.....................................................Passed
+    Validate GitHub Workflows................................................Passed
+    pydocstyle...............................................................Passed
 
 
 .. LINKS AND REFERENCES
