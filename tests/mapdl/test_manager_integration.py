@@ -19,7 +19,7 @@ def round_sig(x, sig_figs=4):
 
 @pytest.fixture
 def mapdl():
-    mapdl = Mapdl()
+    mapdl = Mapdl(ip="127.0.0.1", port="50052", local=False)
     mapdl.prep7()
     yield mapdl
     mapdl.mpdele("all", "all")
@@ -41,7 +41,7 @@ def test_can_write_and_return_reference_temperature(manager):
     assert material_result.material_id == "1"
     assert len(material_result.models) == 1
     ref_temp = material_result.models[0]
-    assert ref_temp.name.lower() == "reference temperature"
+    assert ref_temp.name.lower() == "strain reference temperature"
     assert ref_temp.value == pytest.approx(23.0)
     assert isinstance(ref_temp, Constant)
 
@@ -103,7 +103,7 @@ def test_can_write_and_return_polynomial_property(manager):
     assert id_ in results
     material_result = results[id_]
     assert material_result.material_id == id_
-    assert len(material_result.models) == 3
+    assert len(material_result.models) == 2
     density_model = next(
         model_ for model_ in material_result.models if model_.name.lower() == "density"
     )

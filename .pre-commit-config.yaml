@@ -1,14 +1,14 @@
 repos:
 
 - repo: https://github.com/psf/black
-  rev: 22.10.0
+  rev: 22.12.0
   hooks:
   - id: black
     args: # arguments to configure black
       - --line-length=100
 
 - repo: https://github.com/pycqa/isort
-  rev: 5.10.1
+  rev: 5.12.0
   hooks:
   - id: isort
 
@@ -31,12 +31,12 @@ repos:
 
 # this validates our github workflow files
 - repo: https://github.com/python-jsonschema/check-jsonschema
-  rev: 0.20.0
+  rev: 0.21.0
   hooks:
   - id: check-github-workflows
 
 - repo: https://github.com/pycqa/pydocstyle
-  rev: 6.1.1
+  rev: 6.3.0
   hooks:
   - id: pydocstyle
     additional_dependencies: [toml]
