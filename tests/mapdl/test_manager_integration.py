@@ -19,7 +19,7 @@ def round_sig(x, sig_figs=4):
 
 @pytest.fixture
 def mapdl():
-    mapdl = Mapdl()
+    mapdl = Mapdl(ip="localhost", port="50052")
     mapdl.prep7()
     yield mapdl
     mapdl.mpdele("all", "all")
