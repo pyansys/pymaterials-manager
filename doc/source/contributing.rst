@@ -8,20 +8,20 @@ Overall guidance on contributing to a PyAnsys library appears in the
 `Contributing <dev_guide_contributing_>`_ topic
 in the *PyAnsys Developer's Guide*. Ensure that you are thoroughly familiar
 with it and all `Coding style <dev_guide_coding_style_>`_ before attempting to
-contribute to PyMaterials-manager.
+contribute to Pymaterials-manager.
  
-The following contribution information is specific to PyMaterials-manager.
+The following contribution information is specific to Pymaterials-manager.
 
 
-Cloning the PyMaterials-manager repository
+Cloning the Pymaterials-manager repository
 ==========================================
 
-Run this code to clone and install the latest version of PyMaterials-manager in development mode:
+Run this code to clone and install the latest version of Pymaterials-manager in development mode:
 
 .. code:: console
 
-    git clone https://github.com/pyansys/pymaterials-manager
-    cd pymaterials-manager
+    git clone https://github.com/pyansys/Pymaterials-manager
+    cd Pymaterials-manager
     pip install pip -U
     pip install -e .
 
@@ -29,7 +29,7 @@ Run this code to clone and install the latest version of PyMaterials-manager in 
 Posting issues
 ==============
 
-Use the `PyMaterials-manager Issues <PyMaterials-manager_issues_>`_
+Use the `Pymaterials-manager Issues <Pymaterials-manager_issues_>`_
 page to submit questions, report bugs, and request new features. When possible,
 use these issue templates:
 
@@ -40,16 +40,16 @@ If your issue does not fit into one of these categories, create your own issue.
 
 To reach the project support team, email `pyansys.support@ansys.com <pyansys_support_>`_.
 
-Viewing PyMaterials-manager documentation
+Viewing Pymaterials-manager documentation
 ==========================================
 
-Documentation for the latest stable release of PyMaterials-manager is hosted at
-`PyMaterials-manager Documentation <PyMaterials-manager_docs_>`_.
+Documentation for the latest stable release of Pymaterials-manager is hosted at
+`Pymaterials-manager Documentation <Pymaterials-manager_docs_>`_.
 
 Code style
 ==========
 
-PyMaterials-manager follows PEP8 standard as outlined in the `PyAnsys Development Guide
+Pymaterials-manager follows PEP8 standard as outlined in the `PyAnsys Development Guide
 <dev_guide_pyansys_>`_ and implements style checking using
 `pre-commit <precommit_>`_.
 
@@ -83,5 +83,5 @@ This way, it's not possible for you to push code that fails the style checks. Fo
 .. _dev_guide_pyansys: https://dev.docs.pyansys.com/
 .. _dev_guide_contributing: https://dev.docs.pyansys.com/dev/how-to/contributing.html
 .. _dev_guide_coding_style: https://dev.docs.pyansys.com/dev/coding-style/index.html
-.. _PyMaterials-manager_issues: https://github.com/pyansys/pymaterials-manager/issues
-.. _PyMaterials-manager_docs: https://pymaterials.docs.pyansys.com
+.. _Pymaterials-manager_issues: https://github.com/pyansys/pymaterials-manager/issues
+.. _Pymaterials-manager_docs: https://pymaterials.docs.pyansys.com
