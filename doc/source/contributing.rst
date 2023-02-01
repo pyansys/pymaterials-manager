@@ -22,8 +22,8 @@ Run this code to clone and install the latest version of Pymaterials-manager in 
 
     git clone https://github.com/pyansys/pymaterials-manager
     cd pymaterials-manager
-    pip install pip -U
-    pip install -e .
+    pip install poetry
+    poetry install
 
 
 Posting issues
