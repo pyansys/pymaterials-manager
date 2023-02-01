@@ -179,4 +179,4 @@ the building requirements and then executing the build module:
 .. _Sphinx: https://www.sphinx-doc.org/en/master/
 .. _tox: https://tox.wiki/
 .. _pymaterials-manager Issues: https://github.com/pyansys/pymaterials-manager/issues
-.. _Documentation: https://pymaterials.docs.pyansys.com/
+.. _Documentation: https://manager.materials.docs.pyansys.com/

@@ -20,8 +20,8 @@ Run this code to clone and install the latest version of Pymaterials-manager in 
 
 .. code:: console
 
-    git clone https://github.com/pyansys/Pymaterials-manager
-    cd Pymaterials-manager
+    git clone https://github.com/pyansys/pymaterials-manager
+    cd pymaterials-manager
     pip install pip -U
     pip install -e .
 
@@ -90,4 +90,4 @@ This way, it's not possible for you to push code that fails the style checks. Fo
 .. _dev_guide_contributing: https://dev.docs.pyansys.com/dev/how-to/contributing.html
 .. _dev_guide_coding_style: https://dev.docs.pyansys.com/dev/coding-style/index.html
 .. _Pymaterials-manager_issues: https://github.com/pyansys/pymaterials-manager/issues
-.. _Pymaterials-manager_docs: https://pymaterials.docs.pyansys.com
+.. _Pymaterials-manager_docs: https://manager.materials.docs.pyansys.com/
