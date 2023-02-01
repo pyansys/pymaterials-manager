@@ -149,22 +149,11 @@ encouraged to install this tool via:
     python -m pip install pre-commit && pre-commit install
 
 
-Documentation
--------------
+Documentation and issues
+------------------------
+For more information, see the `Documentation`_ page.
 
-For building documentation, you can either run the usual rules provided in the
-`Sphinx`_ Makefile, such us:
-
-.. code:: bash
-
-    make -C doc/ html && your_browser_name doc/html/index.html
-
-However, the recommended way of checking documentation integrity is using:
-
-.. code:: bash
-
-    tox -e doc && your_browser_name .tox/doc_out/index.html
-
+Feel free to post issues and other questions at `pymaterials-manager Issues`_.
 
 Distributing
 ------------
@@ -189,3 +178,5 @@ the building requirements and then executing the build module:
 .. _pytest: https://docs.pytest.org/en/stable/
 .. _Sphinx: https://www.sphinx-doc.org/en/master/
 .. _tox: https://tox.wiki/
+.. _pymaterials-manager Issues: https://github.com/pyansys/pymaterials-manager/issues
+.. _Documentation: https://manager.materials.docs.pyansys.com/
