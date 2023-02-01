@@ -55,20 +55,14 @@ Pymaterials-manager follows PEP8 standard as outlined in the `PyAnsys Developmen
 
 To ensure your code meets minimum code styling standards, run::
 
-.. code:: console
-
     pip install pre-commit
     pre-commit run --all-files
 
 You can also install this as a pre-commit hook by running::
 
-.. code:: console
-
     pre-commit install
 
 This way, it's not possible for you to push code that fails the style checks. For example::
-
-.. code:: console
 
     $ pre-commit install
     $ git commit -am "added my cool feature"
