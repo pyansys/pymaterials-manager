@@ -182,20 +182,20 @@ importlib-metadata = ">=4.0"
 
 [[package]]
 name = "ansys-sphinx-theme"
-version = "0.8.1"
+version = "0.8.2"
 description = "A theme devised by ANSYS, Inc. for Sphinx documentation."
 category = "main"
 optional = true
 python-versions = ">=3.5"
 files = [
-    {file = "ansys-sphinx-theme-0.8.1.tar.gz", hash = "sha256:2a74f74d0f818ad4c1bf6a52e7e38b75df29c866f7ef1023605891308b197890"},
-    {file = "ansys_sphinx_theme-0.8.1-py3-none-any.whl", hash = "sha256:8cc4d2c15e73b26dea0a4fc1fc59f6202d261100314d5443ce904c131306653c"},
+    {file = "ansys-sphinx-theme-0.8.2.tar.gz", hash = "sha256:eddff4954318e0cf924771d93bc128219669ecff0ddfb1d8d7d6c00f82b5771d"},
+    {file = "ansys_sphinx_theme-0.8.2-py3-none-any.whl", hash = "sha256:01c9ed16df951bfc31bc2c30578f84919e0b9e8a98a132ee3465ad4fe22dde22"},
 ]
 
 [package.dependencies]
 Jinja2 = ">=3.1.2"
 pydata-sphinx-theme = "0.9.0"
-Sphinx = ">=4.0.0"
+Sphinx = ">=4.2.0,<6"
 
 [package.extras]
 doc = ["Sphinx (==5.3.0)", "numpydoc (==1.5.0)", "sphinx-copybutton (==0.5.1)", "sphinx-notfound-page (==0.8.3)"]
@@ -2608,4 +2608,4 @@ doc = ["ansys-sphinx-theme", "numpydoc", "Sphinx", "sphinx-autoapi", "sphinx-cop
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4.0"
-content-hash = "3068a1ab0c97c0d846942c8bd149ecc49f61a6399e1b68c7dc6fc7c03438a6ef"
+content-hash = "d7d1d75cc69ca131fc5c11ac88a3085e2344e4b510faab54768b51b79fcd4dbb"
