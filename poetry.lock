@@ -182,14 +182,14 @@ importlib-metadata = ">=4.0"
 
 [[package]]
 name = "ansys-sphinx-theme"
-version = "0.9.3"
+version = "0.9.5"
 description = "A theme devised by ANSYS, Inc. for Sphinx documentation."
 category = "main"
 optional = true
 python-versions = ">=3.7"
 files = [
-    {file = "ansys-sphinx-theme-0.9.3.tar.gz", hash = "sha256:1decc5c1272af145e668c3aaf66e0379e1c36053f5ca84575d6ffb024eb2cc3d"},
-    {file = "ansys_sphinx_theme-0.9.3-py3-none-any.whl", hash = "sha256:5195b9aef2e87ebf6585f22e3affc41bdf34d05099292fa9486fd14c5fd53987"},
+    {file = "ansys-sphinx-theme-0.9.5.tar.gz", hash = "sha256:acdbc0f1b67951f43848e2cc9d02725c85bd85ed6ded307163f33813c8454559"},
+    {file = "ansys_sphinx_theme-0.9.5-py3-none-any.whl", hash = "sha256:2871e834d139565f140805fb42f4f2b3b9faad37ff28df20bb94801afeba5e18"},
 ]
 
 [package.dependencies]
@@ -2752,4 +2752,4 @@ doc = ["ansys-sphinx-theme", "numpydoc", "Sphinx", "sphinx-autoapi", "sphinx-cop
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4.0"
-content-hash = "2faacfec276fa9956a66a275665c7e8620102be855b65503399e6a4cbd0c4666"
+content-hash = "ab2fe189d512a203797c9536f23e036fabe807356e26a1805c6989d55312fbac"
