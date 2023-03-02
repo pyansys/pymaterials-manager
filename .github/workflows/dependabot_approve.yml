@@ -1,30 +1,22 @@
-name: Dependabot auto-approve
 
-on:
-  pull_request_target:
-    types: [opened, synchronize]
+name: Dependabot auto-approve
+on: pull_request
+
 permissions:
   pull-requests: write
-  contents: read
+
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    # Checking the author will prevent your Action run failing on non-Dependabot PRs
-    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' }}
+    if: ${{ github.actor == 'dependabot[bot]' }}
     steps:
       - name: Dependabot metadata
-        id: dependabot-metadata
+        id: metadata
         uses: dependabot/fetch-metadata@v1
-      - uses: actions/checkout@v3
-      - name: Approve a PR if not already approved
-        run: |
-          gh pr checkout "$PR_URL" # sets the upstream metadata for `gh pr status`
-          if [ "$(gh pr status --json reviewDecision -q .currentBranch.reviewDecision)" != "APPROVED" ];
-           then
-            gh pr review --approve $PR_URL
-          else
-            echo "PR already approved, skipping additional approvals to minimize notification noise."
-          fi
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Approve a PR
+        run: gh pr review --approve "$PR_URL"
         env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
