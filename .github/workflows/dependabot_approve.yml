@@ -5,6 +5,7 @@ on:
     types: [opened, synchronize]
 permissions:
   pull-requests: write
+  contents: read
 jobs:
   dependabot:
     runs-on: ubuntu-latest
