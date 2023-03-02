@@ -100,14 +100,14 @@ pandas = ">=1.1.5"
 
 [[package]]
 name = "ansys-mapdl-core"
-version = "0.63.4"
+version = "0.64.0"
 description = "A Python wrapper for Ansys MAPDL."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "ansys-mapdl-core-0.63.4.tar.gz", hash = "sha256:896ed76a2d579826113bed6799d3fe1ed4a83b8f6171c2e4e2822f1992d461b0"},
-    {file = "ansys_mapdl_core-0.63.4-py3-none-any.whl", hash = "sha256:fc093b38f9d12e0ca2b37cd2cd7e62671a51abdf8f4fa02ee4b0d3274ba15b9f"},
+    {file = "ansys-mapdl-core-0.64.0.tar.gz", hash = "sha256:08e758c464af50629b61fcb744f4fb708b2d99c805220e4b6007e0cea11d7441"},
+    {file = "ansys_mapdl_core-0.64.0-py3-none-any.whl", hash = "sha256:5d62f166a182ce3aaa4a168927aba061478facabfd18987c8dd8c8e979527755"},
 ]
 
 [package.dependencies]
@@ -116,16 +116,22 @@ ansys-corba = {version = "*", markers = "python_version < \"3.9\""}
 ansys-mapdl-reader = ">=0.51.7"
 ansys-platform-instancemanagement = ">=1.0,<2.0"
 appdirs = ">=1.4.0"
+click = ">=8.1.3"
 grpcio = ">=1.30.0"
 importlib-metadata = ">=4.0"
 matplotlib = ">=3.0.0"
 numpy = ">=1.14.0"
 pexpect = {version = ">=4.8.0", markers = "platform_system == \"Linux\""}
 protobuf = ">=3.12.2"
+pyansys-tools-versioning = ">=0.3.3"
 pyiges = ">=0.1.4"
 pyvista = ">=0.33.0"
 scipy = ">=1.3.0"
 tqdm = ">=4.45.0"
+
+[package.extras]
+doc = ["Sphinx (==5.3.0)", "ansys-dpf-core (==0.7.2)", "ansys-mapdl-reader (==0.52.7)", "ansys-sphinx-theme (==0.8.0)", "grpcio (==1.43.0)", "imageio (==2.24.0)", "imageio-ffmpeg (==0.4.8)", "jupyter_sphinx (==0.4.0)", "jupyterlab (>=3.2.8)", "matplotlib (==3.6.3)", "numpydoc (==1.5.0)", "pandas (==1.5.2)", "plotly (==5.12.0)", "pypandoc (==1.10)", "pytest-sphinx (==0.5.0)", "pythreejs (==2.4.1)", "pyvista (==0.37.0)", "sphinx-autobuild (==2021.3.14)", "sphinx-autodoc-typehints (==1.20.2)", "sphinx-copybutton (==0.5.1)", "sphinx-gallery (==0.11.1)", "sphinx-notfound-page (==0.8.3)", "sphinxcontrib-googleanalytics (==0.4)", "sphinxcontrib-websupport (==1.2.4)", "sphinxemoji (==0.2.0)", "vtk (==9.2.5)"]
+tests = ["ansys-dpf-core (==0.7.2)", "autopep8 (==2.0.1)", "matplotlib (==3.6.3)", "pandas (==1.5.2)", "pyansys-tools-report (==0.5.0)", "pytest (==7.2.1)", "pytest-cov (==4.0.0)", "pytest-rerunfailures (==11.0)", "pyvista (==0.37.0)", "scipy (==1.10.0)", "vtk (==9.2.5)"]
 
 [[package]]
 name = "ansys-mapdl-reader"
@@ -502,6 +508,21 @@ files = [
     {file = "charset_normalizer-3.0.1-cp39-cp39-win_amd64.whl", hash = "sha256:0a11e971ed097d24c534c037d298ad32c6ce81a45736d31e0ff0ad37ab437d59"},
     {file = "charset_normalizer-3.0.1-py3-none-any.whl", hash = "sha256:7e189e2e1d3ed2f4aebabd2d5b0f931e883676e51c7624826e0a4e5fe8a0bf24"},
 ]
+
+[[package]]
+name = "click"
+version = "8.1.3"
+description = "Composable command line interface toolkit"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "click-8.1.3-py3-none-any.whl", hash = "sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48"},
+    {file = "click-8.1.3.tar.gz", hash = "sha256:7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
 
 [[package]]
 name = "colorama"
@@ -1858,6 +1879,25 @@ files = [
 ]
 
 [[package]]
+name = "pyansys-tools-versioning"
+version = "0.3.3"
+description = "PyAnsys Tools Versioning."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "pyansys-tools-versioning-0.3.3.tar.gz", hash = "sha256:1f6457a81d4f89f7a0fe51c7f52ac427e7dc38989c7e4de8507b76b40166a6a7"},
+    {file = "pyansys_tools_versioning-0.3.3-py3-none-any.whl", hash = "sha256:c2ab624fe110accf00112bd93062b24065ededad967d5882bd65152e70fda20b"},
+]
+
+[package.dependencies]
+importlib-metadata = ">=4.12.0"
+
+[package.extras]
+doc = ["Sphinx (==5.3.0)", "Sphinx-copybutton (==0.5.1)", "ansys_sphinx_theme (==0.8.0)", "numpydoc (==1.5.0)", "sphinx-autoapi (==2.0.0)"]
+tests = ["hypothesis (==6.62.1)", "pytest (==7.2.1)", "pytest-cov (==4.0.0)"]
+
+[[package]]
 name = "pycparser"
 version = "2.21"
 description = "C parser in Python"
@@ -2752,4 +2792,4 @@ doc = ["ansys-sphinx-theme", "numpydoc", "Sphinx", "sphinx-autoapi", "sphinx-cop
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4.0"
-content-hash = "4c89ddf6960792cd6fae5075b1e3f6ae5976a1cb50d2c0cb509436aac1f769f5"
+content-hash = "46cfc3100b4767cc6619b6a0971726b83ff8a7450fdb01588a1e86313f493582"
