@@ -1,4 +1,4 @@
-Pymaterials manager
+PyMaterials Manager
 ===================
 |pyansys| |python| |pypi| |GH-CI| |codecov| |MIT| |black|
 
@@ -31,40 +31,41 @@ Pymaterials manager
    :alt: Black
 
 
-Python package to unify material management across the Ansys portfolio.
+PyMaterials Manager is a Python package for unifying material management across the Ansys portfolio.
 
 
-How to install
---------------
+Installation
+------------
 
-At least two installation modes are provided: user and developer.
+Two installation modes are provided: user and developer.
 
-For users
-^^^^^^^^^
+Install in user mode
+^^^^^^^^^^^^^^^^^^^^
 
-In order to install Pymaterials manager, make sure you
-have the latest version of `pip`_. To do so, run:
+Before installing the ``ansys-materials-manager`` package, run this command to
+ensure that you have the latest version of `pip`_:
 
 .. code:: bash
 
     python -m pip install -U pip
 
-Then, you can simply execute:
+Then, install the latest package for use with this command:
 
 .. code:: bash
 
     poetry run python -m pip install ansys-materials-manager
     
-For developers
-^^^^^^^^^^^^^^
+Install in development mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Installing Pymaterials manager in developer mode allows
+Installing the ``ansys-materials-manager`` package in developer mode allows
 you to modify the source and enhance it.
 
-Before contributing to the project, please refer to the `PyAnsys Developer's guide`_. You will 
-need to follow these steps:
+Before contributing to PyMaterials Manager, see the `PyAnsys Developer's Guide`_.
 
-#. Start by cloning this repository:
+To install PyMaterials Manager in developer mode, perform these steps:
+
+#. Cloning the repository:
 
     .. code:: bash
 
@@ -86,7 +87,8 @@ need to follow these steps:
         # Activate it in Windows Powershell
         .venv\Scripts\Activate.ps1
 
-#. Make sure you have the latest required build system and doc, testing, and CI tools:
+#. Make sure that you have the latest required build system and doc, testing,
+   and CI tools:
 
     .. code:: bash
 
@@ -102,63 +104,68 @@ need to follow these steps:
     
         poetry run python -m pip install ansys-materials-manager
         
-#. Finally, verify your development installation by running:
+#. Verify your development installation:
 
     .. code:: bash
         
         tox
 
+Testing
+-------
 
-How to testing
---------------
-
-This project takes advantage of `tox`_. This tool allows to automate common
-development tasks (similar to Makefile) but it is oriented towards Python
+This project takes advantage of `tox`_. This tool is used to automate common
+development tasks (similar to Makefile), but it is oriented towards Python
 development. 
 
-Using tox
-^^^^^^^^^
-
-As Makefile has rules, `tox`_ has environments. In fact, the tool creates its
-own virtual environment so anything being tested is isolated from the project in
-order to guarantee project's integrity. The following environments commands are provided:
-
-- **tox -e style**: will check for coding style quality.
-- **tox -e py**: checks for unit tests.
-- **tox -e py-coverage**: checks for unit testing and code coverage.
-- **tox -e doc**: checs for documentation building process.
-
-
-Raw testing
+Use ``tox``
 ^^^^^^^^^^^
 
-If required, you can always call the style commands (`black`_, `isort`_,
-`flake8`_...) or unit testing ones (`pytest`_) from the command line. However,
-this does not guarantee that your project is being tested in an isolated
-environment, which is the reason why tools like `tox`_ exist.
+`tox`_ uses environments, which are similar to ``Makefile`` rules, to make it highly
+customizable. In fact, this tool creates its own virtual environment so that anything
+being tested is isolated from the project to guarantee the project's integrity.
+
+Descriptions follow of some of the most widely used environments:
+
+- **tox -e style**: Checks the code style of your project.
+- **tox -e py**: Runs your test suite.
+- **tox -e py-coverage**: Checks unit tests and code coverage.
+- **tox -e doc**: Builds the documentation of your project.
 
 
-A note on pre-commit
-^^^^^^^^^^^^^^^^^^^^
+Perform raw testing
+^^^^^^^^^^^^^^^^^^^
+
+If required, you can call style commands (such as `black`_, `isort`_,
+and `flake8`_) or unit testing commands (such as `pytest`_) from the command
+line. However, calling these commands does not guarantee that your project
+is being tested in an isolated environment, which is the reason why tools
+like `tox`_ exist.
+
+
+Use pre-commit
+^^^^^^^^^^^^^^
 
 The style checks take advantage of `pre-commit`_. Developers are not forced but
-encouraged to install this tool via:
+encouraged to install this tool by running this command:
 
 .. code:: bash
 
     python -m pip install pre-commit && pre-commit install
 
+Every time you stage some changes and try to commit them,
+``pre-commit`` only allows them to be committed if all defined hooks succeed.
 
 Documentation and issues
 ------------------------
-For more information, see the `Documentation`_ page.
 
-Feel free to post issues and other questions at `pymaterials-manager Issues`_.
+For comprehensive information on PyMaterials Manager, see the latest release `documentation`_.
+On the `PyMaterials Manager Issues`_ page, you can create issues to submit questions,
+report bugs, and request new features. This is the best place to post questions and code.
 
-Distributing
+Distribution
 ------------
 
-If you would like to create either source or wheel files, start by installing
+If you want to create either source or wheel files, start by installing
 the building requirements and then executing the build module:
 
 .. code:: bash
@@ -174,9 +181,9 @@ the building requirements and then executing the build module:
 .. _isort: https://github.com/PyCQA/isort
 .. _pip: https://pypi.org/project/pip/
 .. _pre-commit: https://pre-commit.com/
-.. _PyAnsys Developer's guide: https://dev.docs.pyansys.com/
+.. _PyAnsys Developer's Guide: https://dev.docs.pyansys.com/
 .. _pytest: https://docs.pytest.org/en/stable/
 .. _Sphinx: https://www.sphinx-doc.org/en/master/
 .. _tox: https://tox.wiki/
-.. _pymaterials-manager Issues: https://github.com/pyansys/pymaterials-manager/issues
-.. _Documentation: https://manager.materials.docs.pyansys.com/
+.. _PyMaterials Manager Issues: https://github.com/pyansys/pymaterials-manager/issues
+.. _documentation: https://manager.materials.docs.pyansys.com/

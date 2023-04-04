@@ -19,9 +19,9 @@ if TYPE_CHECKING:
 
 class _BaseModel(metaclass=ABCMeta):
     """
-    All Nonlinear material models must inherit from this class.
+    Provides the base class that all nonlinear material models must inherit from.
 
-    This allows the MaterialManager to dynamically discover available models, and to dispatch
+    This class allows the Material Manager to dynamically discover available models and to dispatch
     deserialization calls to the appropriate model class.
     """
 
@@ -32,39 +32,39 @@ class _BaseModel(metaclass=ABCMeta):
     def name(self) -> str:
         """Get the name of the model.
 
-        For complex nonlinear models this will be the name of the model, for simple models this
-        can be set and should reflect the property being modelled.
+        For complex nonlinear models, this is the name of the model. For simple models, this
+        can be set and should reflect the property being modeled.
         """
         ...
 
     @abstractmethod
     def write_model(self, material: "Material", pyansys_session: Any) -> None:
         """
-        Write this model to MAPDL.
+        Write the model to MAPDL.
 
-        Should make some effort to validate the model state before writing.
+        This method should make some effort to validate the model state before writing.
 
         Parameters
         ----------
         material: Material
-            Material object with which this model will be associated.
+            Material object to associate this model with.
         pyansys_session: Any
-            Supported PyAnsys product session, currently only pyMAPDL and pyFluent
-            are supported.
+            Supported PyAnsys product session. Only PyMAPDL and PyFluent are
+            supported currently.
         """
         ...
 
     @abstractmethod
     def validate_model(self) -> "Tuple[bool, List[str]]":
         """
-        Perform pre-flight validation of model setup.
+        Perform pre-flight validation of the model setup.
 
-        Should not perform any calls to the MAPDL process.
+        This method should not perform any calls to the MAPDL process.
 
         Returns
         -------
         Tuple
-            First element is boolean, true if validation is successful. If false then the second
-            element will contain a list of strings with more information.
+            First element is Boolean. ``True`` if validation is successful. If ``False``,
+            the second element contains a list of strings with more information.
         """
         ...

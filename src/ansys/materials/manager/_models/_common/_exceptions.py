@@ -1,17 +1,17 @@
 class ModelValidationException(Exception):
     """
-    Exception thrown if pre-flight verification fails.
+    Provides the exception thrown if pre-flight verification fails.
 
-    This indicates that the provided model state is invalid.
+    Throwing an exception indicates that the provided model state is invalid.
     """
 
     def __init__(self, message: str):
         """
-        Create an instance of ModelValidationException.
+        Create an instance of the ``ModelValidationException`` class.
 
         Parameters
         ----------
         message: str
-            Exception text
+            Text to display for the exception.
         """
         super().__init__(message)

@@ -1,22 +1,22 @@
 .. _ref_contributing:
 
-============
-Contributing
-============
+==========
+Contribute
+==========
 
 Overall guidance on contributing to a PyAnsys library appears in the
-`Contributing <dev_guide_contributing_>`_ topic
+`Contribute <dev_guide_contributing_>`_ topic
 in the *PyAnsys Developer's Guide*. Ensure that you are thoroughly familiar
-with it and all `Coding style <dev_guide_coding_style_>`_ before attempting to
-contribute to Pymaterials-manager.
+with this guide before attempting to contribute to PyMaterials Manager.
  
-The following contribution information is specific to Pymaterials-manager.
+The following contribution information is specific to PyMaterials Manager.
 
 
-Cloning the pymaterials-manager repository
-==========================================
+Clone the repository and install the package
+============================================
 
-Run this code to clone and install the latest version of Pymaterials-manager in development mode:
+To clone the PyMaterials Manager repository and install the latest release
+in development mode, run this code:
 
 .. code:: console
 
@@ -26,43 +26,42 @@ Run this code to clone and install the latest version of Pymaterials-manager in 
     poetry install
 
 
-Posting issues
-==============
+Post issues
+===========
 
-Use the `Pymaterials-manager Issues <Pymaterials-manager_issues_>`_
-page to submit questions, report bugs, and request new features. When possible,
-use these issue templates:
+Use the `PyMaterials Manager Issues`_ page to submit questions, report bugs,
+and request new features. When possible, use these issue templates:
 
 * Bug report template
 * Feature request template
 
 If your issue does not fit into one of these categories, create your own issue.
 
-To reach the project support team, email `pyansys.support@ansys.com <pyansys_support_>`_.
+To reach the project support team, email `pyansys.core@ansys.com <pyansys.core@ansys.com>`_.
 
-Viewing pymaterials-manager documentation
-==========================================
+View documentation
+==================
 
-Documentation for the latest stable release of Pymaterials-manager is hosted at
-`Pymaterials-manager Documentation <Pymaterials-manager_docs_>`_.
+Documentation for the latest stable release of PyMaterials Manager is hosted at
+`PyMaterials Manager Documentation <Pymaterials-manager_docs_>`_.
 
-Code style
-==========
+Adhere to code style
+====================
 
-Pymaterials-manager follows PEP8 standard as outlined in the `PyAnsys Development Guide
+PyMaterials Manager follows the PEP8 standard as outlined in the `PyAnsys Development Guide
 <dev_guide_pyansys_>`_ and implements style checking using
 `pre-commit <precommit_>`_.
 
-To ensure your code meets minimum code styling standards, run::
+To ensure your code meets minimum code styling standards, run this code::
 
     pip install pre-commit
     pre-commit run --all-files
 
-You can also install this as a pre-commit hook by running::
+You can also install this as a pre-commit hook by running this code::
 
     pre-commit install
 
-This way, it's not possible for you to push code that fails the style checks. For example::
+This way, it's not possible for you to push code that fails the style checks::
 
     $ pre-commit install
     $ git commit -am "added my cool feature"
@@ -83,5 +82,5 @@ This way, it's not possible for you to push code that fails the style checks. Fo
 .. _dev_guide_pyansys: https://dev.docs.pyansys.com/
 .. _dev_guide_contributing: https://dev.docs.pyansys.com/dev/how-to/contributing.html
 .. _dev_guide_coding_style: https://dev.docs.pyansys.com/dev/coding-style/index.html
-.. _Pymaterials-manager_issues: https://github.com/pyansys/pymaterials-manager/issues
+.. _PyMaterials Manager Issues: https://github.com/pyansys/pymaterials-manager/issues
 .. _Pymaterials-manager_docs: https://manager.materials.docs.pyansys.com/

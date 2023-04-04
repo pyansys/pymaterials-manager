@@ -11,10 +11,10 @@ from ansys.materials.manager.material import Material
 
 class IdealGas(_BaseModel):
     r"""
-    Ideal Gas Model for fluid properties.
+    Provides for creating an ideal gas model for fluid properties.
 
-    This model can be applied to Density and Specific Heat Capacity properties within fluent,
-    it requires that the Molar mass be set as a property and models the following equation:
+    This model can be applied to density and specific heat capacity properties within Fluent.
+    It requires that the molar mass be set as a property and models the following equation:
 
     .. math::
 
@@ -25,12 +25,12 @@ class IdealGas(_BaseModel):
     _name: str
 
     def __init__(self, name: str):
-        """Create an Ideal Gas model for the Fluent solver."""
+        """Create an ideal gas model for the Fluent solver."""
         self._name = name
 
     @property
     def name(self) -> str:
-        """Get the name of the property modelled."""
+        """Name of the property modeled."""
         return self._name
 
     @name.setter
@@ -41,19 +41,19 @@ class IdealGas(_BaseModel):
         """
         Write this model to Fluent.
 
-        Should make some effort to validate the model state before writing.
+        This method should make some effort to validate the model state before writing.
 
         Parameters
         ----------
         material: Material
-            Material object with which this model will be associated.
+            Material object to associate with this model.
         pyansys_session: Any
-            Configured instance of PyAnsys session.
+            Configured instance of the PyAnsys session.
         """
         if not isinstance(pyansys_session, _FluentCore):
             raise TypeError(
-                "This model is only supported by Fluent, ensure you have the correct"
-                "type of `pyansys_session`."
+                "This model is only supported by MAPDL and Fluent. Ensure that you have the correct"
+                "type of the PyAnsys session."
             )
 
         is_ok, issues = self.validate_model()
@@ -61,7 +61,7 @@ class IdealGas(_BaseModel):
         molar_mass_prop = material.get_model_by_name("molar mass")
         if len(molar_mass_prop) == 0:
             is_ok = False
-            issues.append("Molar Mass must be provided for the Ideal Gas model.")
+            issues.append("Molar mass must be provided for the ideal gas model.")
         if not is_ok:
             raise ModelValidationException("\n".join(issues))
 
@@ -72,13 +72,13 @@ class IdealGas(_BaseModel):
 
     def validate_model(self) -> "Tuple[bool, List[str]]":
         """
-        Perform pre-flight validation of model setup.
+        Perform pre-flight validation of the model setup.
 
         Returns
         -------
         Tuple
-            First element is boolean, true if validation is successful. If false then the second
-            element will contain a list of strings with more information.
+            First element is Boolean. ``True`` if validation is successful. If ``False``,
+            the second element contains a list of strings with more information.
         """
         failures = []
         is_ok = True

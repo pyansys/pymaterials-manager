@@ -26,27 +26,27 @@ class Constant(_BaseModel):
         """
         Create a constant property value.
 
-        This property will be created in the default unit system of the solver. Ensure
-        you provide the value in the correct units.
+        This property is created in the default unit system of the solver. Ensure
+        that you provide the value in the correct units.
 
         Parameters
         ----------
         name: str
-            The name of the property to be modelled as a constant.
+            Name of the property to model as a constant.
         value: float
-            The value of the constant property.
+            Value of the constant property.
         """
         self._name = name
         self._value = value
 
     @property
     def name(self) -> str:
-        """Get the name of the quantity modelled by this constant."""
+        """Name of the quantity modeled by the constant."""
         return self._name
 
     @property
     def value(self) -> float:
-        """Get the constant value of this quantity."""
+        """Constant value of the quantity."""
         return self._value
 
     @value.setter
@@ -57,14 +57,14 @@ class Constant(_BaseModel):
         """
         Write this model to MAPDL.
 
-        Should make some effort to validate the model state before writing.
+        This method should make some effort to validate the model state before writing.
 
         Parameters
         ----------
         material: Material
-            Material object with which this model will be associated.
+            Material object to associate with this model.
         pyansys_session: Any
-            Configured instance of PyAnsys session.
+            Configured instance of the PyAnsys session.
         """
         is_ok, issues = self.validate_model()
         if not is_ok:
@@ -76,8 +76,8 @@ class Constant(_BaseModel):
             self._write_fluent(pyansys_session, material)
         else:
             raise TypeError(
-                "This model is only supported by MAPDL and Fluent, ensure you have the correct"
-                "type of `pyansys_session`."
+                "This model is only supported by MAPDL and Fluent. Ensure that you have the correct"
+                "type of the PyAnsys session."
             )
 
     def _write_mapdl(self, mapdl: "_MapdlCore", material: "Material") -> None:
@@ -94,13 +94,13 @@ class Constant(_BaseModel):
 
     def validate_model(self) -> "Tuple[bool, List[str]]":
         """
-        Perform pre-flight validation of model setup.
+        Perform pre-flight validation of the model setup.
 
         Returns
         -------
         Tuple
-            First element is boolean, true if validation is successful. If false then the second
-            element will contain a list of strings with more information.
+            First element is Boolean. ``True`` if validation is successful. If ``False``,
+            the second element contains a list of strings with more information.
         """
         failures = []
         is_ok = True

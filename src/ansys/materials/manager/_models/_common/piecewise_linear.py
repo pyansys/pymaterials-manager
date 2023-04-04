@@ -20,9 +20,9 @@ if TYPE_CHECKING:
 
 class PiecewiseLinear(_BaseModel):
     """
-    Piecewise linear model for a property.
+    Provides the piecewise linear model for a property.
 
-    Represents a property as a series of sample points between which the value will be
+    This class represents a property as a series of sample points between which the value is
     interpolated.
     """
 
@@ -35,21 +35,21 @@ class PiecewiseLinear(_BaseModel):
         """
         Create a piecewise linear model for a property.
 
-        Ensure that the two arrays `x` and `y` are both one-dimensional and have the same number
+        Ensure that the two arrays ``x`` and ``y`` are both one dimensional and have the same number
         of elements.
 
-        This property will be created in the default unit system of the solver. Ensure
-        you provide values in the correct units.
+        This property is created in the default unit system of the solver. Ensure
+        that you provide values in the correct units.
 
         Parameters
         ----------
         name: str
-            The name of the property to be modelled as a constant.
+            Name of the property to model as a constant.
         x: np.ndarray
-            The values of independent variable over which the property is to be modelled.
-            Ensure these values cover the range of interest for the simulation.
+            Values of the independent variable over which to model the property.
+            Ensure that these values cover the range of interest for the simulation.
         y: np.ndarray
-            The values of the property sampled at the points represented by the `x` array.
+            Values of the property sampled at the points represented by the ``x`` array.
         """
         self._name = name
         self._independent_variable = x
@@ -57,12 +57,12 @@ class PiecewiseLinear(_BaseModel):
 
     @property
     def name(self) -> str:
-        """Get the name of the quantity modelled by this constant."""
+        """Name of the quantity modeled by the constant."""
         return self._name
 
     @property
     def x(self) -> np.ndarray:
-        """Get the values of the x array."""
+        """Values of the ``x`` array."""
         return self._independent_variable
 
     @x.setter
@@ -71,7 +71,7 @@ class PiecewiseLinear(_BaseModel):
 
     @property
     def y(self) -> np.ndarray:
-        """Get the values of the x array."""
+        """Values of the ``y`` array."""
         return self._dependent_variable
 
     @y.setter
@@ -80,16 +80,16 @@ class PiecewiseLinear(_BaseModel):
 
     def write_model(self, material: "Material", pyansys_session: Any) -> None:
         """
-        Write this model to MAPDL.
+        Write the model to MAPDL.
 
-        Should make some effort to validate the model state before writing.
+        This method should make some effort to validate the model state before writing.
 
         Parameters
         ----------
         material: Material
-            Material object with which this model will be associated.
+            Material object to associate with this model.
         pyansys_session: Any
-            Configured instance of PyAnsys session.
+            Configured instance of the PyAnsys session.
         """
         is_ok, issues = self.validate_model()
         if not is_ok:
@@ -101,15 +101,15 @@ class PiecewiseLinear(_BaseModel):
             self._write_fluent(pyansys_session, material)
         else:
             raise TypeError(
-                "This model is only supported by MAPDL and Fluent, ensure you have the correct"
-                "type of `pyansys_session`."
+                "This model is only supported by MAPDL and Fluent. Ensure that you have the correct"
+                "type of the PyAnsys session."
             )
 
     def _write_mapdl(self, mapdl: "_MapdlCore", material: "Material") -> None:
         if self._independent_variable.size > 100:
             raise ValueError(
-                f"MAPDL Supports up to 100 points for a property, "
-                f"you provided {self._independent_variable.size}."
+                f"MAPDL supports up to 100 points for a property. "
+                f"You provided {self._independent_variable.size}."
             )
         mapdl_property_code = mapdl_property_codes[self._name.lower()]
         temp_values = self._independent_variable
@@ -125,13 +125,13 @@ class PiecewiseLinear(_BaseModel):
 
     def validate_model(self) -> "Tuple[bool, List[str]]":
         """
-        Perform pre-flight validation of model setup.
+        Perform pre-flight validation of the model setup.
 
         Returns
         -------
         Tuple
-            First element is boolean, true if validation is successful. If false then the second
-            element will contain a list of strings with more information.
+            First element is Boolean. ``True`` if validation is successful. If ``False``,
+            the second element contains a list of strings with more information.
         """
         failures = []
         is_ok = True
@@ -140,16 +140,16 @@ class PiecewiseLinear(_BaseModel):
             failures.append("Invalid property name")
             is_ok = False
         if self._independent_variable is None or self._independent_variable.size == 0:
-            failures.append("x_values is empty, provide at least one value")
+            failures.append("x_values is empty. Provide at least one value.")
             is_ok = False
         if self._dependent_variable is None or self._dependent_variable.size == 0:
-            failures.append("y_values is empty, provide at least one value")
+            failures.append("y_values is empty. Provide at least one value.")
             is_ok = False
         if not is_ok:
             return is_ok, failures
         if self._independent_variable.size != self._dependent_variable.size:
             failures.append(
-                "Length mismatch, x_values and y_values must have the same number of elements"
+                "Length mismatch. x_values and y_values must have the same number of elements."
             )
             is_ok = False
         if self._independent_variable.ndim > 1:

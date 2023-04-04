@@ -12,9 +12,9 @@ from .util.mapdl.mapdl_reader import read_mapdl
 
 class MaterialManager:
     """
-    Manage material creation, assignment and other management tasks.
+    Manage material creation, assignment, and other management tasks.
 
-    This class is the main entry-point for the pythonic material management interface.
+    This class is the main entry point for the Pythonic material management interface.
     """
 
     model_type_map: Dict[str, models._BaseModel] = {}
@@ -22,13 +22,13 @@ class MaterialManager:
 
     def __init__(self, pyansys_client: Any):
         """
-        Create a new MaterialManager object ready for use.
+        Create a ``MaterialManager`` object ready for use.
 
         Parameters
         ----------
         pyansys_client : Any
-            Valid instance of a PyAnsys Client. Only pyMAPDL and pyFluent are currently
-            supported.
+            Valid instance of a PyAnsys client. Only PyMAPDL and PyFluent are
+            supported currently.
         """
         self._client = pyansys_client
         # response = inspect.getmembers(models, self.__is_subclass_predicate)
@@ -41,18 +41,18 @@ class MaterialManager:
     @staticmethod
     def __is_subclass_predicate(obj: object) -> bool:
         """
-        Predicate to determine if a given object is a strict subclass of :obj:`models._BaseModel`.
+        Determine if an object is a strict subclass of the :obj:`models._BaseModel` class.
 
         Parameters
         ----------
         obj : object
-            Any python object.
+            Any Python object.
 
         Returns
         -------
         bool
-            ``True`` if object is strictly a subclass of :obj:`models._BaseModel`,
-            otherwise ``False``.
+            ``True`` if the object is strictly a subclass of the :obj:`models._BaseModel`
+            class, ``False`` otherwise.
         """
         return (
             isinstance(obj, type)
@@ -62,12 +62,12 @@ class MaterialManager:
 
     def write_material(self, material: Material) -> None:
         """
-        Write a material to the Solver.
+        Write a material to the solver.
 
         Parameters
         ----------
         material : Material
-            Material object to be written to MAPDL.
+            Material object to write to MAPDL.
         """
         for model in material.models:
             assert isinstance(model, _BaseModel)
@@ -75,15 +75,15 @@ class MaterialManager:
 
     def read_materials_from_session(self) -> Dict[str, Material]:
         """
-        Given a pyAnsys session, return the materials present.
+        Given a PyAnsys session, return the materials present.
 
-        Currently supports only pyMAPDL.
+        This method only supports PyMAPDL currently.
 
         Returns
         -------
         Dict[str, Material]
-            Materials in current session, indexed by an identifier. For MAPDL this is the material
-            ID, for Fluent it is the material name.
+            Materials in the current session, indexed by an ID. For MAPDL, this is the material
+            ID. For Fluent, this is the material name.
         """
         if isinstance(self._client, _MapdlCore):
             return self._read_mapdl()
