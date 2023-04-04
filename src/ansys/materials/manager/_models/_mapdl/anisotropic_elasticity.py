@@ -32,11 +32,12 @@ class ElasticityMode(Enum):
 
 class AnisotropicElasticity(_BaseModel):
     r"""
-    Provides the anisotropic elasticity model, which defines different elastic coefficients
-    for each coordinate axis.
+    Provides the anisotropic elasticity model.
 
-    This model can be used with plane and solid elements. The elastic coefficient matrix (D) is
-    specified as one or up to six NumPy arrays, allowing temperature dependence to be modeled.
+    The anisotropic elasticity model defines different elastic coefficients
+    for each coordinate axis. This model can be used with plane and solid elements.
+    The elastic coefficient matrix (D) is specified as one or up to six NumPy arrays,
+    allowing temperature dependence to be modeled.
 
     The elastic coefficient matrix is defined as a 2 x n_dimensions array:
 
