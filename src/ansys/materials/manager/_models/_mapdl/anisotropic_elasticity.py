@@ -32,7 +32,8 @@ class ElasticityMode(Enum):
 
 class AnisotropicElasticity(_BaseModel):
     r"""
-    Provides the anisotropic elasticity model, which defines different elastic coefficients for each coordinate axis.
+    Provides the anisotropic elasticity model, which defines different elastic coefficients
+    for each coordinate axis.
 
     This model can be used with plane and solid elements. The elastic coefficient matrix (D) is
     specified as one or up to six NumPy arrays, allowing temperature dependence to be modeled.
@@ -279,8 +280,8 @@ class AnisotropicElasticity(_BaseModel):
         """
         Write the model to MAPDL.
 
-        This method performs some pre-flight verification and writes the correct model for the provided values
-        of coefficients and temperatures.
+        This method performs some pre-flight verification and writes the correct model for the
+        provided values of coefficients and temperatures.
 
         If no temperature value is specified for the model, the current reference temperature
         for the material is used.

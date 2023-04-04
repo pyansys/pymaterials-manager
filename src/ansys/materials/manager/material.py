@@ -32,8 +32,8 @@ class Material:
         material_id : str, optional
             ID to associate with this material. The default is ``None``.
         models : Dict[str, _BaseModel]
-            Dictionary of nonlinear material models. Models are specified with their model codes (from the
-            TB command) and the model object.
+            Dictionary of nonlinear material models. Models are specified with their
+            model codes (from the TB command) and the model object.
         """
         self._models = []
         self._name = material_name

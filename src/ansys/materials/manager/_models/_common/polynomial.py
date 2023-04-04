@@ -109,7 +109,7 @@ class Polynomial(_BaseModel):
     def _write_mapdl(self, mapdl: "_MapdlCore", material: "Material") -> None:
         if self._coefficients.size > 5:
             raise ValueError(
-                "MAPDL Supports up to five coefficients, corresponding to a fourth order polynomial,"
+                "MAPDL supports up to 5 coefficients, corresponding to a fourth order polynomial,"
                 f"you provided {self._coefficients.size}"
             )
         if self._sample_points is not None:
