@@ -67,7 +67,7 @@ class MaterialManager:
         Parameters
         ----------
         material : Material
-            Material object to write to MAPDL.
+            Material object to write to solver.
         """
         for model in material.models:
             assert isinstance(model, _BaseModel)
