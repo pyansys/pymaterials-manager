@@ -86,7 +86,7 @@ class TestSerializePiecewiseLinear:
     def test_array_too_long_fails(self):
         model = PiecewiseLinear("Density", x=np.arange(0, 200, 1), y=np.arange(0, 200, 1))
         mock_mapdl = MagicMock(spec=_MapdlCore)
-        with pytest.raises(ValueError, match="MAPDL Supports up to 100 points"):
+        with pytest.raises(ValueError, match="MAPDL supports up to 100 points"):
             model.write_model(TEST_MATERIAL, mock_mapdl)
 
     def test_invalid_dimension_fails(self):
@@ -132,7 +132,7 @@ class TestSerializePolynomial:
     def test_no_value_fails(self):
         model = Polynomial("Density", coefficients=None)
         mock_mapdl = MagicMock(spec=_MapdlCore)
-        with pytest.raises(ModelValidationException, match="coefficients is empty"):
+        with pytest.raises(ModelValidationException, match="Coefficients is empty"):
             model.write_model(TEST_MATERIAL, mock_mapdl)
 
     def test_invalid_name_fails(self):
@@ -146,20 +146,20 @@ class TestSerializePolynomial:
             "Density", coefficients=self.coefficients, sample_points=np.arange(0, 200, 1)
         )
         mock_mapdl = MagicMock(spec=_MapdlCore)
-        with pytest.raises(ValueError, match="MAPDL Supports up to 100 sample points"):
+        with pytest.raises(ValueError, match="MAPDL supports up to 100 sample points"):
             model.write_model(TEST_MATERIAL, mock_mapdl)
 
     def test_coefficients_too_long_fails(self):
         model = Polynomial("Density", coefficients=np.arange(0, 200, 1))
         mock_mapdl = MagicMock(spec=_MapdlCore)
-        with pytest.raises(ValueError, match="MAPDL Supports up to 5 coefficients"):
+        with pytest.raises(ValueError, match="MAPDL supports up to 5 coefficients"):
             model.write_model(TEST_MATERIAL, mock_mapdl)
 
     def test_invalid_coefficients_dimension_fails(self):
         model = Polynomial("Density", coefficients=np.array([[1, 2], [3, 4]]))
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(
-            ModelValidationException, match="coefficients must have one dimension, not 2"
+            ModelValidationException, match="Coefficients must have one dimension, not 2"
         ):
             model.write_model(TEST_MATERIAL, mock_mapdl)
 
@@ -169,6 +169,6 @@ class TestSerializePolynomial:
         )
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(
-            ModelValidationException, match="sample_points must have one dimension, not 2"
+            ModelValidationException, match="Sample points must have one dimension, not 2"
         ):
             model.write_model(TEST_MATERIAL, mock_mapdl)

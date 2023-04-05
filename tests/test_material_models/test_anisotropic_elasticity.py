@@ -124,7 +124,7 @@ class TestModelValidation:
         valid, errors = invalid_model.validate_model()
         assert not valid
         assert len(errors) == 2
-        assert any("maximum of 6 temperature values" in error for error in errors)
+        assert any("maximum of six temperature values" in error for error in errors)
         assert any("Inconsistent number of temperature values (11)" in error for error in errors)
 
     @pytest.mark.parametrize("coefficients", [[0.0], [[[[0.0]]]]])

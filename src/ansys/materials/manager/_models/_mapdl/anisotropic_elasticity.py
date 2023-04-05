@@ -32,10 +32,12 @@ class ElasticityMode(Enum):
 
 class AnisotropicElasticity(_BaseModel):
     r"""
-    Anisotropic elasticity model defines different elastic coefficients for each coordinate axis.
+    Provides the anisotropic elasticity model.
 
-    This model can be used with plane and solid elements. The elastic coefficient matrix (D) is
-    specified as one or up to six NumPy arrays, allowing temperature dependence to be modelled.
+    The anisotropic elasticity model defines different elastic coefficients
+    for each coordinate axis. This model can be used with plane and solid elements.
+    The elastic coefficient matrix (D) is specified as one or up to six NumPy arrays,
+    allowing temperature dependence to be modeled.
 
     The elastic coefficient matrix is defined as a 2 x n_dimensions array:
 
@@ -47,14 +49,14 @@ class AnisotropicElasticity(_BaseModel):
             D_{41} & D_{42} & D_{43} & D_44}
           \end{matrix}
 
-    This can either be specified in "stiffness" form, with units of Force/Area, or in "compliance"
+    This can either be specified in "stiffness" form, with units of force/area, or in "compliance"
     form with the inverse unit.
 
     Notes
     -----
-    This model wraps the APDL "ELAS" and "ANEL" models in both their forms, if one temperature is
-    provided then the "ELAS" model will be used, with either the "AELS" or "AELF" TBOPT, Otherwise
-    the "ANEL" model will be written.
+    This model wraps the APDL "ELAS" and "ANEL" models in both their forms. If one temperature is
+    provided, the "ELAS" model is used, with either the "AELS" or "AELF" TBOPT. Otherwise,
+    the "ANEL" model is used.
     """
 
     _n_dimensions: int
@@ -74,26 +76,27 @@ class AnisotropicElasticity(_BaseModel):
         temperature: Union[None, float, np.ndarray] = None,
     ) -> None:
         """
-        Create an Anisotropic Elasticity model.
+        Create an anisotropic elasticity model.
 
         Parameters
         ----------
         n_dimensions: int
-            Number of dimensions for the model. Must be either 2 or 3.
+            Number of dimensions for the model. The value must be either ``2`` or ``3``.
         coefficient_type: ElasticityMode
-            Whether the model uses stiffness or compliance coefficients.
+            Type of elasticity mode that the model uses, which is either stiffness or
+            compliance coefficients.
         coefficients: np.ndarray
-            Model coefficients, either one 2*n_dims x 2*n_dims array of model coefficients, or
-            if the model is temperature dependent, up to 6 x 2*n_dims x 2*n_dims array of model
+            Model coefficients, either one 2*n_dims x 2*n_dims array of the model coefficients or,
+            if the model is temperature dependent, up to 6 x 2*n_dims x 2*n_dims array of the model
             coefficients at temperature.
         temperature: Union[float, np.ndarray]
-            Either a single temperature at which the model is to be applied, or an array of up to
-            six temperatures if the model is temperature-dependent. If multiple temperatures are
-            defined, ensure they cover the range of anticipated temperatures at which the model
-            will be applied.
+            Either a single temperature at which to apply the model or an array of up to
+            six temperatures if the model is temperature dependent. If multiple temperatures are
+            defined, ensure that they cover the range of anticipated temperatures at which the model
+            is applied.
         """
         if n_dimensions not in [2, 3]:
-            raise ValueError("n_dimensions must be int 2 or 3")
+            raise ValueError("n_dimensions must be an integer value of 2 or 3.")
         self._n_dimensions = n_dimensions
         self._coefficient_type = coefficient_type
         self._temperature = np.array([], dtype=float)
@@ -117,12 +120,12 @@ class AnisotropicElasticity(_BaseModel):
 
     @property
     def name(self) -> str:
-        """Return the name of the model."""
+        """Name of the model."""
         return self.name
 
     @property
     def coefficients(self) -> np.ndarray:
-        """Return the current coefficient array for the model."""
+        """Current coefficient array for the model."""
         return self._coefficients
 
     @coefficients.setter
@@ -131,7 +134,7 @@ class AnisotropicElasticity(_BaseModel):
 
     @property
     def temperature(self) -> np.ndarray:
-        """Return the temperature defined for the model."""
+        """Temperature defined for the model."""
         return self._temperature
 
     @temperature.setter
@@ -144,29 +147,29 @@ class AnisotropicElasticity(_BaseModel):
     @classmethod
     def deserialize_model(cls, model_code: str, model_data: List[str]) -> "AnisotropicElasticity":
         """
-        Convert output from MAPDL command into an object representing the model.
+        Convert output from the MAPDL command into an object representing the model.
 
         The input should be a section of output referring to one model from one material.
 
         Parameters
         ----------
         model_code: str
-            String model code, either "ELAS" or "ANEL"
+            String model code, either "ELAS" or "ANEL".
         model_data: List[str]
             Lines from MAPDL output corresponding to this model for one material.
 
         Returns
         -------
         AnisotropicElasticity
-            Wrapper for the underlying MAPDL material model
+            Wrapper for the underlying MAPDL material model.
 
         Notes
         -----
         Depending on the type of the underlying model, the parameters of the returned
-        `AnisotropicElasticity` model will vary, but this class will be returned for either
+        `AnisotropicElasticity` model vary, but this class is returned for either
         "ELAS" or "ANEL" material models.
         """
-        assert model_code in cls.model_codes, f"Invalid model_code ({model_code}) provided."
+        assert model_code in cls.model_codes, f"Invalid model code ({model_code}) provided."
         header_row_index = 0
         for index, line in enumerate(model_data):
             if line.strip().startswith("Temps"):
@@ -201,7 +204,7 @@ class AnisotropicElasticity(_BaseModel):
         Deserialize the first section of data returned by calling `TBLIST` with an "ANEL" model.
 
         The first row contains the temperatures at which the model is applied, and subsequent
-        rows contain each coefficient value at each specified temperature
+        rows contain each coefficient value at each specified temperature.
 
         Parameters
         ----------
@@ -263,7 +266,7 @@ class AnisotropicElasticity(_BaseModel):
         ----------
         model_data: List[str]
             Matrix coefficient section from the output of a `TBLIST` command. Any rows that do
-            not begin with a label are ignored, otherwise each row is deserialized into a tuple
+            not begin with a label are ignored. otherwise, each row is deserialized into a tuple
             with the string label and any associated float values.
         """
         values = []
@@ -278,23 +281,23 @@ class AnisotropicElasticity(_BaseModel):
         """
         Write the model to MAPDL.
 
-        Performs some pre-flight verification, and writes the correct model for the provided values
-        of coefficients and temperatures.
+        This method performs some pre-flight verification and writes the correct model for the
+        provided values of coefficients and temperatures.
 
-        If no temperature value was specified for the model then the current reference temperature
-        for the material will be used.
+        If no temperature value is specified for the model, the current reference temperature
+        for the material is used.
 
         Parameters
         ----------
         pyansys_session: _MapdlCore
-            Configured instance of PyMapdl.
+            Configured instance of PyMAPDL.
         material: Material
-            Material object with which this model will be associated.
+            Material object to associate with this model.
         """
         if not isinstance(pyansys_session, _MapdlCore):
             raise TypeError(
-                "This model is only supported by MAPDL, ensure you have the correct"
-                "type of `pyansys_session`."
+                "This model is only supported by MAPDL and Fluent. Ensure that you have the correct"
+                "type of the PyAnsys session."
             )
 
         is_ok, issues = self.validate_model()
@@ -341,16 +344,18 @@ class AnisotropicElasticity(_BaseModel):
         """
         Validate some aspects of the model before attempting to write to MAPDL.
 
-        * Validate that the number of provided temperatures match the size of the first dimension
+        This method performs these actions:
+
+        * Validates that the number of provided temperatures match the size of the first dimension
            of the coefficient array.
-        * Validate that the coefficient array is either two or three-dimensional.
-        * Validate that no more than six temperature samples are provided.
+        * Validates that the coefficient array is either two or three dimensional.
+        * Validates that no more than six temperature samples are provided.
 
         Returns
         -------
         Tuple
-            First element is boolean, true if validation is successful. If false then the second
-            element will contain a list of strings with more information.
+            First element is Boolean. ``True`` if validation is successful. If ``False``,
+            the second element contains a list of strings with more information.
         """
         coefficient_shape = self._coefficients.shape
         coef_matrix_count = None
@@ -363,7 +368,7 @@ class AnisotropicElasticity(_BaseModel):
             coef_matrix_count = coefficient_shape[0]
         else:
             is_valid = False
-            validation_errors.append("Invalid dimension of coefficients array, must be 2 or 3.")
+            validation_errors.append("Invalid dimension of coefficients array. It must be 2 or 3.")
 
         # Check that size of temperature matches 3rd dimension of coefficients
         if coef_matrix_count and coef_matrix_count != self._temperature.size:
@@ -375,6 +380,6 @@ class AnisotropicElasticity(_BaseModel):
 
         if self._temperature.size > 6:
             is_valid = False
-            validation_errors.append("This model supports a maximum of 6 temperature values")
+            validation_errors.append("This model supports a maximum of six temperature values.")
 
         return is_valid, validation_errors

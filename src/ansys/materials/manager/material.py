@@ -7,9 +7,9 @@ from ._models._common.constant import Constant
 
 class Material:
     """
-    Wrapper class for a material.
+    Provides a wrapper class for managing a material.
 
-    Associates a material_id with one or more properties and nonlinear material models.
+    This class associates a material ID with one or more properties and nonlinear material models.
     """
 
     _models: List[_BaseModel]
@@ -21,19 +21,19 @@ class Material:
         self, material_name: str, material_id: str = None, models: List[_BaseModel] = None
     ):
         """
-        Create a new instance of a Material.
+        Create an instance of a material.
 
         Optionally specify a material ID, or other properties.
 
         Parameters
         ----------
         material_name : str
-            The name of the material.
-        material_id : str
-            The ID to be associated with this material.
+            Name of the material.
+        material_id : str, optional
+            ID to associate with this material. The default is ``None``.
         models : Dict[str, _BaseModel]
-            Dictionary of nonlinear material models. Specified with their model code (from the
-            TB command), and the model object.
+            Dictionary of nonlinear material models. Models are specified with their
+            model codes (from the TB command) and the model object.
         """
         self._models = []
         self._name = material_name
@@ -46,7 +46,7 @@ class Material:
 
     @property
     def name(self) -> str:
-        """Return the name of the material."""
+        """Name of the material."""
         return self._name
 
     @name.setter
@@ -55,7 +55,7 @@ class Material:
 
     @property
     def material_id(self) -> Optional[str]:
-        """Return the material ID."""
+        """Material ID."""
         return self._id
 
     @material_id.setter
@@ -64,7 +64,7 @@ class Material:
 
     @property
     def uuid(self) -> str:
-        """Return the UUID (transfer ID) which is unique."""
+        """UUID (transfer ID), which is unique."""
         return self._uuid
 
     @uuid.setter
@@ -73,16 +73,16 @@ class Material:
 
     @property
     def models(self) -> "List[_BaseModel]":
-        """Return the currently assigned material models."""
+        """Currently assigned material models."""
         return self._models
 
     def get_model_by_name(self, model_name: str) -> "List[_BaseModel]":
-        """Return the material model or models with the specified model name."""
+        """Get the material model or models with a given model name."""
         return [model for model in self.models if model.name.lower() == model_name.lower()]
 
     @property
     def reference_temperature(self) -> float:
-        """Return the strain reference temperature for the model."""
+        """Strain reference temperature for the model."""
         reference_temperature = self.get_model_by_name("Strain Reference Temperature")[0]
         assert isinstance(reference_temperature, Constant)
         return reference_temperature.value

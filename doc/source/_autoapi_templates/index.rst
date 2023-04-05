@@ -3,7 +3,8 @@
 API reference
 =============
 
-This page contains the ansys-material-manager API reference.
+This section provides descriptions of classes, functions, and attributes for the
+PyMaterials Manager API. Use the search feature or click links to view API documentation.
 
 .. toctree::
    :titlesonly:
