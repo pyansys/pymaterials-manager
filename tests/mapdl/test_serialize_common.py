@@ -132,7 +132,7 @@ class TestSerializePolynomial:
     def test_no_value_fails(self):
         model = Polynomial("Density", coefficients=None)
         mock_mapdl = MagicMock(spec=_MapdlCore)
-        with pytest.raises(ModelValidationException, match="coefficients is empty"):
+        with pytest.raises(ModelValidationException, match="Coefficients is empty"):
             model.write_model(TEST_MATERIAL, mock_mapdl)
 
     def test_invalid_name_fails(self):
@@ -159,7 +159,7 @@ class TestSerializePolynomial:
         model = Polynomial("Density", coefficients=np.array([[1, 2], [3, 4]]))
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(
-            ModelValidationException, match="coefficients must have one dimension, not 2"
+            ModelValidationException, match="Coefficients must have one dimension, not 2"
         ):
             model.write_model(TEST_MATERIAL, mock_mapdl)
 
@@ -169,6 +169,6 @@ class TestSerializePolynomial:
         )
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(
-            ModelValidationException, match="sample_points must have one dimension, not 2"
+            ModelValidationException, match="Sample_points must have one dimension, not 2"
         ):
             model.write_model(TEST_MATERIAL, mock_mapdl)
