@@ -25,7 +25,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = ">=3.8,<4.0"
-numpy = "^1.24.2"
+numpy = "^1.23.5"
 
 # Documentation dependencies
 ansys-sphinx-theme = {version = "==0.9.6", optional = true}
