@@ -41,7 +41,7 @@ ansys-mapdl-core = "^0.64.0"
 ansys-fluent-core = "^0.12.5"
 twine = "^4.0.2"
 pytest-cov = "^4.0.0"
-pre-commit = "^3.2.1"
+pre-commit = "^3.2.2"
 
 [tool.poetry.extras]
 doc = [
