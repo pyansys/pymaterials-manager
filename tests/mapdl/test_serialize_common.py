@@ -169,6 +169,6 @@ class TestSerializePolynomial:
         )
         mock_mapdl = MagicMock(spec=_MapdlCore)
         with pytest.raises(
-            ModelValidationException, match="Sample_points must have one dimension, not 2"
+            ModelValidationException, match="Sample points must have one dimension, not 2"
         ):
             model.write_model(TEST_MATERIAL, mock_mapdl)
