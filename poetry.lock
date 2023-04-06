@@ -115,14 +115,14 @@ pandas = ">=1.1.5"
 
 [[package]]
 name = "ansys-mapdl-core"
-version = "0.64.0"
+version = "0.64.1"
 description = "A Python wrapper for Ansys MAPDL."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "ansys-mapdl-core-0.64.0.tar.gz", hash = "sha256:08e758c464af50629b61fcb744f4fb708b2d99c805220e4b6007e0cea11d7441"},
-    {file = "ansys_mapdl_core-0.64.0-py3-none-any.whl", hash = "sha256:5d62f166a182ce3aaa4a168927aba061478facabfd18987c8dd8c8e979527755"},
+    {file = "ansys-mapdl-core-0.64.1.tar.gz", hash = "sha256:8e5f745680065527b5630ecc42a6894ba9a7085df6671a5e21b7a9554ed5e795"},
+    {file = "ansys_mapdl_core-0.64.1-py3-none-any.whl", hash = "sha256:80dec5614e4fdd4520839d2cb5e272e80182c17dd1e19e09b465a3cf262acbf3"},
 ]
 
 [package.dependencies]
@@ -138,6 +138,7 @@ matplotlib = ">=3.0.0"
 numpy = ">=1.14.0"
 pexpect = {version = ">=4.8.0", markers = "platform_system == \"Linux\""}
 protobuf = ">=3.12.2"
+psutil = ">=5.9.4"
 pyansys-tools-versioning = ">=0.3.3"
 pyiges = ">=0.1.4"
 pyvista = ">=0.33.0"
@@ -145,8 +146,8 @@ scipy = ">=1.3.0"
 tqdm = ">=4.45.0"
 
 [package.extras]
-doc = ["Sphinx (==5.3.0)", "ansys-dpf-core (==0.7.2)", "ansys-mapdl-reader (==0.52.7)", "ansys-sphinx-theme (==0.8.0)", "grpcio (==1.43.0)", "imageio (==2.24.0)", "imageio-ffmpeg (==0.4.8)", "jupyter_sphinx (==0.4.0)", "jupyterlab (>=3.2.8)", "matplotlib (==3.6.3)", "numpydoc (==1.5.0)", "pandas (==1.5.2)", "plotly (==5.12.0)", "pypandoc (==1.10)", "pytest-sphinx (==0.5.0)", "pythreejs (==2.4.1)", "pyvista (==0.37.0)", "sphinx-autobuild (==2021.3.14)", "sphinx-autodoc-typehints (==1.20.2)", "sphinx-copybutton (==0.5.1)", "sphinx-gallery (==0.11.1)", "sphinx-notfound-page (==0.8.3)", "sphinxcontrib-googleanalytics (==0.4)", "sphinxcontrib-websupport (==1.2.4)", "sphinxemoji (==0.2.0)", "vtk (==9.2.5)"]
-tests = ["ansys-dpf-core (==0.7.2)", "autopep8 (==2.0.1)", "matplotlib (==3.6.3)", "pandas (==1.5.2)", "pyansys-tools-report (==0.5.0)", "pytest (==7.2.1)", "pytest-cov (==4.0.0)", "pytest-rerunfailures (==11.0)", "pyvista (==0.37.0)", "scipy (==1.10.0)", "vtk (==9.2.5)"]
+doc = ["ansys-dpf-core (==0.8.0)", "ansys-mapdl-reader (==0.52.11)", "ansys-sphinx-theme (==0.9.6)", "grpcio (==1.51.1)", "imageio (==2.27.0)", "imageio-ffmpeg (==0.4.8)", "jupyter_sphinx (==0.4.0)", "jupyterlab (>=3.2.8)", "matplotlib (==3.7.1)", "numpydoc (==1.5.0)", "pandas (==2.0.0)", "plotly (==5.14.0)", "pypandoc (==1.11)", "pytest-sphinx (==0.5.0)", "pythreejs (==2.4.2)", "pyvista (==0.38.5)", "sphinx (==5.3.0)", "sphinx-autobuild (==2021.3.14)", "sphinx-autodoc-typehints (==1.22)", "sphinx-copybutton (==0.5.1)", "sphinx-gallery (==0.12.2)", "sphinx-notfound-page (==0.8.3)", "sphinxcontrib-websupport (==1.2.4)", "sphinxemoji (==0.2.0)", "vtk (==9.2.6)"]
+tests = ["ansys-dpf-core (==0.8.0)", "autopep8 (==2.0.2)", "matplotlib (==3.7.1)", "pandas (==2.0.0)", "pyansys-tools-report (==0.5.0)", "pytest (==7.2.2)", "pytest-cov (==4.0.0)", "pytest-rerunfailures (==11.1.2)", "pyvista (==0.38.5)", "scipy (==1.10.1)", "vtk (==9.2.6)"]
 
 [[package]]
 name = "ansys-mapdl-reader"
@@ -1882,6 +1883,33 @@ files = [
 protobuf = ">=3.0.0"
 
 [[package]]
+name = "psutil"
+version = "5.9.4"
+description = "Cross-platform lib for process and system monitoring in Python."
+category = "dev"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+files = [
+    {file = "psutil-5.9.4-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:c1ca331af862803a42677c120aff8a814a804e09832f166f226bfd22b56feee8"},
+    {file = "psutil-5.9.4-cp27-cp27m-manylinux2010_i686.whl", hash = "sha256:68908971daf802203f3d37e78d3f8831b6d1014864d7a85937941bb35f09aefe"},
+    {file = "psutil-5.9.4-cp27-cp27m-manylinux2010_x86_64.whl", hash = "sha256:3ff89f9b835100a825b14c2808a106b6fdcc4b15483141482a12c725e7f78549"},
+    {file = "psutil-5.9.4-cp27-cp27m-win32.whl", hash = "sha256:852dd5d9f8a47169fe62fd4a971aa07859476c2ba22c2254d4a1baa4e10b95ad"},
+    {file = "psutil-5.9.4-cp27-cp27m-win_amd64.whl", hash = "sha256:9120cd39dca5c5e1c54b59a41d205023d436799b1c8c4d3ff71af18535728e94"},
+    {file = "psutil-5.9.4-cp27-cp27mu-manylinux2010_i686.whl", hash = "sha256:6b92c532979bafc2df23ddc785ed116fced1f492ad90a6830cf24f4d1ea27d24"},
+    {file = "psutil-5.9.4-cp27-cp27mu-manylinux2010_x86_64.whl", hash = "sha256:efeae04f9516907be44904cc7ce08defb6b665128992a56957abc9b61dca94b7"},
+    {file = "psutil-5.9.4-cp36-abi3-macosx_10_9_x86_64.whl", hash = "sha256:54d5b184728298f2ca8567bf83c422b706200bcbbfafdc06718264f9393cfeb7"},
+    {file = "psutil-5.9.4-cp36-abi3-manylinux_2_12_i686.manylinux2010_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:16653106f3b59386ffe10e0bad3bb6299e169d5327d3f187614b1cb8f24cf2e1"},
+    {file = "psutil-5.9.4-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:54c0d3d8e0078b7666984e11b12b88af2db11d11249a8ac8920dd5ef68a66e08"},
+    {file = "psutil-5.9.4-cp36-abi3-win32.whl", hash = "sha256:149555f59a69b33f056ba1c4eb22bb7bf24332ce631c44a319cec09f876aaeff"},
+    {file = "psutil-5.9.4-cp36-abi3-win_amd64.whl", hash = "sha256:fd8522436a6ada7b4aad6638662966de0d61d241cb821239b2ae7013d41a43d4"},
+    {file = "psutil-5.9.4-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:6001c809253a29599bc0dfd5179d9f8a5779f9dffea1da0f13c53ee568115e1e"},
+    {file = "psutil-5.9.4.tar.gz", hash = "sha256:3d7f9739eb435d4b1338944abe23f49584bde5395f27487d2ee25ad9a8774a62"},
+]
+
+[package.extras]
+test = ["enum34", "ipaddress", "mock", "pywin32", "wmi"]
+
+[[package]]
 name = "ptyprocess"
 version = "0.7.0"
 description = "Run a subprocess in a pseudo terminal"
@@ -2809,4 +2837,4 @@ doc = ["ansys-sphinx-theme", "numpydoc", "Sphinx", "sphinx-autoapi", "sphinx-cop
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4.0"
-content-hash = "170184e011be6d859a77ee1452f3efbd2e65d3b93b68af39a24e3044852af44f"
+content-hash = "9b655598182c15b08fc99e200f5e00d62c9d2af1f7864049ad93421a247958ab"
