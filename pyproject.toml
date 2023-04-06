@@ -27,6 +27,8 @@ packages = [
 python = ">=3.7"
 numpy = {python = ">3.8", version = "^1.24.2"}
 scipy = {python = ">3.8", version = "^1.9.3"}
+pandas = {python = ">3.8", version = "^1.5"}
+
 
 # Documentation dependencies
 ansys-sphinx-theme = {version = "==0.9.6", optional = true}
