@@ -10,8 +10,8 @@ PyMaterials Manager
    :target: https://pypi.org/project/pymaterials-manager/
    :alt: Python
 
-.. |pypi| image:: https://img.shields.io/pypi/v/pymaterials-manager.svg?logo=python&logoColor=white
-   :target: https://pypi.org/project/pymaterials-manager
+.. |pypi| image:: https://img.shields.io/pypi/v/ansys-materials-manager.svg?logo=python&logoColor=white
+   :target: https://pypi.org/project/ansys-materials-manager
    :alt: PyPI
 
 .. |codecov| image:: https://codecov.io/gh/pyansys/pymaterials-manager/branch/main/graph/badge.svg
