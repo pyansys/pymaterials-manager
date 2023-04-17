@@ -203,7 +203,7 @@ class MatmlWriter:
 
         if kwargs.get("indent", False):
             self._indent(tree)
-        buffer.write(ET.tostring(tree))
+        buffer.write(ET.tostring(tree.getroot()))
 
     def export(self, path: _PATH_TYPE, **kwargs) -> None:
         """

@@ -1,3 +1,4 @@
+import io
 import os
 import tempfile
 import xml.etree.ElementTree as ET
@@ -71,11 +72,7 @@ class TestMatmlFromMaterial:
         for key, value in parameters.items():
             material.models.append(Constant(key, value))
 
-        with tempfile.TemporaryDirectory() as tmpdirname:
-            export_path = os.path.join(tmpdirname, "engd.xml")
-            matml_writer = MatmlWriter([material])
-            matml_writer.export(export_path)
-
+        def _validate_file(export_path):
             reader = MatmlReader(export_path)
             reader.parse_matml()
             imported_materials = convert_matml_materials(reader.materials, reader.transfer_ids, 0)
@@ -86,3 +83,16 @@ class TestMatmlFromMaterial:
                 assigned_model = steel.get_model_by_name(name)
                 assert len(assigned_model) == 1
                 assert assigned_model[0].value == pytest.approx(expected_value)
+
+        # test the export file, and write() output
+        with tempfile.TemporaryDirectory() as tmpdirname:
+            export_path = os.path.join(tmpdirname, "engd.xml")
+            matml_writer = MatmlWriter([material])
+            matml_writer.export(export_path)
+
+            _validate_file(export_path)
+
+            write_path = os.path.join(tmpdirname, "engd2.xml")
+            with open(write_path, "wb") as f:
+                matml_writer.write(f)
+            _validate_file(write_path)
