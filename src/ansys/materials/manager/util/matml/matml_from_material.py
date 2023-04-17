@@ -199,7 +199,7 @@ class MatmlWriter:
         -----------------
         indent - add an indent to format the XML output (python 3.9+). Defaults to false.
         """
-        tree = self._to_etree(kwargs)
+        tree = self._to_etree()
 
         if kwargs.get("indent", False):
             self._indent(tree)
@@ -217,7 +217,7 @@ class MatmlWriter:
         -----------------
         indent - add an indent to format the XML output (python 3.9+). Defaults to false.
         """
-        tree = self._to_etree(kwargs)
+        tree = self._to_etree()
 
         print(f"write xml to {path}")
         if kwargs.get("indent", False):
