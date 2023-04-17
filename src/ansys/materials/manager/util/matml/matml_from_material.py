@@ -1,6 +1,6 @@
 """Provides the ``MatmlWriter`` class."""
 import os
-from typing import Dict, Sequence, Union, BinaryIO
+from typing import BinaryIO, Dict, Sequence, Union
 import xml.etree.ElementTree as ET
 
 from ansys.materials.manager.material import Material
