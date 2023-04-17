@@ -1,4 +1,3 @@
-import io
 import os
 import tempfile
 import xml.etree.ElementTree as ET
