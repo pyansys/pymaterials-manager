@@ -195,9 +195,10 @@ class MatmlWriter:
         ----------
         buffer:
             buffer to write to
-        Keyword arguments
-        -----------------
-        indent - add an indent to format the XML output (python 3.9+). Defaults to false.
+        **kwargs : bool, optional
+            Optional keyword arguments.
+            indent : bool, optional
+                Whether to add an indent to format the XML output(python 3.9+). Defaults to ``false``.
         """
         tree = self._to_etree()
 
