@@ -39,7 +39,7 @@ class TestMatmlFromMaterial:
             ref_tree = ET.parse(os.path.join(DIR_PATH, "..", "data", "ref_steel_eglass_air.xml"))
             assert ET.tostring(tree.getroot()) == ET.tostring(ref_tree.getroot())
 
-    @pytest.mark.parametrize("indent", [False,True])
+    @pytest.mark.parametrize("indent", [False, True])
     def test_matml_from_material(self, indent):
         """
         Verify that manually constructed materials can be exported to matml.
