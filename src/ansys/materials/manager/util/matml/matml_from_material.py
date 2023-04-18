@@ -198,7 +198,8 @@ class MatmlWriter:
         **kwargs : bool, optional
             Optional keyword arguments.
             indent : bool, optional
-                Whether to add an indent to format the XML output(python 3.9+). Defaults to ``false``.
+                Whether to add an indent to format the XML output(python 3.9+).
+                Defaults to ``false``.
         """
         tree = self._to_etree()
 
@@ -217,7 +218,8 @@ class MatmlWriter:
         **kwargs : bool, optional
             Optional keyword arguments.
             indent : bool, optional
-                Whether to add an indent to format the XML output(python 3.9+). Defaults to ``false``.
+                Whether to add an indent to format the XML output(python 3.9+).
+                Defaults to ``false``.
         """
         tree = self._to_etree()
 
