@@ -191,7 +191,7 @@ class MatmlWriter:
     def _xml_write_kwargs(self, **kwargs) -> dict:
         if sys.version_info.minor == 7:
             return {}
-        return {"xml_declaration" : kwargs.get("xml_declaration", False)}
+        return {"xml_declaration": kwargs.get("xml_declaration", False)}
 
     def write(self, buffer: BinaryIO, **kwargs) -> None:
         """
@@ -213,9 +213,7 @@ class MatmlWriter:
 
         if kwargs.get("indent", False):
             self._indent(tree)
-        buffer.write(
-            ET.tostring(tree.getroot(), **self._xml_write_kwargs(**kwargs))
-        )
+        buffer.write(ET.tostring(tree.getroot(), **self._xml_write_kwargs(**kwargs)))
 
     def export(self, path: _PATH_TYPE, **kwargs) -> None:
         """
