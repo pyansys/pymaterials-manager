@@ -1,5 +1,6 @@
 """Provides the ``MatmlWriter`` class."""
 import os
+import sys
 from typing import BinaryIO, Dict, Sequence, Union
 import xml.etree.ElementTree as ET
 
@@ -187,6 +188,11 @@ class MatmlWriter:
         else:
             print(f"ElementTree does not have `indent`. Python 3.9+ required!")
 
+    def _xml_write_kwargs(self, **kwargs) -> dict:
+        if sys.version_info.minor == 7:
+            return {}
+        return {"xml_declaration" : kwargs.get("xml_declaration", False)}
+
     def write(self, buffer: BinaryIO, **kwargs) -> None:
         """
         Write a Matml (engineering data xml format) representation of materials to buffer.
@@ -208,7 +214,7 @@ class MatmlWriter:
         if kwargs.get("indent", False):
             self._indent(tree)
         buffer.write(
-            ET.tostring(tree.getroot(), xml_declaration=kwargs.get("xml_declaration", False))
+            ET.tostring(tree.getroot(), **self._xml_write_kwargs(**kwargs))
         )
 
     def export(self, path: _PATH_TYPE, **kwargs) -> None:
@@ -232,4 +238,4 @@ class MatmlWriter:
         print(f"write xml to {path}")
         if kwargs.get("indent", False):
             self._indent(tree)
-        tree.write(path, xml_declaration=kwargs.get("xml_declaration", False))
+        tree.write(path, **self._xml_write_kwargs(**kwargs))

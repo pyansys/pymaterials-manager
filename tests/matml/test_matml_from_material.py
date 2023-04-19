@@ -40,7 +40,8 @@ class TestMatmlFromMaterial:
             assert ET.tostring(tree.getroot()) == ET.tostring(ref_tree.getroot())
 
     @pytest.mark.parametrize("indent", [False, True])
-    def test_matml_from_material(self, indent):
+    @pytest.mark.parametrize("xml_declaration", [False, True])
+    def test_matml_from_material(self, indent, xml_declaration):
         """
         Verify that manually constructed materials can be exported to matml.
         The matml is imported back and the data is compared with the initial values.
@@ -88,11 +89,11 @@ class TestMatmlFromMaterial:
         with tempfile.TemporaryDirectory() as tmpdirname:
             export_path = os.path.join(tmpdirname, "engd.xml")
             matml_writer = MatmlWriter([material])
-            matml_writer.export(export_path, indent=indent)
+            matml_writer.export(export_path, indent=indent, xml_declaration=xml_declaration)
 
             _validate_file(export_path)
 
             write_path = os.path.join(tmpdirname, "engd2.xml")
             with open(write_path, "wb") as f:
-                matml_writer.write(f, indent=indent)
+                matml_writer.write(f, indent=indent, xml_declaration=xml_declaration)
             _validate_file(write_path)
