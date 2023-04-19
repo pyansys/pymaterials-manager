@@ -53,7 +53,7 @@ class MatmlWriter:
                 self._metadata_parameters[matml_key] = para_key
 
             param_element = ET.SubElement(
-                property_element, "ParameterValue", {"parameter": para_key, "format": "float"}
+                property_element, "ParameterValue", {"format": "float", "parameter": para_key}
             )
             data_element = ET.SubElement(param_element, "Data")
             data_element.text = str(material.get_model_by_name(mat_key)[0].value)
@@ -200,12 +200,16 @@ class MatmlWriter:
             indent : bool, optional
                 Whether to add an indent to format the XML output(python 3.9+).
                 Defaults to ``false``.
+            xml_declaration: bool, optional
+                Whether to add the XML declaration to the output
         """
         tree = self._to_etree()
 
         if kwargs.get("indent", False):
             self._indent(tree)
-        buffer.write(ET.tostring(tree.getroot()))
+        buffer.write(
+            ET.tostring(tree.getroot(), xml_declaration=kwargs.get("xml_declaration", False))
+        )
 
     def export(self, path: _PATH_TYPE, **kwargs) -> None:
         """
@@ -220,10 +224,12 @@ class MatmlWriter:
             indent : bool, optional
                 Whether to add an indent to format the XML output(python 3.9+).
                 Defaults to ``false``.
+            xml_declaration: bool, optional
+                Whether to add the XML declaration to the output
         """
         tree = self._to_etree()
 
         print(f"write xml to {path}")
         if kwargs.get("indent", False):
             self._indent(tree)
-        tree.write(path)
+        tree.write(path, xml_declaration=kwargs.get("xml_declaration", False))
