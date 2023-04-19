@@ -26,7 +26,7 @@ class setup_root:
 
 class MockFluent(_FluentCore):
     class _connection:
-        def scheme_eval():
+        def scheme_eval(self):
             pass
 
     def __init__(self):
