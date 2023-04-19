@@ -207,7 +207,9 @@ class MatmlWriter:
 
         if kwargs.get("indent", False):
             self._indent(tree)
-        buffer.write(ET.tostring(tree.getroot(), xml_declaration = kwargs.get("xml_declaration", False)))
+        buffer.write(
+            ET.tostring(tree.getroot(), xml_declaration=kwargs.get("xml_declaration", False))
+        )
 
     def export(self, path: _PATH_TYPE, **kwargs) -> None:
         """
@@ -230,4 +232,4 @@ class MatmlWriter:
         print(f"write xml to {path}")
         if kwargs.get("indent", False):
             self._indent(tree)
-        tree.write(path, xml_declaration = kwargs.get("xml_declaration", False))
+        tree.write(path, xml_declaration=kwargs.get("xml_declaration", False))
