@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 # Check https://python-poetry.org/docs/pyproject/ for all available sections
 name = "ansys-materials-manager"
-version = "0.2.1"
+version = "0.2.2"
 description = "Python package to unify material management across the ansys portfolio"
 license = "MIT"
 authors = ["ANSYS, Inc. <ansys.support@ansys.com>"]
