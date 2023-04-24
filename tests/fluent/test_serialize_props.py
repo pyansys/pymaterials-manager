@@ -6,7 +6,7 @@ from ansys.materials.manager.material import Material
 TEST_MATERIAL = Material("Fluid", models=[Constant("Reference Temperature", 25.0)])
 
 
-class materials:
+class Materials:
     def __init__(self):
         self._fluid = {}
 
@@ -15,9 +15,9 @@ class materials:
         return self._fluid
 
 
-class setup_root:
+class SetupRoot:
     def __init__(self):
-        self._materials = materials()
+        self._materials = Materials()
 
     @property
     def materials(self):
@@ -25,13 +25,17 @@ class setup_root:
 
 
 class MockFluent(_FluentCore):
-    class _connection:
+    class _Connection:
+        class _SchemeEval:
+            def string_eval(self):
+                return None
+
         def scheme_eval(self):
-            pass
+            return self._SchemeEval
 
     def __init__(self):
-        super().__init__(fluent_connection=self._connection)
-        self._setup = setup_root()
+        super().__init__(fluent_connection=self._Connection)
+        self._setup = SetupRoot()
 
     @property
     def setup(self):
