@@ -207,23 +207,23 @@ importlib-metadata = ">=4.0"
 
 [[package]]
 name = "ansys-sphinx-theme"
-version = "0.9.7"
+version = "0.9.8"
 description = "A theme devised by ANSYS, Inc. for Sphinx documentation."
 category = "main"
 optional = true
 python-versions = ">=3.7"
 files = [
-    {file = "ansys-sphinx-theme-0.9.7.tar.gz", hash = "sha256:ba13cd842e1a11218a9580c887214762112d5daeb9293b823920b7cc3dbe6fc4"},
-    {file = "ansys_sphinx_theme-0.9.7-py3-none-any.whl", hash = "sha256:63668de0ecfda7115d8dbfa9a7c6d2ae6d89e6fe8402c7839fd31456556d9053"},
+    {file = "ansys-sphinx-theme-0.9.8.tar.gz", hash = "sha256:308b39ee3f08b5fc3cd34b124d47c1eb8d189a05c0746471badcbaa7cd47acf3"},
+    {file = "ansys_sphinx_theme-0.9.8-py3-none-any.whl", hash = "sha256:1ab528ee08d16832a76f4cebb5cf646a7d3e6d8fbd074c07fb9ce210cacffb0d"},
 ]
 
 [package.dependencies]
 Jinja2 = ">=3.1.2"
 pydata-sphinx-theme = "0.13.3"
-Sphinx = ">=4.2.0,<6"
+Sphinx = ">=4.2.0"
 
 [package.extras]
-doc = ["Sphinx (==5.3.0)", "bs4 (==0.0.1)", "html5lib (==1.1)", "numpydoc (==1.5.0)", "requests (==2.28.2)", "sphinx-copybutton (==0.5.1)", "sphinx-design (==0.3.0)", "sphinx-jinja (==2.0.2)", "sphinx-notfound-page (==0.8.3)"]
+doc = ["Sphinx (==6.1.3)", "bs4 (==0.0.1)", "html5lib (==1.1)", "numpydoc (==1.5.0)", "requests (==2.28.2)", "sphinx-copybutton (==0.5.2)", "sphinx-design (==0.4.1)", "sphinx-jinja (==2.0.2)", "sphinx-notfound-page (==0.8.3)"]
 
 [[package]]
 name = "appdirs"
@@ -2401,28 +2401,28 @@ files = [
 
 [[package]]
 name = "sphinx"
-version = "5.1.1"
+version = "6.2.1"
 description = "Python documentation generator"
 category = "main"
 optional = true
-python-versions = ">=3.6"
+python-versions = ">=3.8"
 files = [
-    {file = "Sphinx-5.1.1-py3-none-any.whl", hash = "sha256:309a8da80cb6da9f4713438e5b55861877d5d7976b69d87e336733637ea12693"},
-    {file = "Sphinx-5.1.1.tar.gz", hash = "sha256:ba3224a4e206e1fbdecf98a4fae4992ef9b24b85ebf7b584bb340156eaf08d89"},
+    {file = "Sphinx-6.2.1.tar.gz", hash = "sha256:6d56a34697bb749ffa0152feafc4b19836c755d90a7c59b72bc7dfd371b9cc6b"},
+    {file = "sphinx-6.2.1-py3-none-any.whl", hash = "sha256:97787ff1fa3256a3eef9eda523a63dbf299f7b47e053cfcf684a1c2a8380c912"},
 ]
 
 [package.dependencies]
 alabaster = ">=0.7,<0.8"
-babel = ">=1.3"
-colorama = {version = ">=0.3.5", markers = "sys_platform == \"win32\""}
-docutils = ">=0.14,<0.20"
-imagesize = "*"
-importlib-metadata = {version = ">=4.4", markers = "python_version < \"3.10\""}
-Jinja2 = ">=2.3"
-packaging = "*"
-Pygments = ">=2.0"
-requests = ">=2.5.0"
-snowballstemmer = ">=1.1"
+babel = ">=2.9"
+colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
+docutils = ">=0.18.1,<0.20"
+imagesize = ">=1.3"
+importlib-metadata = {version = ">=4.8", markers = "python_version < \"3.10\""}
+Jinja2 = ">=3.0"
+packaging = ">=21.0"
+Pygments = ">=2.13"
+requests = ">=2.25.0"
+snowballstemmer = ">=2.0"
 sphinxcontrib-applehelp = "*"
 sphinxcontrib-devhelp = "*"
 sphinxcontrib-htmlhelp = ">=2.0.0"
@@ -2432,26 +2432,26 @@ sphinxcontrib-serializinghtml = ">=1.1.5"
 
 [package.extras]
 docs = ["sphinxcontrib-websupport"]
-lint = ["docutils-stubs", "flake8 (>=3.5.0)", "flake8-bugbear", "flake8-comprehensions", "isort", "mypy (>=0.971)", "sphinx-lint", "types-requests", "types-typed-ast"]
-test = ["cython", "html5lib", "pytest (>=4.6)", "typed-ast"]
+lint = ["docutils-stubs", "flake8 (>=3.5.0)", "flake8-simplify", "isort", "mypy (>=0.990)", "ruff", "sphinx-lint", "types-requests"]
+test = ["cython", "filelock", "html5lib", "pytest (>=4.6)"]
 
 [[package]]
 name = "sphinx-autoapi"
-version = "2.0.1"
+version = "2.1.0"
 description = "Sphinx API documentation generator"
 category = "main"
 optional = true
 python-versions = ">=3.7"
 files = [
-    {file = "sphinx-autoapi-2.0.1.tar.gz", hash = "sha256:cdf47968c20852f4feb0ccefd09e414bb820af8af8f82fab15a24b09a3d1baba"},
-    {file = "sphinx_autoapi-2.0.1-py2.py3-none-any.whl", hash = "sha256:8ed197a0c9108770aa442a5445744c1405b356ea64df848e8553411b9b9e129b"},
+    {file = "sphinx-autoapi-2.1.0.tar.gz", hash = "sha256:5b5c58064214d5a846c9c81d23f00990a64654b9bca10213231db54a241bc50f"},
+    {file = "sphinx_autoapi-2.1.0-py2.py3-none-any.whl", hash = "sha256:b25c7b2cda379447b8c36b6a0e3bdf76e02fd64f7ca99d41c6cbdf130a01768f"},
 ]
 
 [package.dependencies]
 astroid = ">=2.7"
 Jinja2 = "*"
 PyYAML = "*"
-sphinx = ">=4.0"
+sphinx = ">=5.2.0"
 unidecode = "*"
 
 [package.extras]
@@ -2860,4 +2860,4 @@ doc = ["Sphinx", "ansys-sphinx-theme", "numpydoc", "sphinx-autoapi", "sphinx-cop
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8"
-content-hash = "c83d4ae7f9c7af1976385c683bee9b5483d84c7ea5811ed10da2336f0985b0ae"
+content-hash = "53baac6d11fa86c618182494e4acfac088726a48ebc51b099727c37af5003b75"
