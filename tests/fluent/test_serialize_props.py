@@ -27,11 +27,9 @@ class SetupRoot:
 class MockFluent(_FluentCore):
     class _Connection:
         class _SchemeEval:
-            def string_eval(self):
-                return None
+            string_eval = None
 
-        def scheme_eval(self):
-            return self._SchemeEval
+        scheme_eval = _SchemeEval()
 
     def __init__(self):
         super().__init__(fluent_connection=self._Connection)
