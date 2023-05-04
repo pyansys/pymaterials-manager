@@ -94,14 +94,14 @@ files = [
 
 [[package]]
 name = "ansys-fluent-core"
-version = "0.13.0"
+version = "0.13.1"
 description = "Pythonic interface to Ansys Fluent"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "ansys-fluent-core-0.13.0.tar.gz", hash = "sha256:ba0fc40508b715becd5248e19f8594848b7baf21dbe2767ff448963a10d25c84"},
-    {file = "ansys_fluent_core-0.13.0-py3-none-any.whl", hash = "sha256:301c31dfdfdd2cff98204a44cb095a82305e6c81925a2188259ef818032e28df"},
+    {file = "ansys-fluent-core-0.13.1.tar.gz", hash = "sha256:2b1419868be308381e1fd4dcc89c3080cf63bb6ed54788041d5b7d1285aa7b38"},
+    {file = "ansys_fluent_core-0.13.1-py3-none-any.whl", hash = "sha256:3ddbccbef69cd3455ab193a54e6ed0eeadafce729c32bff700471fbbac713230"},
 ]
 
 [package.dependencies]
@@ -1589,7 +1589,7 @@ files = [
 name = "pandas"
 version = "2.0.1"
 description = "Powerful data structures for data analysis, time series, and statistics"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
@@ -2072,7 +2072,7 @@ testing = ["fields", "hunter", "process-tests", "pytest-xdist", "six", "virtuale
 name = "python-dateutil"
 version = "2.8.2"
 description = "Extensions to the standard Python datetime module"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
 files = [
@@ -2280,7 +2280,7 @@ jupyter = ["ipywidgets (>=7.5.1,<9)"]
 name = "scipy"
 version = "1.9.3"
 description = "Fundamental algorithms for scientific computing in Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
@@ -2367,7 +2367,7 @@ testing-integration = ["build[virtualenv]", "filelock (>=3.4.0)", "jaraco.envs (
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 files = [
@@ -2645,7 +2645,7 @@ files = [
 name = "tzdata"
 version = "2023.3"
 description = "Provider of IANA time zone data"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=2"
 files = [
@@ -2860,4 +2860,4 @@ doc = ["ansys-sphinx-theme", "numpydoc", "Sphinx", "sphinx-autoapi", "sphinx-cop
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8"
-content-hash = "06fee19b672718dc810b4c7ed5851c5a30843f2c830c775ba1f39eb599aadf72"
+content-hash = "e0dcbc22eafd9ad3912be427f93cddba16d25cfef2409504586346cb45caf8b6"
