@@ -10,7 +10,7 @@ on:
 
 env:
   MAIN_PYTHON_VERSION: '3.10'
-  MAPDL_DOCKER_PACKAGE: 'ghcr.io/pyansys/pymapdl/mapdl'
+  MAPDL_DOCKER_PACKAGE: 'ghcr.io/ansys/pymapdl/mapdl'
   MAPDL_DOCKER_VERSION: 'v23.1.0'
   DOCUMENTATION_CNAME: "manager.materials.docs.pyansys.com"
 
@@ -66,7 +66,7 @@ jobs:
   
     steps:
       - name: Build wheelhouse and perform smoke test
-        uses: pyansys/actions/build-wheelhouse@v4
+        uses: ansys/actions/build-wheelhouse@v4
         with:
           library-name: ${{ env.PACKAGE_NAME }}
           library-namespace: ${{ env.PACKAGE_NAMESPACE }}
@@ -239,7 +239,7 @@ jobs:
     needs: [build]
     steps:
       - name: Deploy the latest documentation
-        uses: pyansys/actions/doc-deploy-dev@v4
+        uses: ansys/actions/doc-deploy-dev@v4
         with:
           cname: ${{ env.DOCUMENTATION_CNAME }}
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -285,7 +285,7 @@ jobs:
     needs: [release]
     steps:
       - name: Deploy the stable documentation
-        uses: pyansys/actions/doc-deploy-stable@v4
+        uses: ansys/actions/doc-deploy-stable@v4
         with:
           cname: ${{ env.DOCUMENTATION_CNAME }}
           token: ${{ secrets.GITHUB_TOKEN }}

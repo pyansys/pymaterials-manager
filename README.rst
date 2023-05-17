@@ -14,12 +14,12 @@ PyMaterials Manager
    :target: https://pypi.org/project/ansys-materials-manager
    :alt: PyPI
 
-.. |codecov| image:: https://codecov.io/gh/pyansys/pymaterials-manager/branch/main/graph/badge.svg
-   :target: https://codecov.io/gh/pyansys/pymaterials-manager
+.. |codecov| image:: https://codecov.io/gh/ansys/pymaterials-manager/branch/main/graph/badge.svg
+   :target: https://codecov.io/gh/ansys/pymaterials-manager
    :alt: Codecov
 
-.. |GH-CI| image:: https://github.com/pyansys/pymaterials-manager/actions/workflows/ci_cd.yml/badge.svg
-   :target: https://github.com/pyansys/pymaterials-manager/actions/workflows/ci_cd.yml
+.. |GH-CI| image:: https://github.com/ansys/pymaterials-manager/actions/workflows/ci_cd.yml/badge.svg
+   :target: https://github.com/ansys/pymaterials-manager/actions/workflows/ci_cd.yml
    :alt: GH-CI
 
 .. |MIT| image:: https://img.shields.io/badge/License-MIT-yellow.svg
@@ -69,7 +69,7 @@ To install PyMaterials Manager in developer mode, perform these steps:
 
     .. code:: bash
 
-        git clone https://github.com/pyansys/pymaterials-manager
+        git clone https://github.com/ansys/pymaterials-manager
 
 #. Create a fresh-clean Python environment and activate it:
 
@@ -185,5 +185,5 @@ the building requirements and then executing the build module:
 .. _pytest: https://docs.pytest.org/en/stable/
 .. _Sphinx: https://www.sphinx-doc.org/en/master/
 .. _tox: https://tox.wiki/
-.. _PyMaterials Manager Issues: https://github.com/pyansys/pymaterials-manager/issues
+.. _PyMaterials Manager Issues: https://github.com/ansys/pymaterials-manager/issues
 .. _documentation: https://manager.materials.docs.pyansys.com/

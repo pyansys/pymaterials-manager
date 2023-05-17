@@ -22,7 +22,7 @@ html_short_title = html_title = "pymaterials-manager"
 
 # specify the location of your github repo
 html_theme_options = {
-    "github_url": "https://github.com/pyansys/pymaterials-manager",
+    "github_url": "https://github.com/ansys/pymaterials-manager",
     "show_prev_next": False,
     "show_breadcrumbs": True,
     "additional_breadcrumbs": [
