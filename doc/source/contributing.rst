@@ -20,7 +20,7 @@ in development mode, run this code:
 
 .. code:: console
 
-    git clone https://github.com/pyansys/pymaterials-manager
+    git clone https://github.com/ansys/pymaterials-manager
     cd pymaterials-manager
     pip install poetry
     poetry install
@@ -82,5 +82,5 @@ This way, it's not possible for you to push code that fails the style checks::
 .. _dev_guide_pyansys: https://dev.docs.pyansys.com/
 .. _dev_guide_contributing: https://dev.docs.pyansys.com/dev/how-to/contributing.html
 .. _dev_guide_coding_style: https://dev.docs.pyansys.com/dev/coding-style/index.html
-.. _PyMaterials Manager Issues: https://github.com/pyansys/pymaterials-manager/issues
+.. _PyMaterials Manager Issues: https://github.com/ansys/pymaterials-manager/issues
 .. _Pymaterials-manager_docs: https://manager.materials.docs.pyansys.com/
