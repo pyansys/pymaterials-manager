@@ -39,7 +39,7 @@ sphinx-copybutton = {version = "==0.5.2", optional = true}
 pytest = "^7.3.0"
 coolprop = "^6.4.1"
 ansys-mapdl-core = "^0.64.1"
-ansys-fluent-core = ">=0.12.5,<0.14.0"
+ansys-fluent-core = ">=0.12.5,<0.15.0"
 twine = "^4.0.2"
 pytest-cov = "^4.0.0"
 pre-commit = "^3.2.2"
