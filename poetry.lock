@@ -94,14 +94,14 @@ files = [
 
 [[package]]
 name = "ansys-fluent-core"
-version = "0.14.0"
+version = "0.15.0"
 description = "Pythonic interface to Ansys Fluent"
 category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "ansys-fluent-core-0.14.0.tar.gz", hash = "sha256:ffd77f36509d19a9e3b194535a274b3db2aaa989bd96c67ad15e39f38dbf2dea"},
-    {file = "ansys_fluent_core-0.14.0-py3-none-any.whl", hash = "sha256:8c083a0862f995655d789c5b68083a992f2acc64f1bc0e06bcc1ea022811927e"},
+    {file = "ansys-fluent-core-0.15.0.tar.gz", hash = "sha256:22032e11e5b649a9bd4b9bf43487f4e9ff0a7428cc56530b2e5a9d8be49c2abf"},
+    {file = "ansys_fluent_core-0.15.0-py3-none-any.whl", hash = "sha256:469f1de565bd235dff3e02723cca4aa3bb6b112ecf669d1264b1f80fc5129c28"},
 ]
 
 [package.dependencies]
@@ -2883,4 +2883,4 @@ doc = ["ansys-sphinx-theme", "numpydoc", "Sphinx", "sphinx-autoapi", "sphinx-cop
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8"
-content-hash = "995959bcc5ce8f00cfcb5d9f259ba1c32730309813b6aae203663063245f5e75"
+content-hash = "abb25f16b93d1e343f0ed581ca92577ad246f50131a5b6027f01dfc79a2d9ab2"
