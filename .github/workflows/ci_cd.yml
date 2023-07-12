@@ -68,8 +68,8 @@ jobs:
       - name: Build wheelhouse and perform smoke test
         uses: ansys/actions/build-wheelhouse@v4
         with:
-          library-name: ${{ env.PACKAGE_NAME }}
-          library-namespace: ${{ env.PACKAGE_NAMESPACE }}
+          library-name: "ansys-materials-manager"
+          library-namespace: "ansys.materials.manager"
           operating-system: ${{ matrix.os }}
           python-version: ${{ matrix.python-version }}
 
