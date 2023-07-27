@@ -2338,13 +2338,13 @@ files = [
 
 [[package]]
 name = "sphinx"
-version = "7.1.0"
+version = "7.1.1"
 description = "Python documentation generator"
 optional = true
 python-versions = ">=3.8"
 files = [
-    {file = "sphinx-7.1.0-py3-none-any.whl", hash = "sha256:9bdfb5a2b28351d4fdf40a63cd006dbad727f793b243e669fc950d7116c634af"},
-    {file = "sphinx-7.1.0.tar.gz", hash = "sha256:8f336d0221c3beb23006b3164ed1d46db9cebcce9cb41cdb9c5ecd4bcc509be0"},
+    {file = "sphinx-7.1.1-py3-none-any.whl", hash = "sha256:4e6c5ea477afa0fb90815210fd1312012e1d7542589ab251ac9b53b7c0751bce"},
+    {file = "sphinx-7.1.1.tar.gz", hash = "sha256:59b8e391f0768a96cd233e8300fe7f0a8dc2f64f83dc2a54336a9a84f428ff4e"},
 ]
 
 [package.dependencies]
@@ -2765,4 +2765,4 @@ doc = ["Sphinx", "ansys-sphinx-theme", "numpydoc", "sphinx-autoapi", "sphinx-cop
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8"
-content-hash = "62a84f86a2a223ec04d768dd749aebb9f20b2a78af038ecdafc429bc5ad3f3c0"
+content-hash = "fa99a029f9d83555318298c38615d52358c8d03856b7dad662d4d6776bf5feea"
