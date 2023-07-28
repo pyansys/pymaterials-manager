@@ -110,13 +110,13 @@ pyyaml = "*"
 
 [[package]]
 name = "ansys-mapdl-core"
-version = "0.65.0"
+version = "0.65.1"
 description = "A Python wrapper for Ansys MAPDL."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "ansys_mapdl_core-0.65.0-py3-none-any.whl", hash = "sha256:36ce69a0ee1a01069fc911028a78121eb0ee88c8ef5a33cb7643b0fc69cfca62"},
-    {file = "ansys_mapdl_core-0.65.0.tar.gz", hash = "sha256:fdd14b554131b780e184697c9dd33656e0aab8803e893ab8af93d8037d8b15eb"},
+    {file = "ansys_mapdl_core-0.65.1-py3-none-any.whl", hash = "sha256:102c5d71715791a10460adb883e62544b01cd69114c0eb743e1d3946d268f5c0"},
+    {file = "ansys_mapdl_core-0.65.1.tar.gz", hash = "sha256:1a60071aa97a7e151e0bf6f0f25269e1b9946763e001d4d97f382f50dd250c0e"},
 ]
 
 [package.dependencies]
@@ -130,13 +130,16 @@ click = ">=8.1.3"
 grpcio = ">=1.30.0"
 importlib-metadata = ">=4.0"
 matplotlib = ">=3.0.0"
-numpy = ">=1.14.0"
+numpy = [
+    {version = ">=1.14.0,<1.25.0", markers = "python_version < \"3.9\""},
+    {version = ">=1.14.0", markers = "python_version >= \"3.9\""},
+]
 pexpect = {version = ">=4.8.0", markers = "platform_system == \"Linux\""}
 protobuf = ">=3.12.2"
 psutil = ">=5.9.4"
 pyansys-tools-versioning = ">=0.3.3"
-pyiges = ">=0.1.4"
-pyvista = ">=0.33.0"
+pyiges = {version = ">=0.3.1", extras = ["full"]}
+pyvista = ">=0.33.0,<0.41"
 scipy = ">=1.3.0"
 tqdm = ">=4.45.0"
 vtk = ">=9.0.0"
@@ -1954,19 +1957,23 @@ plugins = ["importlib-metadata"]
 
 [[package]]
 name = "pyiges"
-version = "0.2.1"
+version = "0.3.1"
 description = "Pythonic IGES reader"
 optional = false
 python-versions = "*"
 files = [
-    {file = "pyiges-0.2.1-py3-none-any.whl", hash = "sha256:bb78fd8fd0c8bb2af7e36f61943cfcfec5e2a5fab5941143b540465b8a03139a"},
-    {file = "pyiges-0.2.1.tar.gz", hash = "sha256:4ef17d42370ba01f58fbecc6228bf293f6feb7457ebf0026844e2cec2db622dc"},
+    {file = "pyiges-0.3.1-py3-none-any.whl", hash = "sha256:74a89874649bc7cab139e1d8198cb8cb895537ff8693702d6feb9fb49d402ab5"},
+    {file = "pyiges-0.3.1.tar.gz", hash = "sha256:ff8a9d6d8c8b91a597d987194143482f4de74b54ca7ef03f2a29fca6ae39e6a4"},
 ]
 
 [package.dependencies]
-geomdl = "*"
-pyvista = ">=0.28.0"
+geomdl = {version = "*", optional = true, markers = "extra == \"full\""}
+numpy = "*"
+pyvista = {version = ">=0.28.0", optional = true, markers = "extra == \"full\""}
 tqdm = "*"
+
+[package.extras]
+full = ["geomdl", "pyvista (>=0.28.0)"]
 
 [[package]]
 name = "pyparsing"
