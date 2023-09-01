@@ -7,7 +7,7 @@ except ImportError:
     _MapdlCore = type(None)
 
 try:
-    from ansys.fluent.core import Fluent as _FluentCore
+    from ansys.fluent.core.session_solver import Solver as _FluentCore
 except ImportError:
     _FluentCore = type(None)
 
