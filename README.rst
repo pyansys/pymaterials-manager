@@ -105,7 +105,7 @@ Distribution
 ------------
 
 If you want to create either source or wheel files, start by installing poetry and then 
-executing the build module. To install poetry we suggest using the pipx installation
+executing the build module. To install poetry we suggest using the ``pipx`` installation
 method in the `poetry documentation`_.
 
 .. code:: bash
