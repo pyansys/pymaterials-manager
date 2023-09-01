@@ -206,13 +206,13 @@ tests = ["ansys-api-platform-instancemanagement (==1.0.0)", "grpcio-health-check
 
 [[package]]
 name = "ansys-sphinx-theme"
-version = "0.9.9"
+version = "0.10.2"
 description = "A theme devised by ANSYS, Inc. for Sphinx documentation."
 optional = true
 python-versions = ">=3.7"
 files = [
-    {file = "ansys-sphinx-theme-0.9.9.tar.gz", hash = "sha256:1813e8d3d8d665512440911db91359dc850af6f359857aff6b80cb80a09b2f0c"},
-    {file = "ansys_sphinx_theme-0.9.9-py3-none-any.whl", hash = "sha256:dd2f0344cc0aeda361a95ec4750eb29cb8c782eeb7701f0c34ea64d14660b315"},
+    {file = "ansys_sphinx_theme-0.10.2-py3-none-any.whl", hash = "sha256:68219af43760e81dad189e140b000f673fc9a72d701c7c2faa42e5b856cc0a3f"},
+    {file = "ansys_sphinx_theme-0.10.2.tar.gz", hash = "sha256:fe874430c2f2d0c6979169d9d9acf2d0c4ad2e0daeb833409b3de728f57e0097"},
 ]
 
 [package.dependencies]
@@ -221,7 +221,7 @@ pydata-sphinx-theme = "0.13.3"
 Sphinx = ">=4.2.0"
 
 [package.extras]
-doc = ["Sphinx (==6.1.3)", "bs4 (==0.0.1)", "html5lib (==1.1)", "numpydoc (==1.5.0)", "requests (==2.28.2)", "sphinx-copybutton (==0.5.2)", "sphinx-design (==0.4.1)", "sphinx-jinja (==2.0.2)", "sphinx-notfound-page (==0.8.3)"]
+doc = ["Sphinx (==6.2.1)", "numpydoc (==1.5.0)", "requests (==2.31.0)", "sphinx-copybutton (==0.5.2)", "sphinx-design (==0.4.1)", "sphinx-jinja (==2.0.2)", "sphinx-notfound-page (==0.8.3)"]
 
 [[package]]
 name = "ansys-tools-path"
@@ -2478,13 +2478,13 @@ files = [
 
 [[package]]
 name = "sphinx"
-version = "7.0.1"
+version = "7.1.2"
 description = "Python documentation generator"
 optional = true
 python-versions = ">=3.8"
 files = [
-    {file = "Sphinx-7.0.1.tar.gz", hash = "sha256:61e025f788c5977d9412587e733733a289e2b9fdc2fef8868ddfbfc4ccfe881d"},
-    {file = "sphinx-7.0.1-py3-none-any.whl", hash = "sha256:60c5e04756c1709a98845ed27a2eed7a556af3993afb66e77fec48189f742616"},
+    {file = "sphinx-7.1.2-py3-none-any.whl", hash = "sha256:d170a81825b2fcacb6dfd5a0d7f578a053e45d3f2b153fecc948c37344eb4cbe"},
+    {file = "sphinx-7.1.2.tar.gz", hash = "sha256:780f4d32f1d7d1126576e0e5ecc19dc32ab76cd24e950228dcf7b1f6d3d9e22f"},
 ]
 
 [package.dependencies]
@@ -2922,4 +2922,4 @@ doc = ["Sphinx", "ansys-sphinx-theme", "numpydoc", "sphinx-autoapi", "sphinx-cop
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8"
-content-hash = "ebb943923a08046782d4a5663f2b8a6db16c104e90ee09297931a0156024a975"
+content-hash = "e27a381b117bc1d96df63fb87fd7a6b7071634400c7d74578440629182751b2c"
