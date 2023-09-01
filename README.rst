@@ -36,79 +36,19 @@ PyMaterials Manager is a Python package for unifying material management across 
 
 Installation
 ------------
+Install the ``ansys-materials-manager`` package with this code:
 
-Two installation modes are provided: user and developer.
+.. code::
 
-Install in user mode
-^^^^^^^^^^^^^^^^^^^^
+   pip install `ansys-materials-manager
 
-Before installing the ``ansys-materials-manager`` package, run this command to
-ensure that you have the latest version of `pip`_:
+Alternatively, clone and install this package with this code:
 
-.. code:: bash
+.. code::
 
-    python -m pip install -U pip
-
-Then, install the latest package for use with this command:
-
-.. code:: bash
-
-    poetry run python -m pip install ansys-materials-manager
-    
-Install in development mode
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Installing the ``ansys-materials-manager`` package in developer mode allows
-you to modify the source and enhance it.
-
-Before contributing to PyMaterials Manager, see the `PyAnsys Developer's Guide`_.
-
-To install PyMaterials Manager in developer mode, perform these steps:
-
-#. Cloning the repository:
-
-    .. code:: bash
-
-        git clone https://github.com/ansys/pymaterials-manager
-
-#. Create a fresh-clean Python environment and activate it:
-
-    .. code:: bash
-
-        # Create a virtual environment
-        python -m venv .venv
-
-        # Activate it in a POSIX system
-        source .venv/bin/activate
-
-        # Activate it in Windows CMD environment
-        .venv\Scripts\activate.bat
-
-        # Activate it in Windows Powershell
-        .venv\Scripts\Activate.ps1
-
-#. Make sure that you have the latest required build system and doc, testing,
-   and CI tools:
-
-    .. code:: bash
-
-        python -m pip install -U pip poetry tox
-        python -m pip install -r requirements/requirements_build.txt
-        python -m pip install -r requirements/requirements_doc.txt
-        python -m pip install -r requirements/requirements_tests.txt
-
-
-#. Install the project in editable mode:
-
-    .. code:: bash
-    
-        poetry run python -m pip install ansys-materials-manager
-        
-#. Verify your development installation:
-
-    .. code:: bash
-        
-        tox
+   git clone https://github.com/ansys/pymaterials-manager
+   cd pymaterials-manager
+   pip install .
 
 Testing
 -------
@@ -128,7 +68,6 @@ Descriptions follow of some of the most widely used environments:
 
 - **tox -e style**: Checks the code style of your project.
 - **tox -e py**: Runs your test suite.
-- **tox -e py-coverage**: Checks unit tests and code coverage.
 - **tox -e doc**: Builds the documentation of your project.
 
 
@@ -165,15 +104,15 @@ report bugs, and request new features. This is the best place to post questions 
 Distribution
 ------------
 
-If you want to create either source or wheel files, start by installing
-the building requirements and then executing the build module:
+If you want to create either source or wheel files, start by installing poetry and then 
+executing the build module. To install poetry you should use the ``pipx`` installation
+method in the `poetry documentation`_.
 
 .. code:: bash
 
-    python -m pip install -r requirements/requirements_build.txt
-    python -m build
-    python -m twine check dist/*
-
+    poetry install
+    poetry build
+    twine check ./dist
 
 .. LINKS AND REFERENCES
 .. _black: https://github.com/psf/black
@@ -187,3 +126,4 @@ the building requirements and then executing the build module:
 .. _tox: https://tox.wiki/
 .. _PyMaterials Manager Issues: https://github.com/ansys/pymaterials-manager/issues
 .. _documentation: https://manager.materials.docs.pyansys.com/
+.. _poetry documentation: https://python-poetry.org/docs/#installing-with-pipx
