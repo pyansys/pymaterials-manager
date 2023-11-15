@@ -71,13 +71,13 @@ protobuf = ">=3.19,<5"
 
 [[package]]
 name = "ansys-fluent-core"
-version = "0.18.1"
+version = "0.18.2"
 description = "Pythonic interface to Ansys Fluent"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "ansys-fluent-core-0.18.1.tar.gz", hash = "sha256:24d6c59ac20166d59bfe98013a2b609ea99278827c4cfb2fc2faf29d1d283fdb"},
-    {file = "ansys_fluent_core-0.18.1-py3-none-any.whl", hash = "sha256:b46a1341208d16345b3f606f26a4aa55dbab6f9dcc848e4f18d82b48534d1a80"},
+    {file = "ansys-fluent-core-0.18.2.tar.gz", hash = "sha256:793d98a0d3515c716627b8791220f7055c83d5726128a440416e7e14335cd179"},
+    {file = "ansys_fluent_core-0.18.2-py3-none-any.whl", hash = "sha256:d71daec7986064af7330899f61bfd9e6add3f956808708bd293e704a0c74d09e"},
 ]
 
 [package.dependencies]
@@ -92,6 +92,7 @@ pandas = ">=1.1.5"
 platformdirs = ">=3.5.1"
 psutil = ">=5.9.5"
 pyyaml = ">=6.0"
+requests = ">=2.31.0"
 
 [package.extras]
 reader = ["h5py (>=3.8.0)"]
