@@ -39,16 +39,16 @@ It currently provides the following features:
 - It defines a Material Object that can have different material models
 - The supported material models can be read from a running PyMAPDL instance
 - The supported material models can written to a running PyMAPDL / pyFluent instance
-- Some supported material models can be read from a Matml xml file
-- Some supported material models can be written to a Matml xml file
+- Some supported material models can be read from a MatML XML file
+- Some supported material models can be written to a MatML XML file
 
 
 The following material models are supported:
 
 - pyMAPDL
     - Simple constant material properties
-    - Piecewise Linear Material properties
-    - Polynomial Material properties
+    - Piecewise linear material properties
+    - Polynomial material properties
     - Anisotropic Elasticity
 
 - pyFluent
