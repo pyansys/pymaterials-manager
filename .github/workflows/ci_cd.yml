@@ -97,7 +97,7 @@ jobs:
         # Only the tox environment specified in the tox.ini gh-actions is run
         run: tox -e py310-coverage 
       - name: Upload coverage report
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         if: ${{ github.actor != 'dependabot[bot]' }}
         with:
           fail_ci_if_error: true
@@ -181,7 +181,7 @@ jobs:
         run: cat log.txt
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
