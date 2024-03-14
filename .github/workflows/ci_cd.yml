@@ -271,7 +271,7 @@ jobs:
           python -m twine upload --skip-existing ./**/*.tar.gz
       
       - name: Release to GitHub
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: |
             ./**/*.whl
