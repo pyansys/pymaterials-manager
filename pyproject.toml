@@ -41,7 +41,7 @@ coolprop = "^6.4.1"
 ansys-mapdl-core = ">=0.64.1,<0.68.0"
 ansys-fluent-core = ">=0.12.5,<0.19.0"
 twine = ">=4.0.2,<6.0.0"
-pytest-cov = "^4.0.0"
+pytest-cov = ">=4,<6"
 pre-commit = "^3.2.2"
 
 [tool.poetry.extras]
