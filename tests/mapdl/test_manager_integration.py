@@ -1,9 +1,15 @@
 from math import floor, log10
+import os
 
 from ansys.mapdl.core import Mapdl
 import numpy as np
 from numpy.testing import assert_array_equal
 import pytest
+
+from ansys.materials.manager.util.matml.matml_parser import MatmlReader
+from ansys.materials.manager.util.matml.matml_to_material import convert_matml_materials
+
+DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
 pytestmark = pytest.mark.mapdl_integration
 
@@ -114,3 +120,19 @@ def test_can_write_and_return_polynomial_property(manager):
     rounded_output = [round_sig(val) for val in expected_output]
 
     assert_array_equal(density_model.y, rounded_output)
+
+
+def test_can_write_material_from_matml(manager):
+    xml_file_path = os.path.join(DIR_PATH, "..", "data", "steel_eglass_air.xml")
+    reader = MatmlReader(xml_file_path)
+    num_materials = reader.parse_matml()
+    assert num_materials == 3
+
+    materials = convert_matml_materials(reader.materials, reader.transfer_ids, 3)
+
+    steel = materials[2]
+
+    manager.write_material(steel)
+
+    results = manager.read_materials_from_session()
+    assert len(results) == 1
