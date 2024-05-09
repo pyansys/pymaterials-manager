@@ -122,7 +122,7 @@ class MatmlWriter:
             for property_set_name, parameters in MATML_PROPERTY_MAP.items():
                 # property sets are exported as orthotropic if it can have an isotropic or
                 # orthotropic representation,
-                if len(property_set_name.split("::")) == 2:
+                if len(property_set_name.split("::")) in [2, 3]:
                     behavior = property_set_name.split("::")[1]
                 else:
                     behavior = ""

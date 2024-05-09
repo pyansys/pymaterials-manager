@@ -35,6 +35,11 @@ def convert_matml_materials(
             if "Behavior" in property_set.qualifiers.keys():
                 propset_name += "::" + property_set.qualifiers["Behavior"]
 
+            if "Definition" in property_set.qualifiers.keys() and propset_name.startswith(
+                "Coefficient of Thermal Expansion"
+            ):
+                propset_name += "::" + property_set.qualifiers["Definition"]
+
             # check if the Material object supports this property set
             if propset_name in MATML_PROPERTY_MAP.keys():
                 parameter_map = MATML_PROPERTY_MAP[propset_name]
