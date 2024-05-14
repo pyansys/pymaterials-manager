@@ -36,9 +36,9 @@ class TestMatmlToMaterial:
             "poisson's ratio xy": 0.3,
             "poisson's ratio yz": 0.3,
             "poisson's ratio xz": 0.3,
-            "thermal expansion coefficient x direction": 1.2e-5,
-            "thermal expansion coefficient y direction": 1.2e-5,
-            "thermal expansion coefficient z direction": 1.2e-5,
+            "secant thermal expansion coefficient x direction": 1.2e-5,
+            "secant thermal expansion coefficient y direction": 1.2e-5,
+            "secant thermal expansion coefficient z direction": 1.2e-5,
             "specific heat capacity": 434.0,
             "thermal conductivity x direction": 60.5,
             "thermal conductivity y direction": 60.5,
@@ -70,9 +70,9 @@ class TestMatmlToMaterial:
             "thermal conductivity x direction": 30.0,
             "thermal conductivity y direction": 5.0,
             "thermal conductivity z direction": 5.0,
-            "thermal expansion coefficient x direction": -1e-6,
-            "thermal expansion coefficient y direction": 1e-5,
-            "thermal expansion coefficient z direction": 1e-5,
+            "secant thermal expansion coefficient x direction": -1e-6,
+            "secant thermal expansion coefficient y direction": 1e-5,
+            "secant thermal expansion coefficient z direction": 1e-5,
         }
         for name, expected_value in expected_results.items():
             assigned_model = eglass.get_model_by_name(name)

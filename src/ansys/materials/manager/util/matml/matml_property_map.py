@@ -39,27 +39,51 @@ MATML_PROPERTY_MAP = {
         ],
         "mappings": {},
     },
-    "Coefficient of Thermal Expansion::Isotropic": {
+    "Coefficient of Thermal Expansion::Isotropic::Secant": {
         "properties": [],
         "mappings": {
             "Coefficient of Thermal Expansion": [
-                "thermal expansion coefficient x direction",
-                "thermal expansion coefficient y direction",
-                "thermal expansion coefficient z direction",
+                "secant thermal expansion coefficient x direction",
+                "secant thermal expansion coefficient y direction",
+                "secant thermal expansion coefficient z direction",
             ]
         },
     },
-    "Coefficient of Thermal Expansion::Orthotropic": {
+    "Coefficient of Thermal Expansion::Isotropic::Instantaneous": {
+        "properties": [],
+        "mappings": {
+            "Coefficient of Thermal Expansion": [
+                "instantaneous thermal expansion coefficient x direction",
+                "instantaneous thermal expansion coefficient y direction",
+                "instantaneous thermal expansion coefficient z direction",
+            ]
+        },
+    },
+    "Coefficient of Thermal Expansion::Orthotropic::Secant": {
         "properties": [],
         "mappings": {
             "Coefficient of Thermal Expansion X direction": [
-                "thermal expansion coefficient x direction"
+                "secant thermal expansion coefficient x direction"
             ],
             "Coefficient of Thermal Expansion Y direction": [
-                "thermal expansion coefficient y direction"
+                "secant thermal expansion coefficient y direction"
             ],
             "Coefficient of Thermal Expansion Z direction": [
-                "thermal expansion coefficient z direction"
+                "secant thermal expansion coefficient z direction"
+            ],
+        },
+    },
+    "Coefficient of Thermal Expansion::Orthotropic::Instantaneous": {
+        "properties": [],
+        "mappings": {
+            "Coefficient of Thermal Expansion X direction": [
+                "instantaneous thermal expansion coefficient x direction"
+            ],
+            "Coefficient of Thermal Expansion Y direction": [
+                "instantaneous thermal expansion coefficient y direction"
+            ],
+            "Coefficient of Thermal Expansion Z direction": [
+                "instantaneous thermal expansion coefficient z direction"
             ],
         },
     },
