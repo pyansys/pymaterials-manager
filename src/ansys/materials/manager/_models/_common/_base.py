@@ -2,9 +2,12 @@ from abc import ABCMeta, abstractmethod
 from typing import Any, List, Tuple
 
 try:
-    from ansys.mapdl.core.mapdl import _MapdlCore
+    from ansys.mapdl.core.mapdl import MapdlBase as _MapdlCore
 except ImportError:
-    _MapdlCore = type(None)
+    try:
+        from ansys.mapdl.core.mapdl import _MapdlCore
+    except ImportError:
+        _MapdlCore = type(None)
 
 try:
     from ansys.fluent.core.session_solver import Solver as _FluentCore

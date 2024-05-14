@@ -1,8 +1,7 @@
 """Provides the ``mapdl_reader`` module."""
 from typing import Dict
 
-from ansys.mapdl.core.mapdl import _MapdlCore
-
+from ansys.materials.manager._models._common._base import _MapdlCore
 from ansys.materials.manager.material import Material
 
 from .mpdata_parser import MP_MATERIAL_HEADER_REGEX, _MaterialDataParser
