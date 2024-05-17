@@ -3,7 +3,7 @@ from typing import Any, List, Optional, Tuple, Union
 
 import numpy as np
 
-from ansys.materials.manager._models._common._base import _BaseModel
+from ansys.materials.manager._models._common._base import _BaseModel, _MapdlCore
 from ansys.materials.manager._models._common._exceptions import ModelValidationException
 from ansys.materials.manager._models._common._packages import SupportedPackage
 from ansys.materials.manager.util.common import (
@@ -15,7 +15,6 @@ from ansys.materials.manager.util.common import (
 
 TYPE_CHECKING = False
 if TYPE_CHECKING:
-    from ansys.materials.manager._models._common._base import _MapdlCore  # noqa: F401
     from ansys.materials.manager.material import Material  # noqa: F401
 
 
@@ -277,7 +276,7 @@ class AnisotropicElasticity(_BaseModel):
                 values.append((label.groups()[0], *(float(value[0]) for value in current_values)))
         return values
 
-    def write_model(self, pyansys_session: Any, material: "Material") -> None:
+    def write_model(self, material: "Material", pyansys_session: Any) -> None:
         """
         Write the model to MAPDL.
 
@@ -315,7 +314,8 @@ class AnisotropicElasticity(_BaseModel):
                 tbopt = "AELS"
             else:
                 tbopt = "AELF"
-            self._coefficients = np.expand_dims(self._coefficients, 0)
+            if len(self._coefficients.shape) != 3:
+                self._coefficients = np.expand_dims(self._coefficients, 0)
         else:
             # Write ANEL model
             ntemp = self._temperature.size

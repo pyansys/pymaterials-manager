@@ -63,8 +63,8 @@ def _chunk_lower_triangular_matrix(
     size = matrix.shape
     if size[0] != size[1]:
         raise ValueError("Input matrix must be square.")
-    for row_index in range(0, matrix.shape[0]):
-        for col_index in range(0, row_index + 1):
+    for col_index in range(0, matrix.shape[1]):
+        for row_index in range(col_index, matrix.shape[0]):
             vals.append(matrix[row_index][col_index])
     return _chunk_data(vals)
 
