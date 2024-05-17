@@ -182,7 +182,7 @@ def test_can_write_anisotropic_elasticity(manager):
     )
     mat.models.append(
         AnisotropicElasticity(
-            n_dimensions=2,
+            n_dimensions=3,
             coefficient_type=ElasticityMode.STIFFNESS,
             coefficients=coefficients,
             temperature=20,
