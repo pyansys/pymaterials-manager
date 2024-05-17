@@ -194,4 +194,6 @@ def test_can_write_anisotropic_elasticity(manager):
     results = manager.read_materials_from_session()
     assert len(results) == 1
 
+    manager._client.tbdele("ALL", "8")
+
     manager.write_material(mat)
