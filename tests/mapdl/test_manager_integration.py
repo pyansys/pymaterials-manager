@@ -6,6 +6,10 @@ import numpy as np
 from numpy.testing import assert_array_equal
 import pytest
 
+from ansys.materials.manager._models._mapdl.anisotropic_elasticity import (
+    AnisotropicElasticity,
+    ElasticityMode,
+)
 from ansys.materials.manager.util.matml.matml_parser import MatmlReader
 from ansys.materials.manager.util.matml.matml_to_material import convert_matml_materials
 
@@ -136,3 +140,58 @@ def test_can_write_material_from_matml(manager):
 
     results = manager.read_materials_from_session()
     assert len(results) == 1
+
+
+def test_can_write_anisotropic_elasticity(manager):
+    id_ = "8"
+    mat = Material("AnisotropicTestMaterial", id_)
+
+    coefficients = (
+        np.array(
+            [
+                [100, 1, 2, 3, 4, 5],
+                [1, 150, 6, 7, 8, 9],
+                [
+                    2,
+                    6,
+                    200,
+                    10,
+                    11,
+                    12,
+                ],
+                [
+                    3,
+                    7,
+                    10,
+                    50,
+                    13,
+                    14,
+                ],
+                [
+                    4,
+                    8,
+                    11,
+                    13,
+                    60,
+                    15,
+                ],
+                [5, 9, 12, 14, 15, 70],
+            ]
+        )
+        * 1e6
+    )
+    mat.models.append(
+        AnisotropicElasticity(
+            n_dimensions=2,
+            coefficient_type=ElasticityMode.STIFFNESS,
+            coefficients=coefficients,
+            temperature=20,
+        )
+    )
+
+    manager.write_material(mat)
+
+    results = manager.read_materials_from_session()
+    assert len(results) == 1
+
+    manager.write_material(mat)
