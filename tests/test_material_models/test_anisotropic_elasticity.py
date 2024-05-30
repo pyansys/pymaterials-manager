@@ -25,6 +25,7 @@ class TestGeneralProperties:
         assert isinstance(model.temperature, np.ndarray)
         assert len(model.temperature) == 0
         assert model._n_dimensions == 2
+        assert model.name == "Anisotropic Elasticity"
 
     def test_repr(self):
         n_dimensions = 2

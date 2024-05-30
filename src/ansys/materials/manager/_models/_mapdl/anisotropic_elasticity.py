@@ -64,7 +64,7 @@ class AnisotropicElasticity(_BaseModel):
     _temperature: np.ndarray
 
     model_codes = ("ANEL", "ELAS")
-    name = "Anisotropic Elasticity"
+    _name = "Anisotropic Elasticity"
     applicable_packages = SupportedPackage.MAPDL
 
     def __init__(
@@ -120,7 +120,7 @@ class AnisotropicElasticity(_BaseModel):
     @property
     def name(self) -> str:
         """Name of the model."""
-        return self.name
+        return self._name
 
     @property
     def coefficients(self) -> np.ndarray:
