@@ -13,13 +13,13 @@ env:
   MAPDL_DOCKER_PACKAGE: 'ghcr.io/ansys/pymapdl/mapdl'
   MAPDL_DOCKER_VERSION: 'v23.1.0'
   DOCUMENTATION_CNAME: "manager.materials.docs.pyansys.com"
+  PACKAGE_NAME: "ansys-pymaterials-manager"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-
   style:
     name: Code style
     runs-on: ubuntu-latest
@@ -68,7 +68,7 @@ jobs:
       - name: Build wheelhouse and perform smoke test
         uses: ansys/actions/build-wheelhouse@v6
         with:
-          library-name: "ansys-materials-manager"
+          library-name: ${{ env.PACKAGE_NAME }}
           library-namespace: "ansys.materials.manager"
           operating-system: ${{ matrix.os }}
           python-version: ${{ matrix.python-version }}
@@ -185,6 +185,7 @@ jobs:
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
+
   docs:
     name: Documentation
     runs-on: ubuntu-latest
@@ -229,6 +230,7 @@ jobs:
       - name: Upload wheel
         uses: actions/upload-artifact@v4
         with:
+          name: ${{ env.PACKAGE_NAME }}-artifacts
           path: dist/
           retention-days: 7
 
