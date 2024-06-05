@@ -50,7 +50,7 @@ Adhere to code style
 
 PyMaterials Manager follows the PEP8 standard as outlined in the `PyAnsys Development Guide
 <dev_guide_pyansys_>`_ and implements style checking using
-`pre-commit <precommit_>`_.
+`pre-commit`_.
 
 To ensure your code meets minimum code styling standards, run this code::
 

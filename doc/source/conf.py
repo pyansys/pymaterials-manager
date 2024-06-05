@@ -38,7 +38,6 @@ html_theme_options = {
 extensions = [
     "sphinx.ext.autodoc",
     "autoapi.extension",
-    "sphinx.ext.autosummary",
     "numpydoc",
     "sphinx.ext.intersphinx",
     "sphinx_copybutton",
@@ -83,9 +82,6 @@ html_static_path = ["_static"]
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
 
-# The suffix(es) of source filenames.
-source_suffix = ".rst"
-
 # The master toctree document.
 master_doc = "index"
 
@@ -96,9 +92,6 @@ source_suffix = {
     ".mystnb": "jupyter_notebook",
     ".md": "markdown",
 }
-
-# The master toctree document.
-master_doc = "index"
 
 # Configuration for Sphinx autoapi
 autoapi_type = "python"
