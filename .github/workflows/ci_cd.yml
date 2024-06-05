@@ -51,7 +51,6 @@ jobs:
         uses: ansys/actions/build-wheelhouse@v6
         with:
           library-name: ${{ env.PACKAGE_NAME }}
-          library-namespace: "ansys.materials.manager"
           operating-system: ${{ matrix.os }}
           python-version: ${{ matrix.python-version }}
 
