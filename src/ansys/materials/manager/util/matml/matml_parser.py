@@ -1,7 +1,7 @@
 """Provides the ``matml_parser`` module."""
 from dataclasses import dataclass
 import os
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 import warnings
 import xml.etree.ElementTree as ET
 
@@ -54,9 +54,9 @@ class MatmlReader:
     The data can be accessed via matml_reader.materials
     """
 
-    materials: Dict
-    transfer_ids = Dict
-    matml_file_path: _PATH_TYPE
+    _materials: Dict
+    _transfer_ids = Dict
+    _matml_file_path: _PATH_TYPE
 
     def __init__(self, file_path: _PATH_TYPE):
         """
@@ -67,7 +67,9 @@ class MatmlReader:
         file_path :
             MatML (engineering data xml) file path
         """
-        self.matml_file_path = file_path
+        self._matml_file_path = file_path
+        self._materials = {}
+        self._transfer_ids = {}
         if not os.path.exists(file_path):
             raise RuntimeError(f"Cannot initialize MatmlReader {file_path}. File does not exist!")
 
@@ -251,7 +253,9 @@ class MatmlReader:
         Output can be consumed via matml_reader.materials or
         matml_reader.get_material(name).
 
-        Returns the number of imported materials.
+        Returns
+        -------
+        int: Number of imported materials.
 
         .. deprecated:: 0.2.3
           `parse_matml` will be removed in version 0.3.0, it is replaced by
@@ -263,10 +267,70 @@ class MatmlReader:
             DeprecationWarning,
         )
 
-        parsed_data = MatmlReader.parse_from_file(self.matml_file_path)
-        self.materials = {k: v["material"] for k, v in parsed_data.items()}
-        self.transfer_ids = {k: v["transfer_id"] for k, v in parsed_data.items()}
-        return len(self.materials)
+        parsed_data = MatmlReader.parse_from_file(self._matml_file_path)
+        self._materials = {k: v["material"] for k, v in parsed_data.items()}
+        self._transfer_ids = {k: v["transfer_id"] for k, v in parsed_data.items()}
+        return len(self._materials)
+
+    @property
+    def materials(self) -> Optional[Dict]:
+        """Return the parsed material data from the MatML file.
+
+        Property will be None unless the parser has successfully parsed a MatML file.
+
+        Returns
+        -------
+        Dict: Material data from the MatML file
+
+        .. deprecated:: 0.2.3
+           `materials` will be removed in version 0.3.0, instead use the static methods
+           `parse_from_file` and `parse_from_text` to parse the MatML file and
+           obtain the parsed material dictionary.
+        """
+        warnings.warn(
+            "materials will be removed in version 0.3.0, instead use the static methods "
+            "`parse_from_file` and `parse_from_text` to parse the MatML file.",
+            DeprecationWarning,
+        )
+        return self._materials
+
+    @property
+    def transfer_ids(self) -> Optional[Dict[str, str]]:
+        """Return the parsed Workbench Transfer IDs from the MatML file.
+
+        Property will be None unless the parser has successfully parsed a MatML file.
+
+        Returns
+        -------
+        Dict: Workbench transfer IDs from the MatML file
+
+        .. deprecated:: 0.2.3
+           `transfer_ids` will be removed in version 0.3.0, instead use the static methods
+           `parse_from_file` and `parse_from_text` to parse the MatML file and
+           obtain the Workbench transfer IDs.
+        """
+        warnings.warn(
+            "transfer_ids will be removed in version 0.3.0, instead use the static methods "
+            "`parse_from_file` and `parse_from_text` to parse the MatML file.",
+            DeprecationWarning,
+        )
+        return self._transfer_ids
+
+    @property
+    def matml_file_path(self) -> str:
+        """Return the path to the target MatML file.
+
+        .. deprecated:: 0.2.3
+           `matml_file_path` will be removed in version 0.3.0, instead use the static methods
+           `parse_from_file` and `parse_from_text` to parse the MatML file and
+           obtain the parsed material dictionary and the Workbench transfer IDs.
+        """
+        warnings.warn(
+            "matml_file_path will be removed in version 0.3.0, instead use the static methods "
+            "`parse_from_file` and `parse_from_text` to parse the MatML file.",
+            DeprecationWarning,
+        )
+        return self._matml_file_path
 
     def get_material(self, name: str) -> Dict:
         """Return a certain material.
@@ -274,8 +338,7 @@ class MatmlReader:
         .. deprecated:: 0.2.3
           `get_material` will be removed in version 0.3.0, instead use the static methods
           `parse_from_file` and `parse_from_text` to parse the MatML file and
-          obtain the parsed material dictionary and the transfer ID.
-
+          obtain the parsed material dictionary and the Workbench transfer ID.
         """
         warnings.warn(
             "get_material will be removed in version 0.3.0, instead use the static methods "
@@ -283,10 +346,10 @@ class MatmlReader:
             DeprecationWarning,
         )
 
-        if not name in self.materials.keys():
-            available_keys = ", ".join(self.materials.keys())
+        if name not in self._materials.keys():
+            available_keys = ", ".join(self._materials.keys())
             raise RuntimeError(
                 f"Material {name} does not exist. Available materials are {available_keys}"
             )
 
-        return self.materials[name]
+        return self._materials[name]
