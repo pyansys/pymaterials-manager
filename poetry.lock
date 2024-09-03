@@ -211,13 +211,13 @@ tests = ["ansys-api-platform-instancemanagement (==1.0.0)", "grpcio-health-check
 
 [[package]]
 name = "ansys-sphinx-theme"
-version = "1.0.5"
+version = "1.0.8"
 description = "A theme devised by ANSYS, Inc. for Sphinx documentation."
 optional = true
 python-versions = "<4,>=3.9"
 files = [
-    {file = "ansys_sphinx_theme-1.0.5-py3-none-any.whl", hash = "sha256:de6227cee345ad1c44df88b50c0bf8d74f8f27c1497b67e067992b8d11dba421"},
-    {file = "ansys_sphinx_theme-1.0.5.tar.gz", hash = "sha256:caf6831fd86d8ac16ff2bb6a89e59134de73bd42c10f47d3e90876a9663b8b91"},
+    {file = "ansys_sphinx_theme-1.0.8-py3-none-any.whl", hash = "sha256:c212239c44691f8d5a5b09b3b5dd4322edbd5935793420b6eadbde0d18af2286"},
+    {file = "ansys_sphinx_theme-1.0.8.tar.gz", hash = "sha256:e7a6adf9072541b6e7492ea8ae399fb3228c6022612d9fc9df97c7c73ef78cc3"},
 ]
 
 [package.dependencies]
@@ -228,7 +228,7 @@ pydata-sphinx-theme = ">=0.15.4,<0.16"
 Sphinx = ">=4.2.0"
 
 [package.extras]
-autoapi = ["sphinx-autoapi (==3.1.1)", "sphinx-design (==0.6.1)", "sphinx-jinja (==2.0.2)"]
+autoapi = ["sphinx-autoapi (==3.2.1)", "sphinx-design (==0.6.1)", "sphinx-jinja (==2.0.2)"]
 doc = ["Pillow (>=9.0)", "PyGitHub (==2.3.0)", "Sphinx (==8.0.2)", "jupytext (==1.16.4)", "nbsphinx (==0.9.5)", "notebook (==7.2.1)", "numpydoc (==1.8.0)", "pandas (==2.2.2)", "pyvista[jupyter] (==0.44.1)", "requests (==2.32.3)", "sphinx-autoapi (==3.2.1)", "sphinx-copybutton (==0.5.2)", "sphinx-design (==0.6.1)", "sphinx-gallery (==0.17.1)", "sphinx-jinja (==2.0.2)", "sphinx-notfound-page (==1.0.4)"]
 
 [[package]]
