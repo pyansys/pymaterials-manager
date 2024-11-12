@@ -6,7 +6,7 @@
 
 ## Individual Contributors
 
-* [Revathy Venugopal](https://github.com/Revathyvenugopal162))
+* [Revathy Venugopal](https://github.com/Revathyvenugopal162)
 * [Rene Roos](https://github.com/roosre)
 * [Mohamed Koubaa](https://github.com/koubaa)
 * [Dan Williams](https://github.com/dnwillia-work)
