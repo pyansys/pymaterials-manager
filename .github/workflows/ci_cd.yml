@@ -10,7 +10,7 @@ on:
 
 env:
   MAIN_PYTHON_VERSION: '3.10'
-  MAPDL_DOCKER_PACKAGE: 'ghcr.io/ansys/pymapdl/mapdl'
+  MAPDL_DOCKER_PACKAGE: 'ghcr.io/ansys/mapdl'
   MAPDL_DOCKER_VERSION: 'v24.2.0'
   DOCUMENTATION_CNAME: "manager.materials.docs.pyansys.com"
 
