@@ -11,7 +11,7 @@ on:
 env:
   MAIN_PYTHON_VERSION: '3.10'
   MAPDL_DOCKER_PACKAGE: 'ghcr.io/ansys/pymapdl/mapdl'
-  MAPDL_DOCKER_VERSION: 'v23.1.0'
+  MAPDL_DOCKER_VERSION: 'v24.2.0'
   DOCUMENTATION_CNAME: "manager.materials.docs.pyansys.com"
 
 concurrency:
@@ -60,7 +60,6 @@ jobs:
         uses: ansys/actions/build-wheelhouse@v8
         with:
           library-name: "ansys-materials-manager"
-          library-namespace: "ansys.materials.manager"
           operating-system: ${{ matrix.os }}
           python-version: ${{ matrix.python-version }}
 
@@ -284,4 +283,3 @@ jobs:
           token: ${{ secrets.PYANSYS_CI_BOT_TOKEN }}
           bot-user: ${{ secrets.PYANSYS_CI_BOT_USERNAME }}
           bot-email: ${{ secrets.PYANSYS_CI_BOT_EMAIL }}
-          python-version: ${{ env.MAIN_PYTHON_VERSION }}
