@@ -62,7 +62,7 @@ Install the ``ansys-materials-manager`` package with this code:
 
 .. code::
 
-   pip install `ansys-materials-manager
+   pip install ansys-materials-manager
 
 Alternatively, clone and install this package with this code:
 
