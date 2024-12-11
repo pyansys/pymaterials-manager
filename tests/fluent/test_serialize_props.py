@@ -14,7 +14,7 @@ class TestSerializeConstant:
         model = Constant("Density", 5.0)
         mock_fluent = MagicMock(spec=_FluentCore)
         model.write_model(TEST_MATERIAL, mock_fluent)
-        assert mock_fluent.setup.materials.fluid.__setitem__.called_once()
+        mock_fluent.setup.materials.fluid.__setitem__.assert_called_once()
         args = mock_fluent.setup.materials.fluid.__setitem__.call_args
         assert args[0][0] == "Fluid"
         assert args[0][1] == {"density": {"option": "constant", "value": pytest.approx(5.0)}}
