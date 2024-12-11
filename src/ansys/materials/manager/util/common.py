@@ -1,4 +1,5 @@
 """Provides the ``common`` module."""
+
 from itertools import islice
 import re
 from typing import Generator, Iterable, List, Union

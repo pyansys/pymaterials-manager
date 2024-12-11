@@ -1,4 +1,5 @@
 """Provides the ``MatmlWriter`` class."""
+
 import os
 import sys
 from typing import BinaryIO, Dict, Sequence, Union
