@@ -218,13 +218,13 @@ tests = ["ansys-api-platform-instancemanagement (==1.0.0)", "grpcio-health-check
 
 [[package]]
 name = "ansys-sphinx-theme"
-version = "1.0.11"
+version = "1.2.4"
 description = "A theme devised by ANSYS, Inc. for Sphinx documentation."
 optional = true
-python-versions = "<4,>=3.9"
+python-versions = "<4,>=3.10"
 files = [
-    {file = "ansys_sphinx_theme-1.0.11-py3-none-any.whl", hash = "sha256:75c718e407a6b1e868ed5063ba3d1ac93c778195e129253dbaf2367bb87940f5"},
-    {file = "ansys_sphinx_theme-1.0.11.tar.gz", hash = "sha256:a9c3399f71fbdfee08dc97eb6821e660742b7f0c425a3a6f443254a356863ed4"},
+    {file = "ansys_sphinx_theme-1.2.4-py3-none-any.whl", hash = "sha256:ba64f3513be717bcf673d385dc6af139c6f4071eb2713bc607dde1d10e24de2e"},
+    {file = "ansys_sphinx_theme-1.2.4.tar.gz", hash = "sha256:bf77e9b535a51adc7aad973042cfe32f5074288b5567174196d9b7671df02ca7"},
 ]
 
 [package.dependencies]
@@ -235,8 +235,8 @@ pydata-sphinx-theme = ">=0.15.4,<0.16"
 Sphinx = ">=4.2.0"
 
 [package.extras]
-autoapi = ["sphinx-autoapi (==3.2.1)", "sphinx-design (==0.6.1)", "sphinx-jinja (==2.0.2)"]
-doc = ["Pillow (>=9.0)", "PyGitHub (==2.3.0)", "Sphinx (==8.0.2)", "jupytext (==1.16.4)", "nbsphinx (==0.9.5)", "notebook (==7.2.1)", "numpydoc (==1.8.0)", "pandas (==2.2.2)", "pyvista[jupyter] (==0.44.1)", "requests (==2.32.3)", "sphinx-autoapi (==3.2.1)", "sphinx-copybutton (==0.5.2)", "sphinx-design (==0.6.1)", "sphinx-gallery (==0.17.1)", "sphinx-jinja (==2.0.2)", "sphinx-notfound-page (==1.0.4)"]
+autoapi = ["sphinx-autoapi (==3.3.3)", "sphinx-design (==0.6.1)", "sphinx-jinja (==2.0.2)"]
+doc = ["Pillow (>=9.0)", "PyGitHub (==2.4.0)", "Sphinx (==8.1.3)", "jupytext (==1.16.4)", "nbsphinx (==0.9.5)", "notebook (==7.2.2)", "numpydoc (==1.8.0)", "pandas (==2.2.3)", "pyvista[jupyter] (==0.44.1)", "requests (==2.32.3)", "sphinx-autoapi (==3.3.3)", "sphinx-copybutton (==0.5.2)", "sphinx-design (==0.6.1)", "sphinx-gallery (==0.18.0)", "sphinx-jinja (==2.0.2)", "sphinx-notfound-page (==1.0.4)"]
 
 [[package]]
 name = "ansys-tools-path"
@@ -3127,4 +3127,4 @@ doc = ["Sphinx", "ansys-sphinx-theme", "numpydoc", "sphinx-autoapi", "sphinx-cop
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<4"
-content-hash = "b31cd049a2f1fb1abe759cdfe3ded9b1033a229f19823ef609abe4a080161060"
+content-hash = "2984f99dbfd67448de7667d1bf9890bde915f9785451fac1d2d861c3e44c74e2"
