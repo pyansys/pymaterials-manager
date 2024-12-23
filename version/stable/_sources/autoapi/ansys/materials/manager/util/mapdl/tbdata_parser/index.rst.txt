@@ -1,0 +1,13 @@
+:py:mod:`ansys.materials.manager.util.mapdl.tbdata_parser`
+==========================================================
+
+.. py:module:: ansys.materials.manager.util.mapdl.tbdata_parser
+
+.. autoapi-nested-parse::
+
+   Provides the ``TableDataParser`` class.
+
+   ..
+       !! processed by numpydoc !!
+
+

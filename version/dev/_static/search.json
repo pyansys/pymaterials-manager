@@ -1,0 +1,758 @@
+[
+    {
+        "objectID": "autoapi/index",
+        "href": "autoapi/index.html#api-reference",
+        "title": "API reference",
+        "section": "API reference",
+        "text": "This section provides descriptions of classes, functions, and attributes for the\nPyMaterials Manager API. Use the search feature or click links to view API documentation.\nAPI reference"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/serialize/index",
+        "href": "autoapi/ansys/materials/manager/serialize/index.html#ansysmaterialsmanagerserialize",
+        "title": "ansys.materials.manager.serialize",
+        "section": "ansys.materials.manager.serialize",
+        "text": "Provides functions to serialize materials.\nansys.materials.manager.serialize"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/serialize/index",
+        "href": "autoapi/ansys/materials/manager/serialize/index.html#functions",
+        "title": "ansys.materials.manager.serialize > Functions",
+        "section": "Functions",
+        "text": "serialize_material(→ str)\nOutput the JSON representation of a material in Fluent format to a string.\nserialize_material_to_file(material, file_name)\nOutput the JSON representation of a material in Fluent format to a file.\nFunctions\nserialize_material\nserialize_material_to_file"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/serialize/index",
+        "href": "autoapi/ansys/materials/manager/serialize/index.html#module-contents",
+        "title": "ansys.materials.manager.serialize > Module Contents",
+        "section": "Module Contents",
+        "text": "Output the JSON representation of a material in Fluent format to a string.\nMaterial to serialize.\nString representation of the material in Fluent format.\nOutput the JSON representation of a material in Fluent format to a file.\nMaterial to serialize.\nName of the file to create.\nModule Contents\nMaterial\npython:str\nMaterial\nUnion\npython:str\npathlib.Path"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/serialize/index",
+        "href": "autoapi/ansys/materials/manager/serialize/index.html#ansys.materials.manager.serialize.serialize_material",
+        "title": "ansys.materials.manager.serialize > Module Contents > serialize_material",
+        "section": "Module Contents > serialize_material",
+        "text": "ansys.materials.manager.serialize.serialize_material(material: ansys.materials.manager.material.Material) -> str\n\nOutput the JSON representation of a material in Fluent format to a string.\n\nParameters\n\nmaterial\n\nMaterial\n\nMaterial to serialize.\n\nReturns\n\npython:str\n\nString representation of the material in Fluent format.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/serialize/index",
+        "href": "autoapi/ansys/materials/manager/serialize/index.html#ansys.materials.manager.serialize.serialize_material_to_file",
+        "title": "ansys.materials.manager.serialize > Module Contents > serialize_material_to_file",
+        "section": "Module Contents > serialize_material_to_file",
+        "text": "ansys.materials.manager.serialize.serialize_material_to_file(material: ansys.materials.manager.material.Material, file_name: str | pathlib.Path)\n\nOutput the JSON representation of a material in Fluent format to a file.\n\nParameters\n\nmaterial\n\nMaterial\n\nMaterial to serialize.\n\nfile_name\n\nUnion[python:str, pathlib.Path]\n\nName of the file to create.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/common/index",
+        "href": "autoapi/ansys/materials/manager/util/common/index.html#ansysmaterialsmanagerutilcommon",
+        "title": "ansys.materials.manager.util.common",
+        "section": "ansys.materials.manager.util.common",
+        "text": "Provides the common module.\nansys.materials.manager.util.common\ncommon"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/common/index",
+        "href": "autoapi/ansys/materials/manager/util/common/index.html#attributes",
+        "title": "ansys.materials.manager.util.common > Attributes",
+        "section": "Attributes",
+        "text": "MP_MATERIAL_HEADER_REGEX\n\nTB_MATERIAL_HEADER_REGEX\n\nFLOAT_VALUE_REGEX\n\nINTEGER_VALUE_REGEX\n\nMATRIX_LABEL_REGEX\n\nmodel_type\n\nAttributes\nMP_MATERIAL_HEADER_REGEX\nTB_MATERIAL_HEADER_REGEX\nFLOAT_VALUE_REGEX\nINTEGER_VALUE_REGEX\nMATRIX_LABEL_REGEX\nmodel_type"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/common/index",
+        "href": "autoapi/ansys/materials/manager/util/common/index.html#functions",
+        "title": "ansys.materials.manager.util.common > Functions",
+        "section": "Functions",
+        "text": "fill_upper_triangular_matrix(→ numpy.ndarray)\nConvert a vector of coefficients into a full matrix.\nFunctions\nfill_upper_triangular_matrix"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/common/index",
+        "href": "autoapi/ansys/materials/manager/util/common/index.html#module-contents",
+        "title": "ansys.materials.manager.util.common > Module Contents",
+        "section": "Module Contents",
+        "text": "Convert a vector of coefficients into a full matrix.\nGenerates a symmetric, square matrix.\nCoefficients of the lower half-matrix. E.g. D11, D12, D22, etc.\nSquare symmetric matrix.\nIf the length of the input vector is not a triangular number.\nModule Contents\nList\npython:float\nnp.ndarray\nValueError"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/common/index",
+        "href": "autoapi/ansys/materials/manager/util/common/index.html#ansys.materials.manager.util.common.MP_MATERIAL_HEADER_REGEX",
+        "title": "ansys.materials.manager.util.common > Module Contents > MP_MATERIAL_HEADER_REGEX",
+        "section": "Module Contents > MP_MATERIAL_HEADER_REGEX",
+        "text": "ansys.materials.manager.util.common.MP_MATERIAL_HEADER_REGEX\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/common/index",
+        "href": "autoapi/ansys/materials/manager/util/common/index.html#ansys.materials.manager.util.common.TB_MATERIAL_HEADER_REGEX",
+        "title": "ansys.materials.manager.util.common > Module Contents > TB_MATERIAL_HEADER_REGEX",
+        "section": "Module Contents > TB_MATERIAL_HEADER_REGEX",
+        "text": "ansys.materials.manager.util.common.TB_MATERIAL_HEADER_REGEX\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/common/index",
+        "href": "autoapi/ansys/materials/manager/util/common/index.html#ansys.materials.manager.util.common.FLOAT_VALUE_REGEX",
+        "title": "ansys.materials.manager.util.common > Module Contents > FLOAT_VALUE_REGEX",
+        "section": "Module Contents > FLOAT_VALUE_REGEX",
+        "text": "ansys.materials.manager.util.common.FLOAT_VALUE_REGEX\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/common/index",
+        "href": "autoapi/ansys/materials/manager/util/common/index.html#ansys.materials.manager.util.common.INTEGER_VALUE_REGEX",
+        "title": "ansys.materials.manager.util.common > Module Contents > INTEGER_VALUE_REGEX",
+        "section": "Module Contents > INTEGER_VALUE_REGEX",
+        "text": "ansys.materials.manager.util.common.INTEGER_VALUE_REGEX\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/common/index",
+        "href": "autoapi/ansys/materials/manager/util/common/index.html#ansys.materials.manager.util.common.MATRIX_LABEL_REGEX",
+        "title": "ansys.materials.manager.util.common > Module Contents > MATRIX_LABEL_REGEX",
+        "section": "Module Contents > MATRIX_LABEL_REGEX",
+        "text": "ansys.materials.manager.util.common.MATRIX_LABEL_REGEX\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/common/index",
+        "href": "autoapi/ansys/materials/manager/util/common/index.html#ansys.materials.manager.util.common.model_type",
+        "title": "ansys.materials.manager.util.common > Module Contents > model_type",
+        "section": "Module Contents > model_type",
+        "text": "ansys.materials.manager.util.common.model_type\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/common/index",
+        "href": "autoapi/ansys/materials/manager/util/common/index.html#ansys.materials.manager.util.common.fill_upper_triangular_matrix",
+        "title": "ansys.materials.manager.util.common > Module Contents > fill_upper_triangular_matrix",
+        "section": "Module Contents > fill_upper_triangular_matrix",
+        "text": "ansys.materials.manager.util.common.fill_upper_triangular_matrix(vector: List[float]) -> numpy.ndarray\n\nConvert a vector of coefficients into a full matrix.\n\nGenerates a symmetric, square matrix.\n\nParameters\n\nvector\n\nList[python:float]\n\nCoefficients of the lower half-matrix. E.g. D11, D12, D22, etc.\n\nReturns\n\nnp.ndarray\n\nSquare symmetric matrix.\n\nRaises\n\nValueError\n\nIf the length of the input vector is not a triangular number.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/mapdl/tbdata_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/mapdl/tbdata_parser/index.html#ansysmaterialsmanagerutilmapdltbdata_parser",
+        "title": "ansys.materials.manager.util.mapdl.tbdata_parser",
+        "section": "ansys.materials.manager.util.mapdl.tbdata_parser",
+        "text": "Provides the TableDataParser class.\nansys.materials.manager.util.mapdl.tbdata_parser\nTableDataParser"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material/index",
+        "href": "autoapi/ansys/materials/manager/material/index.html#ansysmaterialsmanagermaterial",
+        "title": "ansys.materials.manager.material",
+        "section": "ansys.materials.manager.material",
+        "text": "Provides the Material class.\nansys.materials.manager.material\nMaterial"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material/index",
+        "href": "autoapi/ansys/materials/manager/material/index.html#classes",
+        "title": "ansys.materials.manager.material > Classes",
+        "section": "Classes",
+        "text": "Material\nProvides a wrapper class for managing a material.\nClasses\nMaterial"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material/index",
+        "href": "autoapi/ansys/materials/manager/material/index.html#module-contents",
+        "title": "ansys.materials.manager.material > Module Contents",
+        "section": "Module Contents",
+        "text": "Provides a wrapper class for managing a material.\nThis class associates a material ID with one or more properties and nonlinear material models.\nCreate an instance of a material.\nOptionally specify a material ID, or other properties.\nName of the material.\nID to associate with this material. The default is None.\nDictionary of nonlinear material models. Models are specified with their\nmodel codes (from the TB command) and the model object.\nName of the material.\nMaterial ID.\nUUID (transfer ID), which is unique.\nCurrently assigned material models.\nGet the material model or models with a given model name.\nStrain reference temperature for the model.\nModule Contents\npython:str\npython:str\noptional\nNone\nDict\npython:str\n_BaseModel"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material/index",
+        "href": "autoapi/ansys/materials/manager/material/index.html#ansys.materials.manager.material.Material",
+        "title": "ansys.materials.manager.material > Module Contents > Material",
+        "section": "Module Contents > Material",
+        "text": "class ansys.materials.manager.material.Material(material_name: str, material_id: str = None, models: List[ansys.materials.manager._models._BaseModel] = None)\n\nProvides a wrapper class for managing a material.\n\nThis class associates a material ID with one or more properties and nonlinear material models.\n\nCreate an instance of a material.\n\nOptionally specify a material ID, or other properties.\n\nParameters\n\nmaterial_name\n\npython:str\n\nName of the material.\n\nmaterial_id\n\npython:str, optional\n\nID to associate with this material. The default is None.\n\nmodels\n\nDict[python:str, _BaseModel]\n\nDictionary of nonlinear material models. Models are specified with their\nmodel codes (from the TB command) and the model object.\n\n!! processed by numpydoc !!\n\n\n\nproperty name: str\n\nName of the material.\n\n!! processed by numpydoc !!\n\n\n\nproperty material_id: str | None\n\nMaterial ID.\n\n!! processed by numpydoc !!\n\n\n\nproperty uuid: str\n\nUUID (transfer ID), which is unique.\n\n!! processed by numpydoc !!\n\n\n\nproperty models: List[_BaseModel]\n\nCurrently assigned material models.\n\n!! processed by numpydoc !!\n\n\n\nget_model_by_name(model_name: str) -> List[_BaseModel]\n\nGet the material model or models with a given model name.\n\n!! processed by numpydoc !!\n\n\n\nproperty reference_temperature: float\n\nStrain reference temperature for the model.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material/index",
+        "href": "autoapi/ansys/materials/manager/material/index.html#ansys.materials.manager.material.Material.name",
+        "title": "ansys.materials.manager.material > Module Contents > name",
+        "section": "Module Contents > name",
+        "text": "property name: str\n\nName of the material.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material/index",
+        "href": "autoapi/ansys/materials/manager/material/index.html#ansys.materials.manager.material.Material.material_id",
+        "title": "ansys.materials.manager.material > Module Contents > material_id",
+        "section": "Module Contents > material_id",
+        "text": "property material_id: str | None\n\nMaterial ID.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material/index",
+        "href": "autoapi/ansys/materials/manager/material/index.html#ansys.materials.manager.material.Material.uuid",
+        "title": "ansys.materials.manager.material > Module Contents > uuid",
+        "section": "Module Contents > uuid",
+        "text": "property uuid: str\n\nUUID (transfer ID), which is unique.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material/index",
+        "href": "autoapi/ansys/materials/manager/material/index.html#ansys.materials.manager.material.Material.models",
+        "title": "ansys.materials.manager.material > Module Contents > models",
+        "section": "Module Contents > models",
+        "text": "property models: List[_BaseModel]\n\nCurrently assigned material models.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material/index",
+        "href": "autoapi/ansys/materials/manager/material/index.html#ansys.materials.manager.material.Material.get_model_by_name",
+        "title": "ansys.materials.manager.material > Module Contents > get_model_by_name",
+        "section": "Module Contents > get_model_by_name",
+        "text": "get_model_by_name(model_name: str) -> List[_BaseModel]\n\nGet the material model or models with a given model name.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material/index",
+        "href": "autoapi/ansys/materials/manager/material/index.html#ansys.materials.manager.material.Material.reference_temperature",
+        "title": "ansys.materials.manager.material > Module Contents > reference_temperature",
+        "section": "Module Contents > reference_temperature",
+        "text": "property reference_temperature: float\n\nStrain reference temperature for the model.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/mapdl/mapdl_reader/index",
+        "href": "autoapi/ansys/materials/manager/util/mapdl/mapdl_reader/index.html#ansysmaterialsmanagerutilmapdlmapdl_reader",
+        "title": "ansys.materials.manager.util.mapdl.mapdl_reader",
+        "section": "ansys.materials.manager.util.mapdl.mapdl_reader",
+        "text": "Provides the mapdl_reader module.\nansys.materials.manager.util.mapdl.mapdl_reader\nmapdl_reader"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/mapdl/mapdl_reader/index",
+        "href": "autoapi/ansys/materials/manager/util/mapdl/mapdl_reader/index.html#functions",
+        "title": "ansys.materials.manager.util.mapdl.mapdl_reader > Functions",
+        "section": "Functions",
+        "text": "read_mapdl(→ Dict[str, ...)\nRead materials from a provided MAPDL session.\nFunctions\nread_mapdl"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/mapdl/mapdl_reader/index",
+        "href": "autoapi/ansys/materials/manager/util/mapdl/mapdl_reader/index.html#module-contents",
+        "title": "ansys.materials.manager.util.mapdl.mapdl_reader > Module Contents",
+        "section": "Module Contents",
+        "text": "Read materials from a provided MAPDL session.\nReturns them indexed by the material ID.\nActive pyMAPDL session.\nMaterials currently active in the MAPDL session, indexed by their material ID.\nModule Contents\n_MapdlCore\nDict\npython:str\nMaterial"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/mapdl/mapdl_reader/index",
+        "href": "autoapi/ansys/materials/manager/util/mapdl/mapdl_reader/index.html#ansys.materials.manager.util.mapdl.mapdl_reader.read_mapdl",
+        "title": "ansys.materials.manager.util.mapdl.mapdl_reader > Module Contents > read_mapdl",
+        "section": "Module Contents > read_mapdl",
+        "text": "ansys.materials.manager.util.mapdl.mapdl_reader.read_mapdl(mapdl: ansys.materials.manager._models._common._base._MapdlCore) -> Dict[str, ansys.materials.manager.material.Material]\n\nRead materials from a provided MAPDL session.\n\nReturns them indexed by the material ID.\n\nParameters\n\nmapdl\n\n_MapdlCore\n\nActive pyMAPDL session.\n\nReturns\n\nDict[python:str, Material]\n\nMaterials currently active in the MAPDL session, indexed by their material ID.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/index",
+        "href": "autoapi/ansys/materials/manager/index.html#ansysmaterialsmanager",
+        "title": "ansys.materials.manager",
+        "section": "ansys.materials.manager",
+        "text": "Provides a helper to manage materials in the Ansys ecosystem.\nansys.materials.manager"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/index",
+        "href": "autoapi/ansys/materials/manager/index.html#submodules",
+        "title": "ansys.materials.manager > Submodules",
+        "section": "Submodules",
+        "text": "Submodules"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/mapdl/mpdata_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/mapdl/mpdata_parser/index.html#ansysmaterialsmanagerutilmapdlmpdata_parser",
+        "title": "ansys.materials.manager.util.mapdl.mpdata_parser",
+        "section": "ansys.materials.manager.util.mapdl.mpdata_parser",
+        "text": "Provides the MaterialDataParser class.\nansys.materials.manager.util.mapdl.mpdata_parser\nMaterialDataParser"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/index.html#ansysmaterialsmanagerutilmatml",
+        "title": "ansys.materials.manager.util.matml",
+        "section": "ansys.materials.manager.util.matml",
+        "text": "ansys.materials.manager.util.matml"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/index.html#submodules",
+        "title": "ansys.materials.manager.util.matml > Submodules",
+        "section": "Submodules",
+        "text": "Submodules"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/index",
+        "href": "autoapi/ansys/materials/manager/util/index.html#ansysmaterialsmanagerutil",
+        "title": "ansys.materials.manager.util",
+        "section": "ansys.materials.manager.util",
+        "text": "ansys.materials.manager.util"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/index",
+        "href": "autoapi/ansys/materials/manager/util/index.html#submodules",
+        "title": "ansys.materials.manager.util > Submodules",
+        "section": "Submodules",
+        "text": "Submodules"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/mapdl/index",
+        "href": "autoapi/ansys/materials/manager/util/mapdl/index.html#ansysmaterialsmanagerutilmapdl",
+        "title": "ansys.materials.manager.util.mapdl",
+        "section": "ansys.materials.manager.util.mapdl",
+        "text": "ansys.materials.manager.util.mapdl"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/mapdl/index",
+        "href": "autoapi/ansys/materials/manager/util/mapdl/index.html#submodules",
+        "title": "ansys.materials.manager.util.mapdl > Submodules",
+        "section": "Submodules",
+        "text": "Submodules"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#pymaterials-manager",
+        "title": "PyMaterials Manager",
+        "section": "PyMaterials Manager",
+        "text": "PyAnsys Python PyPI GH-CI Codecov MIT Black\nPyMaterials Manager is a Python package for unifying material management across the Ansys portfolio.\nPyMaterials Manager is currently a proof of concept, expect things to break.\nIt currently provides the following features:\nIt defines a Material Object that can have different material models\nThe supported material models can be read from a running PyMAPDL instance\nThe supported material models can written to a running PyMAPDL / pyFluent instance\nSome supported material models can be read from a MatML XML file\nSome supported material models can be written to a MatML XML file\nThe following material models are supported:\nSimple constant material properties\nPiecewise linear material properties\nPolynomial material properties\nAnisotropic Elasticity\nSimple constant material properties\nIdeal Gas properties\nPyMaterials Manager"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#installation",
+        "title": "PyMaterials Manager > Installation",
+        "section": "Installation",
+        "text": "Install the ansys-materials-manager package with this code:\nAlternatively, clone and install this package with this code:\nInstallation\nansys-materials-manager"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#testing",
+        "title": "PyMaterials Manager > Testing",
+        "section": "Testing",
+        "text": "This project takes advantage of tox. This tool is used to automate common\ndevelopment tasks (similar to Makefile), but it is oriented towards Python\ndevelopment.\nTesting"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#use-tox",
+        "title": "PyMaterials Manager > Use tox",
+        "section": "Use tox",
+        "text": "tox uses environments, which are similar to Makefile rules, to make it highly\ncustomizable. In fact, this tool creates its own virtual environment so that anything\nbeing tested is isolated from the project to guarantee the project’s integrity.\nDescriptions follow of some of the most widely used environments:\ntox -e style: Checks the code style of your project.\ntox -e py: Runs your test suite.\ntox -e doc: Builds the documentation of your project.\nUse tox\ntox\nMakefile"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#perform-raw-testing",
+        "title": "PyMaterials Manager > Perform raw testing",
+        "section": "Perform raw testing",
+        "text": "If required, you can call style commands (such as black, isort,\nand flake8) or unit testing commands (such as pytest) from the command\nline. However, calling these commands does not guarantee that your project\nis being tested in an isolated environment, which is the reason why tools\nlike tox exist.\nPerform raw testing"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#use-pre-commit",
+        "title": "PyMaterials Manager > Use pre-commit",
+        "section": "Use pre-commit",
+        "text": "The style checks take advantage of pre-commit. Developers are not forced but\nencouraged to install this tool by running this command:\nEvery time you stage some changes and try to commit them,\npre-commit only allows them to be committed if all defined hooks succeed.\nUse pre-commit\npre-commit"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#documentation-and-issues",
+        "title": "PyMaterials Manager > Documentation and issues",
+        "section": "Documentation and issues",
+        "text": "For comprehensive information on PyMaterials Manager, see the latest release documentation.\nOn the PyMaterials Manager Issues page, you can create issues to submit questions,\nreport bugs, and request new features. This is the best place to post questions and code.\nDocumentation and issues"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#distribution",
+        "title": "PyMaterials Manager > Distribution",
+        "section": "Distribution",
+        "text": "If you want to create either source or wheel files, start by installing poetry and then\nexecuting the build module. To install poetry you should use the pipx installation\nmethod in the poetry documentation.\nDistribution\npipx"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index.html#ansysmaterialsmanagerutilmatmlmatml_from_material",
+        "title": "ansys.materials.manager.util.matml.matml_from_material",
+        "section": "ansys.materials.manager.util.matml.matml_from_material",
+        "text": "Provides the MatmlWriter class.\nansys.materials.manager.util.matml.matml_from_material\nMatmlWriter"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index.html#attributes",
+        "title": "ansys.materials.manager.util.matml.matml_from_material > Attributes",
+        "section": "Attributes",
+        "text": "ROOT_ELEMENT\n\nVERSION\n\nVERSION_DATE\n\nAttributes\nROOT_ELEMENT\nVERSION\nVERSION_DATE"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index.html#classes",
+        "title": "ansys.materials.manager.util.matml.matml_from_material > Classes",
+        "section": "Classes",
+        "text": "MatmlWriter\nExports a list of MAPDL materials to an engineering data XML file.\nClasses\nMatmlWriter"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index.html#module-contents",
+        "title": "ansys.materials.manager.util.matml.matml_from_material > Module Contents",
+        "section": "Module Contents",
+        "text": "Exports a list of MAPDL materials to an engineering data XML file.\nModule Contents"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index.html#ansys.materials.manager.util.matml.matml_from_material.ROOT_ELEMENT",
+        "title": "ansys.materials.manager.util.matml.matml_from_material > Module Contents > ROOT_ELEMENT",
+        "section": "Module Contents > ROOT_ELEMENT",
+        "text": "ansys.materials.manager.util.matml.matml_from_material.ROOT_ELEMENT = 'EngineeringData'\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index.html#ansys.materials.manager.util.matml.matml_from_material.VERSION",
+        "title": "ansys.materials.manager.util.matml.matml_from_material > Module Contents > VERSION",
+        "section": "Module Contents > VERSION",
+        "text": "ansys.materials.manager.util.matml.matml_from_material.VERSION = '18.0.0.60'\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index.html#ansys.materials.manager.util.matml.matml_from_material.VERSION_DATE",
+        "title": "ansys.materials.manager.util.matml.matml_from_material > Module Contents > VERSION_DATE",
+        "section": "Module Contents > VERSION_DATE",
+        "text": "ansys.materials.manager.util.matml.matml_from_material.VERSION_DATE = '29.08.2016 15:02:00'\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index.html#ansys.materials.manager.util.matml.matml_from_material.MatmlWriter",
+        "title": "ansys.materials.manager.util.matml.matml_from_material > Module Contents > MatmlWriter",
+        "section": "Module Contents > MatmlWriter",
+        "text": "class ansys.materials.manager.util.matml.matml_from_material.MatmlWriter(materials: Sequence[ansys.materials.manager.material.Material])\n\nExports a list of MAPDL materials to an engineering data XML file."
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index.html#examples",
+        "title": "ansys.materials.manager.util.matml.matml_from_material > Examples",
+        "section": "Examples",
+        "text": "> writer = MatmlWriter(materials)\n> writer.export(‘engineering_data.xml’)\nConstruct a Matml writer.\nWrite a Matml (engineering data xml format) representation of materials to buffer.\nbuffer to write to\nOptional keyword arguments.\nindent : bool, optional\nWhether to add an indent to format the XML output(python 3.9+).\nDefaults to false.\nWhether to add the XML declaration to the output\nWrite a Matml (engineering data xml format) representation of materials to file.\nFile path\nOptional keyword arguments.\nindent : bool, optional\nWhether to add an indent to format the XML output(python 3.9+).\nDefaults to false.\nWhether to add the XML declaration to the output\nExamples\noptional\nfalse\noptional\nfalse"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index.html#ansys.materials.manager.util.matml.matml_from_material.MatmlWriter.write",
+        "title": "ansys.materials.manager.util.matml.matml_from_material > Examples > write",
+        "section": "Examples > write",
+        "text": "write(buffer: BinaryIO, **kwargs) -> None\n\nWrite a Matml (engineering data xml format) representation of materials to buffer.\n\nParameters\n\nbuffer:\n\nbuffer to write to\n\n**kwargs\n\nbool, optional\n\nOptional keyword arguments.\nindent : bool, optional\n\nWhether to add an indent to format the XML output(python 3.9+).\nDefaults to false.\n\nxml_declaration: bool, optional\n\nWhether to add the XML declaration to the output\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_from_material/index.html#ansys.materials.manager.util.matml.matml_from_material.MatmlWriter.export",
+        "title": "ansys.materials.manager.util.matml.matml_from_material > Examples > export",
+        "section": "Examples > export",
+        "text": "export(path: _PATH_TYPE, **kwargs) -> None\n\nWrite a Matml (engineering data xml format) representation of materials to file.\n\nParameters\n\npath:\n\nFile path\n\n**kwargs\n\nbool, optional\n\nOptional keyword arguments.\nindent : bool, optional\n\nWhether to add an indent to format the XML output(python 3.9+).\nDefaults to false.\n\nxml_declaration: bool, optional\n\nWhether to add the XML declaration to the output\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansysmaterialsmanagerutilmatmlmatml_parser",
+        "title": "ansys.materials.manager.util.matml.matml_parser",
+        "section": "ansys.materials.manager.util.matml.matml_parser",
+        "text": "Provides the matml_parser module.\nansys.materials.manager.util.matml.matml_parser\nmatml_parser"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#attributes",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Attributes",
+        "section": "Attributes",
+        "text": "MATERIALS_ELEMENT_KEY\n\nMATML_DOC_KEY\n\nMETADATA_KEY\n\nBULKDATA_KEY\n\nUNITLESS_KEY\n\nBEHAVIOR_KEY\n\nWBTRANSFER_KEY\n\nMAT_TRANSFER_ID\n\nAttributes\nMATERIALS_ELEMENT_KEY\nMATML_DOC_KEY\nMETADATA_KEY\nBULKDATA_KEY\nUNITLESS_KEY\nBEHAVIOR_KEY\nWBTRANSFER_KEY\nMAT_TRANSFER_ID"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#classes",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Classes",
+        "section": "Classes",
+        "text": "Parameter\nDefine a parameter such as density or Young's Modulus.\nPropertySet\nDefine a PropertySet which contains one or several parameters.\nMatmlReader\nParse a MatML (engineering data xml) file.\nClasses\nParameter\nPropertySet\nMatmlReader"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#module-contents",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents",
+        "section": "Module Contents",
+        "text": "Define a parameter such as density or Young’s Modulus.\nDefine a PropertySet which contains one or several parameters.\nParse a MatML (engineering data xml) file.\nFills a nested dict with all the materials and their properties.\nThe key of the first layer are the material names.\nThe conversion into a specific format/object representation is implemented separately.\nThe data can be accessed via matml_reader.materials\nCreate a new MatML reader object.\nMatML (engineering data xml) file path\nRead MatML (engineering data XML) data from a file.\nReturns the material information and the workbench transfer identities (if present).\nPath to MatML file on disk\nRead MatML (engineering data XML) data from a string.\nReturns the material information and the workbench transfer identities (if present).\nMatML content in text form\nRead MATML (engineering data XML) file.\nOutput can be consumed via matml_reader.materials or\nmatml_reader.get_material(name).\nDeprecated since version 0.2.3: parse_matml will be removed in version 0.3.0, it is replaced by\nparse_from_file and parse_from_text.\nReturn the parsed material data from the MatML file.\nProperty will be None unless the parser has successfully parsed a MatML file.\nDeprecated since version 0.2.3: materials will be removed in version 0.3.0, instead use the static methods\nparse_from_file and parse_from_text to parse the MatML file and\nobtain the parsed material dictionary.\nReturn the parsed Workbench Transfer IDs from the MatML file.\nProperty will be None unless the parser has successfully parsed a MatML file.\nDeprecated since version 0.2.3: transfer_ids will be removed in version 0.3.0, instead use the static methods\nparse_from_file and parse_from_text to parse the MatML file and\nobtain the Workbench transfer IDs.\nReturn the path to the target MatML file.\nDeprecated since version 0.2.3: matml_file_path will be removed in version 0.3.0, instead use the static methods\nparse_from_file and parse_from_text to parse the MatML file and\nobtain the parsed material dictionary and the Workbench transfer IDs.\nReturn a certain material.\nDeprecated since version 0.2.3: get_material will be removed in version 0.3.0, instead use the static methods\nparse_from_file and parse_from_text to parse the MatML file and\nobtain the parsed material dictionary and the Workbench transfer ID.\nModule Contents\nDict\npython:str\nUnion\npython:str\nDict\nDict\npython:str\nUnion\npython:str\nDict\nNumber\nof\nimported\nMaterial\ndata\nfrom\nthe\nMatML\nfile\nWorkbench\ntransfer\nIDs\nfrom\nthe\nMatML\nfile"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.MATERIALS_ELEMENT_KEY",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > MATERIALS_ELEMENT_KEY",
+        "section": "Module Contents > MATERIALS_ELEMENT_KEY",
+        "text": "ansys.materials.manager.util.matml.matml_parser.MATERIALS_ELEMENT_KEY = 'Materials'\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.MATML_DOC_KEY",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > MATML_DOC_KEY",
+        "section": "Module Contents > MATML_DOC_KEY",
+        "text": "ansys.materials.manager.util.matml.matml_parser.MATML_DOC_KEY = 'MatML_Doc'\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.METADATA_KEY",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > METADATA_KEY",
+        "section": "Module Contents > METADATA_KEY",
+        "text": "ansys.materials.manager.util.matml.matml_parser.METADATA_KEY = 'Metadata'\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.BULKDATA_KEY",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > BULKDATA_KEY",
+        "section": "Module Contents > BULKDATA_KEY",
+        "text": "ansys.materials.manager.util.matml.matml_parser.BULKDATA_KEY = 'BulkDetails'\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.UNITLESS_KEY",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > UNITLESS_KEY",
+        "section": "Module Contents > UNITLESS_KEY",
+        "text": "ansys.materials.manager.util.matml.matml_parser.UNITLESS_KEY = 'Unitless'\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.BEHAVIOR_KEY",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > BEHAVIOR_KEY",
+        "section": "Module Contents > BEHAVIOR_KEY",
+        "text": "ansys.materials.manager.util.matml.matml_parser.BEHAVIOR_KEY = 'Behavior'\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.WBTRANSFER_KEY",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > WBTRANSFER_KEY",
+        "section": "Module Contents > WBTRANSFER_KEY",
+        "text": "ansys.materials.manager.util.matml.matml_parser.WBTRANSFER_KEY = 'ANSYSWBTransferData'\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.MAT_TRANSFER_ID",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > MAT_TRANSFER_ID",
+        "section": "Module Contents > MAT_TRANSFER_ID",
+        "text": "ansys.materials.manager.util.matml.matml_parser.MAT_TRANSFER_ID = 'DataTransferID'\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.Parameter",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > Parameter",
+        "section": "Module Contents > Parameter",
+        "text": "class ansys.materials.manager.util.matml.matml_parser.Parameter\n\nDefine a parameter such as density or Young’s Modulus.\n\n!! processed by numpydoc !!\n\n\n\nname: str\n\n\n\n\n\ndata: Any\n\n\n\n\n\nqualifiers: Dict\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.Parameter.name",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > name",
+        "section": "Module Contents > name",
+        "text": "name: str\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.Parameter.data",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > data",
+        "section": "Module Contents > data",
+        "text": "data: Any\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.Parameter.qualifiers",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > qualifiers",
+        "section": "Module Contents > qualifiers",
+        "text": "qualifiers: Dict\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.PropertySet",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > PropertySet",
+        "section": "Module Contents > PropertySet",
+        "text": "class ansys.materials.manager.util.matml.matml_parser.PropertySet\n\nDefine a PropertySet which contains one or several parameters.\n\n!! processed by numpydoc !!\n\n\n\nname: str\n\n\n\n\n\nparameters: Dict\n\n\n\n\n\nqualifiers: Dict\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.PropertySet.name",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > name",
+        "section": "Module Contents > name",
+        "text": "name: str\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.PropertySet.parameters",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > parameters",
+        "section": "Module Contents > parameters",
+        "text": "parameters: Dict\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.PropertySet.qualifiers",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > qualifiers",
+        "section": "Module Contents > qualifiers",
+        "text": "qualifiers: Dict\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.MatmlReader",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > MatmlReader",
+        "section": "Module Contents > MatmlReader",
+        "text": "class ansys.materials.manager.util.matml.matml_parser.MatmlReader(file_path: _PATH_TYPE)\n\nParse a MatML (engineering data xml) file.\n\nFills a nested dict with all the materials and their properties.\nThe key of the first layer are the material names.\nThe conversion into a specific format/object representation is implemented separately.\n\nThe data can be accessed via matml_reader.materials\n\nCreate a new MatML reader object.\n\nParameters\n\nfile_path\n\nMatML (engineering data xml) file path\n\n!! processed by numpydoc !!\n\n\n\nstatic parse_from_file(file_path: _PATH_TYPE) -> Dict[str, str | Dict]\n\nRead MatML (engineering data XML) data from a file.\n\nReturns the material information and the workbench transfer identities (if present).\n\nParameters\n\nfile_path: Union[str, Path]\n\nPath to MatML file on disk\n\nReturns\n\nDict[python:str, Union[python:str, Dict]]\n\n\n\n!! processed by numpydoc !!\n\n\n\nstatic parse_text(matml_content: str) -> Dict[str, str | Dict]\n\nRead MatML (engineering data XML) data from a string.\n\nReturns the material information and the workbench transfer identities (if present).\n\nParameters\n\nmatml_content: str\n\nMatML content in text form\n\nReturns\n\nDict[python:str, Union[python:str, Dict]]\n\n\n\n!! processed by numpydoc !!\n\n\n\nparse_matml() -> int\n\nRead MATML (engineering data XML) file.\n\nOutput can be consumed via matml_reader.materials or\nmatml_reader.get_material(name).\n\nReturns\n\nint: Number of imported materials.\n\n\n\nDeprecated since version 0.2.3: parse_matml will be removed in version 0.3.0, it is replaced by\nparse_from_file and parse_from_text.\n\n!! processed by numpydoc !!\n\n\n\nproperty materials: Dict | None\n\nReturn the parsed material data from the MatML file.\n\nProperty will be None unless the parser has successfully parsed a MatML file.\n\nReturns\n\nDict: Material data from the MatML file\n\n\n\nDeprecated since version 0.2.3: materials will be removed in version 0.3.0, instead use the static methods\nparse_from_file and parse_from_text to parse the MatML file and\nobtain the parsed material dictionary.\n\n!! processed by numpydoc !!\n\n\n\nproperty transfer_ids: Dict[str, str] | None\n\nReturn the parsed Workbench Transfer IDs from the MatML file.\n\nProperty will be None unless the parser has successfully parsed a MatML file.\n\nReturns\n\nDict: Workbench transfer IDs from the MatML file\n\n\n\nDeprecated since version 0.2.3: transfer_ids will be removed in version 0.3.0, instead use the static methods\nparse_from_file and parse_from_text to parse the MatML file and\nobtain the Workbench transfer IDs.\n\n!! processed by numpydoc !!\n\n\n\nproperty matml_file_path: str\n\nReturn the path to the target MatML file.\n\nDeprecated since version 0.2.3: matml_file_path will be removed in version 0.3.0, instead use the static methods\nparse_from_file and parse_from_text to parse the MatML file and\nobtain the parsed material dictionary and the Workbench transfer IDs.\n\n!! processed by numpydoc !!\n\n\n\nget_material(name: str) -> Dict\n\nReturn a certain material.\n\nDeprecated since version 0.2.3: get_material will be removed in version 0.3.0, instead use the static methods\nparse_from_file and parse_from_text to parse the MatML file and\nobtain the parsed material dictionary and the Workbench transfer ID.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.MatmlReader.parse_from_file",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > parse_from_file",
+        "section": "Module Contents > parse_from_file",
+        "text": "static parse_from_file(file_path: _PATH_TYPE) -> Dict[str, str | Dict]\n\nRead MatML (engineering data XML) data from a file.\n\nReturns the material information and the workbench transfer identities (if present).\n\nParameters\n\nfile_path: Union[str, Path]\n\nPath to MatML file on disk\n\nReturns\n\nDict[python:str, Union[python:str, Dict]]\n\n\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.MatmlReader.parse_text",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > parse_text",
+        "section": "Module Contents > parse_text",
+        "text": "static parse_text(matml_content: str) -> Dict[str, str | Dict]\n\nRead MatML (engineering data XML) data from a string.\n\nReturns the material information and the workbench transfer identities (if present).\n\nParameters\n\nmatml_content: str\n\nMatML content in text form\n\nReturns\n\nDict[python:str, Union[python:str, Dict]]\n\n\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.MatmlReader.parse_matml",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > parse_matml",
+        "section": "Module Contents > parse_matml",
+        "text": "parse_matml() -> int\n\nRead MATML (engineering data XML) file.\n\nOutput can be consumed via matml_reader.materials or\nmatml_reader.get_material(name).\n\nReturns\n\nint: Number of imported materials.\n\n\n\nDeprecated since version 0.2.3: parse_matml will be removed in version 0.3.0, it is replaced by\nparse_from_file and parse_from_text.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.MatmlReader.materials",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > materials",
+        "section": "Module Contents > materials",
+        "text": "property materials: Dict | None\n\nReturn the parsed material data from the MatML file.\n\nProperty will be None unless the parser has successfully parsed a MatML file.\n\nReturns\n\nDict: Material data from the MatML file\n\n\n\nDeprecated since version 0.2.3: materials will be removed in version 0.3.0, instead use the static methods\nparse_from_file and parse_from_text to parse the MatML file and\nobtain the parsed material dictionary.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.MatmlReader.transfer_ids",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > transfer_ids",
+        "section": "Module Contents > transfer_ids",
+        "text": "property transfer_ids: Dict[str, str] | None\n\nReturn the parsed Workbench Transfer IDs from the MatML file.\n\nProperty will be None unless the parser has successfully parsed a MatML file.\n\nReturns\n\nDict: Workbench transfer IDs from the MatML file\n\n\n\nDeprecated since version 0.2.3: transfer_ids will be removed in version 0.3.0, instead use the static methods\nparse_from_file and parse_from_text to parse the MatML file and\nobtain the Workbench transfer IDs.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.MatmlReader.matml_file_path",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > matml_file_path",
+        "section": "Module Contents > matml_file_path",
+        "text": "property matml_file_path: str\n\nReturn the path to the target MatML file.\n\nDeprecated since version 0.2.3: matml_file_path will be removed in version 0.3.0, instead use the static methods\nparse_from_file and parse_from_text to parse the MatML file and\nobtain the parsed material dictionary and the Workbench transfer IDs.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_parser/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_parser/index.html#ansys.materials.manager.util.matml.matml_parser.MatmlReader.get_material",
+        "title": "ansys.materials.manager.util.matml.matml_parser > Module Contents > get_material",
+        "section": "Module Contents > get_material",
+        "text": "get_material(name: str) -> Dict\n\nReturn a certain material.\n\nDeprecated since version 0.2.3: get_material will be removed in version 0.3.0, instead use the static methods\nparse_from_file and parse_from_text to parse the MatML file and\nobtain the parsed material dictionary and the Workbench transfer ID.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_property_map/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_property_map/index.html#ansysmaterialsmanagerutilmatmlmatml_property_map",
+        "title": "ansys.materials.manager.util.matml.matml_property_map",
+        "section": "ansys.materials.manager.util.matml.matml_property_map",
+        "text": "Define a map between MAPDL and MATLM material properties.\nansys.materials.manager.util.matml.matml_property_map"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_property_map/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_property_map/index.html#attributes",
+        "title": "ansys.materials.manager.util.matml.matml_property_map > Attributes",
+        "section": "Attributes",
+        "text": "MATML_PROPERTY_MAP\n\nAttributes\nMATML_PROPERTY_MAP"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_property_map/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_property_map/index.html#module-contents",
+        "title": "ansys.materials.manager.util.matml.matml_property_map > Module Contents",
+        "section": "Module Contents",
+        "text": "Module Contents"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_property_map/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_property_map/index.html#ansys.materials.manager.util.matml.matml_property_map.MATML_PROPERTY_MAP",
+        "title": "ansys.materials.manager.util.matml.matml_property_map > Module Contents > MATML_PROPERTY_MAP",
+        "section": "Module Contents > MATML_PROPERTY_MAP",
+        "text": "ansys.materials.manager.util.matml.matml_property_map.MATML_PROPERTY_MAP\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_to_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_to_material/index.html#ansysmaterialsmanagerutilmatmlmatml_to_material",
+        "title": "ansys.materials.manager.util.matml.matml_to_material",
+        "section": "ansys.materials.manager.util.matml.matml_to_material",
+        "text": "Provides a function to convert MatML entries into Material objects.\nansys.materials.manager.util.matml.matml_to_material"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_to_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_to_material/index.html#functions",
+        "title": "ansys.materials.manager.util.matml.matml_to_material > Functions",
+        "section": "Functions",
+        "text": "convert_matml_materials(...)\nConvert a list of materials into Material objects.\nFunctions\nconvert_matml_materials"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_to_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_to_material/index.html#module-contents",
+        "title": "ansys.materials.manager.util.matml.matml_to_material > Module Contents",
+        "section": "Module Contents",
+        "text": "Convert a list of materials into Material objects.\ndict of raw material data from a matml import\ndict of material names and unique transfer ids\nint to offset the material id (number) to avoid conflicts with already existing materials\nModule Contents"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/util/matml/matml_to_material/index",
+        "href": "autoapi/ansys/materials/manager/util/matml/matml_to_material/index.html#ansys.materials.manager.util.matml.matml_to_material.convert_matml_materials",
+        "title": "ansys.materials.manager.util.matml.matml_to_material > Module Contents > convert_matml_materials",
+        "section": "Module Contents > convert_matml_materials",
+        "text": "ansys.materials.manager.util.matml.matml_to_material.convert_matml_materials(materials_dict: Dict, transfer_ids: Dict, index_offset: int) -> Sequence[ansys.materials.manager.material.Material]\n\nConvert a list of materials into Material objects.\n\nParameters\n\nmaterials_dict:\n\ndict of raw material data from a matml import\n\ntransfer_ids:\n\ndict of material names and unique transfer ids\n\nindex_offset:\n\nint to offset the material id (number) to avoid conflicts with already existing materials\n\nReturns a list of Material objects\n\n\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material_manager/index",
+        "href": "autoapi/ansys/materials/manager/material_manager/index.html#ansysmaterialsmanagermaterial_manager",
+        "title": "ansys.materials.manager.material_manager",
+        "section": "ansys.materials.manager.material_manager",
+        "text": "Provides the MaterialManager class.\nansys.materials.manager.material_manager\nMaterialManager"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material_manager/index",
+        "href": "autoapi/ansys/materials/manager/material_manager/index.html#classes",
+        "title": "ansys.materials.manager.material_manager > Classes",
+        "section": "Classes",
+        "text": "MaterialManager\nManage material creation, assignment, and other management tasks.\nClasses\nMaterialManager"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material_manager/index",
+        "href": "autoapi/ansys/materials/manager/material_manager/index.html#module-contents",
+        "title": "ansys.materials.manager.material_manager > Module Contents",
+        "section": "Module Contents",
+        "text": "Manage material creation, assignment, and other management tasks.\nThis class is the main entry point for the Pythonic material management interface.\nCreate a MaterialManager object ready for use.\nValid instance of a PyAnsys client. Only PyMAPDL and PyFluent are\nsupported currently.\nWrite a material to the solver.\nMaterial object to write to solver.\nGiven a PyAnsys session, return the materials present.\nThis method only supports PyMAPDL currently.\nMaterials in the current session, indexed by an ID. For MAPDL, this is the material\nID. For Fluent, this is the material name.\nModule Contents\nMaterialManager\nAny\nMaterial\nDict\npython:str\nMaterial"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material_manager/index",
+        "href": "autoapi/ansys/materials/manager/material_manager/index.html#ansys.materials.manager.material_manager.MaterialManager",
+        "title": "ansys.materials.manager.material_manager > Module Contents > MaterialManager",
+        "section": "Module Contents > MaterialManager",
+        "text": "class ansys.materials.manager.material_manager.MaterialManager(pyansys_client: Any)\n\nManage material creation, assignment, and other management tasks.\n\nThis class is the main entry point for the Pythonic material management interface.\n\nCreate a MaterialManager object ready for use.\n\nParameters\n\npyansys_client\n\nAny\n\nValid instance of a PyAnsys client. Only PyMAPDL and PyFluent are\nsupported currently.\n\n!! processed by numpydoc !!\n\n\n\nmodel_type_map: Dict[str, ansys.materials.manager._models._BaseModel]\n\n\n\n\n\nwrite_material(material: ansys.materials.manager.material.Material) -> None\n\nWrite a material to the solver.\n\nParameters\n\nmaterial\n\nMaterial\n\nMaterial object to write to solver.\n\n!! processed by numpydoc !!\n\n\n\nread_materials_from_session() -> Dict[str, ansys.materials.manager.material.Material]\n\nGiven a PyAnsys session, return the materials present.\n\nThis method only supports PyMAPDL currently.\n\nReturns\n\nDict[python:str, Material]\n\nMaterials in the current session, indexed by an ID. For MAPDL, this is the material\nID. For Fluent, this is the material name.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material_manager/index",
+        "href": "autoapi/ansys/materials/manager/material_manager/index.html#ansys.materials.manager.material_manager.MaterialManager.model_type_map",
+        "title": "ansys.materials.manager.material_manager > Module Contents > model_type_map",
+        "section": "Module Contents > model_type_map",
+        "text": "model_type_map: Dict[str, ansys.materials.manager._models._BaseModel]\n\n"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material_manager/index",
+        "href": "autoapi/ansys/materials/manager/material_manager/index.html#ansys.materials.manager.material_manager.MaterialManager.write_material",
+        "title": "ansys.materials.manager.material_manager > Module Contents > write_material",
+        "section": "Module Contents > write_material",
+        "text": "write_material(material: ansys.materials.manager.material.Material) -> None\n\nWrite a material to the solver.\n\nParameters\n\nmaterial\n\nMaterial\n\nMaterial object to write to solver.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "autoapi/ansys/materials/manager/material_manager/index",
+        "href": "autoapi/ansys/materials/manager/material_manager/index.html#ansys.materials.manager.material_manager.MaterialManager.read_materials_from_session",
+        "title": "ansys.materials.manager.material_manager > Module Contents > read_materials_from_session",
+        "section": "Module Contents > read_materials_from_session",
+        "text": "read_materials_from_session() -> Dict[str, ansys.materials.manager.material.Material]\n\nGiven a PyAnsys session, return the materials present.\n\nThis method only supports PyMAPDL currently.\n\nReturns\n\nDict[python:str, Material]\n\nMaterials in the current session, indexed by an ID. For MAPDL, this is the material\nID. For Fluent, this is the material name.\n\n!! processed by numpydoc !!"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#contribute",
+        "title": "Contribute",
+        "section": "Contribute",
+        "text": "Overall guidance on contributing to a PyAnsys library appears in the\nContribute topic\nin the PyAnsys Developer’s Guide. Ensure that you are thoroughly familiar\nwith this guide before attempting to contribute to PyMaterials Manager.\nThe following contribution information is specific to PyMaterials Manager.\nContribute"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#clone-the-repository-and-install-the-package",
+        "title": "Contribute > Clone the repository and install the package",
+        "section": "Clone the repository and install the package",
+        "text": "To clone the PyMaterials Manager repository and install the latest release\nin development mode, run this code:\nClone the repository and install the package"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#post-issues",
+        "title": "Contribute > Post issues",
+        "section": "Post issues",
+        "text": "Use the PyMaterials Manager Issues page to submit questions, report bugs,\nand request new features. When possible, use these issue templates:\nBug report template\nFeature request template\nIf your issue does not fit into one of these categories, create your own issue.\nTo reach the project support team, email pyansys.core@ansys.com.\nPost issues"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#view-documentation",
+        "title": "Contribute > View documentation",
+        "section": "View documentation",
+        "text": "Documentation for the latest stable release of PyMaterials Manager is hosted at\nPyMaterials Manager Documentation.\nView documentation"
+    },
+    {
+        "objectID": "contributing",
+        "href": "contributing.html#adhere-to-code-style",
+        "title": "Contribute > Adhere to code style",
+        "section": "Adhere to code style",
+        "text": "PyMaterials Manager follows the PEP8 standard as outlined in the PyAnsys Development Guide and implements style checking using\n`pre-commit <precommit_>`_.\nTo ensure your code meets minimum code styling standards, run this code:\nYou can also install this as a pre-commit hook by running this code:\nThis way, it’s not possible for you to push code that fails the style checks:\nAdhere to code style"
+    }
+]

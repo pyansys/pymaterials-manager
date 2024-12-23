@@ -1,0 +1,17 @@
+ansys.materials.manager.util.mapdl
+==================================
+
+.. py:module:: ansys.materials.manager.util.mapdl
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/ansys/materials/manager/util/mapdl/mapdl_reader/index
+   /autoapi/ansys/materials/manager/util/mapdl/mpdata_parser/index
+   /autoapi/ansys/materials/manager/util/mapdl/tbdata_parser/index
+
+

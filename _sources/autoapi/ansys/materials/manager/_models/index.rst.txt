@@ -1,0 +1,8 @@
+:orphan:
+
+:py:mod:`ansys.materials.manager._models`
+=========================================
+
+.. py:module:: ansys.materials.manager._models
+
+

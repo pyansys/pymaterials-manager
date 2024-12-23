@@ -1,0 +1,429 @@
+:py:mod:`ansys.materials.manager._models._mapdl.anisotropic_elasticity`
+=======================================================================
+
+.. py:module:: ansys.materials.manager._models._mapdl.anisotropic_elasticity
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode
+   ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager._models._mapdl.anisotropic_elasticity.TYPE_CHECKING
+
+
+.. py:data:: TYPE_CHECKING
+   :value: False
+
+   
+
+.. py:class:: ElasticityMode
+
+   Bases: :py:obj:`enum.Enum`
+
+   
+   Determines which kind of coefficients are used in the model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:attribute:: STIFFNESS
+      :value: 1
+
+      
+
+   .. py:attribute:: COMPLIANCE
+      :value: 2
+
+      
+
+
+.. py:class:: AnisotropicElasticity(n_dimensions: int, coefficient_type: ElasticityMode, coefficients: Optional[numpy.ndarray] = None, temperature: Union[None, float, numpy.ndarray] = None)
+
+   Bases: :py:obj:`ansys.materials.manager._models._common._base._BaseModel`
+
+   Provides the anisotropic elasticity model.
+
+   The anisotropic elasticity model defines different elastic coefficients
+   for each coordinate axis. This model can be used with plane and solid elements.
+   The elastic coefficient matrix (D) is specified as one or up to six NumPy arrays,
+   allowing temperature dependence to be modeled.
+
+   The elastic coefficient matrix is defined as a 2 x n_dimensions array:
+
+   .. math::
+         \begin{matrix}
+           D_{11}\\
+           D_{21} & D_{22}\\
+           D_{31} & D_{32} & D_{33}\\
+           D_{41} & D_{42} & D_{43} & D_44}
+         \end{matrix}
+
+   This can either be specified in "stiffness" form, with units of force/area, or in "compliance"
+   form with the inverse unit.
+
+   Notes
+   -----
+   This model wraps the APDL "ELAS" and "ANEL" models in both their forms. If one temperature is
+   provided, the "ELAS" model is used, with either the "AELS" or "AELF" TBOPT. Otherwise,
+   the "ANEL" model is used.
+
+
+   Create an anisotropic elasticity model.
+
+
+   :Parameters:
+
+       **n_dimensions: int**
+           Number of dimensions for the model. The value must be either ``2`` or ``3``.
+
+       **coefficient_type: ElasticityMode**
+           Type of elasticity mode that the model uses, which is either stiffness or
+           compliance coefficients.
+
+       **coefficients: np.ndarray**
+           Model coefficients, either one 2*n_dims x 2*n_dims array of the model coefficients or,
+           if the model is temperature dependent, up to 6 x 2*n_dims x 2*n_dims array of the model
+           coefficients at temperature.
+
+       **temperature: Union[float, np.ndarray]**
+           Either a single temperature at which to apply the model or an array of up to
+           six temperatures if the model is temperature dependent. If multiple temperatures are
+           defined, ensure that they cover the range of anticipated temperatures at which the model
+           is applied.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+   .. py:property:: name
+      :type: str
+
+      
+      Name of the model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:property:: coefficients
+      :type: numpy.ndarray
+
+      
+      Current coefficient array for the model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:property:: temperature
+      :type: numpy.ndarray
+
+      
+      Temperature defined for the model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:attribute:: model_codes
+      :value: ('ANEL', 'ELAS')
+
+      
+
+   .. py:attribute:: name
+      :value: 'Anisotropic Elasticity'
+
+      
+
+   .. py:attribute:: applicable_packages
+
+      
+
+   .. py:method:: deserialize_model(model_code: str, model_data: List[str]) -> AnisotropicElasticity
+      :classmethod:
+
+      
+      Convert output from the MAPDL command into an object representing the model.
+
+      The input should be a section of output referring to one model from one material.
+
+      :Parameters:
+
+          **model_code: str**
+              String model code, either "ELAS" or "ANEL".
+
+          **model_data: List[str]**
+              Lines from MAPDL output corresponding to this model for one material.
+
+      :Returns:
+
+          :obj:`AnisotropicElasticity`
+              Wrapper for the underlying MAPDL material model.
+
+
+
+
+
+
+
+
+      .. rubric:: Notes
+
+      Depending on the type of the underlying model, the parameters of the returned
+      `AnisotropicElasticity` model vary, but this class is returned for either
+      "ELAS" or "ANEL" material models.
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: deserialize_anel_data(model_data: List[str]) -> Tuple[int, numpy.ndarray, numpy.ndarray]
+      :staticmethod:
+
+      
+      Deserialize the first section of data returned by calling `TBLIST` with an "ANEL" model.
+
+      The first row contains the temperatures at which the model is applied, and subsequent
+      rows contain each coefficient value at each specified temperature.
+
+      :Parameters:
+
+          **model_data: List[str]**
+              Lines from MAPDL output corresponding to the model coefficients and measured
+              temperatures.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: deserialize_elas_data(model_data: List[str]) -> Tuple[int, float, numpy.ndarray]
+      :staticmethod:
+
+      
+      Deserialize the first section of data returned by calling `TBLIST` with an "ELAS" model.
+
+      The first row contains the temperature at which the model is applied, and subsequent
+      rows contain each coefficient value.
+
+      :Parameters:
+
+          **model_data: List[str]**
+              Lines from MAPDL output corresponding to the model coefficients and measured
+              temperature.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: read_matrix(model_data: List[str]) -> List[Tuple]
+      :staticmethod:
+
+      
+      Read a matrix from a list of strings.
+
+      Iterate through a provided list of strings and extract, if present, a valid matrix element
+      label and any subsequent floating point values.
+
+      :Parameters:
+
+          **model_data: List[str]**
+              Matrix coefficient section from the output of a `TBLIST` command. Any rows that do
+              not begin with a label are ignored. otherwise, each row is deserialized into a tuple
+              with the string label and any associated float values.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: write_model(pyansys_session: Any, material: ansys.materials.manager.material.Material) -> None
+
+      
+      Write the model to MAPDL.
+
+      This method performs some pre-flight verification and writes the correct model for the
+      provided values of coefficients and temperatures.
+
+      If no temperature value is specified for the model, the current reference temperature
+      for the material is used.
+
+      :Parameters:
+
+          **pyansys_session: _MapdlCore**
+              Configured instance of PyMAPDL.
+
+          **material: Material**
+              Material object to associate with this model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: validate_model() -> Tuple[bool, List[str]]
+
+      
+      Validate some aspects of the model before attempting to write to MAPDL.
+
+      This method performs these actions:
+
+      * Validates that the number of provided temperatures match the size of the first dimension
+         of the coefficient array.
+      * Validates that the coefficient array is either two or three dimensional.
+      * Validates that no more than six temperature samples are provided.
+
+
+      :Returns:
+
+          :obj:`Tuple`
+              First element is Boolean. ``True`` if validation is successful. If ``False``,
+              the second element contains a list of strings with more information.
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+

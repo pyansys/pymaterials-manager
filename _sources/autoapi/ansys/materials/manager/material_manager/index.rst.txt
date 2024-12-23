@@ -1,0 +1,120 @@
+:py:mod:`ansys.materials.manager.material_manager`
+==================================================
+
+.. py:module:: ansys.materials.manager.material_manager
+
+.. autoapi-nested-parse::
+
+   Provides the ``MaterialManager`` class.
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager.material_manager.MaterialManager
+
+
+
+
+.. py:class:: MaterialManager(pyansys_client: Any)
+
+   Manage material creation, assignment, and other management tasks.
+
+   This class is the main entry point for the Pythonic material management interface.
+
+
+   Create a ``MaterialManager`` object ready for use.
+
+
+   :Parameters:
+
+       **pyansys_client** : :obj:`Any`
+           Valid instance of a PyAnsys client. Only PyMAPDL and PyFluent are
+           supported currently.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+   .. py:attribute:: model_type_map
+      :type: Dict[str, ansys.materials.manager._models._BaseModel]
+
+      
+
+   .. py:method:: write_material(material: ansys.materials.manager.material.Material) -> None
+
+      
+      Write a material to the solver.
+
+
+      :Parameters:
+
+          **material** : :obj:`Material`
+              Material object to write to solver.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: read_materials_from_session() -> Dict[str, ansys.materials.manager.material.Material]
+
+      
+      Given a PyAnsys session, return the materials present.
+
+      This method only supports PyMAPDL currently.
+
+
+      :Returns:
+
+          :obj:`Dict`\[:class:`python:str`, :obj:`Material`]
+              Materials in the current session, indexed by an ID. For MAPDL, this is the material
+              ID. For Fluent, this is the material name.
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+

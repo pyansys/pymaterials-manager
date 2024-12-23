@@ -1,0 +1,16 @@
+:orphan:
+
+:py:mod:`ansys.materials.manager._models._common._base`
+=======================================================
+
+.. py:module:: ansys.materials.manager._models._common._base
+
+
+Module Contents
+---------------
+
+.. py:data:: TYPE_CHECKING
+   :value: False
+
+   
+

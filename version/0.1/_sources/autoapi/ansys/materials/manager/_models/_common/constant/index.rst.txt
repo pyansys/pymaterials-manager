@@ -1,0 +1,181 @@
+:py:mod:`ansys.materials.manager._models._common.constant`
+==========================================================
+
+.. py:module:: ansys.materials.manager._models._common.constant
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager._models._common.constant.Constant
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager._models._common.constant.TYPE_CHECKING
+
+
+.. py:data:: TYPE_CHECKING
+   :value: False
+
+   
+
+.. py:class:: Constant(name: str, value: float)
+
+   Bases: :py:obj:`ansys.materials.manager._models._common._base._BaseModel`
+
+   Represents a constant property value in a solver.
+
+
+   Create a constant property value.
+
+   This property is created in the default unit system of the solver. Ensure
+   that you provide the value in the correct units.
+
+   :Parameters:
+
+       **name: str**
+           Name of the property to model as a constant.
+
+       **value: float**
+           Value of the constant property.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+   .. py:property:: name
+      :type: str
+
+      
+      Name of the quantity modeled by the constant.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:property:: value
+      :type: float
+
+      
+      Constant value of the quantity.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:attribute:: applicable_packages
+      :type: SupportedPackage.MAPDL | SupportedPackage.FLUENT
+
+      
+
+   .. py:method:: write_model(material: ansys.materials.manager.material.Material, pyansys_session: Any) -> None
+
+      
+      Write this model to MAPDL.
+
+      This method should make some effort to validate the model state before writing.
+
+      :Parameters:
+
+          **material: Material**
+              Material object to associate with this model.
+
+          **pyansys_session: Any**
+              Configured instance of the PyAnsys session.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: validate_model() -> Tuple[bool, List[str]]
+
+      
+      Perform pre-flight validation of the model setup.
+
+
+
+      :Returns:
+
+          :obj:`Tuple`
+              First element is Boolean. ``True`` if validation is successful. If ``False``,
+              the second element contains a list of strings with more information.
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+

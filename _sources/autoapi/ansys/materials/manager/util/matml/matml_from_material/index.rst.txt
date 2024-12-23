@@ -1,0 +1,112 @@
+:py:mod:`ansys.materials.manager.util.matml.matml_from_material`
+================================================================
+
+.. py:module:: ansys.materials.manager.util.matml.matml_from_material
+
+.. autoapi-nested-parse::
+
+   Provides the ``MatmlWriter`` class.
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager.util.matml.matml_from_material.MatmlWriter
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager.util.matml.matml_from_material.ROOT_ELEMENT
+   ansys.materials.manager.util.matml.matml_from_material.VERSION
+   ansys.materials.manager.util.matml.matml_from_material.VERSION_DATE
+
+
+.. py:data:: ROOT_ELEMENT
+   :value: 'EngineeringData'
+
+   
+
+.. py:data:: VERSION
+   :value: '18.0.0.60'
+
+   
+
+.. py:data:: VERSION_DATE
+   :value: '29.08.2016 15:02:00'
+
+   
+
+.. py:class:: MatmlWriter(materials: Sequence[ansys.materials.manager.material.Material])
+
+   Exports a list of MAPDL materials to an engineering data XML file.
+
+   Examples
+   --------
+   > writer = MatmlWriter(materials)
+   > writer.export('engineering_data.xml')
+
+
+   Construct a Matml writer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+   .. py:method:: export(path: _PATH_TYPE, **kwargs)
+
+      
+      Write a Matml (engineering data xml file from scratch).
+
+
+      :Parameters:
+
+          **path**
+              File path.
+
+          **materials**
+              list of materials.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+

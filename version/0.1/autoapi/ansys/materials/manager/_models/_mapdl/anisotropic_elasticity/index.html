@@ -1,0 +1,769 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>ansys.materials.manager._models._mapdl.anisotropic_elasticity &#8212; pymaterials-manager</title>
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/css/ansys_sphinx_theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    
+        <link href="../../../../../../../_static/css/breadcrumbs.css" rel="stylesheet">
+    
+    <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../../_static/doctools.js"></script>
+    <script src="../../../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../../../_static/js/table.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/ansys/materials/manager/_models/_mapdl/anisotropic_elasticity/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://https://manager.materials.docs.pyansys.com//versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        </script>
+    <link rel="shortcut icon" href="../../../../../../../_static/ansys-favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <link rel="canonical" href="https://manager.materials.docs.pyansys.com/version/stable/autoapi/ansys/materials/manager/_models/_mapdl/anisotropic_elasticity/index.html" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container"><!-- Debugging: html_theme_options =  -->
+
+  <!-- If there is no MiliSearch enabled, use the PyData search -->
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../../../../../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../../../../../_static/pyansys-logo-black-cropped.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.1  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyansys/pymaterials-manager" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+
+    
+    <div id="announcement_msg"></div>
+<script>
+  fetch("announcement.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(text => document.getElementById("announcement_msg").innerHTML = text)
+    .catch((error) => console.error(`Fetch problem: ${error.message}`));
+</script>
+    
+
+    
+    <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+    
+        <li class="nav-item nav-item-additional-breadcrumb"><a href="https://docs.pyansys.com/">PyAnsys</a> » </li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="../../../../../../../index.html">pymaterials-manager</a> » </li>
+    
+
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">ansys.materials.manager._models._mapdl.anisotropic_elasticity</span></code></a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
+    
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../index.html">
+                        API reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../../../contributing.html">
+                        Contribute
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button type="button" class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle" data-bs-toggle="dropdown">
+      0.1  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div class="version-switcher__menu dropdown-menu list-group-flush py-0">
+    <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pyansys/pymaterials-manager" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-ansys.materials.manager._models._mapdl.anisotropic_elasticity">
+<span id="ansys-materials-manager-models-mapdl-anisotropic-elasticity"></span><h1><a class="reference internal" href="#module-ansys.materials.manager._models._mapdl.anisotropic_elasticity" title="ansys.materials.manager._models._mapdl.anisotropic_elasticity"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ansys.materials.manager._models._mapdl.anisotropic_elasticity</span></code></a><a class="headerlink" href="#module-ansys.materials.manager._models._mapdl.anisotropic_elasticity" title="Permalink to this heading">#</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode" title="ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticityMode</span></code></a></p></td>
+<td><p>Determines which kind of coefficients are used in the model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity" title="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnisotropicElasticity</span></code></a></p></td>
+<td><p>Provides the anisotropic elasticity model.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">#</a></h3>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.TYPE_CHECKING" title="ansys.materials.manager._models._mapdl.anisotropic_elasticity.TYPE_CHECKING"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TYPE_CHECKING</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py data">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.TYPE_CHECKING">
+<span class="sig-prename descclassname"><span class="pre">ansys.materials.manager._models._mapdl.anisotropic_elasticity.</span></span><span class="sig-name descname"><span class="pre">TYPE_CHECKING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.TYPE_CHECKING" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.materials.manager._models._mapdl.anisotropic_elasticity.</span></span><span class="sig-name descname"><span class="pre">ElasticityMode</span></span><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/enum.html#enum.Enum" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>Determines which kind of coefficients are used in the model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode.STIFFNESS">
+<span class="sig-name descname"><span class="pre">STIFFNESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode.STIFFNESS" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode.COMPLIANCE">
+<span class="sig-name descname"><span class="pre">COMPLIANCE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode.COMPLIANCE" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ansys.materials.manager._models._mapdl.anisotropic_elasticity.</span></span><span class="sig-name descname"><span class="pre">AnisotropicElasticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_dimensions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficient_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode" title="ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode"><span class="pre">ElasticityMode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/dev/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/dev/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">ansys.materials.manager._models._common._base._BaseModel</span></code></p>
+<p>Provides the anisotropic elasticity model.</p>
+<p>The anisotropic elasticity model defines different elastic coefficients
+for each coordinate axis. This model can be used with plane and solid elements.
+The elastic coefficient matrix (D) is specified as one or up to six NumPy arrays,
+allowing temperature dependence to be modeled.</p>
+<p>The elastic coefficient matrix is defined as a 2 x n_dimensions array:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{matrix}
+  D_{11}\\
+  D_{21} &amp; D_{22}\\
+  D_{31} &amp; D_{32} &amp; D_{33}\\
+  D_{41} &amp; D_{42} &amp; D_{43} &amp; D_44}
+\end{matrix}\end{split}\]</div>
+<p>This can either be specified in “stiffness” form, with units of force/area, or in “compliance”
+form with the inverse unit.</p>
+<p>This model wraps the APDL “ELAS” and “ANEL” models in both their forms. If one temperature is
+provided, the “ELAS” model is used, with either the “AELS” or “AELF” TBOPT. Otherwise,
+the “ANEL” model is used.</p>
+<p>Create an anisotropic elasticity model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_dimensions: int</strong></dt><dd><p>Number of dimensions for the model. The value must be either <code class="docutils literal notranslate"><span class="pre">2</span></code> or <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p>
+</dd>
+<dt><strong>coefficient_type: ElasticityMode</strong></dt><dd><p>Type of elasticity mode that the model uses, which is either stiffness or
+compliance coefficients.</p>
+</dd>
+<dt><strong>coefficients: np.ndarray</strong></dt><dd><p>Model coefficients, either one 2*n_dims x 2*n_dims array of the model coefficients or,
+if the model is temperature dependent, up to 6 x 2*n_dims x 2*n_dims array of the model
+coefficients at temperature.</p>
+</dd>
+<dt><strong>temperature: Union[float, np.ndarray]</strong></dt><dd><p>Either a single temperature at which to apply the model or an array of up to
+six temperatures if the model is temperature dependent. If multiple temperatures are
+defined, ensure that they cover the range of anticipated temperatures at which the model
+is applied.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></em><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.name" title="Permalink to this definition">#</a></dt>
+<dd><p>Name of the model.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.coefficients">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coefficients</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.coefficients" title="Permalink to this definition">#</a></dt>
+<dd><p>Current coefficient array for the model.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.temperature">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">temperature</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.temperature" title="Permalink to this definition">#</a></dt>
+<dd><p>Temperature defined for the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.model_codes">
+<span class="sig-name descname"><span class="pre">model_codes</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('ANEL',</span> <span class="pre">'ELAS')</span></em><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.model_codes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Anisotropic</span> <span class="pre">Elasticity'</span></em><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.applicable_packages">
+<span class="sig-name descname"><span class="pre">applicable_packages</span></span><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.applicable_packages" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.deserialize_model">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserialize_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity" title="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity"><span class="pre">AnisotropicElasticity</span></a></span></span><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.deserialize_model" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert output from the MAPDL command into an object representing the model.</p>
+<p>The input should be a section of output referring to one model from one material.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model_code: str</strong></dt><dd><p>String model code, either “ELAS” or “ANEL”.</p>
+</dd>
+<dt><strong>model_data: List[str]</strong></dt><dd><p>Lines from MAPDL output corresponding to this model for one material.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity" title="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnisotropicElasticity</span></code></a></dt><dd><p>Wrapper for the underlying MAPDL material model.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Depending on the type of the underlying model, the parameters of the returned
+<cite>AnisotropicElasticity</cite> model vary, but this class is returned for either
+“ELAS” or “ANEL” material models.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.deserialize_anel_data">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserialize_anel_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.deserialize_anel_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Deserialize the first section of data returned by calling <cite>TBLIST</cite> with an “ANEL” model.</p>
+<p>The first row contains the temperatures at which the model is applied, and subsequent
+rows contain each coefficient value at each specified temperature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model_data: List[str]</strong></dt><dd><p>Lines from MAPDL output corresponding to the model coefficients and measured
+temperatures.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.deserialize_elas_data">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserialize_elas_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/dev/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.deserialize_elas_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Deserialize the first section of data returned by calling <cite>TBLIST</cite> with an “ELAS” model.</p>
+<p>The first row contains the temperature at which the model is applied, and subsequent
+rows contain each coefficient value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model_data: List[str]</strong></dt><dd><p>Lines from MAPDL output corresponding to the model coefficients and measured
+temperature.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.read_matrix">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.read_matrix" title="Permalink to this definition">#</a></dt>
+<dd><p>Read a matrix from a list of strings.</p>
+<p>Iterate through a provided list of strings and extract, if present, a valid matrix element
+label and any subsequent floating point values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model_data: List[str]</strong></dt><dd><p>Matrix coefficient section from the output of a <cite>TBLIST</cite> command. Any rows that do
+not begin with a label are ignored. otherwise, each row is deserialized into a tuple
+with the string label and any associated float values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.write_model">
+<span class="sig-name descname"><span class="pre">write_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pyansys_session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../material/index.html#ansys.materials.manager.material.Material" title="ansys.materials.manager.material.Material"><span class="pre">ansys.materials.manager.material.Material</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/dev/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.write_model" title="Permalink to this definition">#</a></dt>
+<dd><p>Write the model to MAPDL.</p>
+<p>This method performs some pre-flight verification and writes the correct model for the
+provided values of coefficients and temperatures.</p>
+<p>If no temperature value is specified for the model, the current reference temperature
+for the material is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pyansys_session: _MapdlCore</strong></dt><dd><p>Configured instance of PyMAPDL.</p>
+</dd>
+<dt><strong>material: Material</strong></dt><dd><p>Material object to associate with this model.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.validate_model">
+<span class="sig-name descname"><span class="pre">validate_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/dev/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.validate_model" title="Permalink to this definition">#</a></dt>
+<dd><p>Validate some aspects of the model before attempting to write to MAPDL.</p>
+<p>This method performs these actions:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Validates that the number of provided temperatures match the size of the first dimension</dt><dd><p>of the coefficient array.</p>
+</dd>
+</dl>
+</li>
+<li><p>Validates that the coefficient array is either two or three dimensional.</p></li>
+<li><p>Validates that no more than six temperature samples are provided.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tuple</span></code></dt><dd><p>First element is Boolean. <code class="docutils literal notranslate"><span class="pre">True</span></code> if validation is successful. If <code class="docutils literal notranslate"><span class="pre">False</span></code>,
+the second element contains a list of strings with more information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.TYPE_CHECKING">TYPE_CHECKING</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode">ElasticityMode</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode.STIFFNESS">STIFFNESS</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.ElasticityMode.COMPLIANCE">COMPLIANCE</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity">AnisotropicElasticity</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.name">name</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.coefficients">coefficients</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.temperature">temperature</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.model_codes">model_codes</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id0">name</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.applicable_packages">applicable_packages</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.deserialize_model">deserialize_model</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.deserialize_anel_data">deserialize_anel_data</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.deserialize_elas_data">deserialize_elas_data</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.read_matrix">read_matrix</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.write_model">write_model</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ansys.materials.manager._models._mapdl.anisotropic_elasticity.AnisotropicElasticity.validate_model">validate_model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../../_sources/autoapi/ansys/materials/manager/_models/_mapdl/anisotropic_elasticity/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright (c) 2023 ANSYS, Inc. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
