@@ -1,4 +1,5 @@
 """Provides the ``MaterialDataParser`` class."""
+
 from typing import Dict, List, Optional
 
 from ansys.materials.manager._models import Constant, PiecewiseLinear, _BaseModel
