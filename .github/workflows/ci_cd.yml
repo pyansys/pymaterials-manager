@@ -25,14 +25,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip poetry tox
-          poetry config installer.modern-installation false
+
       - name: Test with tox
         run: tox -e style
 
@@ -75,17 +77,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip poetry tox tox-gh-actions
-          poetry config installer.modern-installation false
+
       - name: Test with tox
         # Only the tox environment specified in the tox.ini gh-actions is run
-        run: tox -e py310-coverage 
+        run: tox -e py310-coverage
+
       - name: Upload coverage report
         uses: codecov/codecov-action@v5
         if: ${{ github.actor != 'dependabot[bot]' }}
@@ -109,7 +114,6 @@ jobs:
       - name: "Install dependencies"
         run: |
           python -m pip install --upgrade pip poetry tox tox-gh-actions
-          poetry config installer.modern-installation false
 
       - name: "Login in Github container registry"
         uses: docker/login-action@v3.3.0
@@ -181,14 +185,16 @@ jobs:
     needs: docs-style
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip poetry tox
-          poetry config installer.modern-installation false
+
       - name: Generate the documentation with tox
         run: tox -e doc
 
@@ -214,10 +220,10 @@ jobs:
       - name: Install dependencies and build the library
         run: |
           python -m pip install --upgrade pip poetry
-          poetry config installer.modern-installation false
           poetry install
           poetry build
           poetry run twine check dist/*
+
       - name: Upload wheel
         uses: actions/upload-artifact@v4
         with:
@@ -250,6 +256,7 @@ jobs:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
       - uses: actions/checkout@v4
+
       - uses: actions/download-artifact@v4
       
       - name: List directory structure
