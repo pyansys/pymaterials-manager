@@ -1,4 +1,5 @@
 """Provides the ``MaterialManager`` class."""
+
 import inspect
 from typing import Any, Dict
 
