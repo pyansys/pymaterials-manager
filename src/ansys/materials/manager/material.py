@@ -1,4 +1,5 @@
 """Provides the ``Material`` class."""
+
 from typing import List, Optional
 
 from ._models import _BaseModel
