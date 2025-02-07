@@ -88,7 +88,7 @@ class Constant(_BaseModel):
         try:
             fluent_property_code = fluent_property_codes[self._name.lower()]
             property_state = {fluent_property_code: {"option": "constant", "value": self._value}}
-            fluent.setup.materials.fluid[material.name] = property_state
+            fluent.settings.setup.materials.fluid[material.name] = property_state
         except (RuntimeError, KeyError):
             pass
 
