@@ -1,0 +1,49 @@
+:py:mod:`ansys.materials.manager`
+=================================
+
+.. py:module:: ansys.materials.manager
+
+.. autoapi-nested-parse::
+
+   
+   Provides a helper to manage materials in the Ansys ecosystem.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   util/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   material/index.rst
+   material_manager/index.rst
+   serialize/index.rst
+
+

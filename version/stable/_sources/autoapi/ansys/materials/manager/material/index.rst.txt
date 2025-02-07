@@ -1,0 +1,209 @@
+:py:mod:`ansys.materials.manager.material`
+==========================================
+
+.. py:module:: ansys.materials.manager.material
+
+.. autoapi-nested-parse::
+
+   Provides the ``Material`` class.
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager.material.Material
+
+
+
+
+.. py:class:: Material(material_name: str, material_id: str = None, models: List[ansys.materials.manager._models._BaseModel] = None)
+
+   Provides a wrapper class for managing a material.
+
+   This class associates a material ID with one or more properties and nonlinear material models.
+
+
+   Create an instance of a material.
+
+   Optionally specify a material ID, or other properties.
+
+   :Parameters:
+
+       **material_name** : :class:`python:str`
+           Name of the material.
+
+       **material_id** : :class:`python:str`, :obj:`optional`
+           ID to associate with this material. The default is ``None``.
+
+       **models** : :obj:`Dict`\[:class:`python:str`, :obj:`_BaseModel`]
+           Dictionary of nonlinear material models. Models are specified with their
+           model codes (from the TB command) and the model object.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+   .. py:property:: name
+      :type: str
+
+      
+      Name of the material.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:property:: material_id
+      :type: Optional[str]
+
+      
+      Material ID.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:property:: uuid
+      :type: str
+
+      
+      UUID (transfer ID), which is unique.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:property:: models
+      :type: List[_BaseModel]
+
+      
+      Currently assigned material models.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:property:: reference_temperature
+      :type: float
+
+      
+      Strain reference temperature for the model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: get_model_by_name(model_name: str) -> List[_BaseModel]
+
+      
+      Get the material model or models with a given model name.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+

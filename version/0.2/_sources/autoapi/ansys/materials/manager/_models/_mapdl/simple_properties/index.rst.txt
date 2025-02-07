@@ -1,0 +1,13 @@
+:py:mod:`ansys.materials.manager._models._mapdl.simple_properties`
+==================================================================
+
+.. py:module:: ansys.materials.manager._models._mapdl.simple_properties
+
+
+Module Contents
+---------------
+
+.. py:data:: property_codes
+
+   
+

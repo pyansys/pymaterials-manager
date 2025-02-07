@@ -1,0 +1,152 @@
+:py:mod:`ansys.materials.manager.util.matml.matml_from_material`
+================================================================
+
+.. py:module:: ansys.materials.manager.util.matml.matml_from_material
+
+.. autoapi-nested-parse::
+
+   Provides the ``MatmlWriter`` class.
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager.util.matml.matml_from_material.MatmlWriter
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager.util.matml.matml_from_material.ROOT_ELEMENT
+   ansys.materials.manager.util.matml.matml_from_material.VERSION
+   ansys.materials.manager.util.matml.matml_from_material.VERSION_DATE
+
+
+.. py:data:: ROOT_ELEMENT
+   :value: 'EngineeringData'
+
+   
+
+.. py:data:: VERSION
+   :value: '18.0.0.60'
+
+   
+
+.. py:data:: VERSION_DATE
+   :value: '29.08.2016 15:02:00'
+
+   
+
+.. py:class:: MatmlWriter(materials: Sequence[ansys.materials.manager.material.Material])
+
+   Exports a list of MAPDL materials to an engineering data XML file.
+
+   Examples
+   --------
+   > writer = MatmlWriter(materials)
+   > writer.export('engineering_data.xml')
+
+
+   Construct a Matml writer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+   .. py:method:: write(buffer: BinaryIO, **kwargs) -> None
+
+      
+      Write a Matml (engineering data xml format) representation of materials to buffer.
+
+
+      :Parameters:
+
+          **buffer:**
+              buffer to write to
+
+          **\*\*kwargs** : :ref:`bool <python:bltin-boolean-values>`, :obj:`optional`
+              Optional keyword arguments.
+              indent : bool, optional
+                  Whether to add an indent to format the XML output(python 3.9+).
+                  Defaults to ``false``.
+              xml_declaration: bool, optional
+                  Whether to add the XML declaration to the output
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: export(path: _PATH_TYPE, **kwargs) -> None
+
+      
+      Write a Matml (engineering data xml format) representation of materials to file.
+
+
+      :Parameters:
+
+          **path:**
+              File path
+
+          **\*\*kwargs** : :ref:`bool <python:bltin-boolean-values>`, :obj:`optional`
+              Optional keyword arguments.
+              indent : bool, optional
+                  Whether to add an indent to format the XML output(python 3.9+).
+                  Defaults to ``false``.
+              xml_declaration: bool, optional
+                  Whether to add the XML declaration to the output
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+

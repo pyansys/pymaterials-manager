@@ -1,0 +1,26 @@
+ansys.materials.manager.util.matml.matml_property_map
+=====================================================
+
+.. py:module:: ansys.materials.manager.util.matml.matml_property_map
+
+.. autoapi-nested-parse::
+
+   Define a map between MAPDL and MATLM material properties.
+
+   ..
+       !! processed by numpydoc !!
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   ansys.materials.manager.util.matml.matml_property_map.MATML_PROPERTY_MAP
+
+
+Module Contents
+---------------
+
+.. py:data:: MATML_PROPERTY_MAP
+

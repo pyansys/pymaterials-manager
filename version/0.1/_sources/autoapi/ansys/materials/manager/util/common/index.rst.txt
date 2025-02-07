@@ -1,0 +1,99 @@
+:py:mod:`ansys.materials.manager.util.common`
+=============================================
+
+.. py:module:: ansys.materials.manager.util.common
+
+.. autoapi-nested-parse::
+
+   Provides the ``common`` module.
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager.util.common.fill_upper_triangular_matrix
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager.util.common.MP_MATERIAL_HEADER_REGEX
+   ansys.materials.manager.util.common.TB_MATERIAL_HEADER_REGEX
+   ansys.materials.manager.util.common.FLOAT_VALUE_REGEX
+   ansys.materials.manager.util.common.INTEGER_VALUE_REGEX
+   ansys.materials.manager.util.common.MATRIX_LABEL_REGEX
+   ansys.materials.manager.util.common.model_type
+
+
+.. py:data:: MP_MATERIAL_HEADER_REGEX
+
+   
+
+.. py:data:: TB_MATERIAL_HEADER_REGEX
+
+   
+
+.. py:data:: FLOAT_VALUE_REGEX
+
+   
+
+.. py:data:: INTEGER_VALUE_REGEX
+
+   
+
+.. py:data:: MATRIX_LABEL_REGEX
+
+   
+
+.. py:data:: model_type
+
+   
+
+.. py:function:: fill_upper_triangular_matrix(vector: List[float]) -> numpy.ndarray
+
+   
+   Convert a vector of coefficients into a full matrix.
+
+   Generates a symmetric, square matrix.
+
+   :Parameters:
+
+       **vector** : :obj:`List`\[:class:`python:float`]
+           Coefficients of the lower half-matrix. E.g. D11, D12, D22, etc.
+
+   :Returns:
+
+       :obj:`np.ndarray <numpy.ndarray>`
+           Square symmetric matrix.
+
+
+
+
+   :Raises:
+
+       :obj:`ValueError`
+           If the length of the input vector is not a triangular number.
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+

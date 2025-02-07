@@ -1,0 +1,18 @@
+:orphan:
+
+:py:mod:`ansys.materials.manager._models._fluent`
+=================================================
+
+.. py:module:: ansys.materials.manager._models._fluent
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   ideal_gas/index.rst
+   simple_properties/index.rst
+
+
