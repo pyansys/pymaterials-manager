@@ -37,7 +37,7 @@ sphinx-copybutton = {version = "==0.5.2", optional = true}
 [tool.poetry.group.dev.dependencies]
 pytest = ">=7.3,<9.0"
 coolprop = "^6.4.1"
-ansys-mapdl-core = ">=0.68,<0.69"
+ansys-mapdl-core = ">=0.68,<0.70"
 ansys-fluent-core = ">=0.28,<0.30"
 twine = ">=4.0.2,<7.0.0"
 pytest-cov = ">=4,<7"
