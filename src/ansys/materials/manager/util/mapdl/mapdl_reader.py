@@ -1,4 +1,5 @@
 """Provides the ``mapdl_reader`` module."""
+
 from typing import Dict
 
 from ansys.materials.manager._models._common._base import _MapdlCore

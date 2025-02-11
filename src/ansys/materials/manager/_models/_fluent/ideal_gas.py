@@ -66,7 +66,7 @@ class IdealGas(_BaseModel):
             raise ModelValidationException("\n".join(issues))
 
         fluent_property_code = fluent_property_codes[self._name.lower()]
-        pyansys_session.setup.materials.fluid[material.name] = {
+        pyansys_session.settings.setup.materials.fluid[material.name] = {
             fluent_property_code: {"option": "ideal-gas"}
         }
 

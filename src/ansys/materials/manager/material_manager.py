@@ -1,11 +1,11 @@
 """Provides the ``MaterialManager`` class."""
+
 import inspect
 from typing import Any, Dict
 
 import ansys.materials.manager._models as models
 from ansys.materials.manager._models._common._base import _FluentCore, _MapdlCore
 
-from ._models import _BaseModel
 from .material import Material
 from .util.mapdl.mapdl_reader import read_mapdl
 
@@ -70,7 +70,7 @@ class MaterialManager:
             Material object to write to solver.
         """
         for model in material.models:
-            assert isinstance(model, _BaseModel)
+            assert isinstance(model, models._BaseModel)
             model.write_model(material, self._client)
 
     def read_materials_from_session(self) -> Dict[str, Material]:
