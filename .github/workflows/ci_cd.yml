@@ -90,7 +90,7 @@ jobs:
   mapdl-integration-tests:
     name: Integration tests with MAPDL
     runs-on: ubuntu-latest
-    needs: style
+    needs: code-style
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
       - uses: actions/checkout@v4
