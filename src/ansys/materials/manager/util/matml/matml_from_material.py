@@ -1,8 +1,7 @@
 """Provides the ``MatmlWriter`` class."""
 
 import os
-import sys
-from typing import BinaryIO, Dict, Sequence, Union
+from typing import BinaryIO, Dict, Optional, Sequence, Union
 import xml.etree.ElementTree as ET
 
 from ansys.materials.manager.material import Material
@@ -189,52 +188,53 @@ class MatmlWriter:
         else:
             print(f"ElementTree does not have `indent`. Python 3.9+ required!")
 
-    def _xml_write_kwargs(self, **kwargs) -> dict:
-        if sys.version_info.minor == 7:
-            return {}
-        return {"xml_declaration": kwargs.get("xml_declaration", False)}
-
-    def write(self, buffer: BinaryIO, **kwargs) -> None:
+    def write(
+        self,
+        buffer: BinaryIO,
+        indent: Optional[bool] = False,
+        xml_declaration: Optional[bool] = False,
+    ) -> None:
         """
-        Write a Matml (engineering data xml format) representation of materials to buffer.
+        Write a MatML (engineering data XML format) representation of materials to buffer.
 
         Parameters
         ----------
         buffer:
-            buffer to write to
-        **kwargs : bool, optional
-            Optional keyword arguments.
-            indent : bool, optional
-                Whether to add an indent to format the XML output(python 3.9+).
-                Defaults to ``false``.
-            xml_declaration: bool, optional
-                Whether to add the XML declaration to the output
+            Buffer to write to.
+        indent : Optional[bool]
+            Whether to add an indent to format the XML output.
+            Defaults to ``false``.
+        xml_declaration: Optional[bool]
+            Whether to add the XML declaration to the output.
         """
         tree = self._to_etree()
 
-        if kwargs.get("indent", False):
+        if indent:
             self._indent(tree)
-        buffer.write(ET.tostring(tree.getroot(), **self._xml_write_kwargs(**kwargs)))
+        buffer.write(ET.tostring(tree.getroot(), xml_declaration=xml_declaration))
 
-    def export(self, path: _PATH_TYPE, **kwargs) -> None:
+    def export(
+        self,
+        path: _PATH_TYPE,
+        indent: Optional[bool] = False,
+        xml_declaration: Optional[bool] = False,
+    ) -> None:
         """
-        Write a Matml (engineering data xml format) representation of materials to file.
+        Write a MatML (engineering data XML format) representation of materials to file.
 
         Parameters
         ----------
         path:
-            File path
-        **kwargs : bool, optional
-            Optional keyword arguments.
-            indent : bool, optional
-                Whether to add an indent to format the XML output(python 3.9+).
-                Defaults to ``false``.
-            xml_declaration: bool, optional
-                Whether to add the XML declaration to the output
+            File path.
+        indent : Optional[bool]
+            Whether to add an indent to format the XML output.
+            Defaults to ``false``.
+        xml_declaration: Optional[bool]
+            Whether to add the XML declaration to the output.
         """
         tree = self._to_etree()
 
         print(f"write xml to {path}")
-        if kwargs.get("indent", False):
+        if indent:
             self._indent(tree)
-        tree.write(path, **self._xml_write_kwargs(**kwargs))
+        tree.write(path, xml_declaration=xml_declaration)
