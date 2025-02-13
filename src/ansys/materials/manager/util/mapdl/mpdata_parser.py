@@ -2,9 +2,11 @@
 
 from typing import Dict, List, Optional
 
+import numpy as np
+
 from ansys.materials.manager._models import Constant, PiecewiseLinear, _BaseModel
 from ansys.materials.manager._models._mapdl.simple_properties import property_codes
-from ansys.materials.manager.util.common import FLOAT_VALUE_REGEX, MP_MATERIAL_HEADER_REGEX, np
+from ansys.materials.manager.util.common import FLOAT_VALUE_REGEX, MP_MATERIAL_HEADER_REGEX
 
 
 class _MaterialDataParser:
