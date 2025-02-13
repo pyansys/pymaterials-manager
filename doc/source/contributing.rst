@@ -80,7 +80,7 @@ This way, it's not possible for you to push code that fails the style checks::
 .. _pre-commit: https://pre-commit.com/
 .. _pyansys_support: pyansys.support@ansys.com
 .. _dev_guide_pyansys: https://dev.docs.pyansys.com/
-.. _dev_guide_contributing: https://dev.docs.pyansys.com/dev/how-to/contributing.html
-.. _dev_guide_coding_style: https://dev.docs.pyansys.com/dev/coding-style/index.html
+.. _dev_guide_contributing: https://dev.docs.pyansys.com/how-to/contributing.html
+.. _dev_guide_coding_style: https://dev.docs.pyansys.com/coding-style/index.html
 .. _PyMaterials Manager Issues: https://github.com/ansys/pymaterials-manager/issues
 .. _Pymaterials-manager_docs: https://manager.materials.docs.pyansys.com/
