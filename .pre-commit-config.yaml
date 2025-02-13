@@ -42,3 +42,11 @@ repos:
     exclude: "tests/"
     args:
       - --add-ignore=D100,D203,D104
+
+- repo: https://github.com/ansys/pre-commit-hooks
+  rev: v0.5.1
+  hooks:
+    - id: add-license-headers
+      args:
+      - --start_year=2022
+      files: '(src|tests)/.*\.(py)'
