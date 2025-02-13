@@ -4,10 +4,12 @@ from datetime import datetime
 import os
 
 from ansys_sphinx_theme import ansys_favicon, get_version_match, pyansys_logo_black
+from sphinx.builders.latex import LaTeXBuilder
 
 from ansys.materials.manager import __version__
 
 cname = os.getenv("DOCUMENTATION_CNAME", default="https://manager.materials.docs.pyansys.com/")
+LaTeXBuilder.supported_image_types = ["image/png", "image/pdf", "image/svg+xml"]
 
 # Project information
 project = "ansys-materials-manager"
@@ -33,16 +35,18 @@ html_theme_options = {
         "json_url": f"https://{cname}/versions.json",
         "version_match": get_version_match(__version__),
     },
+    "ansys_sphinx_theme_autoapi": {
+        "project": project,
+    },
 }
 
 # Sphinx extensions
 extensions = [
     "sphinx.ext.autodoc",
-    "autoapi.extension",
-    "sphinx.ext.autosummary",
     "numpydoc",
     "sphinx.ext.intersphinx",
     "sphinx_copybutton",
+    "ansys_sphinx_theme.extension.autoapi",
 ]
 
 # Intersphinx mapping
@@ -65,7 +69,7 @@ numpydoc_validate = True
 numpydoc_validation_checks = {
     "GL06",  # Found unknown section
     "GL07",  # Sections are in the wrong order.
-    "GL08",  # The object does not have a docstring
+    # "GL08",  # The object does not have a docstring
     "GL09",  # Deprecation warning should precede extended summary
     "GL10",  # reST directives {directives} must be followed by two colons
     "SS01",  # No summary found
@@ -76,13 +80,6 @@ numpydoc_validation_checks = {
     "RT02",  # The first line of the Returns section should contain only the
     # type, unless multiple values are being returned"
 }
-
-
-# static path
-html_static_path = ["_static"]
-
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ["_templates"]
 
 # The suffix(es) of source filenames.
 source_suffix = ".rst"
@@ -100,18 +97,3 @@ source_suffix = {
 
 # The master toctree document.
 master_doc = "index"
-
-# Configuration for Sphinx autoapi
-autoapi_type = "python"
-autoapi_dirs = ["../../src/ansys"]
-autoapi_options = [
-    "members",
-    "undoc-members",
-    "show-inheritance",
-    "show-module-summary",
-]
-autoapi_template_dir = "_autoapi_templates"
-suppress_warnings = ["autoapi"]
-exclude_patterns = ["_autoapi_templates/index.rst"]
-autoapi_python_use_implicit_namespaces = True
-autoapi_python_class_content = "both"

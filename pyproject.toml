@@ -27,12 +27,14 @@ packages = [
 python = ">=3.10,<3.13"
 numpy = "^2.0"
 
-# Documentation dependencies
-ansys-sphinx-theme = {version = ">=0.12,<1.4", optional = true}
-numpydoc = {version = "^1.6.0", optional = true}
-Sphinx = {version = ">=7.2,<9.0", optional = true}
-sphinx-autoapi = {version = "^3.0", optional = true}
-sphinx-copybutton = {version = "==0.5.2", optional = true}
+[tool.poetry.group.doc.dependencies]
+ansys-sphinx-theme = ">=0.12,<1.4"
+numpydoc = "^1.6.0"
+Sphinx = "^7.2,<9.0"
+sphinx-autoapi = "^3.0"
+sphinx-copybutton = "==0.5.2"
+sphinx-jinja = "^2.0.2"
+sphinx-design = "^0.6.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=7.3,<9.0"
@@ -42,15 +44,6 @@ ansys-fluent-core = ">=0.28,<0.30"
 twine = ">=4.0.2,<7.0.0"
 pytest-cov = ">=4,<7"
 pre-commit = ">=3.2.2,<5.0.0"
-
-[tool.poetry.extras]
-doc = [
-    "ansys-sphinx-theme",
-    "numpydoc",
-    "Sphinx",
-    "sphinx-autoapi",
-    "sphinx-copybutton",
-]
 
 [tool.black]
 line-length = 100
