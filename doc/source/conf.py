@@ -4,10 +4,12 @@ from datetime import datetime
 import os
 
 from ansys_sphinx_theme import ansys_favicon, get_version_match, pyansys_logo_black
+from sphinx.builders.latex import LaTeXBuilder
 
 from ansys.materials.manager import __version__
 
 cname = os.getenv("DOCUMENTATION_CNAME", default="https://manager.materials.docs.pyansys.com/")
+LaTeXBuilder.supported_image_types = ["image/png", "image/pdf", "image/svg+xml"]
 
 # Project information
 project = "ansys-materials-manager"
@@ -78,13 +80,6 @@ numpydoc_validation_checks = {
     "RT02",  # The first line of the Returns section should contain only the
     # type, unless multiple values are being returned"
 }
-
-
-# static path
-html_static_path = ["_static"]
-
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ["_templates"]
 
 # The suffix(es) of source filenames.
 source_suffix = ".rst"
