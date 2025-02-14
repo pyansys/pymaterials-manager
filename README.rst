@@ -7,7 +7,7 @@ PyMaterials Manager
    :alt: PyAnsys
 
 .. |python| image:: https://img.shields.io/pypi/pyversions/ansys-materials-manager
-   :target: https://pypi.org/project/pymaterials-manager/
+   :target: https://pypi.org/project/ansys-materials-manager/
    :alt: Python
 
 .. |pypi| image:: https://img.shields.io/pypi/v/ansys-materials-manager.svg?logo=python&logoColor=white
