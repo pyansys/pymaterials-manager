@@ -201,6 +201,7 @@ jobs:
         with:
           path: dist/
           retention-days: 7
+          name: ${{ env.PACKAGE_NAME }}-artifacts
 
   upload_dev_docs:
     name: Upload dev documentation
