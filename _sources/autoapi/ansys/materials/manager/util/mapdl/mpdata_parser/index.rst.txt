@@ -1,0 +1,13 @@
+:py:mod:`ansys.materials.manager.util.mapdl.mpdata_parser`
+==========================================================
+
+.. py:module:: ansys.materials.manager.util.mapdl.mpdata_parser
+
+.. autoapi-nested-parse::
+
+   Provides the ``MaterialDataParser`` class.
+
+   ..
+       !! processed by numpydoc !!
+
+

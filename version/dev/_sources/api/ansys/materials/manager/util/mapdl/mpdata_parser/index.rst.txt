@@ -1,0 +1,46 @@
+
+
+
+
+
+
+The ``mpdata_parser.py`` module
+===============================
+
+.. py:module:: ansys.materials.manager.util.mapdl.mpdata_parser
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Provides the ``MaterialDataParser`` class.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

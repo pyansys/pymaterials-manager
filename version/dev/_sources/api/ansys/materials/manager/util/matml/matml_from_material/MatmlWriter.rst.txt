@@ -1,0 +1,147 @@
+
+
+
+
+
+
+:class:`MatmlWriter`
+====================
+
+.. py:class:: ansys.materials.manager.util.matml.matml_from_material.MatmlWriter(materials: Sequence[ansys.materials.manager.material.Material])
+
+   
+   Exports a list of MAPDL materials to an engineering data XML file.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   .. rubric:: Examples
+
+   > writer = MatmlWriter(materials)
+   > writer.export('engineering_data.xml')
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: MatmlWriter
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~write`
+            - Write a MatML (engineering data XML format) representation of materials to buffer.
+          * - :py:attr:`~export`
+            - Write a MatML (engineering data XML format) representation of materials to file.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.materials.manager.util.matml.matml_from_material import MatmlWriter
+
+
+
+Method detail
+-------------
+
+.. py:method:: write(buffer: BinaryIO, indent: Optional[bool] = False, xml_declaration: Optional[bool] = False) -> None
+
+   
+   Write a MatML (engineering data XML format) representation of materials to buffer.
+
+
+   :Parameters:
+
+       **buffer:**
+           Buffer to write to.
+
+       **indent** : :obj:`Optional`\[:ref:`bool <python:bltin-boolean-values>`]
+           Whether to add an indent to format the XML output.
+           Defaults to ``false``.
+
+       **xml_declaration: Optional[bool]**
+           Whether to add the XML declaration to the output.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: export(path: _PATH_TYPE, indent: Optional[bool] = False, xml_declaration: Optional[bool] = False) -> None
+
+   
+   Write a MatML (engineering data XML format) representation of materials to file.
+
+
+   :Parameters:
+
+       **path:**
+           File path.
+
+       **indent** : :obj:`Optional`\[:ref:`bool <python:bltin-boolean-values>`]
+           Whether to add an indent to format the XML output.
+           Defaults to ``false``.
+
+       **xml_declaration: Optional[bool]**
+           Whether to add the XML declaration to the output.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

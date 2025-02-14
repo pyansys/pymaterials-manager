@@ -1,0 +1,54 @@
+:orphan:
+
+:py:mod:`ansys.materials.manager._models._common._packages`
+===========================================================
+
+.. py:module:: ansys.materials.manager._models._common._packages
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager._models._common._packages.SupportedPackage
+
+
+
+
+.. py:class:: SupportedPackage
+
+   Bases: :py:obj:`enum.Flag`
+
+   
+   Provides the enum representing the packages supported by the Material Manager.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:attribute:: MAPDL
+
+      
+
+   .. py:attribute:: FLUENT
+
+      
+
+

@@ -1,0 +1,169 @@
+
+
+
+
+
+
+The ``matml_parser.py`` module
+==============================
+
+.. py:module:: ansys.materials.manager.util.matml.matml_parser
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: matml_parser
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.materials.manager.util.matml.matml_parser.Parameter`
+            - Define a parameter such as density or Young's Modulus.
+
+
+          * - :py:obj:`~ansys.materials.manager.util.matml.matml_parser.PropertySet`
+            - Define a PropertySet which contains one or several parameters.
+
+
+          * - :py:obj:`~ansys.materials.manager.util.matml.matml_parser.MatmlReader`
+            - Parse a MatML (engineering data xml) file.
+
+
+
+
+
+
+
+    .. tab-item:: Constants
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~MATERIALS_ELEMENT_KEY`
+            - 
+
+
+          * - :py:obj:`~MATML_DOC_KEY`
+            - 
+
+
+          * - :py:obj:`~METADATA_KEY`
+            - 
+
+
+          * - :py:obj:`~BULKDATA_KEY`
+            - 
+
+
+          * - :py:obj:`~UNITLESS_KEY`
+            - 
+
+
+          * - :py:obj:`~BEHAVIOR_KEY`
+            - 
+
+
+          * - :py:obj:`~WBTRANSFER_KEY`
+            - 
+
+
+          * - :py:obj:`~MAT_TRANSFER_ID`
+            - 
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Parameter</api/ansys/materials/manager/util/matml/matml_parser/Parameter>
+    <span class="nf nf-cod-symbol_class"></span> PropertySet</api/ansys/materials/manager/util/matml/matml_parser/PropertySet>
+    <span class="nf nf-cod-symbol_class"></span> MatmlReader</api/ansys/materials/manager/util/matml/matml_parser/MatmlReader>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Provides the ``matml_parser`` module.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:data:: MATERIALS_ELEMENT_KEY
+   :value: 'Materials'
+
+
+.. py:data:: MATML_DOC_KEY
+   :value: 'MatML_Doc'
+
+
+.. py:data:: METADATA_KEY
+   :value: 'Metadata'
+
+
+.. py:data:: BULKDATA_KEY
+   :value: 'BulkDetails'
+
+
+.. py:data:: UNITLESS_KEY
+   :value: 'Unitless'
+
+
+.. py:data:: BEHAVIOR_KEY
+   :value: 'Behavior'
+
+
+.. py:data:: WBTRANSFER_KEY
+   :value: 'ANSYSWBTransferData'
+
+
+.. py:data:: MAT_TRANSFER_ID
+   :value: 'DataTransferID'
+
+
+
+

@@ -1,0 +1,45 @@
+:orphan:
+
+:py:mod:`ansys.materials.manager._models._common._exceptions`
+=============================================================
+
+.. py:module:: ansys.materials.manager._models._common._exceptions
+
+
+Module Contents
+---------------
+
+.. py:exception:: ModelValidationException(message: str)
+
+   Bases: :py:obj:`Exception`
+
+   Provides the exception thrown if pre-flight verification fails.
+
+   Throwing an exception indicates that the provided model state is invalid.
+
+
+   Create an instance of the ``ModelValidationException`` class.
+
+
+   :Parameters:
+
+       **message: str**
+           Text to display for the exception.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+

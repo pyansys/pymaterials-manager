@@ -1,0 +1,140 @@
+
+
+
+
+
+
+The ``serialize.py`` module
+===========================
+
+.. py:module:: ansys.materials.manager.serialize
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: serialize
+.. tab-set::
+
+
+
+
+
+
+
+    .. tab-item:: Functions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~serialize_material`
+            - Output the JSON representation of a material in Fluent format to a string.
+
+
+          * - :py:obj:`~serialize_material_to_file`
+            - Output the JSON representation of a material in Fluent format to a file.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Provides functions to serialize materials.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:function:: serialize_material(material: ansys.materials.manager.material.Material) -> str
+
+   
+   Output the JSON representation of a material in Fluent format to a string.
+
+
+   :Parameters:
+
+       **material** : :obj:`Material`
+           Material to serialize.
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           String representation of the material in Fluent format.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:function:: serialize_material_to_file(material: ansys.materials.manager.material.Material, file_name: Union[str, pathlib.Path])
+
+   
+   Output the JSON representation of a material in Fluent format to a file.
+
+
+   :Parameters:
+
+       **material** : :obj:`Material`
+           Material to serialize.
+
+       **file_name** : :obj:`Union`\[:class:`python:str`, :obj:`pathlib.Path`]
+           Name of the file to create.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+

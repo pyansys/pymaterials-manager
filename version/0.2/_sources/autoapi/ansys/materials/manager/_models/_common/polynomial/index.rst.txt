@@ -1,0 +1,199 @@
+:py:mod:`ansys.materials.manager._models._common.polynomial`
+============================================================
+
+.. py:module:: ansys.materials.manager._models._common.polynomial
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager._models._common.polynomial.Polynomial
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager._models._common.polynomial.TYPE_CHECKING
+
+
+.. py:data:: TYPE_CHECKING
+   :value: False
+
+   
+
+.. py:class:: Polynomial(name: str, coefficients: numpy.ndarray, sample_points: Optional[numpy.ndarray] = None)
+
+   Bases: :py:obj:`ansys.materials.manager._models._common._base._BaseModel`
+
+   Provides the polynomial model for a property.
+
+   This class represents a property as a polynomial with a series of coefficients.
+   These are stored in ascending powers of the parameters.
+
+
+   Create a polynomial model for a property.
+
+   This model represents an nth order polynomial. The coefficients are stored
+   and entered in ascending order. For some packages, the polynomial is evaluated
+   and then interpolated. In these cases sample points may be provided and should
+   cover the range of interest.
+
+   For example, providing ``[3., 4., 1.]`` represents this equation:
+
+   .. math::
+
+   f(x) = 3 + 4x + x^{2}
+
+   This property is created in the default unit system of the solver. Ensure
+   that you provide values in the correct units.
+
+   :Parameters:
+
+       **name: str**
+           Name of the property to model as a constant.
+
+       **coefficients: np.ndarray**
+           Values of the coefficients for the polynomial model, provided in ascending
+           powers of the parameter.
+
+       **sample_points: Optional[np.ndarray]**
+           Values of the parameter to use for interpolation, which are required for some packages.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+   .. py:property:: name
+      :type: str
+
+      
+      Name of the quantity modeled by this constant.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:property:: coefficients
+      :type: numpy.ndarray
+
+      
+      Values of the ``x`` array.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:attribute:: applicable_packages
+      :type: SupportedPackage.MAPDL | SupportedPackage.FLUENT
+
+      
+
+   .. py:method:: write_model(material: ansys.materials.manager.material.Material, pyansys_session: Any) -> None
+
+      
+      Write this model to MAPDL.
+
+      This method Should make some effort to validate the model state before writing.
+
+      :Parameters:
+
+          **material: Material**
+              Material object to associate with this model.
+
+          **pyansys_session: Any**
+              Configured instance of the PyAnsys session.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: validate_model() -> Tuple[bool, List[str]]
+
+      
+      Perform pre-flight validation of the model setup.
+
+
+
+      :Returns:
+
+          :obj:`Tuple`
+              First element is Boolean. ``True`` if validation is successful. If ``False``,
+              the second element contains a list of strings with more information.
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+

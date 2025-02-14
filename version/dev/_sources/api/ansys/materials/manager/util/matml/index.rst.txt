@@ -1,0 +1,84 @@
+
+
+
+
+
+
+The ``matml`` package
+=========================
+
+.. py:module:: ansys.materials.manager.util.matml
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: matml
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.materials.manager.util.matml.matml_from_material`
+            - Provides the ``MatmlWriter`` class.
+
+
+          * - :py:obj:`~ansys.materials.manager.util.matml.matml_parser`
+            - Provides the ``matml_parser`` module.
+
+
+          * - :py:obj:`~ansys.materials.manager.util.matml.matml_property_map`
+            - Define a map between MAPDL and MATLM material properties.
+
+
+          * - :py:obj:`~ansys.materials.manager.util.matml.matml_to_material`
+            - Provides a function to convert MatML entries into Material objects.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> matml_from_material</api/ansys/materials/manager/util/matml/matml_from_material/index>
+    <span class="nf nf-fa-file"></span> matml_parser</api/ansys/materials/manager/util/matml/matml_parser/index>
+    <span class="nf nf-fa-file"></span> matml_property_map</api/ansys/materials/manager/util/matml/matml_property_map/index>
+    <span class="nf nf-fa-file"></span> matml_to_material</api/ansys/materials/manager/util/matml/matml_to_material/index>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

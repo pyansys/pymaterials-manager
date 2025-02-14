@@ -1,0 +1,141 @@
+:py:mod:`ansys.materials.manager._models._fluent.ideal_gas`
+===========================================================
+
+.. py:module:: ansys.materials.manager._models._fluent.ideal_gas
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager._models._fluent.ideal_gas.IdealGas
+
+
+
+
+.. py:class:: IdealGas(name: str)
+
+   Bases: :py:obj:`ansys.materials.manager._models._BaseModel`
+
+   Provides for creating an ideal gas model for fluid properties.
+
+   This model can be applied to density and specific heat capacity properties within Fluent.
+   It requires that the molar mass be set as a property and models the following equation:
+
+   .. math::
+
+    P * V = \frac{m * R * T}{M}
+
+
+   Create an ideal gas model for the Fluent solver.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+   .. py:property:: name
+      :type: str
+
+      
+      Name of the property modeled.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:attribute:: applicable_packages
+
+      
+
+   .. py:method:: write_model(material: ansys.materials.manager.material.Material, pyansys_session: Any) -> None
+
+      
+      Write this model to Fluent.
+
+      This method should make some effort to validate the model state before writing.
+
+      :Parameters:
+
+          **material: Material**
+              Material object to associate with this model.
+
+          **pyansys_session: Any**
+              Configured instance of the PyAnsys session.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: validate_model() -> Tuple[bool, List[str]]
+
+      
+      Perform pre-flight validation of the model setup.
+
+
+
+      :Returns:
+
+          :obj:`Tuple`
+              First element is Boolean. ``True`` if validation is successful. If ``False``,
+              the second element contains a list of strings with more information.
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+

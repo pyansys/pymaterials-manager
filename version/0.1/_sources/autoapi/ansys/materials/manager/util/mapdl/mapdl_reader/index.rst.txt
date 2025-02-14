@@ -1,0 +1,58 @@
+:py:mod:`ansys.materials.manager.util.mapdl.mapdl_reader`
+=========================================================
+
+.. py:module:: ansys.materials.manager.util.mapdl.mapdl_reader
+
+.. autoapi-nested-parse::
+
+   Provides the ``mapdl_reader`` module.
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager.util.mapdl.mapdl_reader.read_mapdl
+
+
+
+.. py:function:: read_mapdl(mapdl: ansys.mapdl.core.mapdl._MapdlCore) -> Dict[str, ansys.materials.manager.material.Material]
+
+   
+   Read materials from a provided MAPDL session.
+
+   Returns them indexed by the material ID.
+
+   :Parameters:
+
+       **mapdl** : :obj:`_MapdlCore`
+           Active pyMAPDL session.
+
+   :Returns:
+
+       :obj:`Dict`\[:class:`python:str`, :obj:`Material`]
+           Materials currently active in the MAPDL session, indexed by their material ID.
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+

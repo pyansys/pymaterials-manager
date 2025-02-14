@@ -1,0 +1,259 @@
+:py:mod:`ansys.materials.manager.util.matml.matml_parser`
+=========================================================
+
+.. py:module:: ansys.materials.manager.util.matml.matml_parser
+
+.. autoapi-nested-parse::
+
+   Provides the ``matml_parser`` module.
+
+   ..
+       !! processed by numpydoc !!
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager.util.matml.matml_parser.Parameter
+   ansys.materials.manager.util.matml.matml_parser.PropertySet
+   ansys.materials.manager.util.matml.matml_parser.MatmlReader
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager.util.matml.matml_parser.MATERIALS_ELEMENT_KEY
+   ansys.materials.manager.util.matml.matml_parser.MATML_DOC_KEY
+   ansys.materials.manager.util.matml.matml_parser.METADATA_KEY
+   ansys.materials.manager.util.matml.matml_parser.BULKDATA_KEY
+   ansys.materials.manager.util.matml.matml_parser.UNITLESS_KEY
+   ansys.materials.manager.util.matml.matml_parser.BEHAVIOR_KEY
+   ansys.materials.manager.util.matml.matml_parser.WBTRANSFER_KEY
+   ansys.materials.manager.util.matml.matml_parser.MAT_TRANSFER_ID
+
+
+.. py:data:: MATERIALS_ELEMENT_KEY
+   :value: 'Materials'
+
+   
+
+.. py:data:: MATML_DOC_KEY
+   :value: 'MatML_Doc'
+
+   
+
+.. py:data:: METADATA_KEY
+   :value: 'Metadata'
+
+   
+
+.. py:data:: BULKDATA_KEY
+   :value: 'BulkDetails'
+
+   
+
+.. py:data:: UNITLESS_KEY
+   :value: 'Unitless'
+
+   
+
+.. py:data:: BEHAVIOR_KEY
+   :value: 'Behavior'
+
+   
+
+.. py:data:: WBTRANSFER_KEY
+   :value: 'ANSYSWBTransferData'
+
+   
+
+.. py:data:: MAT_TRANSFER_ID
+   :value: 'DataTransferID'
+
+   
+
+.. py:class:: Parameter
+
+   
+   Define a parameter such as density or Young's Modulus.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:attribute:: name
+      :type: str
+
+      
+
+   .. py:attribute:: data
+      :type: Any
+
+      
+
+   .. py:attribute:: qualifiers
+      :type: Dict
+
+      
+
+
+.. py:class:: PropertySet
+
+   
+   Define a PropertySet which contains one or several parameters.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:attribute:: name
+      :type: str
+
+      
+
+   .. py:attribute:: parameters
+      :type: Dict
+
+      
+
+   .. py:attribute:: qualifiers
+      :type: Dict
+
+      
+
+
+.. py:class:: MatmlReader(file_path: _PATH_TYPE)
+
+   Parse a MATML (engineering data xml) file.
+
+   Fills a nested dict with all the materials and their properties.
+   The key of the first layer are the material names.
+   The conversion into a specific format/object representation is implemented separately.
+
+   The data can be accessed via matml_reader.materials
+
+
+   Create a new MATML reader object.
+
+
+   :Parameters:
+
+       **file_path**
+           Matml (engineering data xml) file path
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+   .. py:attribute:: materials
+      :type: Dict
+
+      
+
+   .. py:attribute:: transfer_ids
+
+      
+
+   .. py:attribute:: matml_file_path
+      :type: _PATH_TYPE
+
+      
+
+   .. py:method:: parse_matml() -> bool
+
+      
+      Read MATML (engineering data XML) file.
+
+      Output can be consumed via matml_reader.materials or
+      matml_reader.get_material(name).
+
+      Returns the number of imported materials.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: get_material(name: str) -> Dict
+
+      
+      Return a certain material.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+

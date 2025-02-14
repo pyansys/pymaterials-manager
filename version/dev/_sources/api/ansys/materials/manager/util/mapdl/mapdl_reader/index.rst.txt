@@ -1,0 +1,107 @@
+
+
+
+
+
+
+The ``mapdl_reader.py`` module
+==============================
+
+.. py:module:: ansys.materials.manager.util.mapdl.mapdl_reader
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: mapdl_reader
+.. tab-set::
+
+
+
+
+
+
+
+    .. tab-item:: Functions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~read_mapdl`
+            - Read materials from a provided MAPDL session.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Provides the ``mapdl_reader`` module.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:function:: read_mapdl(mapdl: ansys.materials.manager._models._common._base._MapdlCore) -> Dict[str, ansys.materials.manager.material.Material]
+
+   
+   Read materials from a provided MAPDL session.
+
+   Returns them indexed by the material ID.
+
+   :Parameters:
+
+       **mapdl** : :obj:`_MapdlCore`
+           Active pyMAPDL session.
+
+
+
+   :Returns:
+
+       :obj:`Dict`\[:class:`python:str`, :obj:`Material`]
+           Materials currently active in the MAPDL session, indexed by their material ID.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+

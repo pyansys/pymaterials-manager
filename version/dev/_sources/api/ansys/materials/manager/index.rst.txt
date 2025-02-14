@@ -1,0 +1,139 @@
+
+
+
+
+
+
+The ``ansys.materials.manager`` library
+=======================================
+
+.. py:module:: ansys.materials.manager
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: manager
+.. tab-set::
+
+    .. tab-item:: Subpackages
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.materials.manager.util`
+            - 
+
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.materials.manager.material`
+            - Provides the ``Material`` class.
+
+
+          * - :py:obj:`~ansys.materials.manager.material_manager`
+            - Provides the ``MaterialManager`` class.
+
+
+          * - :py:obj:`~ansys.materials.manager.serialize`
+            - Provides functions to serialize materials.
+
+
+
+
+
+
+
+
+    .. tab-item:: Attributes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~__version__`
+            - 
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-package"></span> util</api/ansys/materials/manager/util/index>
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> material</api/ansys/materials/manager/material/index>
+    <span class="nf nf-fa-file"></span> material_manager</api/ansys/materials/manager/material_manager/index>
+    <span class="nf nf-fa-file"></span> serialize</api/ansys/materials/manager/serialize/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Provides a helper to manage materials in the Ansys ecosystem.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:data:: __version__
+
+
+

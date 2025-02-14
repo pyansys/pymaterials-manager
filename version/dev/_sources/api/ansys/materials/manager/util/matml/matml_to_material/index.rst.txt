@@ -1,0 +1,111 @@
+
+
+
+
+
+
+The ``matml_to_material.py`` module
+===================================
+
+.. py:module:: ansys.materials.manager.util.matml.matml_to_material
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: matml_to_material
+.. tab-set::
+
+
+
+
+
+
+
+    .. tab-item:: Functions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~convert_matml_materials`
+            - Convert a list of materials into Material objects.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Provides a function to convert MatML entries into Material objects.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:function:: convert_matml_materials(materials_dict: Dict, transfer_ids: Dict, index_offset: int) -> Sequence[ansys.materials.manager.material.Material]
+
+   
+   Convert a list of materials into Material objects.
+
+
+   :Parameters:
+
+       **materials_dict:**
+           dict of raw material data from a matml import
+
+       **transfer_ids:**
+           dict of material names and unique transfer ids
+
+       **index_offset:**
+           int to offset the material id (number) to avoid conflicts with already existing materials
+
+       **Returns a list of Material objects**
+           ..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+

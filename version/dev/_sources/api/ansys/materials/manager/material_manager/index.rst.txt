@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``material_manager.py`` module
+==================================
+
+.. py:module:: ansys.materials.manager.material_manager
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: material_manager
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.materials.manager.material_manager.MaterialManager`
+            - Manage material creation, assignment, and other management tasks.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> MaterialManager</api/ansys/materials/manager/material_manager/MaterialManager>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Provides the ``MaterialManager`` class.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

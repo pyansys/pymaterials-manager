@@ -1,0 +1,115 @@
+
+
+
+
+
+
+The ``matml_from_material.py`` module
+=====================================
+
+.. py:module:: ansys.materials.manager.util.matml.matml_from_material
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: matml_from_material
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.materials.manager.util.matml.matml_from_material.MatmlWriter`
+            - Exports a list of MAPDL materials to an engineering data XML file.
+
+
+
+
+
+
+
+    .. tab-item:: Constants
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ROOT_ELEMENT`
+            - 
+
+
+          * - :py:obj:`~VERSION`
+            - 
+
+
+          * - :py:obj:`~VERSION_DATE`
+            - 
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> MatmlWriter</api/ansys/materials/manager/util/matml/matml_from_material/MatmlWriter>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Provides the ``MatmlWriter`` class.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:data:: ROOT_ELEMENT
+   :value: 'EngineeringData'
+
+
+.. py:data:: VERSION
+   :value: '18.0.0.60'
+
+
+.. py:data:: VERSION_DATE
+   :value: '29.08.2016 15:02:00'
+
+
+
+

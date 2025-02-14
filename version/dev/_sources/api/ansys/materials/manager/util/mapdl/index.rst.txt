@@ -1,0 +1,79 @@
+
+
+
+
+
+
+The ``mapdl`` package
+=========================
+
+.. py:module:: ansys.materials.manager.util.mapdl
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: mapdl
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.materials.manager.util.mapdl.mapdl_reader`
+            - Provides the ``mapdl_reader`` module.
+
+
+          * - :py:obj:`~ansys.materials.manager.util.mapdl.mpdata_parser`
+            - Provides the ``MaterialDataParser`` class.
+
+
+          * - :py:obj:`~ansys.materials.manager.util.mapdl.tbdata_parser`
+            - Provides the ``TableDataParser`` class.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> mapdl_reader</api/ansys/materials/manager/util/mapdl/mapdl_reader/index>
+    <span class="nf nf-fa-file"></span> mpdata_parser</api/ansys/materials/manager/util/mapdl/mpdata_parser/index>
+    <span class="nf nf-fa-file"></span> tbdata_parser</api/ansys/materials/manager/util/mapdl/tbdata_parser/index>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+
+
+
+
+
+
+The ``matml_property_map.py`` module
+====================================
+
+.. py:module:: ansys.materials.manager.util.matml.matml_property_map
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: matml_property_map
+.. tab-set::
+
+
+
+
+
+
+
+
+
+    .. tab-item:: Constants
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~MATML_PROPERTY_MAP`
+            - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Define a map between MAPDL and MATLM material properties.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:data:: MATML_PROPERTY_MAP
+
+
+

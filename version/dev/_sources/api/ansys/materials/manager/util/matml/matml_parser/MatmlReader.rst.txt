@@ -1,0 +1,337 @@
+
+
+
+
+
+
+:class:`MatmlReader`
+====================
+
+.. py:class:: ansys.materials.manager.util.matml.matml_parser.MatmlReader(file_path: _PATH_TYPE)
+
+   
+   Parse a MatML (engineering data xml) file.
+
+   Fills a nested dict with all the materials and their properties.
+   The key of the first layer are the material names.
+   The conversion into a specific format/object representation is implemented separately.
+
+   The data can be accessed via matml_reader.materials
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+.. py:currentmodule:: MatmlReader
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~parse_matml`
+            - Read MATML (engineering data XML) file.
+          * - :py:attr:`~get_material`
+            - Return a certain material.
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~materials`
+            - Return the parsed material data from the MatML file.
+          * - :py:attr:`~transfer_ids`
+            - Return the parsed Workbench Transfer IDs from the MatML file.
+          * - :py:attr:`~matml_file_path`
+            - Return the path to the target MatML file.
+
+
+
+   .. tab-item:: Static methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~parse_from_file`
+            - Read MatML (engineering data XML) data from a file.
+          * - :py:attr:`~parse_text`
+            - Read MatML (engineering data XML) data from a string.
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.materials.manager.util.matml.matml_parser import MatmlReader
+
+Property detail
+---------------
+
+.. py:property:: materials
+   :type: Optional[Dict]
+
+
+   
+   Return the parsed material data from the MatML file.
+
+   Property will be None unless the parser has successfully parsed a MatML file.
+
+
+
+
+   :Returns:
+
+       Dict: :obj:`Material` :obj:`data` :obj:`from` :obj:`the` :obj:`MatML` :obj:`file`
+           ..
+
+       .. deprecated:: 0.2.3
+           `materials` will be removed in version 0.3.0, instead use the static methods
+           `parse_from_file` and `parse_from_text` to parse the MatML file and
+           obtain the parsed material dictionary.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: transfer_ids
+   :type: Optional[Dict[str, str]]
+
+
+   
+   Return the parsed Workbench Transfer IDs from the MatML file.
+
+   Property will be None unless the parser has successfully parsed a MatML file.
+
+
+
+
+   :Returns:
+
+       Dict: :obj:`Workbench` :obj:`transfer` :obj:`IDs` :obj:`from` :obj:`the` :obj:`MatML` :obj:`file`
+           ..
+
+       .. deprecated:: 0.2.3
+           `transfer_ids` will be removed in version 0.3.0, instead use the static methods
+           `parse_from_file` and `parse_from_text` to parse the MatML file and
+           obtain the Workbench transfer IDs.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: matml_file_path
+   :type: str
+
+
+   
+   Return the path to the target MatML file.
+
+   .. deprecated:: 0.2.3
+      `matml_file_path` will be removed in version 0.3.0, instead use the static methods
+      `parse_from_file` and `parse_from_text` to parse the MatML file and
+      obtain the parsed material dictionary and the Workbench transfer IDs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: parse_from_file(file_path: _PATH_TYPE) -> Dict[str, Union[str, Dict]]
+   :staticmethod:
+
+
+   
+   Read MatML (engineering data XML) data from a file.
+
+   Returns the material information and the workbench transfer identities (if present).
+
+   :Parameters:
+
+       **file_path: Union[str, Path]**
+           Path to MatML file on disk
+
+
+
+   :Returns:
+
+       :obj:`Dict`\[:class:`python:str`, :obj:`Union`\[:class:`python:str`, :obj:`Dict`]]
+           ..
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: parse_text(matml_content: str) -> Dict[str, Union[str, Dict]]
+   :staticmethod:
+
+
+   
+   Read MatML (engineering data XML) data from a string.
+
+   Returns the material information and the workbench transfer identities (if present).
+
+   :Parameters:
+
+       **matml_content: str**
+           MatML content in text form
+
+
+
+   :Returns:
+
+       :obj:`Dict`\[:class:`python:str`, :obj:`Union`\[:class:`python:str`, :obj:`Dict`]]
+           ..
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: parse_matml() -> int
+
+   
+   Read MATML (engineering data XML) file.
+
+   Output can be consumed via matml_reader.materials or
+   matml_reader.get_material(name).
+
+
+
+
+   :Returns:
+
+       int: :obj:`Number` :obj:`of` :obj:`imported` materials.
+           ..
+
+       .. deprecated:: 0.2.3
+           `parse_matml` will be removed in version 0.3.0, it is replaced by
+           `parse_from_file` and `parse_from_text`.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_material(name: str) -> Dict
+
+   
+   Return a certain material.
+
+   .. deprecated:: 0.2.3
+     `get_material` will be removed in version 0.3.0, instead use the static methods
+     `parse_from_file` and `parse_from_text` to parse the MatML file and
+     obtain the parsed material dictionary and the Workbench transfer ID.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

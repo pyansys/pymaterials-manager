@@ -1,0 +1,148 @@
+
+
+
+
+
+
+:class:`MaterialManager`
+========================
+
+.. py:class:: ansys.materials.manager.material_manager.MaterialManager(pyansys_client: Any)
+
+   
+   Manage material creation, assignment, and other management tasks.
+
+   This class is the main entry point for the Pythonic material management interface.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: MaterialManager
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~write_material`
+            - Write a material to the solver.
+          * - :py:attr:`~read_materials_from_session`
+            - Given a PyAnsys session, return the materials present.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~model_type_map`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.materials.manager.material_manager import MaterialManager
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: model_type_map
+   :type:  Dict[str, ansys.materials.manager._models._BaseModel]
+
+
+
+Method detail
+-------------
+
+.. py:method:: write_material(material: ansys.materials.manager.material.Material) -> None
+
+   
+   Write a material to the solver.
+
+
+   :Parameters:
+
+       **material** : :obj:`Material`
+           Material object to write to solver.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: read_materials_from_session() -> Dict[str, ansys.materials.manager.material.Material]
+
+   
+   Given a PyAnsys session, return the materials present.
+
+   This method only supports PyMAPDL currently.
+
+
+
+
+   :Returns:
+
+       :obj:`Dict`\[:class:`python:str`, :obj:`Material`]
+           Materials in the current session, indexed by an ID. For MAPDL, this is the material
+           ID. For Fluent, this is the material name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

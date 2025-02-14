@@ -1,0 +1,161 @@
+
+
+
+
+
+
+The ``common.py`` module
+========================
+
+.. py:module:: ansys.materials.manager.util.common
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: common
+.. tab-set::
+
+
+
+
+
+
+
+    .. tab-item:: Functions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~fill_upper_triangular_matrix`
+            - Convert a vector of coefficients into a full matrix.
+
+
+
+    .. tab-item:: Attributes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~model_type`
+            - 
+
+
+
+    .. tab-item:: Constants
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~MP_MATERIAL_HEADER_REGEX`
+            - 
+
+
+          * - :py:obj:`~TB_MATERIAL_HEADER_REGEX`
+            - 
+
+
+          * - :py:obj:`~FLOAT_VALUE_REGEX`
+            - 
+
+
+          * - :py:obj:`~INTEGER_VALUE_REGEX`
+            - 
+
+
+          * - :py:obj:`~MATRIX_LABEL_REGEX`
+            - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Provides the ``common`` module.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:function:: fill_upper_triangular_matrix(vector: List[float]) -> numpy.ndarray
+
+   
+   Convert a vector of coefficients into a full matrix.
+
+   Generates a symmetric, square matrix.
+
+   :Parameters:
+
+       **vector** : :obj:`List`\[:class:`python:float`]
+           Coefficients of the lower half-matrix. E.g. D11, D12, D22, etc.
+
+
+
+   :Returns:
+
+       :obj:`np.ndarray <numpy.ndarray>`
+           Square symmetric matrix.
+
+
+
+
+   :Raises:
+
+       :obj:`ValueError`
+           If the length of the input vector is not a triangular number.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:data:: MP_MATERIAL_HEADER_REGEX
+
+.. py:data:: TB_MATERIAL_HEADER_REGEX
+
+.. py:data:: FLOAT_VALUE_REGEX
+
+.. py:data:: INTEGER_VALUE_REGEX
+
+.. py:data:: MATRIX_LABEL_REGEX
+
+.. py:data:: model_type
+
+
+

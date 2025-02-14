@@ -1,0 +1,46 @@
+
+
+
+
+
+
+The ``tbdata_parser.py`` module
+===============================
+
+.. py:module:: ansys.materials.manager.util.mapdl.tbdata_parser
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Provides the ``TableDataParser`` class.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

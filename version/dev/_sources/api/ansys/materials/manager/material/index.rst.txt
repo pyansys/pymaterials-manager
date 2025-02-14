@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``material.py`` module
+==========================
+
+.. py:module:: ansys.materials.manager.material
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: material
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.materials.manager.material.Material`
+            - Provides a wrapper class for managing a material.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Material</api/ansys/materials/manager/material/Material>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Provides the ``Material`` class.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

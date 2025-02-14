@@ -1,0 +1,215 @@
+:py:mod:`ansys.materials.manager._models._common.piecewise_linear`
+==================================================================
+
+.. py:module:: ansys.materials.manager._models._common.piecewise_linear
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager._models._common.piecewise_linear.PiecewiseLinear
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   ansys.materials.manager._models._common.piecewise_linear.TYPE_CHECKING
+
+
+.. py:data:: TYPE_CHECKING
+   :value: False
+
+   
+
+.. py:class:: PiecewiseLinear(name: str, x: numpy.ndarray, y: numpy.ndarray)
+
+   Bases: :py:obj:`ansys.materials.manager._models._common._base._BaseModel`
+
+   Provides the piecewise linear model for a property.
+
+   This class represents a property as a series of sample points between which the value is
+   interpolated.
+
+
+   Create a piecewise linear model for a property.
+
+   Ensure that the two arrays ``x`` and ``y`` are both one dimensional and have the same number
+   of elements.
+
+   This property is created in the default unit system of the solver. Ensure
+   that you provide values in the correct units.
+
+   :Parameters:
+
+       **name: str**
+           Name of the property to model as a constant.
+
+       **x: np.ndarray**
+           Values of the independent variable over which to model the property.
+           Ensure that these values cover the range of interest for the simulation.
+
+       **y: np.ndarray**
+           Values of the property sampled at the points represented by the ``x`` array.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+   .. py:property:: name
+      :type: str
+
+      
+      Name of the quantity modeled by the constant.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:property:: x
+      :type: numpy.ndarray
+
+      
+      Values of the ``x`` array.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:property:: y
+      :type: numpy.ndarray
+
+      
+      Values of the ``y`` array.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:attribute:: applicable_packages
+      :type: SupportedPackage.MAPDL | SupportedPackage.FLUENT
+
+      
+
+   .. py:method:: write_model(material: ansys.materials.manager.material.Material, pyansys_session: Any) -> None
+
+      
+      Write the model to MAPDL.
+
+      This method should make some effort to validate the model state before writing.
+
+      :Parameters:
+
+          **material: Material**
+              Material object to associate with this model.
+
+          **pyansys_session: Any**
+              Configured instance of the PyAnsys session.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: validate_model() -> Tuple[bool, List[str]]
+
+      
+      Perform pre-flight validation of the model setup.
+
+
+
+      :Returns:
+
+          :obj:`Tuple`
+              First element is Boolean. ``True`` if validation is successful. If ``False``,
+              the second element contains a list of strings with more information.
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
